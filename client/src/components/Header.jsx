@@ -44,7 +44,11 @@ function Header() {
 
   const goHome = () => {
     setMobileOpen(false);
-    navigate('/');
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/');
+    }
   };
 
   // Runs whenever we land on '/' — picks up the stored scroll target
@@ -111,7 +115,7 @@ function Header() {
       {/* Mobile Nav */}
       <div className={`mobile-nav ${mobileOpen ? 'open' : ''}`}>
         <button className="mobile-nav-close" onClick={() => setMobileOpen(false)}>✕</button>
-        <Link to="/" onClick={() => setMobileOpen(false)}>Home</Link>
+        <button className="mobile-nav-btn" onClick={goHome}>Home</button>
         <button className="mobile-nav-btn" onClick={() => scrollTo('about')}>About</button>
         <button className="mobile-nav-btn" onClick={() => scrollTo('services')}>Services</button>
         <button className="mobile-nav-btn" onClick={() => scrollTo('facilities')}>Facilities</button>

@@ -97,15 +97,8 @@ function About() {
         <div className="banner">
           <img className="banner-bg-img" src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1400&q=80" alt="Sky Dental Hospital" />
           <div className="banner-overlay" />
-          <div className="banner-deco-circle c1" />
-          <div className="banner-deco-circle c2" />
-          <span className="banner-plus p1">+</span>
-          <span className="banner-plus p2">+</span>
-          <span className="banner-plus p3">+</span>
-          <div className="banner-hollow" />
           <div className="banner-content">
             <h1>About Us</h1>
-            <p>Sky Dental Hospital — providing advanced and compassionate dental care for patients of all ages. Trusted by thousands across Kasaragod district for over 25 years of dental excellence.</p>
           </div>
         </div>
       </div>

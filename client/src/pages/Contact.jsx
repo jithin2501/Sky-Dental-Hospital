@@ -23,7 +23,7 @@ function Contact() {
     <div className="contact-page">
       <Header />
 
-      {/* Banner - clean image only, no decorative elements */}
+      {/* Banner */}
       <div className="banner-wrap">
         <div className="banner">
           <img
@@ -34,7 +34,6 @@ function Contact() {
           <div className="banner-overlay" />
           <div className="banner-content">
             <h1>Contact Us</h1>
-            <p>Distinctively re-engineer revolutionary meta-services, change management and premium architectures. Intrinsically incubate intuitive opportunities and real-time potentialities.</p>
           </div>
         </div>
       </div>

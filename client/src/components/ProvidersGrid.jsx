@@ -48,7 +48,6 @@ function ProvidersGrid() {
 
       <section className="providers">
         <div className="providers-header">
-          <span className="providers-tag">Our Specialists</span>
           <h2>Meet Our <span className="providers-highlight">Team</span></h2>
           <p>Our skilled dentists work together to deliver safe, advanced, and personalized dental care. Your comfort, health, and smile are always our top priorities.</p>
         </div>

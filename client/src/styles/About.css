@@ -16,13 +16,24 @@
   overflow: hidden;
 }
 
+.banner-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background: linear-gradient(to bottom, transparent, #eff9ff);
+  z-index: 3;
+}
+
 .banner {
   position: relative;
   width: 100%;
   min-height: 520px;
   display: flex;
   align-items: center;
-  clip-path: path('M0,0 L1540,0 L1540,440 Q770,580 0,458 Z');
+  justify-content: center;
 }
 
 .banner-bg-img {
@@ -42,49 +53,11 @@
   z-index: 1;
 }
 
-.banner-deco-circle {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.13);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.banner-deco-circle.c1 { width: 360px; height: 360px; right: 34%; top: -90px; }
-.banner-deco-circle.c2 { width: 200px; height: 200px; right: 38%; bottom: 10px; }
-
-.banner-plus {
-  position: absolute;
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 26px;
-  font-weight: 200;
-  user-select: none;
-  line-height: 1;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.banner-plus.p1 { top: 70px;    left: 39%; }
-.banner-plus.p2 { top: 40px;    right: 33%; }
-.banner-plus.p3 { bottom: 90px; left: 44%; }
-
-.banner-hollow {
-  position: absolute;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  width: 14px;
-  height: 14px;
-  top: 180px;
-  right: 37%;
-  pointer-events: none;
-  z-index: 2;
-}
-
 .banner-content {
   position: relative;
   z-index: 2;
-  padding: 0 80px;
-  max-width: 620px;
+  text-align: center;
+  padding: 0 20px;
 }
 
 .banner-content h1 {
@@ -93,14 +66,6 @@
   font-weight: 700;
   color: #fff;
   line-height: 1.05;
-  margin-bottom: 22px;
-}
-
-.banner-content p {
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.88);
-  line-height: 1.8;
-  max-width: 460px;
 }
 
 /* ── About Section ── */
