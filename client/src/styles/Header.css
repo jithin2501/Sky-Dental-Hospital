@@ -38,6 +38,12 @@
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
+  transition: filter 0.3s ease;
+}
+
+/* Recolor white transparent logo to match the dark blue brand color on white header */
+.header.scrolled .logo-img {
+  filter: brightness(0) saturate(100%) invert(18%) sepia(49%) saturate(854%) hue-rotate(169deg) brightness(92%) contrast(101%);
 }
 
 .logo-text-wrapper {
