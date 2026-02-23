@@ -9,7 +9,9 @@ function scrollWhenReady(id, behavior = 'smooth', maxWait = 3000) {
   const attempt = () => {
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior });
+      const headerHeight = document.querySelector('header')?.offsetHeight || 80;
+      const top = el.getBoundingClientRect().top + window.scrollY - headerHeight;
+      window.scrollTo({ top, behavior });
     } else if (Date.now() - start < maxWait) {
       requestAnimationFrame(attempt);
     }
