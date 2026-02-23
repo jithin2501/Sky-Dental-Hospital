@@ -267,7 +267,7 @@
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   gap: 60px;
-  align-items: center;
+  align-items: stretch;
 }
 
 .why-left {
@@ -275,7 +275,6 @@
   flex-direction: column;
   align-self: center;
 }
-
 .why-label {
   color: #088395;
   font-size: 12px;
