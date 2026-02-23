@@ -1,6 +1,8 @@
 .dp-page {
   background: #eff9ff;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .dp-highlight {
@@ -21,6 +23,7 @@
   min-height: 520px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .dp-banner-bg {
@@ -78,8 +81,9 @@
 .dp-banner-content {
   position: relative;
   z-index: 2;
-  padding: 0 80px;
-  max-width: 620px;
+  width: 100%;
+  text-align: center;
+  padding: 0 20px;
 }
 
 .dp-banner-content h1 {
@@ -110,8 +114,13 @@
 /* ── Container ── */
 .dp-container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 80px 20px 120px;
+  padding: 60px 20px 160px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* ── Profile Section ── */

@@ -25,19 +25,19 @@ const providers = [
     id: 'sarah-thomas',
     name: 'Dr. Sarah Thomas',
     specialty: 'Periodontics',
-    image: '/images/doctors/doc 4.png',
+    image: '/images/doctors/doc 1.png',
   },
   {
     id: 'arjun-menon',
     name: 'Dr. Arjun Menon',
     specialty: 'Endodontics',
-    image: '/images/doctors/doc 5.png',
+    image: '/images/doctors/doc 2.png',
   },
   {
     id: 'priya-sharma',
     name: 'Dr. Priya Sharma',
     specialty: 'Pediatric Dentistry',
-    image: '/images/doctors/doc 6.png',
+    image: '/images/doctors/doc 3.png',
   },
 ];
 

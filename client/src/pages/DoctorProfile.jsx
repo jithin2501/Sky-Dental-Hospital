@@ -13,7 +13,7 @@ const providers = [
     image: '/images/doctors/doc 1.png',
     experience: '25+ Years',
     bio1: 'Dr. Melvin Mathew is the founder of Sky Dental Hospital and one of the most experienced oral surgeons in Kasaragod district. With over 25 years of dedicated practice, he has transformed thousands of smiles and established Sky Dental as a benchmark for quality dental care in the region.',
-    bio2: 'Dr. Mathew pursued advanced training in oral and maxillofacial surgery and is committed to bringing world-class dental treatments to local patients without the need to travel to metropolitan cities.',
+    bio2: 'His expertise spans complex oral surgeries, dental implants, and reconstructive procedures. Dr. Mathew pursued advanced training in oral and maxillofacial surgery and is committed to bringing world-class dental treatments to local patients without the need to travel to metropolitan cities.',
     email: 'melvin@skydentalclinics.com',
     facebook: '#',
     instagram: '#',
@@ -123,9 +123,6 @@ function DoctorProfile() {
           <div className="dp-banner-hollow" />
           <div className="dp-banner-content">
             <h1>Our Medical Team</h1>
-            <p>
-              <Link to="/">Home</Link> › <Link to="/#team">Team</Link> › {doctor.name}
-            </p>
           </div>
         </div>
       </div>
