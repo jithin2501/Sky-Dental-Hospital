@@ -1,6 +1,6 @@
 .review-section {
   background: #eff9ff;
-  padding: 5rem 2rem;
+  padding: 5rem 2rem 8rem;
 }
 
 .review-section-inner {
@@ -155,6 +155,9 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .review-section {
+    padding: 5rem 2rem 5rem;
+  }
   .review-headline {
     font-size: 2rem;
   }
