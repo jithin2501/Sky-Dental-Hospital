@@ -3,7 +3,7 @@ import '../styles/Ceo.css';
 
 function CEOSection() {
   return (
-    <section className="ceo-section" id="team">
+    <section className="ceo-section">
       <h2 className="ceo-heading">MEET OUR CEO</h2>
 
       <div className="ceo-inner">
@@ -51,7 +51,7 @@ function CEOSection() {
             </p>
           </div>
 
-          <a href="#providers" className="ceo-btn">
+          <a href="#team" className="ceo-btn">
             Meet Our Team
             <span className="ceo-btn-arrow">
               <svg
