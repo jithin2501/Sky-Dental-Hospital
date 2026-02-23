@@ -61,12 +61,21 @@
 .service-icon {
   width: 44px;
   height: 44px;
-  background: #eff9ff;
+  background: #ffffff;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* ✅ THIS was missing — constrains the img inside the box */
+.service-icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
 }
 
 .service-icon svg {
