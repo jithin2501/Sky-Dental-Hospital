@@ -17,6 +17,17 @@
   overflow: hidden;
 }
 
+.dp-banner-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(to bottom, transparent, #eff9ff);
+  z-index: 3;
+}
+
 .dp-banner {
   position: relative;
   width: 100%;
@@ -39,44 +50,11 @@
 .dp-banner-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.30);
+  background: rgba(0, 0, 0, 0.55);
   z-index: 1;
 }
 
-.dp-banner-deco {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.13);
-  pointer-events: none;
-  z-index: 2;
-}
-.dp-banner-deco.c1 { width: 360px; height: 360px; right: 34%; top: -90px; }
-.dp-banner-deco.c2 { width: 200px; height: 200px; right: 38%; bottom: 10px; }
 
-.dp-plus {
-  position: absolute;
-  color: rgba(255,255,255,0.55);
-  font-size: 26px;
-  font-weight: 200;
-  user-select: none;
-  pointer-events: none;
-  z-index: 2;
-}
-.dp-plus.p1 { top: 70px;    left: 39%; }
-.dp-plus.p2 { top: 40px;    right: 33%; }
-.dp-plus.p3 { bottom: 90px; left: 44%; }
-
-.dp-banner-hollow {
-  position: absolute;
-  border: 2px solid rgba(255,255,255,0.5);
-  border-radius: 50%;
-  width: 14px;
-  height: 14px;
-  top: 180px;
-  right: 37%;
-  pointer-events: none;
-  z-index: 2;
-}
 
 .dp-banner-content {
   position: relative;

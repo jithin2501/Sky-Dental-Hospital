@@ -115,12 +115,6 @@ function DoctorProfile() {
             alt="Sky Dental"
           />
           <div className="dp-banner-overlay" />
-          <div className="dp-banner-deco c1" />
-          <div className="dp-banner-deco c2" />
-          <span className="dp-plus p1">+</span>
-          <span className="dp-plus p2">+</span>
-          <span className="dp-plus p3">+</span>
-          <div className="dp-banner-hollow" />
           <div className="dp-banner-content">
             <h1>Our Medical Team</h1>
           </div>
