@@ -5,15 +5,15 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #0A3D5C 0%, #088395 50%, #05BFDB 100%);
   background-size: cover;
   background-position: center;
 }
 
-.hero-overlay {
+.hero::before {
+  content: '';
   position: absolute;
   inset: 0;
-  background: rgba(10, 61, 92, 0.55);
+  background: linear-gradient(to right, rgba(10, 61, 92, 0.6) 0%, rgba(10, 61, 92, 0.2) 60%, transparent 100%);
   z-index: 1;
 }
 

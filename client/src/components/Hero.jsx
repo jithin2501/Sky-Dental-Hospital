@@ -17,7 +17,6 @@ function Hero() {
         backgroundPosition: 'center'
       }}
     >
-      <div className="hero-overlay" />
       <div className="hero-content">
         <div className="hero-text">
           <h1>Your Journey to a Brighter Smile Starts Here</h1>
