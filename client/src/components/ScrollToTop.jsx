@@ -9,10 +9,10 @@ function ScrollToTop() {
     const prev = prevPathRef.current;
     const pendingScroll = sessionStorage.getItem('scrollTo');
 
-    if (pathname.startsWith('/team/')) {
+    if (pathname.startsWith('/team')) {
       // Always start at the top when opening a doctor profile
       window.scrollTo({ top: 0, behavior: 'instant' });
-    } else if (pathname === '/' && prev.startsWith('/team/')) {
+    } else if (pathname === '/' && prev.startsWith('/team')) {
       // Coming back from a doctor profile → jump to Team section
       sessionStorage.setItem('scrollTo', 'team');
     } else if (!pendingScroll) {

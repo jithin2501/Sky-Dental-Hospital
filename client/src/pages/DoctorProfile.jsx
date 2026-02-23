@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -13,7 +13,7 @@ const providers = [
     image: '/images/doctors/doc 1.png',
     experience: '25+ Years',
     bio1: 'Dr. Melvin Mathew is the founder of Sky Dental Hospital and one of the most experienced oral surgeons in Kasaragod district. With over 25 years of dedicated practice, he has transformed thousands of smiles and established Sky Dental as a benchmark for quality dental care in the region.',
-    bio2: 'His expertise spans complex oral surgeries, dental implants, and reconstructive procedures. Dr. Mathew pursued advanced training in oral and maxillofacial surgery and is committed to bringing world-class dental treatments to local patients without the need to travel to metropolitan cities.',
+    bio2: 'advanced training in oral and maxillofacial surgery and is committed to bringing world-class dental treatments to local patients without the need to travel to metropolitan cities.',
     email: 'melvin@skydentalclinics.com',
     facebook: '#',
     instagram: '#',
@@ -39,7 +39,7 @@ const providers = [
     image: '/images/doctors/doc 3.png',
     experience: '12+ Years',
     bio1: 'Dr. Emily Nguyen specialises in orthodontic treatments for both children and adults. With 12 years of experience, she has successfully treated complex malocclusion cases using traditional braces, clear aligners, and Invisalign, delivering beautifully aligned smiles.',
-    bio2: 'Dr. Nguyen believes orthodontic treatment goes beyond aesthetics — it improves oral health, function, and self-confidence. She is known for her gentle approach with younger patients and her ability to create personalised treatment plans that fit each patient\'s lifestyle.',
+    bio2: "Dr. Nguyen believes orthodontic treatment goes beyond aesthetics — it improves oral health, function, and self-confidence. She is known for her gentle approach with younger patients and her ability to create personalised treatment plans that fit each patient's lifestyle.",
     email: 'emily@skydentalclinics.com',
     facebook: '#',
     instagram: '#',
@@ -64,7 +64,7 @@ const providers = [
     designation: 'Root Canal Specialist',
     image: '/images/doctors/doc 5.png',
     experience: '8+ Years',
-    bio1: 'Dr. Arjun Menon is Sky Dental\'s endodontic specialist, with expertise in root canal therapy and complex pulp treatments. In his 8 years of practice, he has performed thousands of pain-free root canal procedures, earning a reputation for gentle and efficient care.',
+    bio1: "Dr. Arjun Menon is Sky Dental's endodontic specialist, with expertise in root canal therapy and complex pulp treatments. In his 8 years of practice, he has performed thousands of pain-free root canal procedures, earning a reputation for gentle and efficient care.",
     bio2: 'Using the latest rotary endodontic techniques and digital imaging, Dr. Menon ensures every procedure is minimally invasive and maximally effective. He is committed to saving natural teeth whenever possible and helping patients overcome dental anxiety with compassion.',
     email: 'arjun@skydentalclinics.com',
     facebook: '#',
@@ -77,8 +77,8 @@ const providers = [
     designation: 'Paediatric Dental Specialist',
     image: '/images/doctors/doc 6.png',
     experience: '9+ Years',
-    bio1: 'Dr. Priya Sharma is Sky Dental\'s beloved paediatric dentist, specialising in the oral health of infants, children, and adolescents. With 9 years of experience and a naturally warm personality, she makes every young patient feel safe, calm, and confident at the dentist.',
-    bio2: 'Dr. Sharma completed her postgraduate degree in paediatric dentistry and is trained in behaviour management techniques that help anxious children overcome their fears. She is a strong advocate for early dental education, believing that healthy habits formed in childhood last a lifetime.',
+    bio1: "Dr. Priya Sharma is Sky Dental's beloved paediatric dentist, specialising in the oral health of infants, children, and adolescents. With 9 years of experience and a naturally warm personality, she makes every young patient feel safe, calm, and confident at the dentist.",
+    bio2: "Dr. Sharma completed her postgraduate degree in paediatric dentistry and is trained in behaviour management techniques that help anxious children overcome their fears. She is a strong advocate for early dental education, believing that healthy habits formed in childhood last a lifetime.",
     email: 'priya@skydentalclinics.com',
     facebook: '#',
     instagram: '#',
@@ -87,26 +87,27 @@ const providers = [
 
 function DoctorProfile() {
   const { id } = useParams();
-  const doctor = providers.find(d => d.id === id);
 
-  if (!doctor) {
-    return (
-      <div className="dp-page">
-        <Header />
-        <div className="dp-not-found">
-          <h2>Doctor not found.</h2>
-          <Link to="/" className="dp-back-btn">← Back to Home</Link>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (id) {
+      const headerHeight = document.querySelector('header')?.offsetHeight || 80;
+      const tryScroll = (attempts = 0) => {
+        const el = document.getElementById('doc-' + id);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY - headerHeight - 40;
+          window.scrollTo({ top, behavior: 'instant' });
+        } else if (attempts < 20) {
+          setTimeout(() => tryScroll(attempts + 1), 100);
+        }
+      };
+      tryScroll();
+    }
+  }, [id]);
 
   return (
     <div className="dp-page">
       <Header />
 
-      {/* ── Banner ── */}
       <div className="dp-banner-wrap">
         <div className="dp-banner">
           <img
@@ -121,60 +122,63 @@ function DoctorProfile() {
         </div>
       </div>
 
-      {/* ── Profile ── */}
       <div className="dp-container">
-        <section className="dp-profile">
-          <div className="dp-img-wrap">
-            <img src={doctor.image} alt={doctor.name} />
-          </div>
-
-          <div className="dp-info">
-            <span className="dp-specialty-tag">{doctor.specialty}</span>
-            <h2>{doctor.name}</h2>
-            <span className="dp-designation">{doctor.designation}</span>
-
-            <div className="dp-exp-badge">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#088395" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-              </svg>
-              {doctor.experience} of Experience
+        {providers.map((doctor, index) => (
+          <section
+            key={doctor.id}
+            id={'doc-' + doctor.id}
+            className={'dp-profile' + (index % 2 === 1 ? ' dp-profile-reverse' : '')}
+          >
+            <div className="dp-img-wrap">
+              <img src={doctor.image} alt={doctor.name} />
             </div>
 
-            <p>{doctor.bio1}</p>
-            <p>{doctor.bio2}</p>
+            <div className="dp-info">
+              <span className="dp-specialty-tag">{doctor.specialty}</span>
+              <h2>{doctor.name}</h2>
+              <span className="dp-designation">{doctor.designation}</span>
 
-            <div className="dp-divider" />
-
-            <div className="dp-footer-row">
-              <Link to="/contact" className="dp-book-btn">
-                Book Appointment
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
+              <div className="dp-exp-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#088395" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
                 </svg>
-              </Link>
+                {doctor.experience} of Experience
+              </div>
 
-              <div className="dp-socials">
-                <a href={`mailto:${doctor.email}`} className="dp-social-btn" title="Email">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              <p>{doctor.bio1}</p>
+              <p>{doctor.bio2}</p>
+
+              <div className="dp-divider" />
+
+              <div className="dp-footer-row">
+                <Link to="/contact" className="dp-book-btn">
+                  Book Appointment
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
-                </a>
-                <a href={doctor.facebook} className="dp-social-btn" title="Facebook">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                  </svg>
-                </a>
-                <a href={doctor.instagram} className="dp-social-btn" title="Instagram">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-                  </svg>
-                </a>
+                </Link>
+
+                <div className="dp-socials">
+                  <a href={'mailto:' + doctor.email} className="dp-social-btn" title="Email">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                  </a>
+                  <a href={doctor.facebook} className="dp-social-btn" title="Facebook">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                    </svg>
+                  </a>
+                  <a href={doctor.instagram} className="dp-social-btn" title="Instagram">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* ── Others section removed ── */}
+          </section>
+        ))}
       </div>
 
       <Footer />

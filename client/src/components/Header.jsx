@@ -42,6 +42,11 @@ function Header() {
     }
   };
 
+  const goHome = () => {
+    setMobileOpen(false);
+    navigate('/');
+  };
+
   // Runs whenever we land on '/' — picks up the stored scroll target
   useEffect(() => {
     if (location.pathname === '/') {
@@ -68,7 +73,7 @@ function Header() {
 
           <ul className="nav-links">
             <li>
-              <button className="nav-btn" onClick={() => scrollTo('home')}>Home</button>
+              <button className="nav-btn" onClick={goHome}>Home</button>
             </li>
             <li>
               <button className="nav-btn" onClick={() => scrollTo('about')}>About</button>
