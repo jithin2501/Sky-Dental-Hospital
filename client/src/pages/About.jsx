@@ -102,6 +102,7 @@ function About() {
               Kasaragod, providing advanced and compassionate dental care for patients of all ages.
               Founded by Dr. Melvin Mathew, our hospital was established with the vision of delivering
               world-class dental treatments locally, without patients needing to travel to big cities.
+              established with the vision of delivering world-class dental treatments locally, without patients needing to travel to big cities
             </p>
           </div>
           <div className="bottom-section">
@@ -227,7 +228,7 @@ function About() {
             Sky Dental Hospital, Parappally, Kanhangad offers comfortable, affordable, and trustworthy
             dental care for all ages. With advanced technology and a caring approach, we ensure safe,
             stress-free visits and brighter smiles established with the vision of delivering world-class
-            dental treatments locally.
+            dental treatments locally.established with the vision of delivering world-class dental treatments locally.
           </p>
           <div className="purpose-features-grid">
             {['Trustworthy & Safe', 'Affordable Healthcare', 'Advanced Technology', 'Stress-Free Experience'].map((item, i) => (
