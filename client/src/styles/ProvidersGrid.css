@@ -1,14 +1,22 @@
 .providers {
   background: #eff9ff;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 5rem 2rem;
   text-align: center;
 }
 
+/* ── Header ── */
 .providers-header {
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
+}
+
+.providers-tag {
+  display: inline-block;
+  color: #088395;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
 }
 
 .providers-header h2 {
@@ -32,6 +40,7 @@
   line-height: 1.7;
 }
 
+/* ── Grid: 3 cols × 2 rows ── */
 .providers-grid {
   max-width: 1200px;
   margin: 0 auto;
@@ -40,22 +49,22 @@
   gap: 2rem;
 }
 
-/* Card — no hover effect on the box */
+/* ── Card ── */
 .provider-card {
   background: white;
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 6px 30px rgba(10, 61, 92, 0.1);
+  box-shadow: 0 6px 30px rgba(10, 61, 92, 0.09);
   text-align: left;
 }
 
+/* ── Card image + overlay wrapper ── */
 .provider-card-top {
   position: relative;
-  height: 300px;
+  height: 280px;
   overflow: hidden;
 }
 
-/* Only the image zooms on hover */
 .provider-card-top img {
   width: 100%;
   height: 100%;
@@ -66,31 +75,35 @@
 }
 
 .provider-card:hover .provider-card-top img {
-  transform: scale(1.08);
+  transform: scale(1.07);
 }
 
+
+
+/* ── Card body ── */
 .provider-card-body {
   padding: 1.2rem 1.4rem;
   text-align: center;
 }
 
 .provider-specialty {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 2px;
   color: #088395;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
   text-transform: uppercase;
 }
 
 .provider-name {
   font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #0A3D5C;
   margin-bottom: 0.7rem;
 }
 
+/* ── Card footer ── */
 .provider-card-footer {
   display: flex;
   align-items: center;
@@ -100,24 +113,29 @@
 }
 
 .provider-learn {
-  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.82rem;
   font-weight: 600;
   color: #088395;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.3s, gap 0.3s;
 }
 
 .provider-learn:hover {
   color: #0A3D5C;
+  gap: 9px;
 }
 
+/* ── Responsive ── */
 @media (max-width: 992px) {
   .providers-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .providers-grid {
     grid-template-columns: 1fr;
   }

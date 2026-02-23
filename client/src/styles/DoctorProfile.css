@@ -1,0 +1,366 @@
+.dp-page {
+  background: #eff9ff;
+  min-height: 100vh;
+}
+
+.dp-highlight {
+  color: #088395;
+}
+
+/* ── Banner (matches About/Contact exactly) ── */
+.dp-banner-wrap {
+  position: relative;
+  width: 100%;
+  background: #eff9ff;
+  overflow: hidden;
+}
+
+.dp-banner {
+  position: relative;
+  width: 100%;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+}
+
+.dp-banner-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 0;
+}
+
+.dp-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.30);
+  z-index: 1;
+}
+
+.dp-banner-deco {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.13);
+  pointer-events: none;
+  z-index: 2;
+}
+.dp-banner-deco.c1 { width: 360px; height: 360px; right: 34%; top: -90px; }
+.dp-banner-deco.c2 { width: 200px; height: 200px; right: 38%; bottom: 10px; }
+
+.dp-plus {
+  position: absolute;
+  color: rgba(255,255,255,0.55);
+  font-size: 26px;
+  font-weight: 200;
+  user-select: none;
+  pointer-events: none;
+  z-index: 2;
+}
+.dp-plus.p1 { top: 70px;    left: 39%; }
+.dp-plus.p2 { top: 40px;    right: 33%; }
+.dp-plus.p3 { bottom: 90px; left: 44%; }
+
+.dp-banner-hollow {
+  position: absolute;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  top: 180px;
+  right: 37%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.dp-banner-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 80px;
+  max-width: 620px;
+}
+
+.dp-banner-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 54px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+
+.dp-banner-content p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.8;
+}
+
+.dp-banner-content a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.dp-banner-content a:hover {
+  color: #05BFDB;
+}
+
+/* ── Container ── */
+.dp-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px 120px;
+}
+
+/* ── Profile Section ── */
+.dp-profile {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+/* ── Doctor Image ── */
+.dp-img-wrap {
+  width: 100%;
+  height: 480px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(10, 61, 92, 0.12);
+}
+
+.dp-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* ── Doctor Info ── */
+.dp-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.dp-specialty-tag {
+  display: inline-block;
+  color: #088395;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.dp-info h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #0A3D5C;
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+
+.dp-designation {
+  display: block;
+  font-size: 0.95rem;
+  color: #5A6A78;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.dp-exp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e8f8fa;
+  color: #088395;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 24px;
+  width: fit-content;
+  border: 1px solid rgba(8,131,149,0.2);
+}
+
+.dp-info p {
+  font-size: 0.97rem;
+  color: #5A6A78;
+  line-height: 1.85;
+  margin-bottom: 14px;
+}
+
+.dp-divider {
+  height: 1px;
+  background: #eef0f2;
+  margin: 20px 0;
+}
+
+.dp-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Book button */
+.dp-book-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #088395, #05BFDB);
+  color: white;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(8,131,149,0.3);
+  transition: opacity 0.2s;
+}
+.dp-book-btn:hover { opacity: 0.88; color: white; }
+
+/* Social buttons */
+.dp-socials {
+  display: flex;
+  gap: 10px;
+}
+
+.dp-social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.dp-social-btn:hover {
+  background: #088395;
+  color: white;
+  border-color: #088395;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(8,131,149,0.3);
+}
+
+/* ── Other Doctors ── */
+.dp-others {
+  margin-top: 80px;
+}
+
+.dp-others h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0A3D5C;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.dp-others-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.2rem;
+}
+
+.dp-other-card {
+  text-decoration: none;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(10,61,92,0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.dp-other-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(10,61,92,0.13);
+}
+
+.dp-other-img {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+.dp-other-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.dp-other-card:hover .dp-other-img img {
+  transform: scale(1.07);
+}
+
+.dp-other-specialty {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  color: #088395;
+  text-transform: uppercase;
+  padding: 0.8rem 1rem 0.2rem;
+}
+
+.dp-other-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0A3D5C;
+  padding: 0 1rem 1rem;
+  line-height: 1.3;
+}
+
+/* ── 404 ── */
+.dp-not-found {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  color: #0A3D5C;
+}
+
+.dp-back-btn {
+  color: #088395;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .dp-profile {
+    grid-template-columns: 1fr;
+    padding: 36px 28px;
+    gap: 36px;
+  }
+  .dp-img-wrap {
+    height: 380px;
+  }
+  .dp-others-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .dp-banner-content { padding: 0 24px; }
+  .dp-banner-content h1 { font-size: 34px; }
+  .dp-others-grid { grid-template-columns: repeat(2, 1fr); }
+  .dp-info h2 { font-size: 2rem; }
+}

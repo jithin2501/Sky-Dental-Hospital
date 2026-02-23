@@ -18,7 +18,7 @@ function Footer() {
         {/* Brand Column */}
         <div className="footer-brand">
           <Link to="/" className="footer-logo">
-            <img src="./images/banner_logo/hospital_logos.png" alt="Sky Dental Logo" className="footer-logo-img" />
+            <img src="/images/banner_logo/hospital_logos.png" alt="Sky Dental Logo" className="footer-logo-img" />
             <div className="footer-logo-text">
               <span className="main">SKY DENTAL</span>
               <span className="sub">Clinics</span>

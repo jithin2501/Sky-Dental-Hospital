@@ -1,15 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
+  const prevPathRef = useRef(sessionStorage.getItem('prevPath') || '');
 
   useEffect(() => {
-    // Only scroll to top if there's no pending section scroll (nav links set this)
+    const prev = prevPathRef.current;
     const pendingScroll = sessionStorage.getItem('scrollTo');
-    if (!pendingScroll) {
+
+    if (pathname.startsWith('/team/')) {
+      // Always start at the top when opening a doctor profile
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    } else if (pathname === '/' && prev.startsWith('/team/')) {
+      // Coming back from a doctor profile → jump to Team section
+      sessionStorage.setItem('scrollTo', 'team');
+    } else if (!pendingScroll) {
+      // Any other navigation → scroll to top normally
       window.scrollTo({ top: 0, behavior: 'instant' });
     }
+
+    // Update ref and sessionStorage with current path for next navigation
+    prevPathRef.current = pathname;
+    sessionStorage.setItem('prevPath', pathname);
   }, [pathname]);
 
   return null;

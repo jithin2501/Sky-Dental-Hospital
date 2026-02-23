@@ -59,7 +59,7 @@ function Header() {
       <header className={scrolled ? 'header scrolled' : 'header'}>
         <nav className="nav">
           <Link to="/" className="logo">
-            <img src="./images/banner_logo/hospital_logos.png" alt="Sky Dental Logo" className="logo-img" />
+            <img src="/images/banner_logo/hospital_logos.png" alt="Sky Dental Logo" className="logo-img" />
             <div className="logo-text-wrapper">
               <span className="logo-text main-title">SKY DENTAL</span>
               <span className="logo-text sub-title"><b>CLINICS</b></span>
