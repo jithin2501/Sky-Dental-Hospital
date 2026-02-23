@@ -1,25 +1,30 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Services.css';
 
 const services = [
   {
     title: 'Orthodontics',
-    img: "/images/Our Services/braces.png",  
+    slug: 'orthodontics',
+    img: '/images/Our Services/braces.png',
     desc: 'We use advanced orthodontic techniques to gradually move your teeth into alignment, improve your bite, and enhance dental health.'
   },
   {
     title: 'Dental Implants & Restorations',
-    img: "/images/Our Services/dental-surgery.png",
+    slug: 'dental-implants-restorations',
+    img: '/images/Our Services/dental-surgery.png',
     desc: 'Professional dental implant and restoration treatments designed to replace missing teeth and restore your smile with natural-looking results.'
   },
   {
     title: 'Pediatric Dentistry',
-    img: "/images/Our Services/pediatric.png",
+    slug: 'pediatric-dentistry',
+    img: '/images/Our Services/pediatric.png',
     desc: 'Specialized dental care for children, ensuring their oral health is maintained with gentle, child-friendly treatments.'
   },
   {
     title: 'Cosmetic Dentistry',
-    img: "/images/Our Services/facelift.png", 
+    slug: 'cosmetic-dentistry',
+    img: '/images/Our Services/facelift.png',
     desc: 'Expert cosmetic dentistry treatments to enhance the appearance of your smile with veneers, crowns, and other aesthetic procedures.'
   }
 ];
@@ -27,6 +32,8 @@ const services = [
 const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
 
 function Services() {
+  const navigate = useNavigate();
+
   return (
     <section className="services" id="services">
       <div className="services-header">
@@ -35,7 +42,6 @@ function Services() {
       </div>
 
       <div className="services-layout">
-        {/* Left column */}
         <div className="services-col">
           {services.slice(0, 2).map((s, i) => (
             <div className="service-card" key={i}>
@@ -46,12 +52,13 @@ function Services() {
                 <h3>{s.title}</h3>
               </div>
               <p>{s.desc}</p>
-              <a href="#services" className="service-link">View Detail →</a>
+              <span className="service-link" onClick={() => navigate(`/services/${s.slug}`)}>
+                View Detail →
+              </span>
             </div>
           ))}
         </div>
 
-        {/* Center image */}
         <div className="services-center-img">
           <img src="/images/Our Services/dental machine.jpg" alt="Dental Equipment" />
           <div className="operational-day">
@@ -67,7 +74,6 @@ function Services() {
           </div>
         </div>
 
-        {/* Right column */}
         <div className="services-col">
           {services.slice(2).map((s, i) => (
             <div className="service-card" key={i}>
@@ -78,7 +84,9 @@ function Services() {
                 <h3>{s.title}</h3>
               </div>
               <p>{s.desc}</p>
-              <a href="#services" className="service-link">View Detail →</a>
+              <span className="service-link" onClick={() => navigate(`/services/${s.slug}`)}>
+                View Detail →
+              </span>
             </div>
           ))}
         </div>

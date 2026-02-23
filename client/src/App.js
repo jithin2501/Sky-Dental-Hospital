@@ -5,6 +5,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import ScrollToTop from './components/ScrollToTop';
 import DoctorProfile from './pages/DoctorProfile';
+import ServiceDetail from './pages/ServiceDetail';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/team" element={<DoctorProfile />} />
         <Route path="/team/:id" element={<DoctorProfile />} />
+        <Route path="/services/:slug" element={<ServiceDetail />} />
       </Routes>
     </Router>
   );
