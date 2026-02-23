@@ -44,6 +44,30 @@ const whyFeatures = [
   },
 ];
 
+const processSteps = [
+  {
+    num: 1,
+    title: 'Initial Consultation',
+    desc: "Your journey begins with an in-depth consultation. We'll listen to your concerns and discuss your personalized goals.",
+    icon: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></>,
+    hasLine: true,
+  },
+  {
+    num: 2,
+    title: 'Treatment By Experts',
+    desc: "Once the plan is finalized, we'll proceed with your treatment using the latest technology and care.",
+    icon: <><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></>,
+    hasLine: true,
+  },
+  {
+    num: 3,
+    title: 'Follow-Up Care',
+    desc: "After your treatment, we'll schedule follow-up appointments to monitor your progress and ensure lasting results.",
+    icon: <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />,
+    hasLine: false,
+  },
+];
+
 function About() {
   useEffect(() => {
     const stats = document.querySelectorAll('.stat-number');
@@ -116,8 +140,6 @@ function About() {
               Kasaragod, providing advanced and compassionate dental care for patients of all ages.
               Founded by Dr. Melvin Mathew, our hospital was established with the vision of delivering
               world-class dental treatments locally, without patients needing to travel to big cities.
-              world-class dental treatments locally, without patients needing to travel to big cities.
-              
             </p>
           </div>
           <div className="bottom-section">
@@ -140,7 +162,6 @@ function About() {
       <section className="why-section">
         <div className="why-grid">
 
-          {/* Left column */}
           <div className="why-left">
             <div className="why-label">Why Choose Us</div>
             <h2 className="why-title">
@@ -157,12 +178,10 @@ function About() {
             </Link>
           </div>
 
-          {/* Center — doctor image */}
           <div className="doctor-center">
             <img src="/images/About us/why choose us.png" alt="Doctor" />
           </div>
 
-          {/* Right column — feature list */}
           <div className="features-col">
             {whyFeatures.map((f, i) => (
               <div className="feature-item" key={i}>
@@ -208,15 +227,17 @@ function About() {
         </div>
 
         <div className="purpose-content">
-          <div className="purpose-tagline"><span>+</span><span>Our Purpose</span></div>
-          <h2>
+          <div className="purpose-tagline">
+            <span>Our Purpose</span>
+          </div>
+          <h2 className="purpose-title">
             Compassionate Care for a <span className="about-highlight">Lifetime of Healthy Smiles</span>
           </h2>
           <p className="purpose-description">
             Sky Dental Hospital, Parappally, Kanhangad offers comfortable, affordable, and trustworthy
             dental care for all ages. With advanced technology and a caring approach, we ensure safe,
             stress-free visits and brighter smiles established with the vision of delivering world-class
-            dental treatments locally.established with the vision of delivering world-class dental treatments locally.
+            dental treatments locally.
           </p>
           <div className="purpose-features-grid">
             {['Trustworthy & Safe', 'Affordable Healthcare', 'Advanced Technology', 'Stress-Free Experience'].map((item, i) => (
@@ -239,31 +260,12 @@ function About() {
           <div className="process-content">
             <div>
               <div className="about-label">Our Process</div>
-              <h2 className="about-title proc-title">
+              <h2 className="proc-title">
                 Our <span className="about-highlight">Dental Care Process</span>
               </h2>
             </div>
             <div className="proc-steps">
-              {[
-                {
-                  num: 1, title: 'Initial Consultation',
-                  desc: "Your journey begins with an in-depth consultation. We'll listen to your concerns and discuss your personalized goals.",
-                  icon: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></>,
-                  hasLine: true,
-                },
-                {
-                  num: 2, title: 'Treatment By Experts',
-                  desc: "Once the plan is finalized, we'll proceed with your treatment using the latest technology and care.",
-                  icon: <><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></>,
-                  hasLine: true,
-                },
-                {
-                  num: 3, title: 'Follow-Up Care',
-                  desc: "After your treatment, we'll schedule follow-up appointments to monitor your progress and ensure lasting results.",
-                  icon: <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />,
-                  hasLine: false,
-                },
-              ].map((step, i) => (
+              {processSteps.map((step, i) => (
                 <div className="proc-step-item" key={i}>
                   <div className="proc-step-icon-wrap">
                     <div className="proc-step-badge">{step.num}</div>
@@ -310,7 +312,9 @@ function About() {
       <div className="locations-section">
         <div className="loc-header">
           <span className="loc-label-tag">Our Locations</span>
-          <h2>Two Branches, One Commitment to Your Smile</h2>
+          <h2 className="loc-title">
+            Two Branches, One Commitment to <span className="about-highlight">Your Smile</span>
+          </h2>
           <p>Visit us at either of our conveniently located branches in Kasaragod district — same trusted care, same quality standards at both.</p>
         </div>
         <div className="branches-grid">
