@@ -302,6 +302,7 @@
   font-weight: 400;
 }
 
+/* Contact button — matches HTML exactly */
 .contact-btn {
   display: inline-flex;
   align-items: center;
@@ -320,9 +321,10 @@
   box-shadow: 0 4px 15px rgba(8, 131, 149, 0.35);
 }
 
-.contact-btn:hover { opacity: 0.88; }
+.contact-btn:hover { opacity: 0.88; color: white; }
 
-.contact-btn-plus {
+/* The + circle inside the button */
+.contact-btn .plus {
   width: 26px;
   height: 26px;
   background: rgba(255, 255, 255, 0.25);
@@ -334,17 +336,22 @@
   line-height: 1;
 }
 
+/* Doctor center image — stretches to grid height, image pinned to bottom */
 .doctor-center {
   width: 300px;
-  min-height: 520px;
   flex-shrink: 0;
+  align-self: stretch;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .doctor-center img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 20px;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  display: block;
 }
 
 .features-col {
@@ -932,12 +939,12 @@
 @media (max-width: 1024px) {
   .about-section     { grid-template-columns: 1fr; gap: 60px; }
   .why-grid          { grid-template-columns: 1fr; }
+  .doctor-center     { width: 240px; min-height: 380px; margin: 0 auto; }
   .process-container { grid-template-columns: 1fr; gap: 40px; }
   .branches-grid     { grid-template-columns: 1fr; }
   .process-image-grid { height: 380px; }
   .banner-content    { padding: 50px 30px 90px; }
   .banner-content h1 { font-size: 44px; }
-  .doctor-center     { width: 240px; min-height: 380px; margin: 0 auto; }
   .purpose-section   { flex-direction: column; align-items: center; }
   .purpose-image-section { width: 100%; height: 450px; }
 }

@@ -21,8 +21,30 @@ const branches = [
   },
 ];
 
+const whyFeatures = [
+  {
+    title: 'Expert Care',
+    desc: 'Led by Dr. Melvin Mathew, an experienced and compassionate dentist.',
+    icon: <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />,
+  },
+  {
+    title: 'Comprehensive Services',
+    desc: 'From routine check-ups to implants, braces, and cosmetic dentistry – all under one roof.',
+    icon: <><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></>,
+  },
+  {
+    title: 'Advanced Technology',
+    desc: 'Modern equipment and techniques for safe and painless dentistry.',
+    icon: <><circle cx="12" cy="12" r="3" /><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14" /><path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07" /></>,
+  },
+  {
+    title: 'Patient Comfort',
+    desc: 'Friendly staff and a stress-free atmosphere.',
+    icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>,
+  },
+];
+
 function About() {
-  // Animate stats on mount
   useEffect(() => {
     const stats = document.querySelectorAll('.stat-number');
     stats.forEach(stat => {
@@ -49,11 +71,7 @@ function About() {
       {/* ── Banner ── */}
       <div className="banner-wrap">
         <div className="banner">
-          <img
-            className="banner-bg-img"
-            src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1400&q=80"
-            alt="Sky Dental Hospital"
-          />
+          <img className="banner-bg-img" src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1400&q=80" alt="Sky Dental Hospital" />
           <div className="banner-overlay" />
           <div className="banner-deco-circle c1" />
           <div className="banner-deco-circle c2" />
@@ -78,11 +96,7 @@ function About() {
               className="main-image"
             />
             <div className="experience-badge">
-              <img
-                src="/images/Ceo/Dr Melvin mathew.png"
-                alt="Dr. Melvin Mathew"
-                className="doctor-photo"
-              />
+              <img src="/images/Ceo/Dr Melvin mathew.png" alt="Dr. Melvin Mathew" className="doctor-photo" />
               <div className="badge-footer">
                 <h3>25+</h3>
                 <p>years of medical excellence</p>
@@ -102,7 +116,6 @@ function About() {
               Kasaragod, providing advanced and compassionate dental care for patients of all ages.
               Founded by Dr. Melvin Mathew, our hospital was established with the vision of delivering
               world-class dental treatments locally, without patients needing to travel to big cities.
-              established with the vision of delivering world-class dental treatments locally, without patients needing to travel to big cities
             </p>
           </div>
           <div className="bottom-section">
@@ -124,6 +137,8 @@ function About() {
       {/* ── Why Choose Us ── */}
       <section className="why-section">
         <div className="why-grid">
+
+          {/* Left column */}
           <div className="why-left">
             <div className="why-label">Why Choose Us</div>
             <h2 className="why-title">
@@ -136,40 +151,18 @@ function About() {
             </p>
             <Link to="/contact" className="contact-btn">
               Contact Us
-              <span className="contact-btn-plus">+</span>
+              <span className="plus">+</span>
             </Link>
           </div>
 
+          {/* Center — doctor image */}
           <div className="doctor-center">
-            <img
-              src="/images/About us/why choose us.png"
-              alt="Doctor"
-            />
+            <img src="/images/About us/why choose us.png" alt="Doctor" />
           </div>
 
+          {/* Right column — feature list */}
           <div className="features-col">
-            {[
-              {
-                title: 'Expert Care',
-                desc: 'Led by Dr. Melvin Mathew, an experienced and compassionate dentist.',
-                icon: <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />,
-              },
-              {
-                title: 'Comprehensive Services',
-                desc: 'From routine check-ups to implants, braces, and cosmetic dentistry – all under one roof.',
-                icon: <><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></>,
-              },
-              {
-                title: 'Advanced Technology',
-                desc: 'Modern equipment and techniques for safe and painless dentistry.',
-                icon: <><circle cx="12" cy="12" r="3" /><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14" /><path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07" /></>,
-              },
-              {
-                title: 'Patient Comfort',
-                desc: 'Friendly staff and a stress-free atmosphere.',
-                icon: <><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>,
-              },
-            ].map((f, i) => (
+            {whyFeatures.map((f, i) => (
               <div className="feature-item" key={i}>
                 <div className="feature-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -183,6 +176,7 @@ function About() {
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
@@ -190,16 +184,8 @@ function About() {
       <div className="purpose-section">
         <div className="purpose-image-section">
           <div className="purpose-img-wrapper">
-            <img
-              src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=800"
-              alt="Sky Dental Advanced Machine"
-              className="purpose-main-img"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=400"
-              alt="Sky Dental Medical Team"
-              className="purpose-sub-img"
-            />
+            <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=800" alt="Sky Dental Advanced Machine" className="purpose-main-img" />
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=400" alt="Sky Dental Medical Team" className="purpose-sub-img" />
             <div className="rotating-badge">
               <div className="circle-text">
                 <svg viewBox="0 0 100 100" width="100" height="100">
@@ -228,7 +214,7 @@ function About() {
             Sky Dental Hospital, Parappally, Kanhangad offers comfortable, affordable, and trustworthy
             dental care for all ages. With advanced technology and a caring approach, we ensure safe,
             stress-free visits and brighter smiles established with the vision of delivering world-class
-            dental treatments locally.established with the vision of delivering world-class dental treatments locally.
+            dental treatments locally.
           </p>
           <div className="purpose-features-grid">
             {['Trustworthy & Safe', 'Affordable Healthcare', 'Advanced Technology', 'Stress-Free Experience'].map((item, i) => (
@@ -258,22 +244,19 @@ function About() {
             <div className="proc-steps">
               {[
                 {
-                  num: 1,
-                  title: 'Initial Consultation',
+                  num: 1, title: 'Initial Consultation',
                   desc: "Your journey begins with an in-depth consultation. We'll listen to your concerns and discuss your personalized goals.",
                   icon: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></>,
                   hasLine: true,
                 },
                 {
-                  num: 2,
-                  title: 'Treatment By Experts',
+                  num: 2, title: 'Treatment By Experts',
                   desc: "Once the plan is finalized, we'll proceed with your treatment using the latest technology and care.",
                   icon: <><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></>,
                   hasLine: true,
                 },
                 {
-                  num: 3,
-                  title: 'Follow-Up Care',
+                  num: 3, title: 'Follow-Up Care',
                   desc: "After your treatment, we'll schedule follow-up appointments to monitor your progress and ensure lasting results.",
                   icon: <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />,
                   hasLine: false,
