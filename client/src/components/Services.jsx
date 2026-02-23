@@ -10,20 +10,20 @@ const ToothIcon = () => (
 
 const services = [
   {
-    title: 'Braces',
+    title: 'Orthodontics',
     desc: 'We use advanced orthodontic techniques to gradually move your teeth into alignment, improve your bite, and enhance dental health.'
   },
   {
-    title: 'Teeth Whitening',
-    desc: 'Professional teeth whitening treatments designed to remove stains and brighten your smile safely and effectively.'
+    title: 'Dental Implants & Restorations',
+    desc: 'Professional dental implant and restoration treatments designed to replace missing teeth and restore your smile with natural-looking results.'
   },
   {
-    title: 'Dental Implants',
-    desc: 'Restore your missing teeth with high-quality dental implants that look, feel, and function like your natural teeth.'
+    title: 'Pediatric Dentistry',
+    desc: 'Specialized dental care for children, ensuring their oral health is maintained with gentle, child-friendly treatments.'
   },
   {
-    title: 'Root Canal',
-    desc: 'Expert root canal treatments to save infected teeth and provide long-lasting relief from dental pain.'
+    title: 'Cosmetic Dentistry',
+    desc: 'Expert cosmetic dentistry treatments to enhance the appearance of your smile with veneers, crowns, and other aesthetic procedures.'
   }
 ];
 
