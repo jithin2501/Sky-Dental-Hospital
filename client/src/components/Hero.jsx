@@ -12,7 +12,7 @@ function Hero() {
       className="hero"
       id="home"
       style={{
-        backgroundImage: "url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1600')",
+        backgroundImage: "url('./images/banner_logo/banner.jpg')",
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}

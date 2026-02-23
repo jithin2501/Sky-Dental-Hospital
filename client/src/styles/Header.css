@@ -1,3 +1,4 @@
+/* ─── Header ─────────────────────────────────────────────── */
 .header {
   position: fixed;
   top: 0;
@@ -12,6 +13,7 @@
   box-shadow: 0 2px 20px rgba(10, 77, 104, 0.1);
 }
 
+/* ─── Nav ────────────────────────────────────────────────── */
 .nav {
   max-width: 1400px;
   margin: 0 auto;
@@ -21,6 +23,7 @@
   align-items: center;
 }
 
+/* ─── Logo ───────────────────────────────────────────────── */
 .logo {
   font-family: 'Playfair Display', serif;
   text-decoration: none;
@@ -34,10 +37,7 @@
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
-  background: linear-gradient(135deg, #088395, #05BFDB);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-shrink: 0;
 }
 
 .logo-text-wrapper {
@@ -66,29 +66,42 @@
   font-size: 1.2rem;
 }
 
+/* ─── Nav Links ──────────────────────────────────────────── */
 .nav-links {
   display: flex;
   list-style: none;
   gap: 2.2rem;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
-.nav-links a {
+.nav-links a:not(.cta-button),
+.nav-btn {
   text-decoration: none;
   color: white;
   font-weight: 500;
   font-size: 1.05rem;
   transition: color 0.3s;
+  /* button reset */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
 }
 
-.header.scrolled .nav-links a {
+.header.scrolled .nav-links a:not(.cta-button),
+.header.scrolled .nav-btn {
   color: #0A3D5C;
 }
 
-.nav-links a:hover {
+.nav-links a:not(.cta-button):hover,
+.nav-btn:hover {
   color: #088395 !important;
 }
 
+/* Active link */
 .nav-active {
   color: #05BFDB !important;
   border-bottom: 2px solid #05BFDB;
@@ -100,6 +113,7 @@
   border-bottom-color: #088395;
 }
 
+/* ─── CTA Button ─────────────────────────────────────────── */
 .cta-button {
   background: linear-gradient(135deg, #088395, #05BFDB);
   color: white !important;
@@ -110,10 +124,46 @@
   box-shadow: 0 4px 15px rgba(8, 131, 149, 0.35);
   white-space: nowrap;
   border-bottom: none !important;
+  transition: opacity 0.3s;
 }
 
+.cta-button:hover {
+  opacity: 0.9;
+  color: white !important;
+}
+
+/* ─── Mobile Menu Button ─────────────────────────────────── */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: white;
+}
+
+.mobile-menu-btn svg {
+  width: 28px;
+  height: 28px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.header.scrolled .mobile-menu-btn {
+  color: #0A3D5C;
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
