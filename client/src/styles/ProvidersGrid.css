@@ -1,0 +1,124 @@
+.providers {
+  background: #eff9ff;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-align: center;
+}
+
+.providers-header {
+  margin-bottom: 3rem;
+}
+
+.providers-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0A3D5C;
+  margin-bottom: 1rem;
+}
+
+.providers-highlight {
+  color: #088395;
+}
+
+.providers-header p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #5A6A78;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.providers-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* Card — no hover effect on the box */
+.provider-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 30px rgba(10, 61, 92, 0.1);
+  text-align: left;
+}
+
+.provider-card-top {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+/* Only the image zooms on hover */
+.provider-card-top img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.provider-card:hover .provider-card-top img {
+  transform: scale(1.08);
+}
+
+.provider-card-body {
+  padding: 1.2rem 1.4rem;
+  text-align: center;
+}
+
+.provider-specialty {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #088395;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.provider-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0A3D5C;
+  margin-bottom: 0.7rem;
+}
+
+.provider-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.8rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.provider-learn {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #088395;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.provider-learn:hover {
+  color: #0A3D5C;
+}
+
+@media (max-width: 992px) {
+  .providers-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .providers-grid {
+    grid-template-columns: 1fr;
+  }
+}

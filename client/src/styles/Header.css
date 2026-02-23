@@ -1,0 +1,119 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.header.scrolled {
+  background: #fff;
+  box-shadow: 0 2px 20px rgba(10, 77, 104, 0.1);
+}
+
+.nav {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: linear-gradient(135deg, #088395, #05BFDB);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.logo-text {
+  font-weight: 700;
+  color: white;
+  letter-spacing: 3px;
+  transition: color 0.3s ease;
+}
+
+.header.scrolled .logo-text {
+  color: #0A3D5C;
+}
+
+.logo-text.main-title {
+  font-size: 1.5rem;
+  margin-bottom: 2px;
+}
+
+.logo-text.sub-title {
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2.2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 1.05rem;
+  transition: color 0.3s;
+}
+
+.header.scrolled .nav-links a {
+  color: #0A3D5C;
+}
+
+.nav-links a:hover {
+  color: #088395 !important;
+}
+
+.nav-active {
+  color: #05BFDB !important;
+  border-bottom: 2px solid #05BFDB;
+  padding-bottom: 2px;
+}
+
+.header.scrolled .nav-active {
+  color: #088395 !important;
+  border-bottom-color: #088395;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #088395, #05BFDB);
+  color: white !important;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(8, 131, 149, 0.35);
+  white-space: nowrap;
+  border-bottom: none !important;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+}
