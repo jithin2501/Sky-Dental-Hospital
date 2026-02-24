@@ -8,19 +8,18 @@ import DoctorProfile from './pages/DoctorProfile';
 import ServiceDetail from './pages/ServiceDetail';
 import FacilityDetail from './pages/FacilityDetail';
 import VideoManagement from './admin/VideoManagement';
+import TeamManagement from './admin/TeamManagement'; // ✅ New
 
 // Admin Imports
 import AdminContact from './admin/admincontact'; 
-import UserManagement from './admin/usermanagement'; // Import the new User Management component
+import UserManagement from './admin/usermanagement';
 import Login from './admin/auth/login';
 
 function App() {
-  // Function to check if the admin is authenticated
   const isAuthenticated = () => {
-    return localStorage.getItem('isAdminAuthenticated') === 'true'; //
+    return localStorage.getItem('isAdminAuthenticated') === 'true';
   };
 
-  // Function to check if the current user is a Superadmin
   const isSuperAdmin = () => {
     return localStorage.getItem('userRole') === 'Superadmin';
   };
@@ -37,31 +36,31 @@ function App() {
         <Route path="/team/:id" element={<DoctorProfile />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
         <Route path="/facility/:slug" element={<FacilityDetail />} />
-        
-        {/* Admin Login Route */}
+
+        {/* Admin Login */}
         <Route path="/admin/login" element={<Login />} />
 
-        {/* Protected Contact Messages Route - Accessible by all Admins */}
-        <Route 
-          path="/admin" 
-          element={isAuthenticated() ? <AdminContact /> : <Navigate to="/admin/login" />} 
-        />
-        <Route 
-  path="/admin/video" 
-  element={isAuthenticated() && isSuperAdmin() ? <VideoManagement /> : <Navigate to="/admin" />} 
-/>
-
-        {/* Protected User Management Route - Accessible ONLY by Superadmin */}
-        <Route 
-          path="/admin/users" 
-          element={
-            isAuthenticated() && isSuperAdmin() 
-              ? <UserManagement /> 
-              : <Navigate to="/admin" />
-          } 
+        {/* Protected - All Admins */}
+        <Route
+          path="/admin"
+          element={isAuthenticated() ? <AdminContact /> : <Navigate to="/admin/login" />}
         />
 
-        {/* Catch-all redirect for admin sub-paths */}
+        {/* Protected - Superadmin only */}
+        <Route
+          path="/admin/video"
+          element={isAuthenticated() && isSuperAdmin() ? <VideoManagement /> : <Navigate to="/admin" />}
+        />
+        <Route
+          path="/admin/team"
+          element={isAuthenticated() && isSuperAdmin() ? <TeamManagement /> : <Navigate to="/admin" />}
+        />
+        <Route
+          path="/admin/users"
+          element={isAuthenticated() && isSuperAdmin() ? <UserManagement /> : <Navigate to="/admin" />}
+        />
+
+        {/* Catch-all */}
         <Route path="/admin/*" element={<Navigate to="/admin" />} />
       </Routes>
     </Router>

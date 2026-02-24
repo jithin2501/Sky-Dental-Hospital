@@ -140,7 +140,7 @@ const VideoManagement = () => {
                 <div className="vm-dropzone-placeholder">
                   <div className="vm-drop-icon">☁️</div>
                   <p className="vm-drop-title">Drag & drop or click to browse</p>
-                  <p className="vm-drop-sub">MP4, MOV, JPG, PNG · Max 200MB</p>
+                  <p className="vm-drop-sub">MP4, MOV, JPG, PNG · Max 100MB</p>
                 </div>
               )}
             </div>

@@ -6,7 +6,6 @@ const AdminLayout = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Retrieve role for visibility control
   const userRole = localStorage.getItem('userRole') || 'Admin';
 
   const handleLogout = () => {
@@ -28,9 +27,15 @@ const AdminLayout = ({ children }) => {
               <Link to="/admin">Contact Messages</Link>
             </li>
             <li className={location.pathname === '/admin/video' ? 'active' : ''}>
-        <Link to="/admin/video">Video Management</Link>
-      </li>
-            
+              <Link to="/admin/video">Video Management</Link>
+            </li>
+
+            {userRole === 'Superadmin' && (
+              <li className={location.pathname === '/admin/team' ? 'active' : ''}>
+                <Link to="/admin/team">Team Management</Link>
+              </li>
+            )}
+
             {userRole === 'Superadmin' && (
               <li className={location.pathname === '/admin/users' ? 'active' : ''}>
                 <Link to="/admin/users">User Management</Link>
@@ -38,7 +43,7 @@ const AdminLayout = ({ children }) => {
             )}
           </ul>
         </div>
-        
+
         <div className="sidebar-bottom">
           <button className="logout-btn" onClick={handleLogout}>
             Log Out

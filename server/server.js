@@ -12,6 +12,7 @@ app.use(express.json());
 app.use('/api/contact', require('./routes/contactRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/media', require('./routes/mediaRoutes'));
+app.use('/api/doctors', require('./routes/doctorRoutes')); // ✅ Team management
 
 const PORT = process.env.PORT || 5000;
 
