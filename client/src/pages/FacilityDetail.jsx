@@ -1,9 +1,9 @@
-import React, { useState } from 'react';  
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { originalFacilities } from '../components/FacilitiesSection';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import '../styles/FacilityDetail.css';
+import '../styles/facility/FacilityDetail.css';
 
 function FacilityDetail() {
   const { slug } = useParams();
@@ -39,7 +39,7 @@ function FacilityDetail() {
       {/* ── Body ── */}
       <section className="fd-body">
 
-        {/* Tagline + About */}
+        {/* Tagline + About with Image */}
         <div className="fd-intro">
           <div className="fd-intro-text">
             <span className="fd-tag">Our Facility</span>
@@ -50,14 +50,9 @@ function FacilityDetail() {
             </button>
           </div>
 
-          {/* Highlights grid */}
-          <div className="fd-highlights">
-            {facility.highlights.map((h, i) => (
-              <div className="fd-highlight-card" key={i}>
-                <span className="fd-highlight-icon">{h.icon}</span>
-                <span className="fd-highlight-label">{h.label}</span>
-              </div>
-            ))}
+          {/* Image instead of highlights grid */}
+          <div className="fd-feature-image">
+            <img src={facility.image} alt={facility.title} />
           </div>
         </div>
 
@@ -75,12 +70,7 @@ function FacilityDetail() {
           </div>
         </div>
 
-        {/* Back button */}
-        <div className="fd-back-wrap">
-          <button className="fd-back-btn" onClick={() => navigate('/#facilities')}>
-            ← Back to Facilities
-          </button>
-        </div>
+        {/* Back button REMOVED */}
 
       </section>
 

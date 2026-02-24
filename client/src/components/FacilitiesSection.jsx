@@ -175,7 +175,8 @@ function FacilitiesSection() {
     };
   }, []);
 
-  const handleCardClick = (slug) => {
+  const handleArrowClick = (e, slug) => {
+    e.stopPropagation(); // Prevent event from bubbling up
     if (!isDragging.current) navigate(`/facility/${slug}`);
   };
 
@@ -198,11 +199,11 @@ function FacilitiesSection() {
               key={i}
               className="facility-card"
               style={{ backgroundImage: `url('${f.image}')` }}
-              onClick={() => handleCardClick(f.slug)}
+              // Removed onClick from the card itself - now only arrow button navigates
             >
               <div
                 className="facility-card-icon"
-                onClick={(e) => { e.stopPropagation(); navigate(`/facility/${f.slug}`); }}
+                onClick={(e) => handleArrowClick(e, f.slug)}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="7" y1="17" x2="17" y2="7" />

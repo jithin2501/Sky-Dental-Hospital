@@ -81,6 +81,7 @@
   background-size: cover;
   background-position: center;
   user-select: none;
+  cursor: default; /* Changed from grab to default since clicking doesn't navigate */
 }
 
 .facility-card-overlay {
@@ -113,6 +114,8 @@
   justify-content: center;
   color: white;
   transition: transform 0.3s ease;
+  cursor: pointer; /* Added cursor pointer to indicate it's clickable */
+  z-index: 10; /* Ensure it's above other elements */
 }
 
 .facility-card:hover .facility-card-icon {
