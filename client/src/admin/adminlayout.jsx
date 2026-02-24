@@ -1,21 +1,24 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import './adminstyle/adminlayout.css'; // Importing the separate layout CSS
+import './adminstyle/adminlayout.css';
 
 const AdminLayout = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Retrieve the role from localStorage set during login
+  const userRole = localStorage.getItem('userRole') || 'Admin';
+
   const handleLogout = () => {
-    // Clears the super admin session
+    // Clears the session
     localStorage.removeItem('isAdminAuthenticated');
-    // Redirects to the login page
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('username');
     navigate('/admin/login');
   };
 
   return (
     <div className="admin-container">
-      {/* Sidebar Section */}
       <div className="admin-sidebar">
         <div className="sidebar-top-group">
           <div className="sidebar-brand">
@@ -25,10 +28,16 @@ const AdminLayout = ({ children }) => {
             <li className={location.pathname === '/admin' ? 'active' : ''}>
               <Link to="/admin">Contact Messages</Link>
             </li>
+            
+            {/* User Management only visible to Superadmin */}
+            {userRole === 'Superadmin' && (
+              <li className={location.pathname === '/admin/users' ? 'active' : ''}>
+                <Link to="/admin/users">User Management</Link>
+              </li>
+            )}
           </ul>
         </div>
         
-        {/* Logout Section at the Bottom */}
         <div className="sidebar-bottom">
           <button className="logout-btn" onClick={handleLogout}>
             Log Out
@@ -36,7 +45,6 @@ const AdminLayout = ({ children }) => {
         </div>
       </div>
 
-      {/* Main Content Viewport */}
       <div className="admin-main">
         {children}
       </div>

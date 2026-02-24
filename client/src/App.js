@@ -10,12 +10,18 @@ import FacilityDetail from './pages/FacilityDetail';
 
 // Admin Imports
 import AdminContact from './admin/admincontact'; 
-import Login from './admin/auth/login'; // Import the new Login component
+import UserManagement from './admin/usermanagement'; // Import the new User Management component
+import Login from './admin/auth/login';
 
 function App() {
   // Function to check if the admin is authenticated
   const isAuthenticated = () => {
-    return localStorage.getItem('isAdminAuthenticated') === 'true';
+    return localStorage.getItem('isAdminAuthenticated') === 'true'; //
+  };
+
+  // Function to check if the current user is a Superadmin
+  const isSuperAdmin = () => {
+    return localStorage.getItem('userRole') === 'Superadmin';
   };
 
   return (
@@ -34,13 +40,23 @@ function App() {
         {/* Admin Login Route */}
         <Route path="/admin/login" element={<Login />} />
 
-        {/* Protected Admin Route */}
+        {/* Protected Contact Messages Route - Accessible by all Admins */}
         <Route 
           path="/admin" 
           element={isAuthenticated() ? <AdminContact /> : <Navigate to="/admin/login" />} 
         />
 
-        {/* Catch-all redirect for admin sub-paths if needed */}
+        {/* Protected User Management Route - Accessible ONLY by Superadmin */}
+        <Route 
+          path="/admin/users" 
+          element={
+            isAuthenticated() && isSuperAdmin() 
+              ? <UserManagement /> 
+              : <Navigate to="/admin" />
+          } 
+        />
+
+        {/* Catch-all redirect for admin sub-paths */}
         <Route path="/admin/*" element={<Navigate to="/admin" />} />
       </Routes>
     </Router>
