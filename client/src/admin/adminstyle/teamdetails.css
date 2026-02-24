@@ -1,0 +1,256 @@
+/* ─── Wrapper ─── */
+.tm-wrapper {
+  width: 100%;
+}
+
+/* ─── Form Actions ─── */
+.tm-form-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.tm-btn-cancel {
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  color: #718096;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tm-btn-cancel:hover {
+  background: #f8fafc;
+  color: #4a5568;
+}
+
+/* ─── Two / Three column form row ─── */
+.tm-form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0 20px;
+}
+
+/* ─── Textarea ─── */
+.admin-textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+/* ─── Action Buttons ─── */
+.tm-btn-edit,
+.tm-btn-delete {
+  flex: 1;
+  padding: 10px 18px;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s;
+  border-radius: 6px;
+}
+
+.tm-btn-edit {
+  background: #ebf8ff;
+  color: #3182ce;
+}
+
+.tm-btn-edit:hover {
+  background: #bee3f8;
+}
+
+.tm-btn-delete {
+  background: #fff5f5;
+  color: #e53e3e;
+}
+
+.tm-btn-delete:hover {
+  background: #fed7d7;
+}
+
+/* ─── Loading ─── */
+.tm-loading {
+  padding: 60px;
+  text-align: center;
+  color: #a0aec0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.tm-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #e2e8f0;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: tm-spin 0.7s linear infinite;
+}
+
+@keyframes tm-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Empty State ─── */
+.tm-empty {
+  padding: 60px 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.tm-empty-icon {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.tm-empty p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #4a5568;
+}
+
+.tm-empty-sub {
+  font-size: 0.82rem !important;
+  color: #a0aec0 !important;
+}
+
+/* ─── Edit Header ─── */
+.td-edit-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.td-edit-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 3px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.td-edit-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0 0 4px;
+}
+
+.td-edit-specialty {
+  font-size: 12px;
+  font-weight: 700;
+  color: #088395;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0;
+}
+
+/* ─── Doctor Profiles List ─── */
+.td-list {
+  padding: 10px 0;
+}
+
+.td-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 30px;
+  border-bottom: 1px solid #edf2f7;
+  gap: 16px;
+  transition: background 0.15s;
+}
+
+.td-list-item:last-child { border-bottom: none; }
+.td-list-item:hover { background: #fafbfc; }
+
+.td-list-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+.td-list-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 2px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.td-list-info {
+  min-width: 0;
+}
+
+.td-list-specialty {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  color: #088395;
+  text-transform: uppercase;
+  margin: 0 0 2px;
+}
+
+.td-list-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0A3D5C;
+  margin: 0 0 8px;
+}
+
+.td-no-details {
+  font-size: 0.78rem;
+  color: #a0aec0;
+  font-style: italic;
+}
+
+/* ─── Detail Chips ─── */
+.td-detail-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.td-chip {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: #edf2f7;
+  color: #4a5568;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.td-chip-social {
+  background: #ebf8ff;
+  color: #3182ce;
+}
+
+.td-chip-bio {
+  background: #f0fff4;
+  color: #276749;
+}
+
+/* ─── List Actions ─── */
+.td-list-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}

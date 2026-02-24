@@ -37,6 +37,12 @@ const AdminLayout = ({ children }) => {
             )}
 
             {userRole === 'Superadmin' && (
+              <li className={location.pathname === '/admin/team-details' ? 'active' : ''}>
+                <Link to="/admin/team-details">Team Details</Link>
+              </li>
+            )}
+
+            {userRole === 'Superadmin' && (
               <li className={location.pathname === '/admin/users' ? 'active' : ''}>
                 <Link to="/admin/users">User Management</Link>
               </li>
