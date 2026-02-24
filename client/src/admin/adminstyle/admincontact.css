@@ -74,22 +74,17 @@
   font-weight: 500;
 }
 
-/* Message Preview Truncation */
+/* Message Preview Truncation (No Label) */
 .msg-preview {
   color: #4a5568;
-  max-width: 250px;
+  max-width: 300px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 13px;
 }
 
-.msg-label {
-  font-weight: 700;
-  color: #6366f1;
-  margin-right: 5px;
-}
-
-/* Type Badge (Contact/Appointment) */
+/* Type Badge */
 .type-badge {
   background: #fff9db;
   color: #f59f00;

@@ -38,7 +38,8 @@ function AdminContact() {
               <th className="text-center">TYPE</th>
               <th className="text-center">APPLICANT</th>
               <th className="text-center">CONTACT</th>
-              <th className="text-center">CLASS / MESSAGE</th>
+              {/* Updated Header Name */}
+              <th className="text-center">MESSAGE</th>
               <th className="text-center">ACTION</th>
             </tr>
           </thead>
@@ -58,8 +59,9 @@ function AdminContact() {
                     <div className="contact-secondary">{msg.email}</div>
                   </div>
                 </td>
+                {/* Removed the Msg: label and just showing the message content */}
                 <td className="msg-preview text-center">
-                  <span className="msg-label">Msg:</span> {msg.message.substring(0, 35)}...
+                  {msg.message.substring(0, 45)}...
                 </td>
                 <td className="text-center">
                   <div className="action-btns">
@@ -73,7 +75,7 @@ function AdminContact() {
         </table>
       </div>
 
-      {/* View Modal */}
+      {/* View Modal remains the same */}
       {viewingMessage && (
         <div className="modal-overlay" onClick={() => setViewingMessage(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
