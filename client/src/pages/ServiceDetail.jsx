@@ -128,8 +128,8 @@ function ServiceDetail() {
     if (service.useSlider && slug === 'cosmetic-dentistry') {
       return (
         <CosmeticDentistrySlider
-          beforeSrc='/images/services/Cosmetic Dentistry before.png'
-          afterSrc='/images/services/Cosmetic Dentistry after.png'
+          beforeSrc='/images/services/Cosmetic Dentistry after.png'
+          afterSrc='/images/services/Cosmetic Dentistry before.png'
           beforeLabel='Before'
           afterLabel='After'
         />

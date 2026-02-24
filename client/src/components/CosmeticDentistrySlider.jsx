@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import '../styles/serviceStyles/CosmeticDentistrySlider.css';
 
-const BEFORE_IMG = '/images/services/Cosmetic Dentistry before.png';
-const AFTER_IMG  = '/images/services/Cosmetic Dentistry after.png';
+const BEFORE_IMG = '/images/services/Cosmetic Dentistry after.png';
+const AFTER_IMG  = '/images/services/Cosmetic Dentistry before.png';
 
 function CosmeticDentistrySlider({
   beforeSrc   = BEFORE_IMG,
