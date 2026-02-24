@@ -6,18 +6,19 @@
   background-color: #f4f7f9;
 }
 
-/* Sidebar Structure */
+/* Sidebar Structure - Fixed at 320px */
 .admin-sidebar {
-  width: 250px;
+  width: 300px; 
   background-color: #0d1117;
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* This pushes sidebar-bottom to the end */
+  justify-content: space-between; /* Keeps top links and bottom logout separated */
   padding: 20px 0;
   flex-shrink: 0;
 }
 
+/* Sidebar Header / Brand */
 .sidebar-top-group {
   display: flex;
   flex-direction: column;
@@ -25,11 +26,14 @@
 
 .sidebar-brand h2 {
   padding: 0 25px;
-  font-size: 20px;
-  margin-bottom: 30px;
+  font-size: 22px;
+  margin-bottom: 35px;
   color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
+/* Sidebar Navigation Links */
 .sidebar-links {
   list-style: none;
   padding: 0;
@@ -37,44 +41,58 @@
 
 .sidebar-links a {
   display: block;
-  padding: 15px 25px;
+  padding: 18px 25px; 
   color: #94a3b8;
   text-decoration: none;
-  transition: 0.2s ease;
+  font-size: 16px;
+  font-weight: 500;
+  transition: none; /* Removed transitions for a snappier feel */
 }
 
-.sidebar-links li.active a, 
-.sidebar-links a:hover {
+/* Active State for Current Page */
+.sidebar-links li.active a {
   background-color: #6366f1;
   color: white;
 }
 
-/* Logout Button Styling */
+/* Sidebar Bottom Section */
 .sidebar-bottom {
-  padding: 20px;
+  padding: 25px;
   border-top: 1px solid #1e293b;
 }
 
+/* Static Log Out Button - Solid Red, No Effects */
 .logout-btn {
   width: 100%;
-  padding: 12px;
-  background: transparent;
-  color: #ef4444; /* Red color for warning */
-  border: 1px solid #ef4444;
+  padding: 15px;
+  background-color: #ef4444 !important; 
+  color: #ffffff !important; 
+  border: none !important;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  outline: none;
+  /* Disable all transitions and animations */
+  transition: none !important;
+  animation: none !important;
 }
 
-.logout-btn:hover {
-  background: #ef4444;
-  color: white;
+/* Force state to remain identical on hover/focus to remove all effects */
+.logout-btn:hover, 
+.logout-btn:active, 
+.logout-btn:focus {
+  background-color: #ef4444 !important;
+  color: #ffffff !important;
+  transform: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
 }
 
-/* Main Content Area */
+/* Main Content Area - Where children components are rendered */
 .admin-main {
   flex: 1;
   padding: 40px;
   overflow-y: auto;
+  background-color: #f4f7f9;
 }

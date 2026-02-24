@@ -6,11 +6,10 @@ const AdminLayout = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Retrieve the role from localStorage set during login
+  // Retrieve role for visibility control
   const userRole = localStorage.getItem('userRole') || 'Admin';
 
   const handleLogout = () => {
-    // Clears the session
     localStorage.removeItem('isAdminAuthenticated');
     localStorage.removeItem('userRole');
     localStorage.removeItem('username');
@@ -22,14 +21,13 @@ const AdminLayout = ({ children }) => {
       <div className="admin-sidebar">
         <div className="sidebar-top-group">
           <div className="sidebar-brand">
-            <h2>Sky Dental</h2>
+            <h2>DENTAL DASHBOARD</h2>
           </div>
           <ul className="sidebar-links">
             <li className={location.pathname === '/admin' ? 'active' : ''}>
               <Link to="/admin">Contact Messages</Link>
             </li>
             
-            {/* User Management only visible to Superadmin */}
             {userRole === 'Superadmin' && (
               <li className={location.pathname === '/admin/users' ? 'active' : ''}>
                 <Link to="/admin/users">User Management</Link>

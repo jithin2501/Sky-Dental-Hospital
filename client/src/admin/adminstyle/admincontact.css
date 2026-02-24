@@ -1,62 +1,19 @@
-.admin-container {
-  display: flex;
-  height: 100vh;
-  background-color: #f4f7f9;
-}
-
-/* Sidebar Styling */
-.admin-sidebar {
-  width: 250px;
-  background-color: #0d1117;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  padding: 20px 0;
-}
-
-.sidebar-brand h2 {
-  padding: 0 25px;
-  font-size: 20px;
-  margin-bottom: 30px;
-}
-
-.sidebar-links {
-  list-style: none;
-  padding: 0;
-  flex: 1;
-}
-
-.sidebar-links a {
-  display: block;
-  padding: 15px 25px;
-  color: #94a3b8;
-  text-decoration: none;
-  transition: 0.2s;
-}
-
-.sidebar-links li.active a, .sidebar-links a:hover {
-  background-color: #6366f1;
-  color: white;
-}
-
-/* Main Content Styling */
-.admin-main {
-  flex: 1;
-  padding: 40px;
-  overflow-y: auto;
-}
-
+/* Page Header */
 .admin-page-header h1 {
   font-size: 22px;
   color: #1e293b;
   margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
+/* Table Card Container */
 .admin-table-card {
   background: white;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   overflow: hidden;
+  border: 1px solid #edf2f7;
 }
 
 .admin-table {
@@ -64,7 +21,7 @@
   border-collapse: collapse;
 }
 
-/* Updated Alignment for Headers and Cells */
+/* Table Headers */
 .admin-table th {
   padding: 18px 20px;
   background: #fbfcfd;
@@ -75,6 +32,7 @@
   text-transform: uppercase;
 }
 
+/* Table Cells */
 .admin-table td {
   padding: 20px;
   border-bottom: 1px solid #f8fafc;
@@ -86,11 +44,23 @@
   text-align: center !important;
 }
 
+.bold-text {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+/* Contact Info Stack (Email under Phone) */
 .contact-info-stack {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2px;
+}
+
+.contact-primary {
+  color: #2d3748;
+  font-weight: 500;
 }
 
 .contact-secondary {
@@ -98,7 +68,28 @@
   color: #94a3b8;
 }
 
-/* Badges */
+/* Date Text Style */
+.date-text {
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Message Preview Truncation */
+.msg-preview {
+  color: #4a5568;
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.msg-label {
+  font-weight: 700;
+  color: #6366f1;
+  margin-right: 5px;
+}
+
+/* Type Badge (Contact/Appointment) */
 .type-badge {
   background: #fff9db;
   color: #f59f00;
@@ -109,7 +100,7 @@
   display: inline-block;
 }
 
-/* Action Buttons */
+/* Action Buttons (Pills) */
 .action-btns {
   display: flex;
   justify-content: center;
@@ -142,7 +133,7 @@
   transform: translateY(-1px);
 }
 
-/* Modal Styling */
+/* Modal / Popup Styling */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -169,6 +160,12 @@
   border-bottom: 1px solid #edf2f7;
   padding-bottom: 15px;
   margin-bottom: 20px;
+}
+
+.modal-body p {
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #4a5568;
 }
 
 .message-box {
