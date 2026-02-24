@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import BeforeAfterSlider from '../components/BeforeAfterSlider';
+import OrthodonticsSlider from '../components/OrthodonticsSlider';
 import DentalImplantsSlider from '../components/DentalImplantsSlider';
 import '../styles/ServiceDetail.css';
 
@@ -105,7 +105,7 @@ function ServiceDetail() {
   const renderImageSlot = () => {
     if (service.useSlider && slug === 'orthodontics') {
       return (
-        <BeforeAfterSlider
+        <OrthodonticsSlider
           beforeSrc="/images/services/orth2.png"
           afterSrc="/images/services/orth1.png"
           beforeLabel="Braces"
@@ -116,8 +116,8 @@ function ServiceDetail() {
     if (service.useSlider && slug === 'dental-implants-restorations') {
       return (
         <DentalImplantsSlider
-          beforeSrc="/images/services/Dental Restorations.png"
-          afterSrc="/images/services/Dental Implants.png"
+          beforeSrc="/images/services/Dental Implants.png"
+          afterSrc="/images/services/Dental Restorations.png"
           beforeLabel="Before"
           afterLabel="After"
         />
