@@ -6,30 +6,39 @@ import '../styles/Contact.css';
 function Contact() {
   const [zoom, setZoom] = useState(1);
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
 
   const zoomLevels = [7856, 3928, 1964, 982, 491, 245];
 
   const mapSrc = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d${zoomLevels[zoom]}!2d76.62711127599039!3d10.062224590046416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07e79e12537ab7%3A0xccbc8b5d4c9fb10e!2sMaria%20homes!5e0!3m2!1sen!2sin!4v1752908504232!5m2!1sen!2sin`;
 
+  const handleNameChange = (e) => {
+    const value = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+    setForm({ ...form, name: value });
+  };
+
+  const handlePhoneChange = (e) => {
+    const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+    setForm({ ...form, phone: value });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    if (form.phone.length !== 10) {
+      alert("Please enter a valid 10-digit phone number.");
+      return;
+    }
+
     try {
-      // Sending data to the backend API
       const response = await fetch('http://localhost:5000/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
 
       if (response.ok) {
         setSubmitted(true);
-        // Reset form after successful submission
-        setForm({ name: '', email: '', message: '' });
-        // Hide success message after 4 seconds
+        setForm({ name: '', phone: '', email: '', message: '' });
         setTimeout(() => setSubmitted(false), 4000);
       } else {
         alert("Something went wrong. Please try again later.");
@@ -43,8 +52,6 @@ function Contact() {
   return (
     <div className="contact-page">
       <Header />
-
-      {/* Banner */}
       <div className="banner-wrap">
         <div className="banner">
           <img
@@ -59,12 +66,10 @@ function Contact() {
         </div>
       </div>
 
-      {/* Contact Section */}
       <section className="contact-section">
-
-        {/* Map */}
         <div className="map-wrapper">
-          <svg width="0" height="0" style={{ position: 'absolute', overflow: 'hidden' }}>
+          {/* Inline styles removed and replaced with className */}
+          <svg width="0" height="0" className="svg-clip-hidden">
             <defs>
               <clipPath id="blobClip" clipPathUnits="objectBoundingBox">
                 <path d="
@@ -91,64 +96,35 @@ function Contact() {
           </div>
 
           <div className="map-zoom-btns">
-            <button
-              className="map-zoom-btn"
-              onClick={() => setZoom(z => Math.min(z + 1, zoomLevels.length - 1))}
-              title="Zoom in"
-            >+</button>
-            <button
-              className="map-zoom-btn"
-              onClick={() => setZoom(z => Math.max(z - 1, 0))}
-              title="Zoom out"
-            >−</button>
+            <button className="map-zoom-btn" onClick={() => setZoom(z => Math.min(z + 1, zoomLevels.length - 1))} title="Zoom in">+</button>
+            <button className="map-zoom-btn" onClick={() => setZoom(z => Math.max(z - 1, 0))} title="Zoom out">−</button>
           </div>
         </div>
 
-        {/* Form */}
         <div className="form-side">
           <h2>CONTACT US</h2>
           <p>Contact our office and we will get back to you regarding the intervention you require. We're here to make your smile brighter every day.</p>
 
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <input
-                type="text"
-                placeholder="Enter your Name *"
-                required
-                value={form.name}
-                onChange={e => setForm({ ...form, name: e.target.value })}
-              />
+              <input type="text" placeholder="Enter your Name *" required value={form.name} onChange={handleNameChange} />
             </div>
             <div className="form-group">
-              <input
-                type="email"
-                placeholder="Enter your Email Address *"
-                required
-                value={form.email}
-                onChange={e => setForm({ ...form, email: e.target.value })}
-              />
+              <input type="text" placeholder="Enter your Phone Number *" required value={form.phone} onChange={handlePhoneChange} />
             </div>
             <div className="form-group">
-              <textarea
-                placeholder="Enter your Message *"
-                required
-                value={form.message}
-                onChange={e => setForm({ ...form, message: e.target.value })}
-              />
+              <input type="email" placeholder="Enter your Email Address *" required value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
+            </div>
+            <div className="form-group">
+              <textarea placeholder="Enter your Message *" required value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} />
             </div>
             <div className="btn-wrapper">
               <button type="submit" className="submit-btn">Submit Your Message</button>
             </div>
-            {submitted && (
-              <div className="success-msg show">
-                ✓ Message sent! We'll contact you shortly.
-              </div>
-            )}
+            {submitted && <div className="success-msg show">✓ Message sent! We'll contact you shortly.</div>}
           </form>
         </div>
-
       </section>
-
       <Footer />
     </div>
   );

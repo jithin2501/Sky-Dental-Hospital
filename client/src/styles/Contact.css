@@ -28,18 +28,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  clip-path: none !important;
-}
-
-.banner-bg-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  z-index: 0;
-  clip-path: none !important;
 }
 
 .banner-bg-img {
@@ -86,12 +74,20 @@
   margin: 0 auto;
 }
 
-/* ── Map ── */
+/* ── Map & SVG Clip ── */
 .map-wrapper {
   flex: 0 0 480px;
   position: relative;
   width: 480px;
   height: 500px;
+}
+
+/* Replaces the inline styles from the SVG tag */
+.svg-clip-hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 0;
+  height: 0;
 }
 
 .map-blob-clip {
@@ -145,7 +141,7 @@
   color: #fff;
 }
 
-/* ── Form ── */
+/* ── Form Styling ── */
 .form-side {
   flex: 1;
   max-width: 520px;
