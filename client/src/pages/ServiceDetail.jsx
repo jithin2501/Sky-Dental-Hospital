@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import OrthodonticsSlider from '../components/OrthodonticsSlider';
 import DentalImplantsSlider from '../components/DentalImplantsSlider';
+import CosmeticDentistrySlider from '../components/CosmeticDentistrySlider';
 import '../styles/ServiceDetail.css';
 
 const serviceData = {
@@ -47,7 +48,7 @@ const serviceData = {
   },
   'pediatric-dentistry': {
     title: 'Pediatric Dentistry',
-    aboutImg: '',
+    aboutImg: '/images/services/Pediatric Dentistry.jpg',
     banner: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1400&q=80',
     tagline: 'Gentle Care for Little Smiles',
     desc: 'Specialized dental care for children, ensuring their oral health is maintained with gentle, child-friendly treatments. We create a positive, fun environment so children look forward to their dental visits.',
@@ -65,7 +66,8 @@ const serviceData = {
   },
   'cosmetic-dentistry': {
     title: 'Cosmetic Dentistry',
-    aboutImg: '',
+    useSlider: true,
+    aboutImg: null,
     banner: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1400&q=80',
     tagline: 'Your Perfect Smile Starts Here',
     desc: 'Expert cosmetic dentistry treatments to enhance the appearance of your smile with veneers, crowns, and other aesthetic procedures. We combine artistry with advanced dental techniques for stunning, natural results.',
@@ -120,6 +122,16 @@ function ServiceDetail() {
           afterSrc="/images/services/Dental Restorations.png"
           beforeLabel="Before"
           afterLabel="After"
+        />
+      );
+    }
+    if (service.useSlider && slug === 'cosmetic-dentistry') {
+      return (
+        <CosmeticDentistrySlider
+          beforeSrc='/images/services/Cosmetic Dentistry before.png'
+          afterSrc='/images/services/Cosmetic Dentistry after.png'
+          beforeLabel='Before'
+          afterLabel='After'
         />
       );
     }
