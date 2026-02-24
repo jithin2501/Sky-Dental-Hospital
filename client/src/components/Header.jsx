@@ -71,7 +71,7 @@ function Header() {
             <img src="/images/banner_logo/hospital_logos.png" alt="Sky Dental Logo" className="logo-img" />
             <div className="logo-text-wrapper">
               <span className="logo-text main-title">SKY DENTAL</span>
-              <span className="logo-text sub-title"><b>CLINICS</b></span>
+              <span className="logo-text sub-title"><b>HOSPITAL</b></span>
             </div>
           </Link>
 

@@ -29,16 +29,12 @@ const AdminLayout = ({ children }) => {
               <Link to="/admin/video">Video Management</Link>
             </li>
 
-            {userRole === 'Superadmin' && (
-              <li className={location.pathname === '/admin/team' ? 'active' : ''}>
-                <Link to="/admin/team">Team Management</Link>
-              </li>
-            )}
-            {userRole === 'Superadmin' && (
-              <li className={location.pathname === '/admin/team-details' ? 'active' : ''}>
-                <Link to="/admin/team-details">Team Details</Link>
-              </li>
-            )}
+            <li className={location.pathname === '/admin/team' ? 'active' : ''}>
+              <Link to="/admin/team">Team Management</Link>
+            </li>
+            <li className={location.pathname === '/admin/team-details' ? 'active' : ''}>
+              <Link to="/admin/team-details">Team Details</Link>
+            </li>
 
             <li className={location.pathname === '/admin/reviews' ? 'active' : ''}>
               <Link to="/admin/reviews">Review Management</Link>
