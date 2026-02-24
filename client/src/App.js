@@ -7,14 +7,17 @@ import ScrollToTop from './components/ScrollToTop';
 import DoctorProfile from './pages/DoctorProfile';
 import ServiceDetail from './pages/ServiceDetail';
 import FacilityDetail from './pages/FacilityDetail';
+import ReviewPage from './pages/ReviewPage'; // ✅ QR landing page
 
-// Admin Imports
-import AdminContact from './admin/admincontact';
-import UserManagement from './admin/usermanagement';
+// Admin
+import AdminContact    from './admin/admincontact';
+import UserManagement  from './admin/usermanagement';
 import VideoManagement from './admin/VideoManagement';
-import TeamManagement from './admin/TeamManagement';
-import TeamDetails from './admin/TeamDetails';
-import Login from './admin/auth/login';
+import TeamManagement  from './admin/TeamManagement';
+import TeamDetails     from './admin/TeamDetails';
+import ReviewManagement from './admin/ReviewManagement';
+import ReviewQR        from './admin/ReviewQR';
+import Login           from './admin/auth/login';
 
 function App() {
   const isAuthenticated = () => localStorage.getItem('isAdminAuthenticated') === 'true';
@@ -25,20 +28,27 @@ function App() {
       <ScrollToTop />
       <Routes>
         {/* Public */}
-        <Route path="/"                element={<Home />} />
-        <Route path="/about"           element={<About />} />
-        <Route path="/contact"         element={<Contact />} />
-        <Route path="/team"            element={<DoctorProfile />} />
-        <Route path="/team/:id"        element={<DoctorProfile />} />
-        <Route path="/services/:slug"  element={<ServiceDetail />} />
-        <Route path="/facility/:slug"  element={<FacilityDetail />} />
+        <Route path="/"               element={<Home />} />
+        <Route path="/about"          element={<About />} />
+        <Route path="/contact"        element={<Contact />} />
+        <Route path="/team"           element={<DoctorProfile />} />
+        <Route path="/team/:id"       element={<DoctorProfile />} />
+        <Route path="/services/:slug" element={<ServiceDetail />} />
+        <Route path="/facility/:slug" element={<FacilityDetail />} />
+
+        {/* ✅ QR Review page — publicly accessible, no login needed */}
+        <Route path="/leave-review"   element={<ReviewPage />} />
 
         {/* Admin Login */}
-        <Route path="/admin/login" element={<Login />} />
+        <Route path="/admin/login"    element={<Login />} />
 
         {/* Protected — all admins */}
         <Route path="/admin"
           element={isAuthenticated() ? <AdminContact /> : <Navigate to="/admin/login" />} />
+        <Route path="/admin/reviews"
+          element={isAuthenticated() ? <ReviewManagement /> : <Navigate to="/admin/login" />} />
+        <Route path="/admin/review-qr"
+          element={isAuthenticated() ? <ReviewQR /> : <Navigate to="/admin/login" />} />
 
         {/* Protected — Superadmin only */}
         <Route path="/admin/video"

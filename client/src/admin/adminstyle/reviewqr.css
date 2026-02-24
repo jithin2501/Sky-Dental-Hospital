@@ -1,0 +1,118 @@
+.qr-wrapper { width: 100%; }
+
+.qr-info-card { margin-bottom: 0; }
+
+.qr-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.qr-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #f8fafc;
+  border: 1px solid #edf2f7;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.qr-step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0A3D5C, #088395);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.qr-step p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #4a5568;
+  line-height: 1.5;
+}
+
+/* QR card */
+.qr-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+/* Printable area */
+.qr-printable {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 40px 28px;
+  gap: 10px;
+  text-align: center;
+  background: white;
+}
+
+.qr-print-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.qr-print-logo {
+  height: 50px;
+  object-fit: contain;
+}
+
+.qr-print-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0A3D5C;
+  margin: 0;
+}
+
+.qr-scan-text {
+  font-size: 0.9rem;
+  color: #5A6A78;
+  font-weight: 500;
+  margin: 0;
+}
+
+.qr-code-box {
+  padding: 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 4px 20px rgba(10,61,92,0.08);
+}
+
+.qr-code-box img, .qr-code-box canvas {
+  display: block;
+}
+
+.qr-url-text {
+  font-size: 0.7rem;
+  color: #a0aec0;
+  margin: 0;
+  word-break: break-all;
+}
+
+.qr-tagline {
+  font-size: 0.85rem;
+  color: #088395;
+  font-weight: 600;
+  margin: 0;
+}
+
+.qr-actions {
+  padding-top: 4px;
+}
