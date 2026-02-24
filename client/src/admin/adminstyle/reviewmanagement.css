@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  margin-bottom: 0;
+  margin-bottom: 24px;
 }
 
 .rm-stat-card {
@@ -118,7 +118,7 @@
 .rm-item:last-child { border-bottom: none; }
 .rm-item:hover      { background: #fafbfc; }
 .rm-item.rm-pending { border-left: 3px solid #f59e0b; }
-.rm-item.rm-approved{ border-left: 3px solid #22c55e; }
+.rm-item.rm-approved{ border-left: none; }
 
 .rm-item-left {
   display: flex;
