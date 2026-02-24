@@ -50,8 +50,8 @@ const ReviewQR = () => {
           {/* Printable area */}
           <div className="qr-printable" id="qr-printable">
             <div className="qr-print-header">
-              <img src="/images/logo.png" alt="Sky Dental" className="qr-print-logo" />
-              <h2>Sky Dental Clinics</h2>
+              <img src="/images/banner_logo/hospital_logos.png" alt="Sky Dental" className="qr-print-logo" />
+              <h2>Sky Dental Hospital</h2>
             </div>
             <p className="qr-scan-text">Scan to share your review</p>
             <div ref={qrRef} className="qr-code-box" />
@@ -67,24 +67,6 @@ const ReviewQR = () => {
         </div>
       </div>
 
-      {/* Print styles injected inline */}
-      <style>{`
-        @media print {
-          body * { visibility: hidden !important; }
-          #qr-printable, #qr-printable * { visibility: visible !important; }
-          #qr-printable {
-            position: fixed !important;
-            top: 50% !important;
-            left: 50% !important;
-            transform: translate(-50%, -50%) !important;
-            background: white !important;
-            padding: 40px !important;
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            width: 340px !important;
-          }
-        }
-      `}</style>
     </AdminLayout>
   );
 };

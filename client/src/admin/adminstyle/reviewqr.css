@@ -69,7 +69,11 @@
 
 .qr-print-logo {
   height: 50px;
+  width: 50px;
   object-fit: contain;
+  background: #0A3D5C;
+  padding: 10px;
+  border-radius: 50%;
 }
 
 .qr-print-header h2 {
@@ -115,4 +119,23 @@
 
 .qr-actions {
   padding-top: 4px;
+}
+
+@media print {
+  @page { margin: 0; size: auto; }
+  body * { visibility: hidden !important; }
+  #qr-printable, #qr-printable * { visibility: visible !important; }
+  #qr-printable {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    background: white !important;
+    padding: 40px !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    width: 340px !important;
+  }
+  .qr-print-logo { display: none !important; }
+  .qr-url-text { display: none !important; }
 }
