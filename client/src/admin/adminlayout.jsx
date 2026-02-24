@@ -7,7 +7,6 @@ const AdminLayout = ({ children }) => {
 
   return (
     <div className="admin-container">
-      {/* Sidebar - Fixed on the left */}
       <div className="admin-sidebar">
         <div className="sidebar-brand">
           <h2>Sky Dental</h2>
@@ -16,15 +15,10 @@ const AdminLayout = ({ children }) => {
           <li className={location.pathname === '/admin' ? 'active' : ''}>
             <Link to="/admin">Contact Messages</Link>
           </li>
-          <li><Link to="/admin/videos">Upload Video</Link></li>
-          <li><Link to="/admin/properties">Manage Properties</Link></li>
+          {/* Extra links removed */}
         </ul>
-        <div className="sidebar-bottom">
-          <button className="logout-btn">Log Out</button>
-        </div>
       </div>
 
-      {/* Main Content - Dynamic area */}
       <div className="admin-main">
         {children}
       </div>

@@ -4,7 +4,6 @@ import './adminstyle/admincontact.css';
 
 function AdminContact() {
   const [messages, setMessages] = useState([]);
-  // 1. Add state to hold the message being viewed
   const [viewingMessage, setViewingMessage] = useState(null);
 
   useEffect(() => {
@@ -16,8 +15,12 @@ function AdminContact() {
 
   const handleDelete = async (id) => {
     if (window.confirm("Delete this message?")) {
-      await fetch(`http://localhost:5000/api/contact/${id}`, { method: 'DELETE' });
-      setMessages(messages.filter(msg => msg._id !== id));
+      try {
+        await fetch(`http://localhost:5000/api/contact/${id}`, { method: 'DELETE' });
+        setMessages(messages.filter(msg => msg._id !== id));
+      } catch (err) {
+        console.error("Delete failed:", err);
+      }
     }
   };
 
@@ -31,31 +34,38 @@ function AdminContact() {
         <table className="admin-table">
           <thead>
             <tr>
-              <th>DATE</th>
-              <th>TYPE</th>
-              <th>APPLICANT</th>
-              <th>CONTACT</th>
-              <th>CLASS / MESSAGE</th>
-              <th className="text-right">ACTION</th>
+              <th className="text-center">DATE</th>
+              <th className="text-center">TYPE</th>
+              <th className="text-center">APPLICANT</th>
+              <th className="text-center">CONTACT</th>
+              <th className="text-center">CLASS / MESSAGE</th>
+              <th className="text-center">ACTION</th>
             </tr>
           </thead>
           <tbody>
             {messages.map((msg) => (
               <tr key={msg._id}>
-                <td className="date-text">{new Date(msg.receivedOn).toLocaleDateString('en-GB')}</td>
-                <td><span className="type-badge">Contact</span></td>
-                <td className="bold-text">{msg.name}</td>
-                <td>
-                  <div className="contact-primary">{msg.phone || 'N/A'}</div>
-                  <div className="contact-secondary">{msg.email}</div>
+                <td className="date-text text-center">
+                  {new Date(msg.receivedOn).toLocaleDateString('en-GB')}
                 </td>
-                <td className="msg-preview">
+                <td className="text-center">
+                  <span className="type-badge">Contact</span>
+                </td>
+                <td className="bold-text text-center">{msg.name}</td>
+                <td className="text-center">
+                  <div className="contact-info-stack">
+                    <div className="contact-primary">{msg.phone || 'N/A'}</div>
+                    <div className="contact-secondary">{msg.email}</div>
+                  </div>
+                </td>
+                <td className="msg-preview text-center">
                   <span className="msg-label">Msg:</span> {msg.message.substring(0, 35)}...
                 </td>
-                <td className="text-right">
-                  {/* 2. Update the View button to set the state */}
-                  <button className="view-pill" onClick={() => setViewingMessage(msg)}>View</button>
-                  <button className="delete-pill" onClick={() => handleDelete(msg._id)}>Delete</button>
+                <td className="text-center">
+                  <div className="action-btns">
+                    <button className="view-pill" onClick={() => setViewingMessage(msg)}>View</button>
+                    <button className="delete-pill" onClick={() => handleDelete(msg._id)}>Delete</button>
+                  </div>
                 </td>
               </tr>
             ))}
@@ -63,17 +73,18 @@ function AdminContact() {
         </table>
       </div>
 
-      {/* 3. Add the Modal JSX */}
+      {/* View Modal */}
       {viewingMessage && (
-        <div className="modal-overlay">
-          <div className="modal-content">
+        <div className="modal-overlay" onClick={() => setViewingMessage(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <h2>Message Details</h2>
-            <hr />
-            <p><strong>Name:</strong> {viewingMessage.name}</p>
-            <p><strong>Email:</strong> {viewingMessage.email}</p>
-            <p><strong>Phone:</strong> {viewingMessage.phone || 'N/A'}</p>
-            <p><strong>Message:</strong></p>
-            <div className="message-box">{viewingMessage.message}</div>
+            <div className="modal-body">
+              <p><strong>Name:</strong> {viewingMessage.name}</p>
+              <p><strong>Email:</strong> {viewingMessage.email}</p>
+              <p><strong>Phone:</strong> {viewingMessage.phone || 'N/A'}</p>
+              <p><strong>Message:</strong></p>
+              <div className="message-box">{viewingMessage.message}</div>
+            </div>
             <button className="close-btn" onClick={() => setViewingMessage(null)}>Close</button>
           </div>
         </div>
