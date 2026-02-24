@@ -48,9 +48,23 @@
     color: #4a5568;
 }
 
+/* Matching the light grey placeholder from the image */
+.admin-input::placeholder {
+    color: #a0aec0;
+    opacity: 1;
+}
+
 .admin-input:focus {
     border-color: #3b82f6;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Helper text below password field */
+.helper-text {
+    font-size: 11px;
+    color: #cbd5e0;
+    margin-top: 5px;
+    display: block;
 }
 
 /* Blue Create Button */
@@ -106,12 +120,12 @@
     vertical-align: middle;
 }
 
-/* Action Button Logic - No background or boxes */
+/* Action Button Layout - Removed boxes */
 .action-btns {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px; /* Consistent spacing */
+    gap: 15px;
 }
 
 .action-icon-btn {
@@ -125,17 +139,14 @@
     justify-content: center;
     outline: none;
     box-shadow: none !important;
-    /* Disable all transitions and hover effects */
     transition: none !important;
 }
 
 .action-icon-btn:hover {
-    background: none !important;
-    transform: none !important;
     opacity: 1 !important;
 }
 
-/* Forced Image Sizing for Transparent Icons */
+/* Forced Image Sizing */
 .mgmt-icon {
     width: 24px !important;
     height: 24px !important;

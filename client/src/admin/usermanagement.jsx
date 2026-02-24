@@ -24,7 +24,7 @@ const UserManagement = () => {
       };
       setUsers([superAdminEntry, ...dbData]);
     } catch (err) {
-      console.error("Error:", err);
+      console.error("Error fetching users:", err);
     }
   };
 
@@ -52,7 +52,7 @@ const UserManagement = () => {
         fetchUsers();
       }
     } catch (err) {
-      console.error("Error:", err);
+      console.error("Creation error:", err);
     }
   };
 
@@ -75,7 +75,9 @@ const UserManagement = () => {
           <div className="user-form-group">
             <label className="input-label">Username:</label>
             <input 
-              type="text" className="admin-input" 
+              type="text" 
+              className="admin-input" 
+              placeholder="Enter new username" 
               value={formData.username} 
               onChange={(e) => setFormData({...formData, username: e.target.value})} 
               required 
@@ -84,11 +86,14 @@ const UserManagement = () => {
           <div className="user-form-group">
             <label className="input-label">Password:</label>
             <input 
-              type="password" className="admin-input" 
+              type="password" 
+              className="admin-input" 
+              placeholder="Password must be at least 8 characters long" 
               value={formData.password} 
               onChange={(e) => setFormData({...formData, password: e.target.value})} 
               required 
             />
+            {/* Helper text exactly as per the image */}
           </div>
           <button type="submit" className="btn-create-admin">Create Admin Account</button>
         </form>
