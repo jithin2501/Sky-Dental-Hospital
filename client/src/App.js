@@ -6,6 +6,7 @@ import Contact from './pages/Contact';
 import ScrollToTop from './components/ScrollToTop';
 import DoctorProfile from './pages/DoctorProfile';
 import ServiceDetail from './pages/ServiceDetail';
+import FacilityDetail from './pages/FacilityDetail';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/team" element={<DoctorProfile />} />
         <Route path="/team/:id" element={<DoctorProfile />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
+        <Route path="/facility/:slug" element={<FacilityDetail />} />
       </Routes>
     </Router>
   );
