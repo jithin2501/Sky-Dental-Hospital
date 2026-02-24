@@ -12,11 +12,32 @@ function Contact() {
 
   const mapSrc = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d${zoomLevels[zoom]}!2d76.62711127599039!3d10.062224590046416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07e79e12537ab7%3A0xccbc8b5d4c9fb10e!2sMaria%20homes!5e0!3m2!1sen!2sin!4v1752908504232!5m2!1sen!2sin`;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setForm({ name: '', email: '', message: '' });
-    setTimeout(() => setSubmitted(false), 4000);
+    
+    try {
+      // Sending data to the backend API
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        // Reset form after successful submission
+        setForm({ name: '', email: '', message: '' });
+        // Hide success message after 4 seconds
+        setTimeout(() => setSubmitted(false), 4000);
+      } else {
+        alert("Something went wrong. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to connect to the server.");
+    }
   };
 
   return (

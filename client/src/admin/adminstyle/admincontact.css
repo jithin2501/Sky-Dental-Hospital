@@ -1,0 +1,103 @@
+.admin-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f7f9;
+}
+
+/* Sidebar Styling */
+.admin-sidebar {
+  width: 250px;
+  background-color: #0d1117;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.sidebar-brand h2 {
+  padding: 0 25px;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  flex: 1;
+}
+
+.sidebar-links a {
+  display: block;
+  padding: 15px 25px;
+  color: #94a3b8;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.sidebar-links li.active a, .sidebar-links a:hover {
+  background-color: #6366f1;
+  color: white;
+}
+
+/* Main Content Styling */
+.admin-main {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.admin-page-header h1 {
+  font-size: 22px;
+  color: #1e293b;
+  margin-bottom: 25px;
+}
+
+.admin-table-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 18px 20px;
+  background: #fbfcfd;
+  color: #64748b;
+  font-size: 11px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.admin-table td {
+  padding: 20px;
+  border-bottom: 1px solid #f8fafc;
+  font-size: 14px;
+}
+
+/* Badges & Buttons */
+.type-badge {
+  background: #fff9db;
+  color: #f59f00;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.view-pill, .delete-pill {
+  border: none;
+  padding: 6px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.view-pill { background: #3b82f6; color: white; }
+.delete-pill { background: #ef4444; color: white; }
+.text-right { text-align: right; }

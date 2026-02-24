@@ -8,6 +8,9 @@ import DoctorProfile from './pages/DoctorProfile';
 import ServiceDetail from './pages/ServiceDetail';
 import FacilityDetail from './pages/FacilityDetail';
 
+// Updated import path for the new folder structure
+import AdminContact from './admin/admincontact'; 
+
 function App() {
   return (
     <Router>
@@ -20,6 +23,9 @@ function App() {
         <Route path="/team/:id" element={<DoctorProfile />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
         <Route path="/facility/:slug" element={<FacilityDetail />} />
+        
+        {/* Updated component name to match the new import */}
+        <Route path="/admin" element={<AdminContact />} />
       </Routes>
     </Router>
   );
