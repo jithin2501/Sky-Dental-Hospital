@@ -15,7 +15,6 @@ const UserManagement = () => {
     try {
       const res = await fetch('http://localhost:5000/api/users');
       const dbData = await res.json();
-      
       const superAdminEntry = {
         _id: 'static-super',
         username: process.env.REACT_APP_ADMIN_USERNAME || 'superadmin',
@@ -23,10 +22,20 @@ const UserManagement = () => {
         status: 'Active',
         lastLogin: new Date().toISOString() 
       };
-
       setUsers([superAdminEntry, ...dbData]);
     } catch (err) {
-      console.error("Error fetching users:", err);
+      console.error("Error:", err);
+    }
+  };
+
+  const handleToggleStatus = async (id) => {
+    try {
+      const res = await fetch(`http://localhost:5000/api/users/${id}/toggle`, {
+        method: 'PATCH'
+      });
+      if (res.ok) fetchUsers();
+    } catch (err) {
+      console.error("Toggle failed:", err);
     }
   };
 
@@ -43,34 +52,43 @@ const UserManagement = () => {
         fetchUsers();
       }
     } catch (err) {
-      console.error("Creation error:", err);
+      console.error("Error:", err);
     }
   };
 
   const handleDelete = async (id, role) => {
     if (role === 'Superadmin') return;
-    if (window.confirm("Are you sure you want to delete this admin?")) {
-      const res = await fetch(`http://localhost:5000/api/users/${id}`, { method: 'DELETE' });
-      if (res.ok) fetchUsers();
+    if (window.confirm("Delete this admin?")) {
+      await fetch(`http://localhost:5000/api/users/${id}`, { method: 'DELETE' });
+      fetchUsers();
     }
   };
 
   return (
     <AdminLayout>
-      <div className="admin-page-header">
-        <h1>USER MANAGEMENT</h1>
-      </div>
+      <div className="admin-page-header"><h1>USER MANAGEMENT</h1></div>
 
       <div className="user-management-container">
         <h2>Create New Admin User</h2>
+        <p>Create credentials for a new admin user who can access this portal.</p>
         <form onSubmit={handleCreate} className="user-form">
           <div className="user-form-group">
             <label className="input-label">Username:</label>
-            <input type="text" className="admin-input" value={formData.username} onChange={(e) => setFormData({...formData, username: e.target.value})} required />
+            <input 
+              type="text" className="admin-input" 
+              value={formData.username} 
+              onChange={(e) => setFormData({...formData, username: e.target.value})} 
+              required 
+            />
           </div>
           <div className="user-form-group">
             <label className="input-label">Password:</label>
-            <input type="password" className="admin-input" value={formData.password} onChange={(e) => setFormData({...formData, password: e.target.value})} required />
+            <input 
+              type="password" className="admin-input" 
+              value={formData.password} 
+              onChange={(e) => setFormData({...formData, password: e.target.value})} 
+              required 
+            />
           </div>
           <button type="submit" className="btn-create-admin">Create Admin Account</button>
         </form>
@@ -78,7 +96,7 @@ const UserManagement = () => {
 
       <div className="admin-table-card">
         <div className="existing-users-header">
-            <h2>Existing Admin Users</h2>
+          <h2>Existing Admin Users</h2>
         </div>
         <table className="admin-table">
           <thead>
@@ -99,13 +117,23 @@ const UserManagement = () => {
                     {user.role}
                   </span>
                 </td>
-                <td className="text-center status-active">Active</td>
-                <td className="text-center">{new Date(user.lastLogin || Date.now()).toLocaleString('en-GB')}</td>
+                <td className={`text-center ${user.status === 'Active' ? 'status-active' : 'status-inactive'}`}>
+                  {user.status}
+                </td>
+                <td className="text-center">{new Date(user.lastLogin).toLocaleString('en-GB')}</td>
                 <td className="text-center">
                   {user.role !== 'Superadmin' && (
-                    <button onClick={() => handleDelete(user._id, user.role)} style={{background: 'none', border: 'none', cursor: 'pointer', color: '#ef4444', fontSize: '18px'}}>
-                        🗑️
-                    </button>
+                    <div className="action-btns">
+                      <button className="action-icon-btn" onClick={() => handleToggleStatus(user._id)}>
+                        <img 
+                          src={user.status === 'Active' ? "/images/usermanagement logo/Active.png" : "/images/usermanagement logo/Inactive.png"} 
+                          className="mgmt-icon" alt="Toggle" 
+                        />
+                      </button>
+                      <button className="action-icon-btn" onClick={() => handleDelete(user._id, user.role)}>
+                        <img src="/images/usermanagement logo/Delete.png" className="mgmt-icon" alt="Delete" />
+                      </button>
+                    </div>
                   )}
                 </td>
               </tr>
