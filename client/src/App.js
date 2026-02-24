@@ -7,6 +7,7 @@ import ScrollToTop from './components/ScrollToTop';
 import DoctorProfile from './pages/DoctorProfile';
 import ServiceDetail from './pages/ServiceDetail';
 import FacilityDetail from './pages/FacilityDetail';
+import VideoManagement from './admin/VideoManagement';
 
 // Admin Imports
 import AdminContact from './admin/admincontact'; 
@@ -45,6 +46,10 @@ function App() {
           path="/admin" 
           element={isAuthenticated() ? <AdminContact /> : <Navigate to="/admin/login" />} 
         />
+        <Route 
+  path="/admin/video" 
+  element={isAuthenticated() && isSuperAdmin() ? <VideoManagement /> : <Navigate to="/admin" />} 
+/>
 
         {/* Protected User Management Route - Accessible ONLY by Superadmin */}
         <Route 

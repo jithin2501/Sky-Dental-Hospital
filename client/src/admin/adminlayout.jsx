@@ -27,6 +27,9 @@ const AdminLayout = ({ children }) => {
             <li className={location.pathname === '/admin' ? 'active' : ''}>
               <Link to="/admin">Contact Messages</Link>
             </li>
+            <li className={location.pathname === '/admin/video' ? 'active' : ''}>
+        <Link to="/admin/video">Video Management</Link>
+      </li>
             
             {userRole === 'Superadmin' && (
               <li className={location.pathname === '/admin/users' ? 'active' : ''}>

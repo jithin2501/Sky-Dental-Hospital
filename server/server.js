@@ -4,15 +4,19 @@ const connectDB = require('./config/db');
 require('dotenv').config();
 
 const app = express();
-connectDB(); // Connect to MongoDB
+connectDB();
 
 app.use(cors());
-app.use(express.json()); // Essential for reading req.body
+app.use(express.json());
 
-// Registering Routes
 app.use('/api/contact', require('./routes/contactRoutes'));
-// This line MUST exist to handle admin logins
-app.use('/api/users', require('./routes/userRoutes')); 
+app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/media', require('./routes/mediaRoutes'));
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+// ✅ Store server reference so we can set a custom timeout
+const server = app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+// ✅ 10 minutes — prevents large video uploads from being cut off mid-transfer
+server.timeout = 600000;
