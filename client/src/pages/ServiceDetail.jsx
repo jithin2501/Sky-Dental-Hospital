@@ -10,8 +10,8 @@ import '../styles/ServiceDetail.css';
 const serviceData = {
   'orthodontics': {
     title: 'Orthodontics',
-    aboutImg: null,           // null = use the BeforeAfterSlider component
-    useSlider: true,          // 👈 flag to render the slider instead of a plain image
+    aboutImg: null,           
+    useSlider: true,          
     banner: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1400&q=80',
     tagline: 'Straighten Your Smile with Confidence',
     desc: 'We use advanced orthodontic techniques to gradually move your teeth into alignment, improve your bite, and enhance dental health. Our experienced orthodontists provide personalized treatment plans using the latest technology.',
@@ -128,8 +128,8 @@ function ServiceDetail() {
     if (service.useSlider && slug === 'cosmetic-dentistry') {
       return (
         <CosmeticDentistrySlider
-          beforeSrc='/images/services/Cosmetic Dentistry after.png'
-          afterSrc='/images/services/Cosmetic Dentistry before.png'
+          beforeSrc='/images/services/Cosmetic Dentistry before.png'
+          afterSrc='/images/services/Cosmetic Dentistry after.png'
           beforeLabel='Before'
           afterLabel='After'
         />
@@ -151,12 +151,7 @@ function ServiceDetail() {
           <img className="banner-bg-img" src={service.banner} alt={service.title} />
           <div className="banner-overlay" />
           <div className="banner-content">
-            <p className="banner-breadcrumb">
-              <span onClick={() => navigate('/#services')} style={{ cursor: 'pointer' }}>Our Services</span>
-              {' / '}{service.title}
-            </p>
             <h1>{service.title}</h1>
-            <p className="banner-tagline">{service.tagline}</p>
           </div>
         </div>
       </div>
