@@ -2,12 +2,14 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import BeforeAfterSlider from '../components/BeforeAfterSlider';
 import '../styles/ServiceDetail.css';
 
 const serviceData = {
   'orthodontics': {
     title: 'Orthodontics',
-    detailImg: '',  // 👈 Add your About Orthodontics image path here
+    aboutImg: null,           // null = use the BeforeAfterSlider component
+    useSlider: true,          // 👈 flag to render the slider instead of a plain image
     banner: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1400&q=80',
     tagline: 'Straighten Your Smile with Confidence',
     desc: 'We use advanced orthodontic techniques to gradually move your teeth into alignment, improve your bite, and enhance dental health. Our experienced orthodontists provide personalized treatment plans using the latest technology.',
@@ -25,7 +27,7 @@ const serviceData = {
   },
   'dental-implants-restorations': {
     title: 'Dental Implants & Restorations',
-    detailImg: '',  // 👈 Add your image path here
+    aboutImg: '',
     banner: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=1400&q=80',
     tagline: 'Restore Your Smile, Restore Your Life',
     desc: 'Professional dental implant and restoration treatments designed to replace missing teeth and restore your smile with natural-looking results. Our implants are built to last a lifetime with proper care.',
@@ -43,7 +45,7 @@ const serviceData = {
   },
   'pediatric-dentistry': {
     title: 'Pediatric Dentistry',
-    detailImg: '',  // 👈 Add your image path here
+    aboutImg: '',
     banner: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1400&q=80',
     tagline: 'Gentle Care for Little Smiles',
     desc: 'Specialized dental care for children, ensuring their oral health is maintained with gentle, child-friendly treatments. We create a positive, fun environment so children look forward to their dental visits.',
@@ -61,7 +63,7 @@ const serviceData = {
   },
   'cosmetic-dentistry': {
     title: 'Cosmetic Dentistry',
-    detailImg: '',  // 👈 Add your image path here
+    aboutImg: '',
     banner: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1400&q=80',
     tagline: 'Your Perfect Smile Starts Here',
     desc: 'Expert cosmetic dentistry treatments to enhance the appearance of your smile with veneers, crowns, and other aesthetic procedures. We combine artistry with advanced dental techniques for stunning, natural results.',
@@ -97,11 +99,29 @@ function ServiceDetail() {
     );
   }
 
+  /* ── helper: decide what to render in the image slot ── */
+  const renderImageSlot = () => {
+    if (service.useSlider) {
+      return (
+        <BeforeAfterSlider
+          beforeSrc="/images/services/orth2.png"
+          afterSrc="/images/services/orth1.png"
+          beforeLabel="Braces"
+          afterLabel="Normal"
+        />
+      );
+    }
+    if (service.aboutImg) {
+      return <img src={service.aboutImg} alt={service.title} />;
+    }
+    return <div className="sd-img-placeholder">Image coming soon</div>;
+  };
+
   return (
     <div className="sd-page">
       <Header />
 
-      {/* Banner — same design as Contact */}
+      {/* Banner */}
       <div className="banner-wrap">
         <div className="banner">
           <img className="banner-bg-img" src={service.banner} alt={service.title} />
@@ -117,22 +137,19 @@ function ServiceDetail() {
         </div>
       </div>
 
-      {/* Main Content */}
       <section className="sd-section">
 
-        {/* Intro */}
+        {/* About — text left, image / slider right */}
         <div className="sd-intro">
-          {service.detailImg && (
-            <div className="sd-intro-img">
-              <img src={service.detailImg} alt={service.title} />
-            </div>
-          )}
           <div className="sd-intro-text">
             <h2>About <span className="highlight">{service.title}</span></h2>
             <p>{service.desc}</p>
             <button className="sd-cta-btn" onClick={() => navigate('/contact')}>
               Book an Appointment →
             </button>
+          </div>
+          <div className="sd-intro-img">
+            {renderImageSlot()}
           </div>
         </div>
 
