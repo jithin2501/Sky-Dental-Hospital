@@ -38,12 +38,7 @@ const ReviewQR = () => {
         <div className="qr-info-card user-management-container">
           <h2>How it works</h2>
           <p>Print the QR code below and place it in your clinic. When a patient scans it, they are taken directly to the review submission page where they can enter their name, star rating, and feedback.</p>
-          <div className="qr-steps">
-            <div className="qr-step"><span className="qr-step-num">1</span><p>Print this QR code and display it at reception or treatment rooms</p></div>
-            <div className="qr-step"><span className="qr-step-num">2</span><p>Patient scans with their phone camera — no app needed</p></div>
-            <div className="qr-step"><span className="qr-step-num">3</span><p>They fill in name, star rating, and review — takes 30 seconds</p></div>
-            <div className="qr-step"><span className="qr-step-num">4</span><p>Review arrives in the <strong>Review Management</strong> panel for your approval</p></div>
-          </div>
+
         </div>
 
         <div className="admin-table-card qr-card">

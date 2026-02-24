@@ -1,6 +1,6 @@
 .qr-wrapper { width: 100%; }
 
-.qr-info-card { margin-bottom: 0; }
+.qr-info-card { margin-bottom: 24px; text-align: center; }
 
 .qr-steps {
   display: grid;
