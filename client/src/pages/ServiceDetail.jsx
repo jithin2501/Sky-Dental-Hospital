@@ -48,7 +48,7 @@ const serviceData = {
   },
   'pediatric-dentistry': {
     title: 'Pediatric Dentistry',
-    aboutImg: '/images/services/Pediatric Dentistry.jpg',
+    aboutImg: '/images/services/Pediatric Dentistry.png',
     banner: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1400&q=80',
     tagline: 'Gentle Care for Little Smiles',
     desc: 'Specialized dental care for children, ensuring their oral health is maintained with gentle, child-friendly treatments. We create a positive, fun environment so children look forward to their dental visits.',
