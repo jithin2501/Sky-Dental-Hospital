@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/ReviewPage.css';
 
-function ReviewPage() {
+const MAX_WORDS = 25;
+
+const countWords = (str) => str.trim().split(/\s+/).filter(Boolean).length;
+
+function ReviewPage({ bgImage }) {
+  const navigate = useNavigate();
   const [name,     setName]     = useState('');
   const [rating,   setRating]   = useState(0);
   const [hovered,  setHovered]  = useState(0);
@@ -10,11 +16,29 @@ function ReviewPage() {
   const [success,  setSuccess]  = useState(false);
   const [error,    setError]    = useState('');
 
+  const wordCount = text.trim() === '' ? 0 : countWords(text);
+
+  const handleNameChange = (e) => {
+    // Allow only alphabets and spaces
+    const val = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+    setName(val);
+  };
+
+  const handleTextChange = (e) => {
+    const val = e.target.value;
+    const words = val.trim() === '' ? [] : val.trim().split(/\s+/).filter(Boolean);
+    // Allow typing but block if word count exceeds 15 (allow partial last word)
+    const currentWords = text.trim() === '' ? [] : text.trim().split(/\s+/).filter(Boolean);
+    if (words.length > MAX_WORDS) return;
+    setText(val);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!rating) return setError('Please select a star rating.');
     if (!name.trim()) return setError('Please enter your name.');
     if (!text.trim()) return setError('Please write a short review.');
+    if (wordCount > MAX_WORDS) return setError(`Review must be ${MAX_WORDS} words or less.`);
 
     setError('');
     setLoading(true);
@@ -41,8 +65,9 @@ function ReviewPage() {
 
   if (success) {
     return (
-      <div className="rp-page">
-        <div className="rp-card">
+      <div className="rp-page" style={bgImage ? { backgroundImage: `url(${bgImage})` } : {}}>
+        <div className="rp-card rp-card-success">
+          <button className="rp-close-btn" onClick={() => navigate('/')}>✕</button>
           <div className="rp-success">
             <div className="rp-success-icon">✓</div>
             <h2>Thank You!</h2>
@@ -55,13 +80,13 @@ function ReviewPage() {
   }
 
   return (
-    <div className="rp-page">
+    <div className="rp-page" style={bgImage ? { backgroundImage: `url(${bgImage})` } : {}}>
       <div className="rp-card">
 
         {/* Header */}
         <div className="rp-header">
           <div className="rp-logo">
-            <img src="/images/logo.png" alt="Sky Dental" className="rp-logo-img" />
+            <img src="/images/banner_logo/hospital_logos.png" alt="Sky Dental" className="rp-logo-img" />
           </div>
           <h1 className="rp-title">Share Your Experience</h1>
           <p className="rp-subtitle">Your feedback helps us serve you better</p>
@@ -102,20 +127,25 @@ function ReviewPage() {
               className="rp-input"
               placeholder="e.g. John Smith"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={handleNameChange}
               required
             />
           </div>
 
           {/* Review text */}
           <div className="rp-field">
-            <label className="rp-label">Your Review</label>
+            <label className="rp-label">
+              Your Review
+              <span className={`rp-word-count ${wordCount >= MAX_WORDS ? 'rp-word-count-max' : ''}`}>
+                {wordCount}/{MAX_WORDS} words
+              </span>
+            </label>
             <textarea
               className="rp-input rp-textarea"
-              placeholder="Tell us about your experience at Sky Dental Clinics..."
+              placeholder="Tell us about your experience at Sky Dental Hospital..."
               rows={4}
               value={text}
-              onChange={(e) => setText(e.target.value)}
+              onChange={handleTextChange}
               required
             />
           </div>
@@ -134,7 +164,7 @@ function ReviewPage() {
         </form>
 
         <p className="rp-footer-note">
-          Sky Dental Clinics · Kasaragod
+          Sky Dental Hospital · Kasaragod
         </p>
       </div>
     </div>
