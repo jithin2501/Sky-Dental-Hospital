@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import BeforeAfterSlider from '../components/BeforeAfterSlider';
+import DentalImplantsSlider from '../components/DentalImplantsSlider';
 import '../styles/ServiceDetail.css';
 
 const serviceData = {
@@ -26,6 +27,7 @@ const serviceData = {
     ]
   },
   'dental-implants-restorations': {
+    useSlider: true,
     title: 'Dental Implants & Restorations',
     aboutImg: '',
     banner: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=1400&q=80',
@@ -101,13 +103,23 @@ function ServiceDetail() {
 
   /* ── helper: decide what to render in the image slot ── */
   const renderImageSlot = () => {
-    if (service.useSlider) {
+    if (service.useSlider && slug === 'orthodontics') {
       return (
         <BeforeAfterSlider
           beforeSrc="/images/services/orth2.png"
           afterSrc="/images/services/orth1.png"
           beforeLabel="Braces"
           afterLabel="Normal"
+        />
+      );
+    }
+    if (service.useSlider && slug === 'dental-implants-restorations') {
+      return (
+        <DentalImplantsSlider
+          beforeSrc="/images/services/Dental Restorations.png"
+          afterSrc="/images/services/Dental Implants.png"
+          beforeLabel="Before"
+          afterLabel="After"
         />
       );
     }
