@@ -6,32 +6,39 @@ function ScrollToTop() {
   const prevPathRef = useRef(sessionStorage.getItem('prevPath') || '');
 
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
     const prev = prevPathRef.current;
 
-    if (pathname.startsWith('/team')) {
+    if (pathname !== '/') {
       window.scrollTo({ top: 0, behavior: 'instant' });
-
-    } else if (pathname.startsWith('/services')) {
-      window.scrollTo({ top: 0, behavior: 'instant' });
-
-    } else if (pathname.startsWith('/facility')) {
-      window.scrollTo({ top: 0, behavior: 'instant' });
-
-    } else if (pathname === '/') {
+    } 
+    else if (pathname === '/') {
       let targetId = null;
 
-      if (prev.startsWith('/team')) targetId = 'team';
+      if (prev.startsWith('/about')) targetId = 'about';
+      else if (prev.startsWith('/team')) targetId = 'team';
       else if (prev.startsWith('/services')) targetId = 'services';
       else if (prev.startsWith('/facility')) targetId = 'facilities';
+      else if (prev.startsWith('/contact')) targetId = 'services';
 
       if (targetId) {
-        // Retry until element is in the DOM, then jump instantly
-        const tryScroll = (retries = 20) => {
+        const tryScroll = (retries = 30) => {
           const element = document.getElementById(targetId);
           if (element) {
-            const offset = 80;
-            const top = element.getBoundingClientRect().top + window.pageYOffset - offset;
-            window.scrollTo({ top, behavior: 'instant' });
+            // FIX: Changed from 2000 to 90 to match your navbar height
+            const headerOffset = 90; 
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'instant'
+            });
           } else if (retries > 0) {
             setTimeout(() => tryScroll(retries - 1), 50);
           }
