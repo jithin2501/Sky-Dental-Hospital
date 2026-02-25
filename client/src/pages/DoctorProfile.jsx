@@ -7,7 +7,7 @@ import '../styles/DoctorProfile.css';
 function DoctorProfile() {
   const { id } = useParams();
   const [doctors,  setDoctors]  = useState([]);
-  const [profiles, setProfiles] = useState({}); // { doctorId: profileObj }
+  const [profiles, setProfiles] = useState({});
   const [loading,  setLoading]  = useState(true);
 
   useEffect(() => {
@@ -27,21 +27,10 @@ function DoctorProfile() {
       .finally(() => setLoading(false));
   }, []);
 
-  // Scroll to specific doctor card after data loads
-  useEffect(() => {
-    if (!id || loading) return;
-    const headerHeight = document.querySelector('header')?.offsetHeight || 80;
-    const tryScroll = (attempts = 0) => {
-      const el = document.getElementById('doc-' + id);
-      if (el) {
-        const top = el.getBoundingClientRect().top + window.scrollY - headerHeight - 40;
-        window.scrollTo({ top, behavior: 'instant' });
-      } else if (attempts < 20) {
-        setTimeout(() => tryScroll(attempts + 1), 100);
-      }
-    };
-    tryScroll();
-  }, [id, loading]);
+  // When id is present, only show that one doctor. Otherwise show all.
+  const displayDoctors = id
+    ? doctors.filter(d => d._id === id)
+    : doctors;
 
   return (
     <div className="dp-page">
@@ -49,9 +38,11 @@ function DoctorProfile() {
 
       <div className="dp-banner-wrap">
         <div className="dp-banner">
-          <img className="dp-banner-bg"
+          <img
+            className="dp-banner-bg"
             src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1400&q=80"
-            alt="Sky Dental" />
+            alt="Sky Dental"
+          />
           <div className="dp-banner-overlay" />
           <div className="dp-banner-content">
             <h1>Our Medical Team</h1>
@@ -62,13 +53,13 @@ function DoctorProfile() {
       <div className="dp-container">
         {loading ? (
           <div className="dp-loading"><div className="dp-spinner" /></div>
-        ) : doctors.length === 0 ? (
+        ) : displayDoctors.length === 0 ? (
           <div className="dp-not-found">
             <p>No team members found.</p>
-            <Link to="/" className="dp-back-btn">← Back to Home</Link>
+            <Link to="/" className="dp-back-btn">Back to Home</Link>
           </div>
         ) : (
-          doctors.map((doctor, index) => {
+          displayDoctors.map((doctor, index) => {
             const profile = profiles[doctor._id];
             return (
               <section
