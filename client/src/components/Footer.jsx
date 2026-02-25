@@ -50,7 +50,7 @@ function Footer() {
 
           <div className="footer-brand-divider" />
 
-          <p>Providing exceptional dental care since 1998. Committed to helping you achieve optimal oral health with personalized treatment and a warm, welcoming environment.</p>
+          <p>Sky Dental Hospital is your trusted choice for modern, affordable dental care in Kanhangad, Kasaragod, offering expert treatment and comfortable care for brighter smiles.</p>
 
           <div className="footer-socials">
             <a href="#" className="footer-social-link" aria-label="Facebook">
@@ -115,7 +115,7 @@ function Footer() {
             </div>
           </div>
 
-          <div className="footer-contact-item">
+          <div className="footer-contact-item align-top">
             <div className="footer-contact-icon">
               <img src="/images/social/location-icon.png" alt="Location" />
             </div>

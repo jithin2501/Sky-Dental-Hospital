@@ -155,7 +155,7 @@
   text-decoration: none;
   font-size: 0.95rem;
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 6px;
   transition: all 0.25s ease;
   cursor: pointer;
@@ -184,6 +184,10 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 1.1rem;
+}
+
+.footer-contact-item.align-top {
+  align-items: flex-start;
 }
 
 .footer-contact-icon {
