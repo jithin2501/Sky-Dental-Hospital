@@ -1,11 +1,6 @@
-const cloudinary = require('cloudinary').v2;
+// server/controllers/doctorController.js
+const cloudinary = require('../config/cloudinary'); // ✅ centralized config
 const Doctor = require('../models/Doctor');
-
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
 
 const streamToCloudinary = (buffer, options) => {
   return new Promise((resolve, reject) => {
@@ -66,9 +61,7 @@ exports.updateDoctor = async (req, res) => {
     if (name) doctor.name = name;
     if (specialty) doctor.specialty = specialty;
 
-    // If new image uploaded, replace old one
     if (req.file) {
-      // Delete old image from Cloudinary
       try {
         await cloudinary.uploader.destroy(doctor.image_public_id, { resource_type: 'image' });
       } catch (e) {

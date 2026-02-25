@@ -1,13 +1,7 @@
-const cloudinary = require('cloudinary').v2;
+// server/controllers/mediaController.js
+const cloudinary = require('../config/cloudinary'); // ✅ centralized config
 const Media = require('../models/Media');
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET
-});
-
-// Helper: stream buffer to Cloudinary
 const streamToCloudinary = (buffer, options) => {
   return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(options, (error, result) => {
@@ -26,13 +20,11 @@ exports.uploadMedia = async (req, res) => {
 
     const resourceType = file.mimetype.startsWith('video') ? 'video' : 'image';
 
-    // Upload to Cloudinary using buffer (memoryStorage)
     const result = await streamToCloudinary(file.buffer, {
       resource_type: resourceType,
       folder: 'sky_dental_media',
     });
 
-    // Delete old media from Cloudinary + DB before saving new one
     const existing = await Media.findOne().sort({ uploadedAt: -1 });
     if (existing) {
       try {

@@ -158,7 +158,7 @@ const VideoManagement = () => {
               <button type="submit" className="vm-btn vm-btn-primary" disabled={loading || !file}>
                 {loading ? (
                   <span className="vm-uploading">
-                    <span className="vm-spinner" /> Uploading to Cloudinary…
+                    <span className="vm-spinner" /> Uploading…
                   </span>
                 ) : (
                   '⬆ Upload Media'
