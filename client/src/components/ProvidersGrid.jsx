@@ -39,8 +39,8 @@ function ProvidersGrid() {
                   <img src={doc.image_url} alt={doc.name} />
                 </div>
                 <div className="provider-card-body">
-                  <p className="provider-specialty">{doc.specialty}</p>
                   <p className="provider-name">{doc.name}</p>
+                  <p className="provider-specialty">{doc.specialty}</p>
                   <div className="provider-card-footer">
                     <Link to={`/team/${doc._id}`} className="provider-learn">
                       View Profile
