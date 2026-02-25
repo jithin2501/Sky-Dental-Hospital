@@ -105,6 +105,7 @@
     font-size: 1.2em;
     color: #fff;
     outline: none;
+    box-sizing: border-box;
 }
 
 .login-box .inputBx input[type="submit"] {
@@ -119,4 +120,38 @@
 
 .login-box .inputBx input::placeholder {
     color: rgba(255, 255, 255, 0.75);
+}
+
+/* Password wrapper & eye toggle */
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 50px !important; /* make room for the eye icon */
+}
+
+.eye-toggle {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: color 0.2s ease;
+    z-index: 2;
+}
+
+.eye-toggle:hover {
+    color: #fff;
+}
+
+.eye-toggle:focus {
+    outline: none;
 }

@@ -13,7 +13,7 @@ exports.createUser = async (req, res) => {
   try {
     const { username, password } = req.body;
     const existingUser = await User.findOne({ username });
-    if (existingUser) return res.status(400).json({ message: "Username exists" });
+    if (existingUser) return res.status(400).json({ message: "Username already exists" });
 
     const newUser = new User({ username, password, role: 'Admin', status: 'Active' });
     await newUser.save();
@@ -47,15 +47,33 @@ exports.deleteUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
   try {
     const { username, password } = req.body;
-    const user = await User.findOne({ username });
-    if (!user || user.password !== password) return res.status(401).json({ message: "Invalid credentials" });
-    
-    if (user.status === 'Inactive') return res.status(403).json({ message: "Account deactivated." });
+
+    // Guard: ensure body was parsed correctly
+    if (!username || !password) {
+      return res.status(400).json({ message: "Username and password are required" });
+    }
+
+    const user = await User.findOne({ username: username.trim() });
+
+    if (!user) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    // Plain-text password comparison (upgrade to bcrypt when ready)
+    if (user.password !== password) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    if (user.status === 'Inactive') {
+      return res.status(403).json({ message: "Account is deactivated. Contact your Superadmin." });
+    }
 
     user.lastLogin = new Date();
     await user.save();
+
     res.status(200).json({ username: user.username, role: user.role });
   } catch (err) {
+    console.error("Login error:", err);
     res.status(500).json({ message: err.message });
   }
 };

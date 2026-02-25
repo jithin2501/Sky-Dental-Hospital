@@ -7,22 +7,49 @@ import ScrollToTop from './components/ScrollToTop';
 import DoctorProfile from './pages/DoctorProfile';
 import ServiceDetail from './pages/ServiceDetail';
 import FacilityDetail from './pages/FacilityDetail';
-import ReviewPage from './pages/ReviewPage'; // ✅ QR landing page
+import ReviewPage from './pages/ReviewPage';
 
 // Admin
-import AdminContact    from './admin/admincontact';
-import UserManagement  from './admin/usermanagement';
-import VideoManagement from './admin/VideoManagement';
-import TeamManagement  from './admin/TeamManagement';
-import TeamDetails     from './admin/TeamDetails';
+import AdminContact     from './admin/admincontact';
+import UserManagement   from './admin/usermanagement';
+import VideoManagement  from './admin/VideoManagement';
+import TeamManagement   from './admin/TeamManagement';
+import TeamDetails      from './admin/TeamDetails';
 import ReviewManagement from './admin/ReviewManagement';
-import ReviewQR        from './admin/ReviewQR';
-import Login           from './admin/auth/login';
+import ReviewQR         from './admin/ReviewQR';
+import Login            from './admin/auth/login';
 
+// ─── Auth Helpers ────────────────────────────────────────────────────────────
+const isAuthenticated = () => localStorage.getItem('isAdminAuthenticated') === 'true';
+const isSuperAdmin    = () => localStorage.getItem('userRole') === 'Superadmin';
+
+// ─── ProtectedRoute ──────────────────────────────────────────────────────────
+// Uses `replace` so the protected page is REMOVED from history on redirect.
+// This means the browser Back/Forward buttons can never return to admin pages
+// without re-authenticating.
+const ProtectedRoute = ({ element, superAdminOnly = false }) => {
+  if (!isAuthenticated()) {
+    // replace: true removes the current entry from history stack
+    return <Navigate to="/admin/login" replace />;
+  }
+  if (superAdminOnly && !isSuperAdmin()) {
+    return <Navigate to="/admin" replace />;
+  }
+  return element;
+};
+
+// ─── LoginRoute ──────────────────────────────────────────────────────────────
+// If already logged in and someone visits /admin/login, send them to /admin.
+// Also uses replace so they can't go "back" to the login page while logged in.
+const LoginRoute = () => {
+  if (isAuthenticated()) {
+    return <Navigate to="/admin" replace />;
+  }
+  return <Login />;
+};
+
+// ─── App ─────────────────────────────────────────────────────────────────────
 function App() {
-  const isAuthenticated = () => localStorage.getItem('isAdminAuthenticated') === 'true';
-  const isSuperAdmin    = () => localStorage.getItem('userRole') === 'Superadmin';
-
   return (
     <Router>
       <ScrollToTop />
@@ -35,33 +62,31 @@ function App() {
         <Route path="/team/:id"       element={<DoctorProfile />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
         <Route path="/facility/:slug" element={<FacilityDetail />} />
-
-        {/* ✅ QR Review page — publicly accessible, no login needed */}
         <Route path="/leave-review"   element={<ReviewPage />} />
 
-        {/* Admin Login */}
-        <Route path="/admin/login"    element={<Login />} />
+        {/* Admin Login — redirects to /admin if already authenticated */}
+        <Route path="/admin/login" element={<LoginRoute />} />
 
         {/* Protected — all admins */}
         <Route path="/admin"
-          element={isAuthenticated() ? <AdminContact /> : <Navigate to="/admin/login" />} />
+          element={<ProtectedRoute element={<AdminContact />} />} />
         <Route path="/admin/reviews"
-          element={isAuthenticated() ? <ReviewManagement /> : <Navigate to="/admin/login" />} />
+          element={<ProtectedRoute element={<ReviewManagement />} />} />
         <Route path="/admin/review-qr"
-          element={isAuthenticated() ? <ReviewQR /> : <Navigate to="/admin/login" />} />
+          element={<ProtectedRoute element={<ReviewQR />} />} />
 
         {/* Protected — Superadmin only */}
         <Route path="/admin/video"
-          element={isAuthenticated() && isSuperAdmin() ? <VideoManagement /> : <Navigate to="/admin" />} />
+          element={<ProtectedRoute element={<VideoManagement />} superAdminOnly />} />
         <Route path="/admin/team"
-          element={isAuthenticated() && isSuperAdmin() ? <TeamManagement /> : <Navigate to="/admin" />} />
+          element={<ProtectedRoute element={<TeamManagement />} superAdminOnly />} />
         <Route path="/admin/team-details"
-          element={isAuthenticated() && isSuperAdmin() ? <TeamDetails /> : <Navigate to="/admin" />} />
+          element={<ProtectedRoute element={<TeamDetails />} superAdminOnly />} />
         <Route path="/admin/users"
-          element={isAuthenticated() && isSuperAdmin() ? <UserManagement /> : <Navigate to="/admin" />} />
+          element={<ProtectedRoute element={<UserManagement />} superAdminOnly />} />
 
         {/* Catch-all */}
-        <Route path="/admin/*" element={<Navigate to="/admin" />} />
+        <Route path="/admin/*" element={<Navigate to="/admin" replace />} />
       </Routes>
     </Router>
   );
