@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './adminstyle/adminlayout.css';
 
@@ -6,6 +6,13 @@ const AdminLayout = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const userRole = localStorage.getItem('userRole') || 'Admin';
+
+  useEffect(() => {
+    document.title = 'Sky Dental Dashboard';
+    return () => {
+      document.title = 'Sky Dental Hospital';
+    };
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('isAdminAuthenticated');
@@ -40,7 +47,6 @@ const AdminLayout = ({ children }) => {
             <li className={location.pathname === '/admin/review-qr' ? 'active' : ''}>
               <Link to="/admin/review-qr">Review QR Code</Link>
             </li>
-            {/* Analytics Dashboard - above User Management */}
             <li className={location.pathname.startsWith('/admin/analytics') ? 'active' : ''}>
               <Link to="/admin/analytics">Analytics Dashboard</Link>
             </li>
