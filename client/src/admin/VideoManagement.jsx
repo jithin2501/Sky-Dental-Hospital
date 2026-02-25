@@ -98,8 +98,7 @@ const VideoManagement = () => {
       <div className="vm-wrapper">
         <div className="vm-page-header">
           <div>
-            <h1>Video Management</h1>
-            <p>Upload and manage the Virtual Tour media shown on your homepage</p>
+            <h1>VIDEO MANAGEMENT</h1>
           </div>
         </div>
 
