@@ -7,54 +7,41 @@ function ScrollToTop() {
 
   useEffect(() => {
     const prev = prevPathRef.current;
-    const pendingScroll = sessionStorage.getItem('scrollTo');
 
     if (pathname.startsWith('/team')) {
-      // Always start at the top when opening a doctor profile
       window.scrollTo({ top: 0, behavior: 'instant' });
 
     } else if (pathname.startsWith('/services')) {
-      // Always start at the top when opening a service detail page
       window.scrollTo({ top: 0, behavior: 'instant' });
 
     } else if (pathname.startsWith('/facility')) {
-      // Always start at the top when opening a facility detail page
       window.scrollTo({ top: 0, behavior: 'instant' });
 
-    } else if (pathname === '/' && prev.startsWith('/team')) {
-      // Coming back from a doctor profile → jump to Team section
-      sessionStorage.setItem('scrollTo', 'team');
+    } else if (pathname === '/') {
+      let targetId = null;
 
-    } else if (pathname === '/' && prev.startsWith('/services')) {
-      // Coming back from a service detail page → jump to Services section
-      sessionStorage.setItem('scrollTo', 'services');
+      if (prev.startsWith('/team')) targetId = 'team';
+      else if (prev.startsWith('/services')) targetId = 'services';
+      else if (prev.startsWith('/facility')) targetId = 'facilities';
 
-    } else if (pathname === '/' && prev.startsWith('/facility')) {
-      // Coming back from a facility detail page → jump to Facilities section
-      sessionStorage.setItem('scrollTo', 'facilities');
-
-    } else if (!pendingScroll) {
-      // Any other navigation → scroll to top normally
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      if (targetId) {
+        // Retry until element is in the DOM, then jump instantly
+        const tryScroll = (retries = 20) => {
+          const element = document.getElementById(targetId);
+          if (element) {
+            const offset = 80;
+            const top = element.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top, behavior: 'instant' });
+          } else if (retries > 0) {
+            setTimeout(() => tryScroll(retries - 1), 50);
+          }
+        };
+        tryScroll();
+      } else {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
     }
 
-    // Check for pending scroll after navigation
-    if (pathname === '/' && pendingScroll) {
-      setTimeout(() => {
-        const element = document.getElementById(pendingScroll);
-        if (element) {
-          const offset = 80; // Adjust for header height if needed
-          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-          window.scrollTo({
-            top: elementPosition - offset,
-            behavior: 'smooth'
-          });
-        }
-        sessionStorage.removeItem('scrollTo');
-      }, 100);
-    }
-
-    // Update ref and sessionStorage with current path for next navigation
     prevPathRef.current = pathname;
     sessionStorage.setItem('prevPath', pathname);
   }, [pathname]);
