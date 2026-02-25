@@ -14,7 +14,8 @@ app.use('/api/users',           require('./routes/userRoutes'));
 app.use('/api/media',           require('./routes/mediaRoutes'));
 app.use('/api/doctors',         require('./routes/doctorRoutes'));
 app.use('/api/doctor-profiles', require('./routes/doctorProfileRoutes'));
-app.use('/api/reviews',         require('./routes/reviewRoutes')); // ✅ Reviews
+app.use('/api/reviews',         require('./routes/reviewRoutes'));
+app.use('/api/analytics',       require('./routes/analyticsRoutes')); // ✅ Analytics
 
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

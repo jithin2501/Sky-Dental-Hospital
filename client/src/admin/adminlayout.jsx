@@ -8,13 +8,9 @@ const AdminLayout = ({ children }) => {
   const userRole = localStorage.getItem('userRole') || 'Admin';
 
   const handleLogout = () => {
-    // Clear all auth data
     localStorage.removeItem('isAdminAuthenticated');
     localStorage.removeItem('userRole');
     localStorage.removeItem('username');
-
-    // replace: true removes /admin from browser history so
-    // the Forward button cannot bring the user back without logging in again
     navigate('/admin/login', { replace: true });
   };
 
@@ -43,6 +39,10 @@ const AdminLayout = ({ children }) => {
             </li>
             <li className={location.pathname === '/admin/review-qr' ? 'active' : ''}>
               <Link to="/admin/review-qr">Review QR Code</Link>
+            </li>
+            {/* Analytics Dashboard - above User Management */}
+            <li className={location.pathname.startsWith('/admin/analytics') ? 'active' : ''}>
+              <Link to="/admin/analytics">Analytics Dashboard</Link>
             </li>
             {userRole === 'Superadmin' && (
               <li className={location.pathname === '/admin/users' ? 'active' : ''}>

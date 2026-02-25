@@ -10,51 +10,45 @@ import FacilityDetail from './pages/FacilityDetail';
 import ReviewPage from './pages/ReviewPage';
 
 // Admin
-import AdminContact     from './admin/admincontact';
-import UserManagement   from './admin/usermanagement';
-import VideoManagement  from './admin/VideoManagement';
-import TeamManagement   from './admin/TeamManagement';
-import TeamDetails      from './admin/TeamDetails';
-import ReviewManagement from './admin/ReviewManagement';
-import ReviewQR         from './admin/ReviewQR';
-import Login            from './admin/auth/login';
+import AdminContact       from './admin/admincontact';
+import UserManagement     from './admin/usermanagement';
+import VideoManagement    from './admin/VideoManagement';
+import TeamManagement     from './admin/TeamManagement';
+import TeamDetails        from './admin/TeamDetails';
+import ReviewManagement   from './admin/ReviewManagement';
+import ReviewQR           from './admin/ReviewQR';
+import AnalyticsDashboard from './admin/AnalyticsDashboard';
+import Login              from './admin/auth/login';
 
-// ─── Auth Helpers ────────────────────────────────────────────────────────────
+// Analytics Tracker — tracks public pages only, ignores /admin
+import analyticsTracker from './utils/analyticsTracker';
+analyticsTracker.init();
+
+// ─── Auth Helpers ─────────────────────────────────────────────────────────────
 const isAuthenticated = () => localStorage.getItem('isAdminAuthenticated') === 'true';
 const isSuperAdmin    = () => localStorage.getItem('userRole') === 'Superadmin';
 
-// ─── ProtectedRoute ──────────────────────────────────────────────────────────
-// Uses `replace` so the protected page is REMOVED from history on redirect.
-// This means the browser Back/Forward buttons can never return to admin pages
-// without re-authenticating.
+// ─── ProtectedRoute ───────────────────────────────────────────────────────────
 const ProtectedRoute = ({ element, superAdminOnly = false }) => {
-  if (!isAuthenticated()) {
-    // replace: true removes the current entry from history stack
-    return <Navigate to="/admin/login" replace />;
-  }
-  if (superAdminOnly && !isSuperAdmin()) {
-    return <Navigate to="/admin" replace />;
-  }
+  if (!isAuthenticated()) return <Navigate to="/admin/login" replace />;
+  if (superAdminOnly && !isSuperAdmin()) return <Navigate to="/admin" replace />;
   return element;
 };
 
-// ─── LoginRoute ──────────────────────────────────────────────────────────────
-// If already logged in and someone visits /admin/login, send them to /admin.
-// Also uses replace so they can't go "back" to the login page while logged in.
+// ─── LoginRoute ───────────────────────────────────────────────────────────────
 const LoginRoute = () => {
-  if (isAuthenticated()) {
-    return <Navigate to="/admin" replace />;
-  }
+  if (isAuthenticated()) return <Navigate to="/admin" replace />;
   return <Login />;
 };
 
-// ─── App ─────────────────────────────────────────────────────────────────────
+// ─── App ──────────────────────────────────────────────────────────────────────
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <Routes>
-        {/* Public */}
+
+        {/* ── Public Routes ── */}
         <Route path="/"               element={<Home />} />
         <Route path="/about"          element={<About />} />
         <Route path="/contact"        element={<Contact />} />
@@ -64,18 +58,20 @@ function App() {
         <Route path="/facility/:slug" element={<FacilityDetail />} />
         <Route path="/leave-review"   element={<ReviewPage />} />
 
-        {/* Admin Login — redirects to /admin if already authenticated */}
+        {/* ── Admin Login ── */}
         <Route path="/admin/login" element={<LoginRoute />} />
 
-        {/* Protected — all admins */}
+        {/* ── Protected — all admins ── */}
         <Route path="/admin"
           element={<ProtectedRoute element={<AdminContact />} />} />
         <Route path="/admin/reviews"
           element={<ProtectedRoute element={<ReviewManagement />} />} />
         <Route path="/admin/review-qr"
           element={<ProtectedRoute element={<ReviewQR />} />} />
+        <Route path="/admin/analytics"
+          element={<ProtectedRoute element={<AnalyticsDashboard />} />} />
 
-        {/* Protected — Superadmin only */}
+        {/* ── Protected — Superadmin only ── */}
         <Route path="/admin/video"
           element={<ProtectedRoute element={<VideoManagement />} superAdminOnly />} />
         <Route path="/admin/team"
@@ -85,8 +81,9 @@ function App() {
         <Route path="/admin/users"
           element={<ProtectedRoute element={<UserManagement />} superAdminOnly />} />
 
-        {/* Catch-all */}
+        {/* ── Catch-all ── */}
         <Route path="/admin/*" element={<Navigate to="/admin" replace />} />
+
       </Routes>
     </Router>
   );
