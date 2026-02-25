@@ -3,26 +3,28 @@ import { useNavigate } from 'react-router-dom';
 import AdminLayout from './adminlayout';
 import './adminstyle/AnalyticsDashboard.css';
 
+const ITEMS_PER_PAGE = 10;
+
 const AnalyticsDashboard = () => {
   const navigate = useNavigate();
 
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [activeTab, setActiveTab] = useState('user');
-
   const [userAnalytics, setUserAnalytics] = useState([]);
   const [geoMapData, setGeoMapData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [backendStatus, setBackendStatus] = useState(null);
   const [isCheckingBackend, setIsCheckingBackend] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    const savedStartDate = sessionStorage.getItem('analytics_start_date');
-    const savedEndDate = sessionStorage.getItem('analytics_end_date');
-    if (savedStartDate && savedEndDate) {
-      setStartDate(savedStartDate);
-      setEndDate(savedEndDate);
+    const savedStart = sessionStorage.getItem('analytics_start_date');
+    const savedEnd = sessionStorage.getItem('analytics_end_date');
+    if (savedStart && savedEnd) {
+      setStartDate(savedStart);
+      setEndDate(savedEnd);
     } else {
       const today = new Date();
       const lastMonth = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
@@ -76,7 +78,7 @@ const AnalyticsDashboard = () => {
     setIsCheckingBackend(true);
     setError(null);
     try {
-      const response = await fetch(`http://localhost:5000/api/analytics/test`, {
+      const response = await fetch('http://localhost:5000/api/analytics/test', {
         method: 'GET',
         headers: { 'Accept': 'application/json' },
       });
@@ -92,9 +94,9 @@ const AnalyticsDashboard = () => {
       } else {
         throw new Error(`Server responded with status: ${response.status}`);
       }
-    } catch (error) {
+    } catch (err) {
       setBackendStatus('disconnected');
-      setError(`Cannot connect to backend server. Make sure the server is running.`);
+      setError('Cannot connect to backend server. Make sure the server is running.');
     } finally {
       setIsCheckingBackend(false);
     }
@@ -120,20 +122,20 @@ const AnalyticsDashboard = () => {
     try {
       const endDateInclusive = new Date(endDate);
       endDateInclusive.setDate(endDateInclusive.getDate() + 1);
-      const endDateStr = formatDate(endDateInclusive);
-      const url = `http://localhost:5000/api/analytics?startDate=${startDate}&endDate=${endDateStr}`;
+      const url = `http://localhost:5000/api/analytics?startDate=${startDate}&endDate=${formatDate(endDateInclusive)}`;
       const response = await fetch(url, { headers: { 'Accept': 'application/json' } });
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
-      const processedAnalytics = (data.userAnalytics || []).map(user => ({
+      const processed = (data.userAnalytics || []).map(user => ({
         ...user,
         displayUsername: generateUsername(user.sessionId),
-        originalUsername: user.username
+        originalUsername: user.username,
       }));
-      setUserAnalytics(processedAnalytics);
-    } catch (error) {
-      console.error('Error fetching analytics:', error);
-      setError(error.message);
+      setUserAnalytics(processed);
+      setCurrentPage(1);
+    } catch (err) {
+      console.error('Error fetching analytics:', err);
+      setError(err.message);
       setUserAnalytics([]);
     } finally {
       setLoading(false);
@@ -145,14 +147,13 @@ const AnalyticsDashboard = () => {
     try {
       const endDateInclusive = new Date(endDate);
       endDateInclusive.setDate(endDateInclusive.getDate() + 1);
-      const endDateStr = formatDate(endDateInclusive);
-      const url = `http://localhost:5000/api/analytics/geo-map?startDate=${startDate}&endDate=${endDateStr}`;
+      const url = `http://localhost:5000/api/analytics/geo-map?startDate=${startDate}&endDate=${formatDate(endDateInclusive)}`;
       const response = await fetch(url, { headers: { 'Accept': 'application/json' } });
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
       setGeoMapData(data.mapData || []);
-    } catch (error) {
-      console.error('Error fetching geo map data:', error);
+    } catch (err) {
+      console.error('Error fetching geo map data:', err);
       setGeoMapData([]);
     }
   };
@@ -175,8 +176,8 @@ const AnalyticsDashboard = () => {
     const minutes = Math.floor((seconds % 3600) / 60);
     const secs = seconds % 60;
     if (hours > 0) return `${hours}h ${minutes}m ${secs}s`;
-    else if (minutes > 0) return `${minutes}m ${secs}s`;
-    else return `${secs}s`;
+    if (minutes > 0) return `${minutes}m ${secs}s`;
+    return `${secs}s`;
   };
 
   const setDateRange = (months) => {
@@ -195,40 +196,37 @@ const AnalyticsDashboard = () => {
   const exportUsers = () => {
     if (userAnalytics.length === 0) return;
     const headers = ['Username', 'Session ID', 'Locations', 'Visits', 'Total Time (seconds)', 'Last Visit'];
-    const csvRows = [headers.join(',')];
-    userAnalytics.forEach(user => {
-      csvRows.push([
-        user.displayUsername || user.username,
-        user.sessionId,
-        user.locations,
-        user.visitCount,
-        user.totalTime,
-        new Date(user.lastVisit).toLocaleString()
-      ].join(','));
-    });
-    downloadCSV(csvRows.join('\n'), 'user_analytics.csv');
+    const rows = userAnalytics.map(user => [
+      user.displayUsername || user.username,
+      user.sessionId,
+      user.locations,
+      user.visitCount,
+      user.totalTime,
+      new Date(user.lastVisit).toLocaleString(),
+    ]);
+    downloadCSV([headers, ...rows].map(r => r.join(',')).join('\n'), 'user_analytics.csv');
   };
 
   const exportFullVisitDetails = () => {
     if (userAnalytics.length === 0) return;
     const headers = ['Username', 'Session ID', 'Location', 'District', 'Time (seconds)', 'Exit Reason', 'Timestamp'];
-    const csvRows = [headers.join(',')];
+    const rows = [];
     userAnalytics.forEach(user => {
       if (user.visits && user.visits.length > 0) {
         user.visits.forEach(visit => {
-          csvRows.push([
+          rows.push([
             user.displayUsername || user.username,
             user.sessionId,
             visit.location,
             visit.district,
             visit.timeSpent,
             `"${visit.exitReason}"`,
-            new Date(visit.timestamp).toLocaleString()
-          ].join(','));
+            new Date(visit.timestamp).toLocaleString(),
+          ]);
         });
       }
     });
-    downloadCSV(csvRows.join('\n'), 'full_visit_details.csv');
+    downloadCSV([headers, ...rows].map(r => r.join(',')).join('\n'), 'full_visit_details.csv');
   };
 
   const downloadCSV = (csv, filename) => {
@@ -240,6 +238,13 @@ const AnalyticsDashboard = () => {
     a.click();
     window.URL.revokeObjectURL(url);
   };
+
+  // Pagination helpers
+  const totalPages = Math.ceil(userAnalytics.length / ITEMS_PER_PAGE);
+  const paginatedData = userAnalytics.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
 
   return (
     <AdminLayout>
@@ -282,14 +287,14 @@ const AnalyticsDashboard = () => {
         {/* ── Tabs ── */}
         <div className="analytics-tabs">
           <button
-            className={`tab-btn ${activeTab === 'user' ? 'active' : ''}`}
+            className={'tab-btn' + (activeTab === 'user' ? ' active' : '')}
             onClick={() => setActiveTab('user')}
             disabled={backendStatus !== 'connected'}
           >
             USER ANALYTICS
           </button>
           <button
-            className={`tab-btn ${activeTab === 'geo' ? 'active' : ''}`}
+            className={'tab-btn' + (activeTab === 'geo' ? ' active' : '')}
             onClick={() => setActiveTab('geo')}
             disabled={backendStatus !== 'connected'}
           >
@@ -308,7 +313,8 @@ const AnalyticsDashboard = () => {
             </button>
           </div>
         ) : (
-          <>
+          <div>
+            {/* ── User Analytics Tab ── */}
             {activeTab === 'user' && (
               <div className="user-analytics-section">
                 <div className="export-buttons">
@@ -326,64 +332,100 @@ const AnalyticsDashboard = () => {
                     <p>Loading analytics data...</p>
                   </div>
                 ) : (
-                  <div className="table-wrapper">
-                    <table className="analytics-table">
-                      <thead>
-                        <tr>
-                          <th>Session ID</th>
-                          <th>Locations</th>
-                          <th>Visits</th>
-                          <th>Total Time</th>
-                          <th>Last Visit</th>
-                          <th>Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {userAnalytics.length === 0 ? (
+                  <div>
+                    <div className="table-wrapper">
+                      <table className="analytics-table">
+                        <thead>
                           <tr>
-                            <td colSpan="6" className="no-data">
-                              No analytics data available for the selected date range
-                            </td>
+                            <th>Session ID</th>
+                            <th>Locations</th>
+                            <th>Visits</th>
+                            <th>Total Time</th>
+                            <th>Last Visit</th>
+                            <th>Actions</th>
                           </tr>
-                        ) : (
-                          userAnalytics.map((user, index) => (
-                            <tr key={index}>
-                              <td className="session-id">{formatSessionId(user.sessionId)}</td>
-                              <td>{user.locations}</td>
-                              <td className="text-center">{user.visitCount}</td>
-                              <td className="text-right">{formatTime(user.totalTime)}</td>
-                              <td>{new Date(user.lastVisit).toLocaleDateString()}</td>
-                              <td>
-                                <button
-                                  onClick={() => handleViewDetails(user.sessionId, user.displayUsername || user.username)}
-                                  className="view-details-btn"
-                                >
-                                  VIEW
-                                </button>
+                        </thead>
+                        <tbody>
+                          {userAnalytics.length === 0 ? (
+                            <tr>
+                              <td colSpan="6" className="no-data">
+                                No analytics data available for the selected date range
                               </td>
                             </tr>
-                          ))
-                        )}
-                      </tbody>
-                    </table>
+                          ) : (
+                            paginatedData.map((user, index) => (
+                              <tr key={index}>
+                                <td className="session-id">{formatSessionId(user.sessionId)}</td>
+                                <td>{user.locations}</td>
+                                <td>{user.visitCount}</td>
+                                <td>{formatTime(user.totalTime)}</td>
+                                <td>{new Date(user.lastVisit).toLocaleDateString()}</td>
+                                <td>
+                                  <button
+                                    onClick={() => handleViewDetails(user.sessionId, user.displayUsername || user.username)}
+                                    className="view-details-btn"
+                                  >
+                                    VIEW
+                                  </button>
+                                </td>
+                              </tr>
+                            ))
+                          )}
+                        </tbody>
+                      </table>
+                    </div>
+
+                    {/* ── Pagination ── */}
+                    {totalPages > 1 && (
+                      <div className="pagination">
+                        <button
+                          className="pagination-btn"
+                          onClick={() => setCurrentPage(prev => prev - 1)}
+                          disabled={currentPage === 1}
+                        >
+                          ← Previous
+                        </button>
+
+                        <div className="pagination-pages">
+                          {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                            <button
+                              key={page}
+                              className={'pagination-page' + (currentPage === page ? ' active' : '')}
+                              onClick={() => setCurrentPage(page)}
+                            >
+                              {page}
+                            </button>
+                          ))}
+                        </div>
+
+                        <button
+                          className="pagination-btn"
+                          onClick={() => setCurrentPage(prev => prev + 1)}
+                          disabled={currentPage === totalPages}
+                        >
+                          Next →
+                        </button>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
             )}
 
+            {/* ── Geo Map Tab ── */}
             {activeTab === 'geo' && (
               <div className="geo-map-section">
                 <OpenStreetMapView locations={geoMapData} />
               </div>
             )}
-          </>
+          </div>
         )}
       </div>
     </AdminLayout>
   );
 };
 
-// ── OpenStreetMap Component ──────────────────────────────────────────────────
+// ── OpenStreetMap Component ───────────────────────────────────────────────────
 const OpenStreetMapView = ({ locations }) => {
   if (!locations || locations.length === 0) {
     return (
@@ -428,7 +470,7 @@ const OpenStreetMapView = ({ locations }) => {
   );
 };
 
-// ── Leaflet Map HTML Generator ───────────────────────────────────────────────
+// ── Leaflet Map HTML ──────────────────────────────────────────────────────────
 const generateLeafletMapHTML = (locations, centerLat, centerLng, zoom) => {
   const markers = locations.map((loc, index) => {
     const cityName = (loc.city || loc.country || 'Location').replace(/'/g, "\\'");
