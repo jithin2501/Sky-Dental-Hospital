@@ -36,27 +36,6 @@
   position: relative;
 }
 
-.facilities-cards-viewport::before,
-.facilities-cards-viewport::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 10px; /* account for padding-bottom on container */
-  width: 30px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.facilities-cards-viewport::before {
-  left: 0;
-  background: linear-gradient(to right, #eff9ff 0%, transparent 100%);
-}
-
-.facilities-cards-viewport::after {
-  right: 0;
-  background: linear-gradient(to left, #eff9ff 0%, transparent 100%);
-}
-
 .facilities-cards-container {
   display: flex;
   gap: 24px;
@@ -81,7 +60,7 @@
   background-size: cover;
   background-position: center;
   user-select: none;
-  cursor: default; /* Changed from grab to default since clicking doesn't navigate */
+  cursor: default;
 }
 
 .facility-card-overlay {
@@ -114,8 +93,8 @@
   justify-content: center;
   color: white;
   transition: transform 0.3s ease;
-  cursor: pointer; /* Added cursor pointer to indicate it's clickable */
-  z-index: 10; /* Ensure it's above other elements */
+  cursor: pointer;
+  z-index: 10;
 }
 
 .facility-card:hover .facility-card-icon {
