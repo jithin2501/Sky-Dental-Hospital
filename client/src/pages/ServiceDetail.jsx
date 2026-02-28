@@ -103,7 +103,6 @@ function ServiceDetail() {
     );
   }
 
-  /* ── helper: decide what to render in the image slot ── */
   const renderImageSlot = () => {
     if (service.useSlider && slug === 'orthodontics') {
       return (
@@ -163,7 +162,7 @@ function ServiceDetail() {
           <div className="sd-intro-text">
             <h2>About <span className="highlight">{service.title}</span></h2>
             <p>{service.desc}</p>
-            <button className="sd-cta-btn" onClick={() => navigate('/contact')}>
+            <button className="sd-cta-btn" onClick={() => navigate('/book-appointment')}>
               Book an Appointment →
             </button>
           </div>

@@ -45,7 +45,7 @@ function FacilityDetail() {
             <span className="fd-tag">Our Facility</span>
             <h2>{facility.tagline}</h2>
             <p>{facility.about}</p>
-            <button className="fd-cta-btn" onClick={() => navigate('/contact')}>
+            <button className="fd-cta-btn" onClick={() => navigate('/book-appointment')}>
               Book an Appointment →
             </button>
           </div>
@@ -69,8 +69,6 @@ function FacilityDetail() {
             ))}
           </div>
         </div>
-
-        {/* Back button REMOVED */}
 
       </section>
 

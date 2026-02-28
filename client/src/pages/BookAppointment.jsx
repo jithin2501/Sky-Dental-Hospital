@@ -12,7 +12,7 @@ function BookAppointment() {
         <div className="banner">
           <img
             className="banner-bg-img"
-            src="https://images.unsplash.com/photo-1588776814546-ec7e67aee2a5?w=1400&q=80"
+            src="/images/banner/appointment.webp"
             alt="Book Appointment Banner"
           />
           <div className="banner-overlay" />

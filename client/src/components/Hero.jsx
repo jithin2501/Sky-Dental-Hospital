@@ -1,11 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/hero.css';
 
 function Hero() {
-  const scrollToContact = () => {
-    const el = document.getElementById('contact');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+  const navigate = useNavigate();
 
   return (
     <section
@@ -26,7 +24,7 @@ function Hero() {
             and comfortable care for brighter smiles.
           </p>
           <div className="hero-buttons">
-            <button className="primary-btn" onClick={scrollToContact}>
+            <button className="primary-btn" onClick={() => navigate('/book-appointment')}>
               Schedule Appointment
             </button>
           </div>

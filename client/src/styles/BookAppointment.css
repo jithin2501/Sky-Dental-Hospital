@@ -12,13 +12,12 @@
 /* ── Banner ── */
 .book-page .banner-wrap {
   width: 100%;
-  margin-top: 80px;
 }
 
 .book-page .banner {
   position: relative;
   width: 100%;
-  height: 320px;
+  height: 420px;
   overflow: hidden;
 }
 
@@ -33,11 +32,7 @@
 .book-page .banner-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(4, 30, 50, 0.72) 0%,
-    rgba(0, 98, 167, 0.55) 100%
-  );
+  background: rgba(0, 0, 0, 0.45);
 }
 
 .book-page .banner-content {
@@ -66,7 +61,7 @@
   flex: 1;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 70px 24px 80px;
+  padding: 70px 24px 140px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -230,8 +225,7 @@
 /* ── Responsive ── */
 @media (max-width: 640px) {
   .book-page .banner {
-    height: 220px;
-    margin-top: 70px;
+    height: 300px;
   }
 
   .book-section {

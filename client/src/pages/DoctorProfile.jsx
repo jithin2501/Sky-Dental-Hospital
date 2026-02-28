@@ -27,7 +27,6 @@ function DoctorProfile() {
       .finally(() => setLoading(false));
   }, []);
 
-  // When id is present, only show that one doctor. Otherwise show all.
   const displayDoctors = id
     ? doctors.filter(d => d._id === id)
     : doctors;
@@ -98,7 +97,7 @@ function DoctorProfile() {
                   <div className="dp-divider" />
 
                   <div className="dp-footer-row">
-                    <Link to="/contact" className="dp-book-btn">
+                    <Link to="/book-appointment" className="dp-book-btn">
                       Book Appointment
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
