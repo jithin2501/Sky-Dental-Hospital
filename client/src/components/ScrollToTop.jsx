@@ -22,14 +22,14 @@ function ScrollToTop() {
       else if (prev.startsWith('/team')) targetId = 'team';
       else if (prev.startsWith('/services')) targetId = 'services';
       else if (prev.startsWith('/facility')) targetId = 'facilities';
-      
 
       if (targetId) {
         const tryScroll = (retries = 30) => {
           const element = document.getElementById(targetId);
           if (element) {
-            // FIX: Changed from 2000 to 90 to match your navbar height
-            const headerOffset = 90; 
+            // Use a smaller offset for 'services' so it doesn't overshoot into the team section
+            const headerOffset = targetId === 'services' ? 10 : 90;
+
             const bodyRect = document.body.getBoundingClientRect().top;
             const elementRect = element.getBoundingClientRect().top;
             const elementPosition = elementRect - bodyRect;
