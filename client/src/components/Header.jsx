@@ -5,17 +5,27 @@ import '../styles/MobileMenu.css';
 
 function scrollWhenReady(id, behavior = 'smooth', maxWait = 3000) {
   const start = Date.now();
+
+  // Hide page to prevent flash when navigating from another route
+  if (behavior === 'instant') {
+    document.documentElement.classList.add('scroll-pending');
+  }
+
   const attempt = () => {
     const el = document.getElementById(id);
     if (el) {
       const headerHeight = document.querySelector('header')?.offsetHeight || 80;
-      // Extra offset per section to fine-tune landing position
       const extraOffsets = { services: -80, about: 0, facilities: 0, team: 0, reviews: 0 };
       const extra = extraOffsets[id] ?? 0;
       const top = el.getBoundingClientRect().top + window.scrollY - headerHeight - extra;
       window.scrollTo({ top, behavior });
+      // Reveal page after scroll position is set
+      document.documentElement.classList.remove('scroll-pending');
     } else if (Date.now() - start < maxWait) {
       requestAnimationFrame(attempt);
+    } else {
+      // Timeout fallback — always reveal page
+      document.documentElement.classList.remove('scroll-pending');
     }
   };
   requestAnimationFrame(attempt);

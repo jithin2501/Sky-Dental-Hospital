@@ -21,6 +21,12 @@ html {
   scroll-padding-top: 80px;
 }
 
+/* Prevents home page flash when navigating to a section from another route */
+html.scroll-pending {
+  overflow: hidden;
+  visibility: hidden;
+}
+
 body {
   font-family: 'DM Sans', sans-serif;
   line-height: 1.6;
