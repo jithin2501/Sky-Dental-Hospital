@@ -95,7 +95,7 @@ function Header() {
               <Link to="/contact" className={location.pathname === '/contact' ? 'nav-active' : ''}>Contact</Link>
             </li>
             <li>
-              <Link to="/contact" className="cta-button">Book Appointment</Link>
+              <Link to="/book-appointment" className="cta-button" onClick={() => setMobileOpen(false)}>Book Appointment</Link>
             </li>
           </ul>
 

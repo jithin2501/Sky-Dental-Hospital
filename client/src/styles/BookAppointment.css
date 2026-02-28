@@ -1,0 +1,256 @@
+/* ============================================================
+   BookAppointment.css
+   ============================================================ */
+
+.book-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f8fb;
+}
+
+/* ── Banner ── */
+.book-page .banner-wrap {
+  width: 100%;
+  margin-top: 80px;
+}
+
+.book-page .banner {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.book-page .banner-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+.book-page .banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(4, 30, 50, 0.72) 0%,
+    rgba(0, 98, 167, 0.55) 100%
+  );
+}
+
+.book-page .banner-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.book-page .banner-content h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Book Section ── */
+.book-section {
+  flex: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 70px 24px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 52px;
+}
+
+/* ── Intro ── */
+.book-intro {
+  text-align: center;
+  max-width: 620px;
+}
+
+.book-tag {
+  display: inline-block;
+  background: #e8f3ff;
+  color: #0062a7;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 100px;
+  margin-bottom: 18px;
+}
+
+.book-intro h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: #071E2E;
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+
+.book-intro p {
+  font-size: 1.05rem;
+  color: #536878;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ── Row: cards side by side ── */
+.book-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 30px rgba(0, 62, 120, 0.09);
+  overflow: hidden;
+}
+
+/* ── Vertical divider between cards ── */
+.book-divider {
+  width: 1px;
+  background: #dae6f0;
+  flex-shrink: 0;
+  margin: 32px 0;
+}
+
+/* ── Card ── */
+.book-card {
+  flex: 1;
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ── Icon wrapper ── */
+.book-card__icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.book-card--primary .book-card__icon-wrap {
+  background: #0062a7;
+  box-shadow: 0 6px 20px rgba(0, 98, 167, 0.25);
+}
+
+.book-card--primary .book-card__icon-wrap svg {
+  width: 28px;
+  height: 28px;
+  stroke: #ffffff;
+}
+
+.book-card--hours .book-card__icon-wrap {
+  background: #e8f3ff;
+}
+
+.book-card--hours .book-card__icon-wrap svg {
+  width: 28px;
+  height: 28px;
+  stroke: #0062a7;
+}
+
+/* ── Label ── */
+.book-card__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8aa4b8;
+  margin: 0 0 12px;
+}
+
+/* ── Phone number ── */
+.book-card__number {
+  font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+  font-weight: 800;
+  color: #071E2E;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  margin-bottom: 10px;
+}
+
+.book-card__number:hover {
+  color: #0062a7;
+}
+
+.book-card__hint {
+  font-size: 0.83rem;
+  color: #8aa4b8;
+  margin: 0;
+}
+
+/* ── Hours list ── */
+.book-hours-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.book-hours-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 11px 0;
+  font-size: 0.95rem;
+  color: #3a5265;
+  border-bottom: 1px solid #eaf1f8;
+}
+
+.book-hours-list li:last-child {
+  border-bottom: none;
+}
+
+.book-hours-list li span:first-child {
+  font-weight: 600;
+  color: #071E2E;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .book-page .banner {
+    height: 220px;
+    margin-top: 70px;
+  }
+
+  .book-section {
+    padding: 48px 16px 60px;
+    gap: 36px;
+  }
+
+  .book-row {
+    flex-direction: column;
+    border-radius: 16px;
+  }
+
+  .book-divider {
+    width: auto;
+    height: 1px;
+    margin: 0 32px;
+  }
+
+  .book-card {
+    padding: 36px 24px;
+  }
+}

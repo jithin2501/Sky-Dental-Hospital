@@ -9,6 +9,7 @@ import DoctorProfile from './pages/DoctorProfile';
 import ServiceDetail from './pages/ServiceDetail';
 import FacilityDetail from './pages/FacilityDetail';
 import ReviewPage from './pages/ReviewPage';
+import BookAppointment from './pages/BookAppointment';
 
 import AdminContact       from './admin/admincontact';
 import UserManagement     from './admin/usermanagement';
@@ -62,6 +63,7 @@ function App() {
         <Route path="/services/:slug" element={<ServiceDetail />} />
         <Route path="/facility/:slug" element={<FacilityDetail />} />
         <Route path="/leave-review" element={<ReviewPage />} />
+        <Route path="/book-appointment" element={<BookAppointment />} />
 
         <Route path="/admin/login" element={<LoginRoute />} />
 
