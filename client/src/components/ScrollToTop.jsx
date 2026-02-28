@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
-  const prevPathRef = useRef(sessionStorage.getItem('prevPath') || '');
+  const prevPathRef = useRef(pathname);
 
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
@@ -13,44 +13,22 @@ function ScrollToTop() {
     const prev = prevPathRef.current;
 
     if (pathname !== '/') {
+      // Going to any sub page — always scroll to top
       window.scrollTo({ top: 0, behavior: 'instant' });
-    } 
-    else if (pathname === '/') {
-      let targetId = null;
-
-      if (prev.startsWith('/about')) targetId = 'about';
-      else if (prev.startsWith('/team')) targetId = 'team';
-      else if (prev.startsWith('/services')) targetId = 'services';
-      else if (prev.startsWith('/facility')) targetId = 'facilities';
-
-      if (targetId) {
-        const tryScroll = (retries = 30) => {
-          const element = document.getElementById(targetId);
-          if (element) {
-            // Use a smaller offset for 'services' so it doesn't overshoot into the team section
-            const headerOffset = targetId === 'services' ? 10 : 90;
-
-            const bodyRect = document.body.getBoundingClientRect().top;
-            const elementRect = element.getBoundingClientRect().top;
-            const elementPosition = elementRect - bodyRect;
-            const offsetPosition = elementPosition - headerOffset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'instant'
-            });
-          } else if (retries > 0) {
-            setTimeout(() => tryScroll(retries - 1), 50);
-          }
-        };
-        tryScroll();
-      } else {
-        window.scrollTo({ top: 0, behavior: 'instant' });
+    } else if (pathname === '/') {
+      // Coming back to home via browser back button
+      // Only set target if Header hasn't already queued one
+      const hasHeaderTarget = sessionStorage.getItem('scrollTo');
+      if (!hasHeaderTarget) {
+        if (prev.startsWith('/services/'))  sessionStorage.setItem('scrollTo', 'services');
+        else if (prev.startsWith('/about')) sessionStorage.setItem('scrollTo', 'about');
+        else if (prev.startsWith('/team/'))  sessionStorage.setItem('scrollTo', 'team');
+        else if (prev.startsWith('/facility')) sessionStorage.setItem('scrollTo', 'facilities');
       }
+      // Header.jsx useEffect picks up scrollTo and scrolls to the right section
     }
 
     prevPathRef.current = pathname;
-    sessionStorage.setItem('prevPath', pathname);
   }, [pathname]);
 
   return null;

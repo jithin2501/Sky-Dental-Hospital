@@ -3,14 +3,16 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../styles/Header.css';
 import '../styles/MobileMenu.css';
 
-// Polls for an element by id and scrolls to it once found
 function scrollWhenReady(id, behavior = 'smooth', maxWait = 3000) {
   const start = Date.now();
   const attempt = () => {
     const el = document.getElementById(id);
     if (el) {
       const headerHeight = document.querySelector('header')?.offsetHeight || 80;
-      const top = el.getBoundingClientRect().top + window.scrollY - headerHeight;
+      // Extra offset per section to fine-tune landing position
+      const extraOffsets = { services: -80, about: 0, facilities: 0, team: 0, reviews: 0 };
+      const extra = extraOffsets[id] ?? 0;
+      const top = el.getBoundingClientRect().top + window.scrollY - headerHeight - extra;
       window.scrollTo({ top, behavior });
     } else if (Date.now() - start < maxWait) {
       requestAnimationFrame(attempt);
@@ -34,7 +36,6 @@ function Header() {
   const scrollTo = (id) => {
     setMobileOpen(false);
     if (location.pathname !== '/') {
-      // Navigate via React Router (no full reload), then poll for element
       sessionStorage.setItem('scrollTo', id);
       navigate('/');
     } else {
@@ -51,13 +52,11 @@ function Header() {
     }
   };
 
-  // Runs whenever we land on '/' — picks up the stored scroll target
   useEffect(() => {
     if (location.pathname === '/') {
       const target = sessionStorage.getItem('scrollTo');
       if (target) {
         sessionStorage.removeItem('scrollTo');
-        // 'instant' so the user never sees the page scroll from the top
         scrollWhenReady(target, 'instant');
       }
     }
@@ -76,24 +75,12 @@ function Header() {
           </Link>
 
           <ul className="nav-links">
-            <li>
-              <button className="nav-btn" onClick={goHome}>Home</button>
-            </li>
-            <li>
-              <button className="nav-btn" onClick={() => scrollTo('about')}>About</button>
-            </li>
-            <li>
-              <button className="nav-btn" onClick={() => scrollTo('services')}>Services</button>
-            </li>
-            <li>
-              <button className="nav-btn" onClick={() => scrollTo('facilities')}>Facilities</button>
-            </li>
-            <li>
-              <button className="nav-btn" onClick={() => scrollTo('team')}>Team</button>
-            </li>
-            <li>
-              <button className="nav-btn" onClick={() => scrollTo('reviews')}>Reviews</button>
-            </li>
+            <li><button className="nav-btn" onClick={goHome}>Home</button></li>
+            <li><button className="nav-btn" onClick={() => scrollTo('about')}>About</button></li>
+            <li><button className="nav-btn" onClick={() => scrollTo('services')}>Services</button></li>
+            <li><button className="nav-btn" onClick={() => scrollTo('facilities')}>Facilities</button></li>
+            <li><button className="nav-btn" onClick={() => scrollTo('team')}>Team</button></li>
+            <li><button className="nav-btn" onClick={() => scrollTo('reviews')}>Reviews</button></li>
             <li>
               <Link to="/contact" className={location.pathname === '/contact' ? 'nav-active' : ''}>Contact</Link>
             </li>
@@ -112,7 +99,6 @@ function Header() {
         </nav>
       </header>
 
-      {/* Mobile Nav */}
       <div className={`mobile-nav ${mobileOpen ? 'open' : ''}`}>
         <button className="mobile-nav-close" onClick={() => setMobileOpen(false)}>✕</button>
         <button className="mobile-nav-btn" onClick={goHome}>Home</button>
