@@ -22,7 +22,7 @@ function ScrollToTop() {
       else if (prev.startsWith('/team')) targetId = 'team';
       else if (prev.startsWith('/services')) targetId = 'services';
       else if (prev.startsWith('/facility')) targetId = 'facilities';
-      else if (prev.startsWith('/contact')) targetId = 'services';
+      
 
       if (targetId) {
         const tryScroll = (retries = 30) => {
