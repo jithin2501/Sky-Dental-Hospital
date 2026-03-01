@@ -8,14 +8,14 @@ const branches = [
   {
     tag: 'Branch 01',
     name: 'Sky Dental Clinic',
-    mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.4!2d74.9!3d12.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zS2FuaGFuZ2Fk!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin',
+    mapUrl: 'https://maps.google.com/?q=12.38198782475644,75.07049084703496',
     address: 'Parappally, Kanhangad,\nKasaragod District, Kerala',
     services: ['General & Preventive', 'Dental Fillings', 'Cleaning & Whitening', 'Tooth Extractions'],
   },
   {
     tag: 'Branch 02',
     name: 'Sky Dental Hospital',
-    mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.4!2d74.98!3d12.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zS2FuaGFuZ2Fk!5e0!3m2!1sen!2sin!4v1600000000001!5m2!1sen!2sin',
+    mapUrl: 'ADD_BRANCH_02_GOOGLE_MAPS_LINK_HERE',
     address: 'Kanhangad Town,\nKasaragod District, Kerala',
     services: ['Dental Implants', 'Cosmetic Design', 'Orthodontics', 'Advanced Oral Surgery'],
   },
@@ -313,9 +313,6 @@ function About() {
         <div className="branches-grid">
           {branches.map((b, i) => (
             <div className="branch-card" key={i}>
-              <div className="branch-map">
-                <iframe src={b.mapSrc} allowFullScreen loading="lazy" title={b.name} />
-              </div>
               <div className="branch-body">
                 <div className="branch-head">
                   <div className="branch-icon">
@@ -350,7 +347,7 @@ function About() {
                     </div>
                   ))}
                 </div>
-                <a href="https://maps.google.com" target="_blank" rel="noreferrer" className="branch-map-link">
+                <a href={b.mapUrl} target="_blank" rel="noreferrer" className="branch-map-link">
                   View on Google Maps
                   <svg viewBox="0 0 24 24" fill="none" stroke="#088395" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
