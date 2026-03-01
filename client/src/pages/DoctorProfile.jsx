@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import '../styles/DoctorProfile.css';
+import '../styles/DoctorSection/DoctorProfile.css';
 
 function DoctorProfile() {
   const { id } = useParams();

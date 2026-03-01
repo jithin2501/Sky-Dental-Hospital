@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/AboutUs.css';
+import '../styles/AboutUs/AboutUs.css';
 
 function AboutSection() {
   return (

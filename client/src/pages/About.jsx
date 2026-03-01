@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import '../styles/About.css';
+import '../styles/AboutUs/About.css';
 
 const branches = [
   {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/ProvidersGrid.css';
+import '../styles/DoctorSection/ProvidersGrid.css';
 
 function ProvidersGrid() {
   const [doctors, setDoctors] = useState([]);

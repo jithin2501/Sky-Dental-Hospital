@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import OrthodonticsSlider from '../components/OrthodonticsSlider';
 import DentalImplantsSlider from '../components/DentalImplantsSlider';
 import CosmeticDentistrySlider from '../components/CosmeticDentistrySlider';
-import '../styles/ServiceDetail.css';
+import '../styles/serviceStyles/ServiceDetail.css';
 
 const serviceData = {
   'orthodontics': {

@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Facility.css';
+import '../styles/facility/Facility.css';
 
 export const originalFacilities = [
   {
