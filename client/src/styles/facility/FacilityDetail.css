@@ -11,25 +11,36 @@
 .fd-banner {
   position: relative;
   width: 100%;
-  height: 480px;
+  height: 520px;
   overflow: hidden;
 }
 
+.fd-banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background: linear-gradient(to bottom, transparent, #f8fafc);
+  z-index: 3;
+}
+
 .fd-banner-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center top;
+  z-index: 0;
 }
 
 .fd-banner-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(10, 61, 92, 0.45) 0%,
-    rgba(10, 61, 92, 0.75) 100%
-  );
+  background: rgba(0, 0, 0, 0.40);
+  z-index: 1;
 }
 
 .fd-banner-content {
@@ -41,15 +52,16 @@
   justify-content: center;
   text-align: center;
   padding: 0 2rem;
+  z-index: 2;
 }
 
 .fd-banner-content h1 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.2rem, 5vw, 3.8rem);
-  font-weight: 800;
+  font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.01em;
-  line-height: 1.15;
+  line-height: 1.05;
 }
 
 /* ── Body ────────────────────────────────────────────────────────────── */
@@ -242,6 +254,10 @@
 
 /* ── Responsive ──────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
+  .fd-banner {
+    height: 360px;
+  }
+
   .fd-intro {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -253,10 +269,6 @@
 
   .fd-detail-grid {
     grid-template-columns: 1fr;
-  }
-
-  .fd-banner {
-    height: 320px;
   }
 }
 
