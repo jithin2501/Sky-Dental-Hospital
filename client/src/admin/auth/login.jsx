@@ -18,27 +18,18 @@ const EyeIcon = ({ open }) => open ? (
 );
 
 const Login = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername]         = useState('');
+    const [password, setPassword]         = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading]           = useState(false);
+    const [error, setError]               = useState('');
     const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        setError('');
+        setLoading(true);
 
-        // 1. Check Superadmin credentials from .env
-        const superUser = process.env.REACT_APP_ADMIN_USERNAME;
-        const superPass = process.env.REACT_APP_ADMIN_PASSWORD;
-
-        if (username === superUser && password === superPass) {
-            localStorage.setItem('isAdminAuthenticated', 'true');
-            localStorage.setItem('userRole', 'Superadmin');
-            localStorage.setItem('username', username);
-            navigate('/admin');
-            return;
-        }
-
-        // 2. Check Database for regular Admins
         try {
             const response = await fetch('http://localhost:5000/api/users/login', {
                 method: 'POST',
@@ -49,16 +40,20 @@ const Login = () => {
             const data = await response.json();
 
             if (response.ok) {
+                localStorage.setItem('token', data.token);
                 localStorage.setItem('isAdminAuthenticated', 'true');
-                localStorage.setItem('userRole', 'Admin');
-                localStorage.setItem('username', data.username);
+                localStorage.setItem('userRole', data.user.role);
+                localStorage.setItem('username', data.user.username);
+                localStorage.setItem('lastLogin', new Date().toISOString()); // ✅ store login time
                 navigate('/admin');
             } else {
-                alert(data.message || 'Invalid Credentials!');
+                setError(data.message || 'Invalid credentials');
             }
-        } catch (error) {
-            console.error("Login error:", error);
-            alert('Connection failed. Is the backend server running?');
+        } catch (err) {
+            console.error('Login error:', err);
+            setError('Connection failed. Is the backend server running?');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -70,6 +65,13 @@ const Login = () => {
                 <i style={{ "--clr": "#fffd44" }}></i>
                 <form className="login-box" onSubmit={handleLogin}>
                     <h2>Admin Login</h2>
+
+                    {error && (
+                        <p style={{ color: '#ff4d4d', margin: 0, fontSize: '0.9em', textAlign: 'center' }}>
+                            {error}
+                        </p>
+                    )}
+
                     <div className="inputBx">
                         <input
                             type="text"
@@ -77,6 +79,7 @@ const Login = () => {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
+                            autoComplete="username"
                         />
                     </div>
                     <div className="inputBx password-wrapper">
@@ -86,6 +89,7 @@ const Login = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
+                            autoComplete="current-password"
                         />
                         {password && (
                             <button
@@ -99,7 +103,11 @@ const Login = () => {
                         )}
                     </div>
                     <div className="inputBx">
-                        <input type="submit" value="Sign in" />
+                        <input
+                            type="submit"
+                            value={loading ? 'Signing in…' : 'Sign in'}
+                            disabled={loading}
+                        />
                     </div>
                 </form>
             </div>

@@ -15,7 +15,13 @@ app.use('/api/media',           require('./routes/mediaRoutes'));
 app.use('/api/doctors',         require('./routes/doctorRoutes'));
 app.use('/api/doctor-profiles', require('./routes/doctorProfileRoutes'));
 app.use('/api/reviews',         require('./routes/reviewRoutes'));
-app.use('/api/analytics',       require('./routes/analyticsRoutes')); // ✅ Analytics
+app.use('/api/analytics',       require('./routes/analyticsRoutes'));
+
+// Global error handler — must be last
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(err.status || 500).json({ message: err.message || 'Internal Server Error' });
+});
 
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
