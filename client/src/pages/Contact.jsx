@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import '../styles/Contact.css';
+import '../styles/Contact Page/Contact.css';
 
 function Contact() {
   const [zoom, setZoom] = useState(1);

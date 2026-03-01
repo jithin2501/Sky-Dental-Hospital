@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import '../styles/VideoSection.css';
+import '../styles/Virtual Tour/VideoSection.css';
 
 function VideoSection() {
   const videoRef = useRef(null);

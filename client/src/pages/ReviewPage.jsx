@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/ReviewPage.css';
+import '../styles/Reviews/ReviewPage.css';
 
 const MAX_WORDS = 25;
 

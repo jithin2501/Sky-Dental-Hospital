@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Ceo.css';
+import '../styles/Ceo Page/Ceo.css';
 
 function CEOSection() {
   return (
