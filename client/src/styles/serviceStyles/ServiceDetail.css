@@ -3,13 +3,12 @@
   min-height: 100vh;
 }
 
-/* ── Banner ── */
+/* ── Banner ─────────────────────────────────────────────────────────── */
 .banner-wrap {
   position: relative;
   width: 100%;
   overflow: hidden;
 }
-
 .banner-wrap::after {
   content: '';
   position: absolute;
@@ -18,7 +17,6 @@
   background: linear-gradient(to bottom, transparent, #eff9ff);
   z-index: 3;
 }
-
 .banner {
   position: relative;
   width: 100%;
@@ -27,7 +25,6 @@
   align-items: center;
   justify-content: center;
 }
-
 .banner-bg-img {
   position: absolute;
   inset: 0;
@@ -37,29 +34,18 @@
   object-position: center top;
   z-index: 0;
 }
-
 .banner-overlay {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.42);
   z-index: 1;
 }
-
 .banner-content {
   position: relative;
   z-index: 2;
   text-align: center;
   padding: 0 20px;
 }
-
-.banner-breadcrumb {
-  font-size: 14px;
-  color: rgba(255,255,255,0.7);
-  margin-bottom: 12px;
-}
-
-.banner-breadcrumb span:hover { color: #fff; text-decoration: underline; }
-
 .banner-content h1 {
   font-family: 'Playfair Display', serif;
   font-size: 54px;
@@ -69,12 +55,7 @@
   margin-bottom: 12px;
 }
 
-.banner-tagline {
-  font-size: 18px;
-  color: rgba(255,255,255,0.85);
-}
-
-/* ── Main Section ── */
+/* ── Main Section ────────────────────────────────────────────────────── */
 .sd-section {
   max-width: 1100px;
   margin: 0 auto;
@@ -84,17 +65,13 @@
   gap: 80px;
 }
 
-/* ── About: text LEFT, image RIGHT ── */
+/* ── About intro ─────────────────────────────────────────────────────── */
 .sd-intro {
   display: flex;
   align-items: center;
   gap: 60px;
 }
-
-.sd-intro-text {
-  flex: 1;
-}
-
+.sd-intro-text { flex: 1; }
 .sd-intro-text h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;
@@ -102,18 +79,13 @@
   color: #0A3D5C;
   margin-bottom: 16px;
 }
-
-.sd-intro-text h2 .highlight {
-  color: #088395;
-}
-
+.sd-intro-text h2 .highlight { color: #088395; }
 .sd-intro-text p {
   font-size: 15px;
   color: #5A6A78;
   line-height: 1.8;
   margin-bottom: 28px;
 }
-
 .sd-cta-btn {
   padding: 13px 32px;
   background: linear-gradient(135deg, #088395, #05BFDB);
@@ -125,10 +97,8 @@
   cursor: pointer;
   font-family: 'DM Sans', sans-serif;
 }
-
 .sd-cta-btn:hover { opacity: 0.9; }
 
-/* ── Image RIGHT side ── */
 .sd-intro-img {
   flex: 0 0 420px;
   width: 420px;
@@ -137,14 +107,12 @@
   overflow: hidden;
   box-shadow: 0 12px 40px rgba(10,61,92,0.12);
 }
-
 .sd-intro-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
-
 .sd-img-placeholder {
   width: 100%;
   height: 100%;
@@ -159,7 +127,124 @@
   border: 2px dashed #b0d4de;
 }
 
-/* ── Features ── */
+/* ══════════════════════════════════════════════════════════════════════
+   SUB-SERVICE DETAIL SECTION
+══════════════════════════════════════════════════════════════════════ */
+.sd-subdetail {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+/* ── Alternating cards ───────────────────────────────────────────────── */
+.sd-sub-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.sd-sub-card {
+  display: flex;
+  align-items: center;
+  gap: 52px;
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(10,61,92,0.08);
+  transition: box-shadow 0.3s ease;
+}
+.sd-sub-card:hover {
+  box-shadow: 0 16px 56px rgba(10,61,92,0.13);
+}
+
+.sd-sub-card--reverse {
+  flex-direction: row-reverse;
+}
+
+/* Image side */
+.sd-sub-card-img {
+  position: relative;
+  flex: 0 0 380px;
+  min-height: 300px;
+  overflow: hidden;
+  align-self: stretch;
+}
+.sd-sub-card-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.sd-sub-card:hover .sd-sub-card-img img {
+  transform: scale(1.04);
+}
+.sd-sub-card-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(8,131,149,0.18), rgba(10,61,92,0.25));
+  z-index: 1;
+}
+.sd-sub-card-badge {
+  display: none; /* shown on mobile only */
+}
+
+/* Text side */
+.sd-sub-card-body {
+  flex: 1;
+  padding: 36px 40px 36px 0;
+}
+.sd-sub-card--reverse .sd-sub-card-body {
+  padding: 36px 0 36px 40px;
+}
+.sd-sub-card-body h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #0A3D5C;
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+.sd-sub-card-body p {
+  font-size: 14.5px;
+  color: #5A6A78;
+  line-height: 1.78;
+  margin-bottom: 20px;
+}
+
+/* Bullet list */
+.sd-sub-card-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sd-sub-card-bullets li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #1C2B3A;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.sd-bullet-dot {
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #088395, #05BFDB);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Sub-service card "See Process" btn — removed */
+
+/* ══════════════════════════════════════════════════════════════════════
+   LEGACY FLAT LAYOUT (old slugs)
+══════════════════════════════════════════════════════════════════════ */
 .sd-features h3,
 .sd-process h3 {
   font-family: 'Playfair Display', serif;
@@ -169,13 +254,11 @@
   margin-bottom: 30px;
   text-align: center;
 }
-
 .sd-features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
-
 .sd-feature-item {
   background: #fff;
   border-radius: 12px;
@@ -188,7 +271,6 @@
   font-weight: 500;
   box-shadow: 0 4px 16px rgba(10,61,92,0.06);
 }
-
 .sd-feature-check {
   width: 28px;
   height: 28px;
@@ -202,14 +284,11 @@
   font-weight: 700;
   flex-shrink: 0;
 }
-
-/* ── Process ── */
 .sd-process-steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
-
 .sd-step {
   background: #fff;
   border-radius: 16px;
@@ -217,7 +296,6 @@
   text-align: center;
   box-shadow: 0 4px 20px rgba(10,61,92,0.07);
 }
-
 .sd-step-num {
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;
@@ -227,19 +305,8 @@
   line-height: 1;
   margin-bottom: 12px;
 }
-
-.sd-step h4 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #0A3D5C;
-  margin-bottom: 10px;
-}
-
-.sd-step p {
-  font-size: 13.5px;
-  color: #5A6A78;
-  line-height: 1.65;
-}
+.sd-step h4 { font-size: 1rem; font-weight: 700; color: #0A3D5C; margin-bottom: 10px; }
+.sd-step p { font-size: 13.5px; color: #5A6A78; line-height: 1.65; }
 
 .sd-back-btn {
   margin-top: 20px;
@@ -252,17 +319,49 @@
   cursor: pointer;
 }
 
-/* ── Responsive ── */
+/* ── Responsive ──────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .banner-content h1 { font-size: 38px; }
   .sd-intro { flex-direction: column; }
   .sd-intro-img { flex: none; width: 100%; height: 240px; }
   .sd-features-grid { grid-template-columns: repeat(2, 1fr); }
   .sd-process-steps { grid-template-columns: repeat(2, 1fr); }
+
+  .sd-sub-card,
+  .sd-sub-card--reverse {
+    flex-direction: column;
+  }
+  .sd-sub-card-img {
+    flex: none;
+    width: 100%;
+    height: 240px;
+    position: relative;
+  }
+  .sd-sub-card-body,
+  .sd-sub-card--reverse .sd-sub-card-body {
+    padding: 28px 28px 32px;
+  }
+  .sd-sub-card-badge {
+    display: block;
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    z-index: 2;
+    background: rgba(0,0,0,0.55);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 50px;
+    backdrop-filter: blur(6px);
+  }
+
+
 }
 
 @media (max-width: 560px) {
+  .sd-section { padding: 50px 20px 80px; }
   .sd-features-grid { grid-template-columns: 1fr; }
   .sd-process-steps { grid-template-columns: 1fr; }
-  .sd-section { padding: 50px 20px 80px; }
+
 }

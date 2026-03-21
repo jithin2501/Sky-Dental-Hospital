@@ -4,28 +4,28 @@ import '../styles/serviceStyles/Services.css';
 
 const services = [
   {
-    title: 'Orthodontics',
-    slug: 'orthodontics',
+    title: 'Smile Makeover',
+    slug: 'smile-makeover',
+    img: '/images/Our Services/Smile Makeover.png',
+    desc: 'Transform your smile with our comprehensive makeover treatments — from veneers and whitening to full aesthetic restorations tailored to you.'
+  },
+  {
+    title: 'Braces & Invisalign',
+    slug: 'braces-invisalign',
     img: '/images/Our Services/braces.png',
-    desc: 'We use advanced orthodontic techniques to gradually move your teeth into alignment, improve your bite, and enhance dental health.'
+    desc: 'Straighten your teeth discreetly with modern braces and clear aligner systems tailored to your lifestyle and dental goals.'
   },
   {
-    title: 'Dental Implants & Restorations',
-    slug: 'dental-implants-restorations',
+    title: 'Implants & Restorative Care',
+    slug: 'implants-restorative-care',
     img: '/images/Our Services/dental-surgery.png',
-    desc: 'Professional dental implant and restoration treatments designed to replace missing teeth and restore your smile with natural-looking results.'
+    desc: 'Replace missing teeth permanently and restore full dental function with implants, root canal treatments, and digital smile solutions.'
   },
   {
-    title: 'Pediatric Dentistry',
-    slug: 'pediatric-dentistry',
-    img: '/images/Our Services/pediatric.png',
-    desc: 'Specialized dental care for children, ensuring their oral health is maintained with gentle, child-friendly treatments.'
-  },
-  {
-    title: 'Cosmetic Dentistry',
-    slug: 'cosmetic-dentistry',
+    title: 'Cosmetic & Advanced Dentistry',
+    slug: 'cosmetic-advanced-dentistry',
     img: '/images/Our Services/facelift.png',
-    desc: 'Expert cosmetic dentistry treatments to enhance the appearance of your smile with veneers, crowns, and other aesthetic procedures.'
+    desc: 'From cosmetic enhancements to laser dentistry and full mouth rehabilitation — advanced care for a healthier, more beautiful smile.'
   }
 ];
 
