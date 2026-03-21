@@ -15,7 +15,6 @@
   background: #e2e8f0;
 }
 
-/* ── Images ──────────────────────────────────────────────────────────── */
 .cd-comparison-image {
   position: absolute;
   inset: 0;
@@ -26,21 +25,21 @@
   pointer-events: none;
 }
 
-.cd-image-before {
+/* AFTER — base layer, always visible, sits below */
+.cd-image-after-base {
   z-index: 5;
 }
 
-.cd-image-after {
+/* BEFORE — top layer, clipped to left portion, reveals AFTER underneath as slider moves right */
+.cd-image-before-clip {
   z-index: 10;
   clip-path: inset(0 calc(100% - var(--slider-pos)) 0 0);
   transition: clip-path 0.01s linear;
 }
 
-/* ── Divider line & handle ───────────────────────────────────────────── */
 .cd-slider-handle {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 0; bottom: 0;
   left: var(--slider-pos);
   width: 3px;
   background: #ffffff;
@@ -65,12 +64,8 @@
   flex-shrink: 0;
 }
 
-.cd-handle-button svg {
-  width: 22px;
-  height: 22px;
-}
+.cd-handle-button svg { width: 22px; height: 22px; }
 
-/* ── Labels ──────────────────────────────────────────────────────────── */
 .cd-label {
   position: absolute;
   bottom: 1.2rem;
@@ -90,7 +85,6 @@
 .cd-label-before { left: 1.2rem; }
 .cd-label-after  { right: 1.2rem; }
 
-/* ── Hidden range input ──────────────────────────────────────────────── */
 .cd-slider-input {
   position: absolute;
   inset: 0;
