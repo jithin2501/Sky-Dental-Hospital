@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import '../styles/serviceStyles/SmileMakeoverSlider.css';
+import '../../styles/serviceStyles/SmileMakeoverSlider.css';
 
-const BEFORE_IMG = '/images/services/Smile Makeover before.png';
-const AFTER_IMG = '/images/services/Smile Makeover after.png';
+const BEFORE_IMG = '/images/services/Smile Makeover after.png';
+const AFTER_IMG  = '/images/services/Smile Makeover before.png';
 
 function SmileMakeoverSlider({
   beforeSrc   = BEFORE_IMG,

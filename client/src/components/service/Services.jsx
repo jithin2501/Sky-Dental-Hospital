@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/serviceStyles/Services.css';
+import '../../styles/serviceStyles/Services.css';
 
 const services = [
   {

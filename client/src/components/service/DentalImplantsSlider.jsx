@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/serviceStyles/DentalImplantsSlider.css';
+import '../../styles/serviceStyles/DentalImplantsSlider.css';
 
 const BEFORE_IMG = '/images/services/Dental Restorations.png';
 const AFTER_IMG  = '/images/services/Dental Implants.png';

@@ -2,10 +2,10 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import OrthodonticsSlider from '../components/OrthodonticsSlider';
-import DentalImplantsSlider from '../components/DentalImplantsSlider';
-import CosmeticDentistrySlider from '../components/CosmeticDentistrySlider';
-import SmileMakeoverSlider from '../components/SmileMakeoverSlider';
+import OrthodonticsSlider from '../components/service/OrthodonticsSlider';
+import DentalImplantsSlider from '../components/service/DentalImplantsSlider';
+import CosmeticDentistrySlider from '../components/service/CosmeticDentistrySlider';
+import SmileMakeoverSlider from '../components/service/SmileMakeoverSlider';
 import '../styles/serviceStyles/ServiceDetail.css';
 
 const serviceData = {
@@ -17,12 +17,12 @@ const serviceData = {
     aboutImg: null,
     banner: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1400&q=80',
     tagline: 'Your Dream Smile, Crafted With Precision',
-    desc: 'A smile makeover combines multiple cosmetic and restorative treatments to completely transform your smile. Our specialists design a personalised plan based on your facial features, preferences, and dental health.Our specialists design a personalised plan based on your facial features, preferences, and dental health.Our specialists design a personalised plan based on your facial features, preferences, and dental health.',
+    desc: 'A smile makeover combines multiple cosmetic and restorative treatments to completely transform your smile. Our specialists design a personalised plan based on your facial features, preferences, and dental health.',
     process: [
-      { step: '01', title: 'Smile Assessment',  desc: 'We evaluate your current smile, discuss your goals, and take digital photos.' },
-      { step: '02', title: 'Design Preview',    desc: 'A digital mock-up lets you visualise your new smile before any treatment begins.' },
-      { step: '03', title: 'Treatment',         desc: 'Each procedure is carried out in a planned sequence for optimal results.' },
-      { step: '04', title: 'Final Reveal',      desc: 'Your stunning new smile is revealed and maintained with follow-up care.' },
+      { step: '01', title: 'Smile Assessment', desc: 'We evaluate your current smile, discuss your goals, and take digital photos.' },
+      { step: '02', title: 'Design Preview',   desc: 'A digital mock-up lets you visualise your new smile before any treatment begins.' },
+      { step: '03', title: 'Treatment',        desc: 'Each procedure is carried out in a planned sequence for optimal results.' },
+      { step: '04', title: 'Final Reveal',     desc: 'Your stunning new smile is revealed and maintained with follow-up care.' },
     ],
     subServices: [
       {
@@ -106,7 +106,7 @@ const serviceData = {
       {
         name: 'Teeth Whitening',
         icon: '/images/Service_subServices/Teeth Whitening.png',
-        img: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80',
+        img: '/images/Service_img/Teeth-Whitening.jpg',
         desc: 'Professional-grade whitening that lifts stains and brightens your smile several shades in just one visit.',
         bullets: [
           'In-chair & take-home options',
@@ -118,7 +118,7 @@ const serviceData = {
       {
         name: 'Kids & Teen Dental Care',
         icon: '/images/Service_subServices/Kids Teen Dental Care.png',
-        img: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80',
+        img: '/images/Service_img/Kids-Teen-Dental-Care.jpg',
         desc: 'Friendly, age-appropriate dental care that builds healthy habits early and makes every visit something kids look forward to.',
         bullets: [
           'Gentle, child-friendly techniques',
@@ -130,7 +130,7 @@ const serviceData = {
       {
         name: 'Crown & Bridge Dentistry',
         icon: '/images/Service_subServices/Crown Bridge Dentistry.png',
-        img: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=800&q=80',
+        img: '/images/Service_img/Crown-Bridge-Dentistry.jpg',
         desc: 'Durable, natural-looking crowns and bridges that restore broken or missing teeth with a seamless aesthetic fit.',
         bullets: [
           'Porcelain, zirconia & metal-fused options',
@@ -160,7 +160,7 @@ const serviceData = {
       {
         name: 'Dental Implants',
         icon: '/images/Service_subServices/Dental Implants.png',
-        img: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=800&q=80',
+        img: '/images/Service_img/Dental-Implants.jpg',
         desc: 'Titanium implants that permanently replace missing teeth roots, topped with lifelike crowns for a complete, lasting restoration.',
         bullets: [
           'Single, multiple & full-arch implants',
@@ -172,7 +172,7 @@ const serviceData = {
       {
         name: 'Root Canal Treatment',
         icon: '/images/Service_subServices/Root Canal Treatment.png',
-        img: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80',
+        img: '/images/Service_img/Root-Canal-Treatment.jpg',
         desc: 'Modern root canal treatment that saves infected teeth, relieves pain, and keeps your natural smile intact.',
         bullets: [
           'Painless with modern anaesthesia',
@@ -184,7 +184,7 @@ const serviceData = {
       {
         name: 'Digital Smile Designing',
         icon: '/images/Service_subServices/Digital Smile Designing.png',
-        img: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80',
+        img: '/images/Service_img/Digital-Smile-Designing.jpg',
         desc: 'Advanced digital technology that lets you preview and co-design your perfect smile before a single treatment begins.',
         bullets: [
           'Digital photographs & facial analysis',
@@ -205,16 +205,16 @@ const serviceData = {
     tagline: 'Advanced Care for an Extraordinary Smile',
     desc: 'From precision cosmetic procedures to cutting-edge laser dentistry and comprehensive full mouth rehabilitation, our advanced dentistry services combine artistry and technology for outstanding, long-lasting results.',
     process: [
-      { step: '01', title: 'Smile Analysis',  desc: 'We assess your smile and understand your aesthetic and functional goals.' },
-      { step: '02', title: 'Design',          desc: 'A digital smile preview is created so you can see results before treatment.' },
-      { step: '03', title: 'Procedure',       desc: 'Advanced treatments are carried out with precision, artistry, and care.' },
-      { step: '04', title: 'Reveal',          desc: 'Your new smile is revealed — brighter, healthier, and more beautiful.' },
+      { step: '01', title: 'Smile Analysis', desc: 'We assess your smile and understand your aesthetic and functional goals.' },
+      { step: '02', title: 'Design',         desc: 'A digital smile preview is created so you can see results before treatment.' },
+      { step: '03', title: 'Procedure',      desc: 'Advanced treatments are carried out with precision, artistry, and care.' },
+      { step: '04', title: 'Reveal',         desc: 'Your new smile is revealed — brighter, healthier, and more beautiful.' },
     ],
     subServices: [
       {
         name: 'Cosmetic Dentistry',
         icon: '/images/Service_subServices/Cosmetic Dentistry.png',
-        img: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80',
+        img: '/images/Service_img/Cosmetic-Dentistry.jpg',
         desc: 'A wide range of aesthetic treatments that refine, reshape, and rejuvenate your smile with expert artistry.',
         bullets: [
           'Veneers, bonding & contouring',
@@ -226,7 +226,7 @@ const serviceData = {
       {
         name: 'Surgery',
         icon: '/images/Service_subServices/Surgery.png',
-        img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+        img: '/images/Service_img/Surgery.jpg',
         desc: 'Specialist oral surgical procedures performed with precision, from wisdom teeth to complex reconstructive surgery.',
         bullets: [
           'Wisdom tooth & complex extractions',
@@ -238,7 +238,7 @@ const serviceData = {
       {
         name: 'Laser Dentistry',
         icon: '/images/Service_subServices/Laser Dentistry.png',
-        img: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80',
+        img: '/images/Service_img/Laser-Dentistry.jpg',
         desc: 'Minimally invasive laser treatments that replace drills and scalpels for faster healing and less discomfort.',
         bullets: [
           'Gum contouring & recontouring',
@@ -250,7 +250,7 @@ const serviceData = {
       {
         name: 'Full Mouth Rehabilitation',
         icon: '/images/Service_subServices/Full Mouth Rehabilitation.png',
-        img: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=800&q=80',
+        img: '/images/Service_img/Full-Mouth-Rehabilitation.jpg',
         desc: 'A complete, phased rebuilding of your entire mouth — restoring function, health, comfort, and aesthetics simultaneously.',
         bullets: [
           'Complete bite reconstruction',
@@ -425,8 +425,8 @@ function ServiceDetail() {
     if (service.useSlider && slug === 'smile-makeover') {
       return (
         <SmileMakeoverSlider
-          beforeSrc='/images/services/Smile Makeover before.png'
-          afterSrc='/images/services/Smile Makeover after.png'
+          beforeSrc='/images/services/Smile Makeover after.png'
+          afterSrc='/images/services/Smile Makeover before.png'
           beforeLabel='Before'
           afterLabel='After'
         />

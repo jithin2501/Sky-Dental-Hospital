@@ -5,7 +5,7 @@ import AboutSection from '../components/AboutSection';
 import CEOSection from '../components/CEOSection';
 import VideoSection from '../components/VideoSection';
 import ProvidersGrid from '../components/ProvidersGrid';
-import Services from '../components/Services';
+import Services from '../components/service/Services';
 import FacilitiesSection from '../components/FacilitiesSection';
 import Testimonials from '../components/Testimonials';
 import Footer from '../components/Footer';
