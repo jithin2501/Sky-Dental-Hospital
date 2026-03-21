@@ -17,7 +17,7 @@ const serviceData = {
     aboutImg: null,
     banner: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1400&q=80',
     tagline: 'Your Dream Smile, Crafted With Precision',
-    desc: 'A smile makeover combines multiple cosmetic and restorative treatments to completely transform your smile. Our specialists design a personalised plan based on your facial features, preferences, and dental health.',
+    desc: 'A smile makeover combines multiple cosmetic and restorative treatments to completely transform your smile. Our specialists design a personalised plan based on your facial features, preferences, and dental health.Our specialists design a personalised plan based on your facial features, preferences, and dental health.Our specialists design a personalised plan based on your facial features, preferences, and dental health.',
     process: [
       { step: '01', title: 'Smile Assessment',  desc: 'We evaluate your current smile, discuss your goals, and take digital photos.' },
       { step: '02', title: 'Design Preview',    desc: 'A digital mock-up lets you visualise your new smile before any treatment begins.' },
@@ -27,8 +27,8 @@ const serviceData = {
     subServices: [
       {
         name: 'Sports Dentistry',
-        icon: '🏅',
-        img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80',
+        icon: '/images/Service_subServices/Sports Dentistry.png',
+        img: '/images/Service_img/Sports-Dentistry.jpg',
         desc: 'Protecting athletes\' smiles with custom-fitted mouthguards and emergency dental care for sports-related injuries.',
         bullets: [
           'Custom-fitted sports mouthguards',
@@ -39,8 +39,8 @@ const serviceData = {
       },
       {
         name: 'Dental Veneers',
-        icon: '✨',
-        img: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80',
+        icon: '/images/Service_subServices/Dental Veneers.png',
+        img: '/images/Service_img/dental-veneers.jpg',
         desc: 'Ultra-thin porcelain shells bonded to the front of your teeth to correct shape, colour, and alignment instantly.',
         bullets: [
           'Porcelain & composite veneer options',
@@ -51,8 +51,8 @@ const serviceData = {
       },
       {
         name: 'Scaling',
-        icon: '🦷',
-        img: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80',
+        icon: '/images/Service_subServices/scaling.png',
+        img: '/images/Service_img/Scaling.webp',
         desc: 'Deep professional cleaning that removes plaque, tartar and bacteria build-up from teeth and below the gumline.',
         bullets: [
           'Removes stubborn tartar & calculus',
@@ -63,8 +63,8 @@ const serviceData = {
       },
       {
         name: 'Filling',
-        icon: '🔬',
-        img: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=800&q=80',
+        icon: '/images/Service_subServices/filling.png',
+        img: '/images/Service_img/Filling.jpg',
         desc: 'Tooth-coloured composite fillings that restore decayed or damaged teeth with seamless, natural-looking results.',
         bullets: [
           'Tooth-coloured composite resin',
@@ -75,8 +75,8 @@ const serviceData = {
       },
       {
         name: 'Extraction',
-        icon: '🩺',
-        img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+        icon: '/images/Service_subServices/Extraction.png',
+        img: '/images/Service_img/Extraction.webp',
         desc: 'Safe, gentle tooth extractions — from simple removals to surgical wisdom tooth procedures — with minimal discomfort.',
         bullets: [
           'Simple & surgical extraction options',
@@ -105,7 +105,7 @@ const serviceData = {
     subServices: [
       {
         name: 'Teeth Whitening',
-        icon: '🌟',
+        icon: '/images/Service_subServices/Teeth Whitening.png',
         img: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80',
         desc: 'Professional-grade whitening that lifts stains and brightens your smile several shades in just one visit.',
         bullets: [
@@ -117,7 +117,7 @@ const serviceData = {
       },
       {
         name: 'Kids & Teen Dental Care',
-        icon: '👦',
+        icon: '/images/Service_subServices/Kids Teen Dental Care.png',
         img: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80',
         desc: 'Friendly, age-appropriate dental care that builds healthy habits early and makes every visit something kids look forward to.',
         bullets: [
@@ -129,7 +129,7 @@ const serviceData = {
       },
       {
         name: 'Crown & Bridge Dentistry',
-        icon: '👑',
+        icon: '/images/Service_subServices/Crown Bridge Dentistry.png',
         img: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=800&q=80',
         desc: 'Durable, natural-looking crowns and bridges that restore broken or missing teeth with a seamless aesthetic fit.',
         bullets: [
@@ -159,7 +159,7 @@ const serviceData = {
     subServices: [
       {
         name: 'Dental Implants',
-        icon: '🦷',
+        icon: '/images/Service_subServices/Dental Implants.png',
         img: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=800&q=80',
         desc: 'Titanium implants that permanently replace missing teeth roots, topped with lifelike crowns for a complete, lasting restoration.',
         bullets: [
@@ -171,7 +171,7 @@ const serviceData = {
       },
       {
         name: 'Root Canal Treatment',
-        icon: '🔬',
+        icon: '/images/Service_subServices/Root Canal Treatment.png',
         img: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80',
         desc: 'Modern root canal treatment that saves infected teeth, relieves pain, and keeps your natural smile intact.',
         bullets: [
@@ -183,7 +183,7 @@ const serviceData = {
       },
       {
         name: 'Digital Smile Designing',
-        icon: '💻',
+        icon: '/images/Service_subServices/Digital Smile Designing.png',
         img: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80',
         desc: 'Advanced digital technology that lets you preview and co-design your perfect smile before a single treatment begins.',
         bullets: [
@@ -213,7 +213,7 @@ const serviceData = {
     subServices: [
       {
         name: 'Cosmetic Dentistry',
-        icon: '✨',
+        icon: '/images/Service_subServices/Cosmetic Dentistry.png',
         img: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80',
         desc: 'A wide range of aesthetic treatments that refine, reshape, and rejuvenate your smile with expert artistry.',
         bullets: [
@@ -225,7 +225,7 @@ const serviceData = {
       },
       {
         name: 'Surgery',
-        icon: '🔬',
+        icon: '/images/Service_subServices/Surgery.png',
         img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
         desc: 'Specialist oral surgical procedures performed with precision, from wisdom teeth to complex reconstructive surgery.',
         bullets: [
@@ -237,7 +237,7 @@ const serviceData = {
       },
       {
         name: 'Laser Dentistry',
-        icon: '⚡',
+        icon: '/images/Service_subServices/Laser Dentistry.png',
         img: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80',
         desc: 'Minimally invasive laser treatments that replace drills and scalpels for faster healing and less discomfort.',
         bullets: [
@@ -249,7 +249,7 @@ const serviceData = {
       },
       {
         name: 'Full Mouth Rehabilitation',
-        icon: '🦷',
+        icon: '/images/Service_subServices/Full Mouth Rehabilitation.png',
         img: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=800&q=80',
         desc: 'A complete, phased rebuilding of your entire mouth — restoring function, health, comfort, and aesthetics simultaneously.',
         bullets: [
@@ -330,10 +330,13 @@ function SubServiceSection({ subServices }) {
           <div className="sd-sub-card-img">
             <img src={sub.img} alt={sub.name} />
             <div className="sd-sub-card-img-overlay" />
-            <span className="sd-sub-card-badge">{sub.icon} {sub.name}</span>
+            <span className="sd-sub-card-badge">{sub.name}</span>
           </div>
           <div className="sd-sub-card-body">
-            <h4>{sub.icon} {sub.name}</h4>
+            <h4>
+              <img src={sub.icon} alt={sub.name} className="sd-sub-card-icon" />
+              {sub.name}
+            </h4>
             <p>{sub.desc}</p>
             <ul className="sd-sub-card-bullets">
               {sub.bullets.map((b, j) => (
