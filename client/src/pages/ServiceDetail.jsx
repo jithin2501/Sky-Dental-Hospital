@@ -106,7 +106,7 @@ const serviceData = {
       {
         name: 'Teeth Whitening',
         icon: '/images/Service_subServices/Teeth Whitening.png',
-        img: '/images/Service_img/Teeth-Whitening.jpg',
+        img: '/images/Service_img/Teeth Whitening.jpeg',
         desc: 'Professional-grade whitening that lifts stains and brightens your smile several shades in just one visit.',
         bullets: [
           'In-chair & take-home options',
@@ -117,8 +117,8 @@ const serviceData = {
       },
       {
         name: 'Kids & Teen Dental Care',
-        icon: '/images/Service_subServices/Kids Teen Dental Care.png',
-        img: '/images/Service_img/Kids-Teen-Dental-Care.jpg',
+        icon: '/images/Service_subServices/Kids Dental Care.png',
+        img: '/images/Service_img/Kids Dental Care.jpg',
         desc: 'Friendly, age-appropriate dental care that builds healthy habits early and makes every visit something kids look forward to.',
         bullets: [
           'Gentle, child-friendly techniques',
@@ -129,8 +129,8 @@ const serviceData = {
       },
       {
         name: 'Crown & Bridge Dentistry',
-        icon: '/images/Service_subServices/Crown Bridge Dentistry.png',
-        img: '/images/Service_img/Crown-Bridge-Dentistry.jpg',
+        icon: '/images/Service_subServices/Bridge Dentistry.png',
+        img: '/images/Service_img/Bridge Dentistry.jpg',
         desc: 'Durable, natural-looking crowns and bridges that restore broken or missing teeth with a seamless aesthetic fit.',
         bullets: [
           'Porcelain, zirconia & metal-fused options',
@@ -159,8 +159,8 @@ const serviceData = {
     subServices: [
       {
         name: 'Dental Implants',
-        icon: '/images/Service_subServices/Dental Implants.png',
-        img: '/images/Service_img/Dental-Implants.jpg',
+        icon: '/images/Service_subServices/dental-surgery.png',
+        img: '/images/Service_img/Dental Implants.jpg',
         desc: 'Titanium implants that permanently replace missing teeth roots, topped with lifelike crowns for a complete, lasting restoration.',
         bullets: [
           'Single, multiple & full-arch implants',
@@ -171,8 +171,8 @@ const serviceData = {
       },
       {
         name: 'Root Canal Treatment',
-        icon: '/images/Service_subServices/Root Canal Treatment.png',
-        img: '/images/Service_img/Root-Canal-Treatment.jpg',
+        icon: '/images/Service_subServices/root-canal.png',
+        img: '/images/Service_img/Root Canal Treatment.png',
         desc: 'Modern root canal treatment that saves infected teeth, relieves pain, and keeps your natural smile intact.',
         bullets: [
           'Painless with modern anaesthesia',
@@ -183,8 +183,8 @@ const serviceData = {
       },
       {
         name: 'Digital Smile Designing',
-        icon: '/images/Service_subServices/Digital Smile Designing.png',
-        img: '/images/Service_img/Digital-Smile-Designing.jpg',
+        icon: '/images/Service_subServices/Digital Smile.png',
+        img: '/images/Service_img/Digital Smile Designing.webp',
         desc: 'Advanced digital technology that lets you preview and co-design your perfect smile before a single treatment begins.',
         bullets: [
           'Digital photographs & facial analysis',
@@ -214,7 +214,7 @@ const serviceData = {
       {
         name: 'Cosmetic Dentistry',
         icon: '/images/Service_subServices/Cosmetic Dentistry.png',
-        img: '/images/Service_img/Cosmetic-Dentistry.jpg',
+        img: '/images/Service_img/Cosmetic Dentistry.jpg',
         desc: 'A wide range of aesthetic treatments that refine, reshape, and rejuvenate your smile with expert artistry.',
         bullets: [
           'Veneers, bonding & contouring',
@@ -238,7 +238,7 @@ const serviceData = {
       {
         name: 'Laser Dentistry',
         icon: '/images/Service_subServices/Laser Dentistry.png',
-        img: '/images/Service_img/Laser-Dentistry.jpg',
+        img: '/images/Service_img/Laser Dentistry.webp',
         desc: 'Minimally invasive laser treatments that replace drills and scalpels for faster healing and less discomfort.',
         bullets: [
           'Gum contouring & recontouring',
@@ -249,8 +249,8 @@ const serviceData = {
       },
       {
         name: 'Full Mouth Rehabilitation',
-        icon: '/images/Service_subServices/Full Mouth Rehabilitation.png',
-        img: '/images/Service_img/Full-Mouth-Rehabilitation.jpg',
+        icon: '/images/Service_subServices/Mouth Rehabilitation.png',
+        img: '/images/Service_img/Full Mouth Rehabilitation.jpg',
         desc: 'A complete, phased rebuilding of your entire mouth — restoring function, health, comfort, and aesthetics simultaneously.',
         bullets: [
           'Complete bite reconstruction',
@@ -353,7 +353,7 @@ function SubServiceSection({ subServices }) {
   );
 }
 
-/* ── Process steps (shared, rendered right after intro) ─────────────────── */
+/* ── Process steps ───────────────────────────────────────────────────────── */
 function ProcessSteps({ process }) {
   return (
     <div className="sd-process">
@@ -371,7 +371,7 @@ function ProcessSteps({ process }) {
   );
 }
 
-/* ── Legacy flat layout (for old slugs with no subServices detail) ───────── */
+/* ── Legacy flat layout ──────────────────────────────────────────────────── */
 function LegacySection({ features, process }) {
   return (
     <>
