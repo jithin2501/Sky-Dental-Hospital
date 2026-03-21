@@ -6,7 +6,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import ScrollToTop from './components/ScrollToTop';
 import DoctorProfile from './pages/DoctorProfile';
-import ServiceDetail from './pages/ServiceDetail';
+import ServiceDetail from './pages/ServiceDetail/ServiceDetail';
 import FacilityDetail from './pages/FacilityDetail';
 import ReviewPage from './pages/ReviewPage';
 import BookAppointment from './pages/BookAppointment';
@@ -34,11 +34,9 @@ const ProtectedRoute = ({ element, superAdminOnly = false }) => {
   if (!isAuthenticated()) {
     return <Navigate to="/admin/login" replace />;
   }
-
   if (superAdminOnly && !isSuperAdmin()) {
     return <Navigate to="/admin" replace />;
   }
-
   return element;
 };
 
