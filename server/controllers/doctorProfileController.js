@@ -37,7 +37,7 @@ exports.upsertProfile = async (req, res) => {
     const profile = await DoctorProfile.findOneAndUpdate(
       { doctor: doctorId },
       { designation, experience, bio1, bio2, email, facebook, instagram },
-      { new: true, upsert: true, setDefaultsOnInsert: true }
+      { returnDocument: 'after', upsert: true, setDefaultsOnInsert: true }
     );
 
     res.status(200).json(profile);
