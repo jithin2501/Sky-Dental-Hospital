@@ -21,8 +21,6 @@ exports.loginUser = async (req, res) => {
     const superUser = process.env.SUPERADMIN_USERNAME || process.env.REACT_APP_ADMIN_USERNAME;
     const superPass = process.env.SUPERADMIN_PASSWORD || process.env.REACT_APP_ADMIN_PASSWORD;
 
-    console.log('Superadmin env check:', superUser, '| Input:', username.trim()); // debug — remove after confirmed working
-
     if (superUser && superPass && username.trim() === superUser && password === superPass) {
       const token = generateToken({ id: 'superadmin', username: superUser, role: 'Superadmin' });
       return res.status(200).json({
