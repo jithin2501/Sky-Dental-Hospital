@@ -78,7 +78,7 @@ const AnalyticsDashboard = () => {
     setIsCheckingBackend(true);
     setError(null);
     try {
-      const response = await fetch('http://localhost:5000/api/analytics/test', {
+      const response = await fetch('/api/analytics/test', {
         method: 'GET',
         headers: { 'Accept': 'application/json' },
       });
@@ -122,7 +122,7 @@ const AnalyticsDashboard = () => {
     try {
       const endDateInclusive = new Date(endDate);
       endDateInclusive.setDate(endDateInclusive.getDate() + 1);
-      const url = `http://localhost:5000/api/analytics?startDate=${startDate}&endDate=${formatDate(endDateInclusive)}`;
+      const url = `/api/analytics?startDate=${startDate}&endDate=${formatDate(endDateInclusive)}`;
       const response = await fetch(url, { headers: { 'Accept': 'application/json' } });
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
@@ -147,7 +147,7 @@ const AnalyticsDashboard = () => {
     try {
       const endDateInclusive = new Date(endDate);
       endDateInclusive.setDate(endDateInclusive.getDate() + 1);
-      const url = `http://localhost:5000/api/analytics/geo-map?startDate=${startDate}&endDate=${formatDate(endDateInclusive)}`;
+      const url = `/api/analytics/geo-map?startDate=${startDate}&endDate=${formatDate(endDateInclusive)}`;
       const response = await fetch(url, { headers: { 'Accept': 'application/json' } });
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();

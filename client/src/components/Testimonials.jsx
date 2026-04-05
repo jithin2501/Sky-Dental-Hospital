@@ -7,7 +7,7 @@ function Testimonials() {
   const [fade,    setFade]    = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/reviews/approved')
+    fetch('/api/reviews/approved')
       .then(res => res.ok ? res.json() : [])
       .then(data => setReviews(Array.isArray(data) && data.length > 0 ? data : []))
       .catch(() => setReviews([]));

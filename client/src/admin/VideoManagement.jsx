@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AdminLayout from './adminlayout';
 import './adminstyle/videomanagement.css';
 
-const API = 'http://localhost:5000/api/media';
+const API = '/api/media';
 
 const VideoManagement = () => {
   const [file, setFile] = useState(null);

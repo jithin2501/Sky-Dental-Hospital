@@ -12,8 +12,8 @@ function DoctorProfile() {
 
   useEffect(() => {
     Promise.all([
-      fetch('http://localhost:5000/api/doctors').then(r => r.ok ? r.json() : []),
-      fetch('http://localhost:5000/api/doctor-profiles').then(r => r.ok ? r.json() : []),
+      fetch('/api/doctors').then(r => r.ok ? r.json() : []),
+      fetch('/api/doctor-profiles').then(r => r.ok ? r.json() : []),
     ])
       .then(([docs, profs]) => {
         setDoctors(Array.isArray(docs) ? docs : []);

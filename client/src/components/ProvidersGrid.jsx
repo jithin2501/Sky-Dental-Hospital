@@ -7,7 +7,7 @@ function ProvidersGrid() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/doctors')
+    fetch('/api/doctors')
       .then(res => res.ok ? res.json() : [])
       .then(data => setDoctors(Array.isArray(data) ? data : []))
       .catch(() => setDoctors([]))

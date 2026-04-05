@@ -7,7 +7,7 @@ function AdminContact() {
   const [viewingMessage, setViewingMessage] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/contact')
+    fetch('/api/contact')
       .then(res => res.json())
       .then(data => setMessages(data))
       .catch(err => console.error("Error:", err));
@@ -16,7 +16,7 @@ function AdminContact() {
   const handleDelete = async (id) => {
     if (window.confirm("Delete this message?")) {
       try {
-        await fetch(`http://localhost:5000/api/contact/${id}`, { method: 'DELETE' });
+        await fetch(`/api/contact/${id}`, { method: 'DELETE' });
         setMessages(messages.filter(msg => msg._id !== id));
       } catch (err) {
         console.error("Delete failed:", err);

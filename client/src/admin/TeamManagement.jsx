@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AdminLayout from './adminlayout';
 import './adminstyle/teammanagement.css';
 
-const API = 'http://localhost:5000/api/doctors';
+const API = '/api/doctors';
 
 const EMPTY_FORM = { name: '', specialty: '' };
 

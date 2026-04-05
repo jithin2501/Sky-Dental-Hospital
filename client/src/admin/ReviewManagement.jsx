@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AdminLayout from './adminlayout';
 import './adminstyle/reviewmanagement.css';
 
-const API = 'http://localhost:5000/api/reviews';
+const API = '/api/reviews';
 
 const STARS = (n) => '★'.repeat(n) + '☆'.repeat(5 - n);
 

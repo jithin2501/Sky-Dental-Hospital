@@ -2,7 +2,7 @@
 // Use this instead of raw fetch() anywhere you call a protected API endpoint.
 // It automatically attaches the JWT token from localStorage.
 
-const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const BASE_URL = process.env.REACT_APP_API_URL || '/api';
 
 const getToken = () => localStorage.getItem('token');
 

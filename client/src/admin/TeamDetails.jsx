@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import AdminLayout from './adminlayout';
 import './adminstyle/teamdetails.css';
 
-const DOCTORS_API  = 'http://localhost:5000/api/doctors';
-const PROFILES_API = 'http://localhost:5000/api/doctor-profiles';
+const DOCTORS_API  = '/api/doctors';
+const PROFILES_API = '/api/doctor-profiles';
 
 const EMPTY_DETAIL = { designation: '', experience: '', bio1: '', bio2: '', email: '', facebook: '', instagram: '' };
 

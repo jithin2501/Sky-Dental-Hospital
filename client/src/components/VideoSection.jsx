@@ -6,7 +6,7 @@ function VideoSection() {
   const [media, setMedia] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/media/latest')
+    fetch('/api/media/latest')
       .then(res => {
         if (!res.ok) return null;
         return res.json();

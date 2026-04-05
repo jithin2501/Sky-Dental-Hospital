@@ -37,7 +37,7 @@ const UserManagement = () => {
 
   const fetchUsers = async () => {
     try {
-      const res    = await authFetch('http://localhost:5000/api/users');
+      const res    = await authFetch('/api/users');
       const dbData = await res.json();
 
       if (!res.ok) {
@@ -74,7 +74,7 @@ const UserManagement = () => {
 
     setLoading(true);
     try {
-      const res  = await authFetch('http://localhost:5000/api/users', {
+      const res  = await authFetch('/api/users', {
         method: 'POST',
         body:   JSON.stringify(formData),
       });
@@ -96,7 +96,7 @@ const UserManagement = () => {
 
   const handleToggleStatus = async (id) => {
     try {
-      const res = await authFetch(`http://localhost:5000/api/users/${id}/toggle`, { method: 'PATCH' });
+      const res = await authFetch(`/api/users/${id}/toggle`, { method: 'PATCH' });
       if (res.ok) {
         fetchUsers();
       } else {
@@ -111,7 +111,7 @@ const UserManagement = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this admin?')) return;
     try {
-      const res = await authFetch(`http://localhost:5000/api/users/${id}`, { method: 'DELETE' });
+      const res = await authFetch(`/api/users/${id}`, { method: 'DELETE' });
       if (res.ok) {
         fetchUsers();
       } else {

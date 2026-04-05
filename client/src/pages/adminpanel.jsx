@@ -5,13 +5,13 @@ function AdminPanel() {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/contact')
+    fetch('/api/contact')
       .then(res => res.json())
       .then(data => setMessages(data));
   }, []);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/api/contact/${id}`, { method: 'DELETE' })
+    fetch(`/api/contact/${id}`, { method: 'DELETE' })
       .then(() => setMessages(messages.filter(msg => msg._id !== id)));
   };
 
