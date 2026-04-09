@@ -12,8 +12,9 @@ function CEOSection() {
         <div className="ceo-photo-wrapper">
           <img
             src="/images/Ceo/Dr Melvin mathew.png"
-            alt="Dr. Melvin Mathew"
+            alt="Dr. Melvin Mathew - CEO and Chief Dentist at Sky Dental Hospital"
             className="ceo-photo"
+            loading="lazy"
           />
         </div>
 

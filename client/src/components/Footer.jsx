@@ -41,7 +41,7 @@ function Footer() {
         {/* Brand Column */}
         <div className="footer-brand">
           <Link to="/" className="footer-logo">
-            <img src="/images/banner_logo/hospital_logos.png" alt="Sky Dental Logo" className="footer-logo-img" />
+            <img src="/images/banner_logo/hospital_logos.png" alt="Sky Dental Hospital Logo - Expert Dental Care Kanhangad" className="footer-logo-img" />
             <div className="footer-logo-text">
               <span className="main">SKY DENTAL</span>
               <span className="sub">Hospital</span>
@@ -54,16 +54,16 @@ function Footer() {
 
           <div className="footer-socials">
             <a href="#" className="footer-social-link" aria-label="Facebook">
-              <img src="/images/social/facebok-icon.jpg" alt="Facebook" />
+              <img src="/images/social/facebok-icon.jpg" alt="Follow Sky Dental Hospital on Facebook" />
             </a>
             <a href="#" className="footer-social-link" aria-label="Instagram">
-              <img src="/images/social/instagram-icon.jpg" alt="Instagram" />
+              <img src="/images/social/instagram-icon.jpg" alt="Follow Sky Dental Hospital on Instagram" />
             </a>
             <a href="#" className="footer-social-link" aria-label="WhatsApp">
-              <img src="/images/social/whatsapp-icon.jpg" alt="WhatsApp" />
+              <img src="/images/social/whatsapp-icon.jpg" alt="Chat with Sky Dental Hospital on WhatsApp" />
             </a>
             <a href="#" className="footer-social-link" aria-label="Youtube">
-              <img src="/images/social/youtube-icon.jpg" alt="Youtube" />
+              <img src="/images/social/youtube-icon.jpg" alt="Watch Sky Dental Hospital on YouTube" />
             </a>
           </div>
         </div>

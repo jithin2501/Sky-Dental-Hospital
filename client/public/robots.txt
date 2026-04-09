@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Disallow admin paths
+Disallow: /admin/
+Disallow: /admin
+
+# Sitemap
+Sitemap: https://www.skydentalhospital.in/sitemap.xml

@@ -77,7 +77,7 @@ function Header() {
       <header className={scrolled ? 'header scrolled' : 'header'}>
         <nav className="nav">
           <Link to="/" className="logo">
-            <img src="/images/banner_logo/hospital_logos.png" alt="Sky Dental Logo" className="logo-img" />
+            <img src="/images/banner_logo/hospital_logos.png" alt="Sky Dental Hospital - Leading Dental Clinic in Kanhangad, Kerala" className="logo-img" />
             <div className="logo-text-wrapper">
               <span className="logo-text main-title">SKY DENTAL</span>
               <span className="logo-text sub-title"><b>HOSPITAL</b></span>
@@ -118,7 +118,7 @@ function Header() {
         <button className="mobile-nav-btn" onClick={() => scrollTo('team')}>Team</button>
         <button className="mobile-nav-btn" onClick={() => scrollTo('reviews')}>Reviews</button>
         <Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link>
-        <Link to="/contact" className="cta-button" onClick={() => setMobileOpen(false)}>Book Appointment</Link>
+        <Link to="/book-appointment" className="cta-button" onClick={() => setMobileOpen(false)}>Book Appointment</Link>
       </div>
     </>
   );
