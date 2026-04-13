@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './adminstyle/adminlayout.css';
 
@@ -6,6 +6,7 @@ const AdminLayout = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const userRole = localStorage.getItem('userRole') || 'Admin';
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     document.title = 'Sky Dental Dashboard';
@@ -13,6 +14,11 @@ const AdminLayout = ({ children }) => {
       document.title = 'Sky Dental Hospital';
     };
   }, []);
+
+  // Close sidebar on route change (mobile)
+  useEffect(() => {
+    setSidebarOpen(false);
+  }, [location.pathname]);
 
   const handleLogout = () => {
     localStorage.removeItem('isAdminAuthenticated');
@@ -23,7 +29,41 @@ const AdminLayout = ({ children }) => {
 
   return (
     <div className="admin-container">
-      <div className="admin-sidebar">
+
+      {/* ── Mobile Top Bar ── */}
+      <div className="admin-mobile-topbar">
+        <button
+          className="admin-hamburger"
+          onClick={() => setSidebarOpen(true)}
+          aria-label="Open menu"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <span className="admin-mobile-title">DENTAL DASHBOARD</span>
+      </div>
+
+      {/* ── Sidebar Overlay (mobile backdrop) ── */}
+      {sidebarOpen && (
+        <div
+          className="admin-sidebar-overlay"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {/* ── Sidebar ── */}
+      <div className={`admin-sidebar ${sidebarOpen ? 'sidebar-open' : ''}`}>
+
+        {/* Close button — mobile only */}
+        <button
+          className="admin-sidebar-close"
+          onClick={() => setSidebarOpen(false)}
+          aria-label="Close menu"
+        >
+          ✕
+        </button>
+
         <div className="sidebar-top-group">
           <div className="sidebar-brand">
             <h2>DENTAL DASHBOARD</h2>
