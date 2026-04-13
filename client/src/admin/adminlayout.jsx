@@ -65,9 +65,7 @@ const AdminLayout = ({ children }) => {
         </button>
 
         <div className="sidebar-top-group">
-          <div className="sidebar-brand">
-            <h2>DENTAL DASHBOARD</h2>
-          </div>
+
           <ul className="sidebar-links">
             <li className={location.pathname === '/admin' ? 'active' : ''}>
               <Link to="/admin">Contact Messages</Link>
