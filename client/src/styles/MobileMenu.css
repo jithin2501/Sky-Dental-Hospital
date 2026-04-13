@@ -68,38 +68,46 @@
     opacity: 1;
   }
 
-  .mobile-nav-btn, .mobile-nav a {
+  .mobile-nav-btn, .mobile-nav a:not(.cta-button) {
     width: 100%;
-    padding: 0.9rem;
+    padding: 0.75rem 0;
     color: white;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 500;
     text-decoration: none;
     font-family: 'DM Sans', sans-serif;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    text-align: center;
+    background: none;
+    border: none;
+    border-radius: 0;
+    text-align: left;
     transition: all 0.2s ease;
     cursor: pointer;
     display: block;
+    border-bottom: none;
   }
 
-  .mobile-nav-btn:hover, .mobile-nav a:hover {
-    background: rgba(5, 191, 219, 0.15);
-    border-color: #05BFDB;
+  .mobile-nav-btn:hover, .mobile-nav a:not(.cta-button):hover {
     color: #05BFDB;
-    transform: translateY(-1px);
+    background: none;
   }
+
 
   /* Specific styling for the CTA button in mobile menu */
   .mobile-nav .cta-button {
+    width: 100%;
+    padding: 1rem;
     background: linear-gradient(135deg, #088395, #05BFDB);
     border: none;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     font-weight: 600;
+    text-align: center;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    display: block;
     box-shadow: 0 4px 15px rgba(8, 131, 149, 0.3);
   }
+
 
   .mobile-nav-close {
     position: absolute;
