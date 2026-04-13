@@ -219,13 +219,16 @@ function About() {
           </div>
         </div>
 
-        <div className="purpose-content">
+        <div className="purpose-heading-block">
           <div className="purpose-tagline">
             <span>Our Purpose</span>
           </div>
           <h2 className="purpose-title">
             Compassionate Care for a <span className="about-highlight">Lifetime of Healthy Smiles</span>
           </h2>
+        </div>
+
+        <div className="purpose-content">
           <p className="purpose-description">
             Sky Dental Hospital, Parappally, Kanhangad offers comfortable, affordable, and trustworthy
             dental care for all ages. With advanced technology and a caring approach, we ensure safe,
