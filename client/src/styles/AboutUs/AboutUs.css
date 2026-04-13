@@ -226,9 +226,24 @@
 
 @media (max-width: 768px) {
   .about-stats-row {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .about-stat-item {
+    flex: 1;
+    gap: 0.4rem;
+  }
+  .about-stat-number {
+    font-size: 1.4rem;
+  }
+  .about-stat-label {
+    font-size: 0.75rem;
+    line-height: 1.2;
+    max-width: 80px;
+    margin: 0 auto;
   }
   .about-right-gallery {
     height: 350px;

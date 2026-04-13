@@ -82,3 +82,17 @@
   letter-spacing: 0.04em;
   margin: 0;
 }
+
+@media (max-width: 768px) {
+  .virtual-tour {
+    padding: 4rem 1.5rem;
+  }
+  .virtual-tour-video {
+    height: 240px;
+    width: 100%;
+  }
+  .video-wrapper video {
+    object-fit: contain;
+    background: #000;
+  }
+}

@@ -4,7 +4,7 @@ import '../styles/Ceo Page/Ceo.css';
 function CEOSection() {
   return (
     <section className="ceo-section">
-      <h2 className="ceo-heading">MEET OUR Founder</h2>
+      <h2 className="ceo-heading">Meet Our Founder</h2>
 
       <div className="ceo-inner">
 

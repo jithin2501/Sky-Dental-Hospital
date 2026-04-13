@@ -128,3 +128,17 @@
   width: 28px;
   border-radius: 10px;
 }
+
+@media (max-width: 768px) {
+  .facilities {
+    padding: 4rem 1.5rem;
+  }
+  .facilities-section-header h2 {
+    font-size: 2rem;
+  }
+  .facility-card {
+    flex: 0 0 calc(100vw - 3rem); /* Full width minus side padding */
+    border-radius: 20px;
+  }
+}
+
