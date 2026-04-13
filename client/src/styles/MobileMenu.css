@@ -19,15 +19,20 @@
   stroke: #fff; /* Keep it white or match theme */
 }
 
+/* Hide mobile nav components by default on desktop */
+.mobile-nav, .mobile-nav-overlay {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .mobile-menu-btn {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
-
+  
   .mobile-nav {
+    display: flex; /* Show on mobile */
     position: fixed;
     top: 0;
     right: -100%;
@@ -50,9 +55,11 @@
 
   /* Background overlay */
   .mobile-nav-overlay {
+    display: block; /* Show on mobile */
     position: fixed;
     top: 0;
     left: 0;
+
     width: 100%;
     height: 100vh;
     background: rgba(0, 0, 0, 0.6);
