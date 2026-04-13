@@ -161,17 +161,17 @@
     border-radius: 2px;
   }
 
-  /* ── Sidebar: off-screen by default ── */
+  /* ── Sidebar: covers whole screen when open ── */
   .admin-sidebar {
     position: fixed;
-    top: 80px;
+    top: 0;
     left: 0;
-    height: calc(100% - 80px);
+    height: 100vh;
     width: 280px;
     z-index: 300;
     transform: translateX(-100%);
     transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 60px 0 20px;
+    padding: 0;
     overflow-y: auto;
   }
 
@@ -182,12 +182,13 @@
   }
 
   /* ── Close (✕) button inside sidebar ── */
+  /* Positioned at the same spot as the hamburger button */
   .admin-sidebar-close {
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 18px;
+    top: 30px; 
     left: 18px;
     background: transparent;
     border: none;
@@ -201,17 +202,23 @@
     opacity: 0.7;
   }
 
-  /* Push brand title right so it clears the close button */
+  /* Sidebar Banner / Brand Heading on Mobile */
   .sidebar-brand h2 {
-    display: none;
+    display: block;
+    padding: 30px 18px 20px 60px; /* Leave room for the close button on left */
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: #161b22; /* Slightly different bg for banner area */
   }
 
   /* ── Dark backdrop ── */
   .admin-sidebar-overlay {
     display: block;
     position: fixed;
-    top: 80px;
-    inset: 80px 0 0 0;
+    inset: 0;
     background: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(2px);
     z-index: 250;
@@ -219,23 +226,16 @@
   }
 
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
-  /* ── Main content: full width, tighter padding ── */
   .admin-main {
     padding: 20px 16px 40px;
     width: 100%;
     box-sizing: border-box;
   }
 
-  /* ── Sidebar nav links: slightly smaller on mobile ── */
   .sidebar-links a {
     padding: 15px 22px;
     font-size: 15px;
