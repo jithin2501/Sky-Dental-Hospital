@@ -32,20 +32,16 @@ const AdminLayout = ({ children }) => {
 
       {/* ── Mobile Top Bar ── */}
       <div className="admin-mobile-topbar">
-        {!sidebarOpen && (
-          <>
-            <button
-              className="admin-hamburger"
-              onClick={() => setSidebarOpen(true)}
-              aria-label="Open menu"
-            >
-              <span />
-              <span />
-              <span />
-            </button>
-            <span className="admin-mobile-title">DENTAL DASHBOARD</span>
-          </>
-        )}
+        <button
+          className="admin-hamburger"
+          onClick={() => setSidebarOpen(true)}
+          aria-label="Open menu"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <span className="admin-mobile-title">DENTAL DASHBOARD</span>
       </div>
 
       {/* ── Sidebar Overlay (mobile backdrop) ── */}
