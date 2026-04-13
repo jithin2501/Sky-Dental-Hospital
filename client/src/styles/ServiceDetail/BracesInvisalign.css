@@ -123,10 +123,11 @@
   .sd-intro-img { flex: none; width: 100%; height: 240px; }
   .sd-process-steps { grid-template-columns: repeat(2, 1fr); }
 
-  .sd-sub-card, .sd-sub-card--reverse { flex-direction: column; }
+  .sd-sub-card, .sd-sub-card--reverse { flex-direction: column; gap: 0; }
   .sd-sub-card-img { flex: none; width: 100%; height: 240px; position: relative; }
   .sd-sub-card-body,
-  .sd-sub-card--reverse .sd-sub-card-body { padding: 28px 28px 32px; }
+  .sd-sub-card--reverse .sd-sub-card-body { padding: 15px 28px 32px; }
+
   .sd-sub-card-badge {
     display: block; position: absolute; bottom: 14px; left: 14px; z-index: 2;
     background: rgba(0,0,0,0.55); color: #fff; font-size: 0.75rem;
