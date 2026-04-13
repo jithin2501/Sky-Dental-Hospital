@@ -16,55 +16,114 @@
 }
 
 .header.scrolled .mobile-menu-btn svg {
-  stroke: #0A3D5C;
-}
-
-.mobile-nav {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: #0A3D5C;
-  z-index: 999;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.mobile-nav.open {
-  display: flex;
-}
-
-.mobile-nav a {
-  color: white;
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-decoration: none;
-  font-family: 'Playfair Display', serif;
-  transition: color 0.3s;
-}
-
-.mobile-nav a:hover {
-  color: #05BFDB;
-}
-
-.mobile-nav-close {
-  position: absolute;
-  top: 1.5rem;
-  right: 2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: white;
-  font-size: 2rem;
-  line-height: 1;
+  stroke: #fff; /* Keep it white or match theme */
 }
 
 @media (max-width: 768px) {
   .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 320px;
+    height: 100vh;
+    background: #0A3D5C;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    padding: 6rem 1.5rem 2rem;
+    gap: 0.75rem;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .mobile-nav.open {
+    right: 0;
+  }
+
+  /* Background overlay */
+  .mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-nav-overlay.open {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .mobile-nav-btn, .mobile-nav a {
+    width: 100%;
+    padding: 0.9rem;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
     display: block;
   }
+
+  .mobile-nav-btn:hover, .mobile-nav a:hover {
+    background: rgba(5, 191, 219, 0.15);
+    border-color: #05BFDB;
+    color: #05BFDB;
+    transform: translateY(-1px);
+  }
+
+  /* Specific styling for the CTA button in mobile menu */
+  .mobile-nav .cta-button {
+    background: linear-gradient(135deg, #088395, #05BFDB);
+    border: none;
+    margin-top: 1rem;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(8, 131, 149, 0.3);
+  }
+
+  .mobile-nav-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 1.25rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 1002;
+  }
+
+  .mobile-nav-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+  }
 }
+
+

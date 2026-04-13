@@ -109,6 +109,11 @@ function Header() {
         </nav>
       </header>
 
+      <div 
+        className={`mobile-nav-overlay ${mobileOpen ? 'open' : ''}`} 
+        onClick={() => setMobileOpen(false)}
+      ></div>
+
       <div className={`mobile-nav ${mobileOpen ? 'open' : ''}`}>
         <button className="mobile-nav-close" onClick={() => setMobileOpen(false)}>✕</button>
         <button className="mobile-nav-btn" onClick={goHome}>Home</button>
@@ -117,9 +122,10 @@ function Header() {
         <button className="mobile-nav-btn" onClick={() => scrollTo('facilities')}>Facilities</button>
         <button className="mobile-nav-btn" onClick={() => scrollTo('team')}>Team</button>
         <button className="mobile-nav-btn" onClick={() => scrollTo('reviews')}>Reviews</button>
-        <Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link>
-        <Link to="/book-appointment" className="cta-button" onClick={() => setMobileOpen(false)}>Book Appointment</Link>
+        <Link to="/contact" className="mobile-nav-btn" onClick={() => setMobileOpen(false)}>Contact</Link>
+        <Link to="/book-appointment" className="mobile-nav-btn cta-button" onClick={() => setMobileOpen(false)}>Book Appointment</Link>
       </div>
+
     </>
   );
 }
