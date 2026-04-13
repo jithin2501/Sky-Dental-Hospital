@@ -71,21 +71,18 @@ function DoctorProfile() {
                 </div>
 
                 <div className="dp-info">
-                  <span className="dp-specialty-tag">{doctor.specialty}</span>
                   <h2>{doctor.name}</h2>
-
-                  {profile?.designation && (
-                    <span className="dp-designation">{profile.designation}</span>
-                  )}
+                  <span className="dp-specialty-tag">{doctor.specialty}</span>
 
                   {profile?.experience && (
                     <div className="dp-exp-badge">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#088395" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
                       </svg>
-                      {profile.experience} of Experience
+                      {profile.experience} {profile.experience.toLowerCase().includes('year') ? '' : 'Years'} of Experience
                     </div>
                   )}
+
 
                   {profile?.bio1 && <p>{profile.bio1}</p>}
                   {profile?.bio2 && <p>{profile.bio2}</p>}

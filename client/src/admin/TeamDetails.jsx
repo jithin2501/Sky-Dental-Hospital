@@ -5,7 +5,7 @@ import './adminstyle/teamdetails.css';
 const DOCTORS_API  = '/api/doctors';
 const PROFILES_API = '/api/doctor-profiles';
 
-const EMPTY_DETAIL = { designation: '', experience: '', bio1: '', bio2: '', email: '', facebook: '', instagram: '' };
+const EMPTY_DETAIL = { experience: '', bio1: '', bio2: '', email: '', facebook: '', instagram: '' };
 
 const TeamDetails = () => {
   const [doctors,         setDoctors]         = useState([]);
@@ -48,7 +48,6 @@ const TeamDetails = () => {
     const existing = profiles[doc._id];
     setEditingDetailId(doc._id);
     setDetailForm({
-      designation: existing?.designation || '',
       experience:  existing?.experience  || '',
       bio1:        existing?.bio1        || '',
       bio2:        existing?.bio2        || '',
@@ -90,7 +89,7 @@ const TeamDetails = () => {
 
   const hasDetails = (docId) => {
     const p = profiles[docId];
-    return p && (p.designation || p.experience || p.bio1 || p.bio2 || p.email || p.facebook || p.instagram);
+    return p && (p.experience || p.bio1 || p.bio2 || p.email || p.facebook || p.instagram);
   };
 
   return (
@@ -115,18 +114,19 @@ const TeamDetails = () => {
               <form onSubmit={handleDetailSubmit} className="user-form">
                 <div className="tm-form-row">
                   <div className="user-form-group">
-                    <label className="input-label">Designation:</label>
-                    <input type="text" className="admin-input" placeholder="e.g. Senior Orthodontist"
-                      value={detailForm.designation}
-                      onChange={(e) => setDetailForm({ ...detailForm, designation: e.target.value })} />
+                    <label className="input-label">Specialization (from Team Management):</label>
+                    <input type="text" className="admin-input" style={{ backgroundColor: '#f1f5f9', cursor: 'not-allowed' }}
+                      value={doc.specialty}
+                      readOnly />
                   </div>
                   <div className="user-form-group">
                     <label className="input-label">Experience:</label>
-                    <input type="text" className="admin-input" placeholder="e.g. 12+ Years"
+                    <input type="text" className="admin-input" placeholder="e.g. 12+"
                       value={detailForm.experience}
                       onChange={(e) => setDetailForm({ ...detailForm, experience: e.target.value })} />
                   </div>
                 </div>
+
 
                 <div className="user-form-group">
                   <label className="input-label">Bio (Paragraph 1):</label>
@@ -201,7 +201,6 @@ const TeamDetails = () => {
                         <p className="td-list-name">{doc.name}</p>
                         {hasDetails(doc._id) ? (
                           <div className="td-detail-chips">
-                            {p.designation && <span className="td-chip">🏷 {p.designation}</span>}
                             {p.experience  && <span className="td-chip">⏱ {p.experience}</span>}
                             {p.email       && <span className="td-chip">✉ {p.email}</span>}
                             {p.facebook    && <span className="td-chip td-chip-social">FB</span>}

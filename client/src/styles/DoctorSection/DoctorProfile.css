@@ -149,7 +149,8 @@
   font-weight: 700;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-top: 4px;
+  margin-bottom: 22px;
 }
 
 .dp-info h2 {
@@ -161,13 +162,7 @@
   margin-bottom: 6px;
 }
 
-.dp-designation {
-  display: block;
-  font-size: 0.95rem;
-  color: #5A6A78;
-  font-style: italic;
-  margin-bottom: 20px;
-}
+
 
 .dp-exp-badge {
   display: inline-flex;
