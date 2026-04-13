@@ -189,9 +189,7 @@
 }
 
 .dp-divider {
-  height: 1px;
-  background: #eef0f2;
-  margin: 20px 0;
+  display: none;
 }
 
 .dp-footer-row {
@@ -377,5 +375,25 @@
 
   .dp-info h2 {
     font-size: 2rem;
+    text-align: center;
+  }
+
+  .dp-specialty-tag {
+    display: block;
+    text-align: center;
+  }
+
+  .dp-exp-badge {
+    margin: 0 auto 24px;
+  }
+
+  .dp-footer-row {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dp-socials {
+    justify-content: center;
   }
 }

@@ -117,7 +117,7 @@ const TeamDetails = () => {
               <form onSubmit={handleDetailSubmit} className="user-form">
                 <div className="tm-form-row">
                   <div className="user-form-group">
-                    <label className="input-label">Specialization (from Team Management):</label>
+                    <label className="input-label">Specialization:</label>
                     <input type="text" className="admin-input" style={{ backgroundColor: '#f1f5f9', cursor: 'not-allowed' }}
                       value={doc.specialty}
                       readOnly />
