@@ -96,10 +96,9 @@ const AdminLayout = ({ children }) => {
               </li>
             )}
           </ul>
-        </div>
-
-        <div className="sidebar-bottom">
-          <button className="logout-btn" onClick={handleLogout}>Log Out</button>
+          <div className="sidebar-logout-container">
+            <button className="logout-btn" onClick={handleLogout}>Sign Out</button>
+          </div>
         </div>
       </div>
 

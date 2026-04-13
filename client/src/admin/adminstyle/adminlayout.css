@@ -53,9 +53,10 @@
   color: white;
 }
 
-.sidebar-bottom {
+.sidebar-logout-container {
   padding: 25px;
   border-top: 1px solid #1e293b;
+  margin-top: auto;
 }
 
 .logout-btn {
@@ -120,13 +121,14 @@
     top: 0;
     z-index: 200;
     background: #0d1117;
-    padding: 20px 18px;
+    height: 80px;
+    padding: 0 18px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
   }
 
   .admin-mobile-title {
     color: #ffffff;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -138,18 +140,17 @@
     flex-direction: column;
     justify-content: center;
     gap: 6px;
-    width: 44px;
-    height: 44px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 8px;
+    width: 28px;
+    height: 20px;
+    background: transparent;
+    border: none;
     cursor: pointer;
-    padding: 12px;
+    padding: 0;
     flex-shrink: 0;
   }
 
   .admin-hamburger:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background: transparent;
   }
 
   .admin-hamburger span {
@@ -163,9 +164,9 @@
   /* ── Sidebar: off-screen by default ── */
   .admin-sidebar {
     position: fixed;
-    top: 0;
+    top: 80px;
     left: 0;
-    height: 100%;
+    height: calc(100% - 80px);
     width: 280px;
     z-index: 300;
     transform: translateX(-100%);
@@ -186,18 +187,18 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 14px;
-    right: 14px;
+    top: 18px;
+    left: 18px;
     background: transparent;
     border: none;
-    color: #94a3b8;
-    font-size: 20px;
+    color: #ffffff;
+    font-size: 22px;
     cursor: pointer;
-    transition: color 0.2s;
+    transition: opacity 0.2s;
   }
 
   .admin-sidebar-close:hover {
-    color: #ffffff;
+    opacity: 0.7;
   }
 
   /* Push brand title right so it clears the close button */
@@ -209,7 +210,8 @@
   .admin-sidebar-overlay {
     display: block;
     position: fixed;
-    inset: 0;
+    top: 80px;
+    inset: 80px 0 0 0;
     background: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(2px);
     z-index: 250;
@@ -239,12 +241,24 @@
     font-size: 15px;
   }
 
-  .sidebar-bottom {
-    padding: 20px;
+  .sidebar-logout-container {
+    padding: 30px 22px;
+    border-top: none;
   }
 
   .logout-btn {
-    padding: 13px;
+    padding: 15px;
     font-size: 15px;
+    background-color: transparent !important;
+    border: 1px solid rgba(239, 68, 68, 0.4) !important;
+    color: #ef4444 !important;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 10px;
+    font-weight: 700;
+  }
+
+  .logout-btn:hover {
+    background-color: rgba(239, 68, 68, 0.1) !important;
   }
 }
