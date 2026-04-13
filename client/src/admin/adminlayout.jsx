@@ -32,16 +32,28 @@ const AdminLayout = ({ children }) => {
 
       {/* ── Mobile Top Bar ── */}
       <div className="admin-mobile-topbar">
-        <button
-          className="admin-hamburger"
-          onClick={() => setSidebarOpen(true)}
-          aria-label="Open menu"
-        >
-          <span />
-          <span />
-          <span />
-        </button>
-        <span className="admin-mobile-title">DENTAL DASHBOARD</span>
+        {sidebarOpen ? (
+          <button
+            className="admin-close-toggle"
+            onClick={() => setSidebarOpen(false)}
+            aria-label="Close menu"
+          >
+            ✕
+          </button>
+        ) : (
+          <>
+            <button
+              className="admin-hamburger"
+              onClick={() => setSidebarOpen(true)}
+              aria-label="Open menu"
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+            <span className="admin-mobile-title">DENTAL DASHBOARD</span>
+          </>
+        )}
       </div>
 
       {/* ── Sidebar Overlay (mobile backdrop) ── */}
@@ -54,15 +66,6 @@ const AdminLayout = ({ children }) => {
 
       {/* ── Sidebar ── */}
       <div className={`admin-sidebar ${sidebarOpen ? 'sidebar-open' : ''}`}>
-
-        {/* Close button — mobile only */}
-        <button
-          className="admin-sidebar-close"
-          onClick={() => setSidebarOpen(false)}
-          aria-label="Close menu"
-        >
-          ✕
-        </button>
 
         <div className="sidebar-top-group">
           <div className="sidebar-brand">
