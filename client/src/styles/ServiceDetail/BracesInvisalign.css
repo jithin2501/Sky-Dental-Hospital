@@ -116,20 +116,13 @@
 /* ── Responsive ──────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .banner-content h1 { font-size: 38px; }
-  .sd-intro { flex-direction: column; gap: 30px; }
-  .sd-intro-text { 
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .sd-intro-img { flex: none; width: 100%; height: 240px; order: -1; }
+  .sd-intro { flex-direction: column; }
+  .sd-intro-img { flex: none; width: 100%; height: 240px; }
   .sd-process-steps { grid-template-columns: repeat(2, 1fr); }
-  .sd-sub-card, .sd-sub-card--reverse { flex-direction: column; gap: 0; }
-  .sd-sub-card-img { flex: none; width: 100%; height: 220px; position: relative; }
+  .sd-sub-card, .sd-sub-card--reverse { flex-direction: column; }
+  .sd-sub-card-img { flex: none; width: 100%; height: 240px; position: relative; }
   .sd-sub-card-body,
-  .sd-sub-card--reverse .sd-sub-card-body { padding: 20px 20px 28px; }
-  .sd-sub-card-body h4 { font-size: 1.4rem; justify-content: center; margin-bottom: 15px; }
+  .sd-sub-card--reverse .sd-sub-card-body { padding: 28px 28px 32px; }
   .sd-sub-card-badge {
     display: block; position: absolute; bottom: 14px; left: 14px; z-index: 2;
     background: rgba(0,0,0,0.55); color: #fff; font-size: 0.75rem;
@@ -137,8 +130,6 @@
   }
 }
 @media (max-width: 560px) {
-  .sd-section { padding: 40px 15px 60px; gap: 50px; }
+  .sd-section { padding: 50px 20px 80px; }
   .sd-process-steps { grid-template-columns: 1fr; }
-  .sd-intro-text h2 { font-size: 1.7rem; }
-  .sd-cta-btn { width: 100%; max-width: 280px; padding: 12px; }
-}
+}
