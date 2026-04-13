@@ -138,19 +138,17 @@
     flex-direction: column;
     justify-content: center;
     gap: 5px;
-    width: 38px;
-    height: 38px;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 8px;
+    width: 26px;
+    height: 20px;
+    background: transparent;
+    border: none;
     cursor: pointer;
-    padding: 8px 9px;
+    padding: 0;
     flex-shrink: 0;
-    transition: background 0.2s;
   }
 
   .admin-hamburger:hover {
-    background: rgba(255, 255, 255, 0.13);
+    background: transparent;
   }
 
   .admin-hamburger span {
@@ -189,27 +187,21 @@
     position: absolute;
     top: 14px;
     right: 14px;
-    width: 32px;
-    height: 32px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 50%;
+    background: transparent;
+    border: none;
     color: #94a3b8;
-    font-size: 14px;
+    font-size: 20px;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+    transition: color 0.2s;
   }
 
   .admin-sidebar-close:hover {
-    background: rgba(255, 255, 255, 0.15);
     color: #ffffff;
   }
 
   /* Push brand title right so it clears the close button */
   .sidebar-brand h2 {
-    padding-right: 50px;
-    font-size: 17px;
-    margin-bottom: 24px;
+    display: none;
   }
 
   /* ── Dark backdrop ── */
