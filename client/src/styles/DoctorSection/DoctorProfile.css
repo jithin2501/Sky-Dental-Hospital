@@ -73,12 +73,12 @@
 
 .dp-banner-content p {
   font-size: 15px;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.8;
 }
 
 .dp-banner-content a {
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -100,7 +100,7 @@
   display: grid;
   grid-template-columns: 420px 1fr;
   gap: 70px;
-  align-items: center;
+  align-items: start;
   padding: 80px 0;
   border-bottom: 1px solid #ddeef5;
 }
@@ -114,7 +114,7 @@
   direction: rtl;
 }
 
-.dp-profile-reverse > * {
+.dp-profile-reverse>* {
   direction: ltr;
 }
 
@@ -140,6 +140,8 @@
   display: flex;
   flex-direction: column;
   gap: 0;
+  height: 480px;
+  justify-content: space-between;
 }
 
 .dp-specialty-tag {
@@ -176,7 +178,7 @@
   border-radius: 50px;
   margin-bottom: 24px;
   width: fit-content;
-  border: 1px solid rgba(8,131,149,0.2);
+  border: 1px solid rgba(8, 131, 149, 0.2);
 }
 
 .dp-info p {
@@ -190,6 +192,47 @@
   height: 1px;
   background: #eef0f2;
   margin: 20px 0;
+}
+
+.dp-bio-wrap {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 0;
+}
+
+.dp-bio-text {
+  font-size: 0.97rem;
+  color: #5A6A78;
+  line-height: 1.85;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dp-bio-text.expanded {
+  display: -webkit-box;
+  overflow: visible;
+  -webkit-line-clamp: 999;
+  line-clamp: 999;
+  -webkit-box-orient: vertical;
+}
+
+.dp-read-more {
+  background: none;
+  border: none;
+  color: #088395;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 8px;
+  text-align: left;
 }
 
 .dp-footer-row {
@@ -212,10 +255,14 @@
   padding: 0.75rem 1.75rem;
   border-radius: 50px;
   text-decoration: none;
-  box-shadow: 0 4px 15px rgba(8,131,149,0.3);
+  box-shadow: 0 4px 15px rgba(8, 131, 149, 0.3);
   transition: opacity 0.2s;
 }
-.dp-book-btn:hover { opacity: 0.88; color: white; }
+
+.dp-book-btn:hover {
+  opacity: 0.88;
+  color: white;
+}
 
 /* Social buttons */
 .dp-socials {
@@ -241,7 +288,7 @@
   color: white;
   border-color: #088395;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(8,131,149,0.3);
+  box-shadow: 0 4px 12px rgba(8, 131, 149, 0.3);
 }
 
 /* ── Other Doctors ── */
@@ -269,7 +316,7 @@
   background: white;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(10,61,92,0.07);
+  box-shadow: 0 4px 20px rgba(10, 61, 92, 0.07);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -277,7 +324,7 @@
 
 .dp-other-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(10,61,92,0.13);
+  box-shadow: 0 12px 30px rgba(10, 61, 92, 0.13);
 }
 
 .dp-other-img {
@@ -341,17 +388,35 @@
     padding: 36px 28px;
     gap: 36px;
   }
+
   .dp-img-wrap {
     height: 380px;
   }
+
+  .dp-info {
+    height: auto;
+    justify-content: flex-start;
+  }
+
   .dp-others-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 640px) {
-  .dp-banner-content { padding: 0 24px; }
-  .dp-banner-content h1 { font-size: 34px; }
-  .dp-others-grid { grid-template-columns: repeat(2, 1fr); }
-  .dp-info h2 { font-size: 2rem; }
+  .dp-banner-content {
+    padding: 0 24px;
+  }
+
+  .dp-banner-content h1 {
+    font-size: 34px;
+  }
+
+  .dp-others-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dp-info h2 {
+    font-size: 2rem;
+  }
 }
