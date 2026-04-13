@@ -217,4 +217,20 @@
   .msg-preview {
     max-width: 150px;
   }
+
+  /* Custom Scrollbar for Mobile Visibility */
+  .admin-table-card::-webkit-scrollbar {
+    height: 6px;
+    display: block !important;
+  }
+  
+  .admin-table-card::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+  }
+  
+  .admin-table-card::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 10px;
+  }
 }
