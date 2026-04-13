@@ -254,26 +254,44 @@
 
 /* ── Responsive ──────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .fd-banner {
-    height: 360px;
-  }
-
   .fd-intro {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
+  .fd-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .fd-banner {
+    height: 300px;
+  }
+
+  .fd-intro-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .fd-tag {
+    margin-bottom: 1rem;
+  }
+
+  .fd-intro-text h2 {
+    font-size: 1.6rem;
+  }
+
+  .fd-cta-btn {
+    width: 100%;
+    max-width: 280px;
+    padding: 1rem;
+    margin: 0 auto;
+  }
 
   .fd-feature-image {
-    max-height: 400px;
-  }
-
-  .fd-detail-grid {
-    grid-template-columns: 1fr;
+    height: 280px;
   }
 }
-
-@media (max-width: 600px) {
-  .fd-detail-grid {
-    grid-template-columns: 1fr;
-  }
-}
+
