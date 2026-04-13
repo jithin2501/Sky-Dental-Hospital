@@ -191,3 +191,30 @@
 .close-btn:hover {
   background: #4f46e5;
 }
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .admin-page-header h1 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .admin-table-card {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+  }
+
+  .admin-table {
+    min-width: 750px; /* Ensures the table content doesn't squeeze too much */
+  }
+
+  .admin-table th, 
+  .admin-table td {
+    padding: 15px 12px;
+  }
+
+  .msg-preview {
+    max-width: 150px;
+  }
+}
