@@ -10,8 +10,9 @@ function AboutSection() {
 
       <section className="about">
         <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '3rem', color: '#0A3D5C' }}>
-          ABOUT SKY DENTAL
+          About Sky Dental
         </h2>
+
         <div className="about-inner">
           <div className="about-left">
             <h2 className="section-title" style={{ color: '#0A3D5C', marginBottom: '0.2rem', fontSize: '2.8rem', lineHeight: '1.25' }}>
