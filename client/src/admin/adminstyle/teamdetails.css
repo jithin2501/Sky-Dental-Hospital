@@ -42,6 +42,26 @@
   line-height: 1.6;
 }
 
+/* ─── Bio Character Counter ─── */
+.tm-char-count {
+  display: block;
+  text-align: right;
+  font-size: 0.75rem;
+  color: #a0aec0;
+  margin-top: 4px;
+  transition: color 0.2s;
+}
+
+.tm-char-warn {
+  color: #d97706;
+  font-weight: 600;
+}
+
+.tm-char-over {
+  color: #e53e3e;
+  font-weight: 700;
+}
+
 /* ─── Action Buttons ─── */
 .tm-btn-edit,
 .tm-btn-delete {
@@ -94,7 +114,9 @@
 }
 
 @keyframes tm-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ─── Empty State ─── */
@@ -174,8 +196,13 @@
   transition: background 0.15s;
 }
 
-.td-list-item:last-child { border-bottom: none; }
-.td-list-item:hover { background: #fafbfc; }
+.td-list-item:last-child {
+  border-bottom: none;
+}
+
+.td-list-item:hover {
+  background: #fafbfc;
+}
 
 .td-list-left {
   display: flex;

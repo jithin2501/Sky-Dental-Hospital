@@ -2,17 +2,20 @@ import React, { useState, useEffect, useRef } from 'react';
 import AdminLayout from './adminlayout';
 import './adminstyle/teamdetails.css';
 
-const DOCTORS_API  = '/api/doctors';
+const DOCTORS_API = '/api/doctors';
 const PROFILES_API = '/api/doctor-profiles';
+
+const BIO1_LIMIT = 270;
+const BIO2_LIMIT = 300;
 
 const EMPTY_DETAIL = { experience: '', bio1: '', bio2: '', email: '', facebook: '', instagram: '' };
 
 const TeamDetails = () => {
-  const [doctors,         setDoctors]         = useState([]);
-  const [profiles,        setProfiles]        = useState({});
-  const [fetching,        setFetching]        = useState(true);
-  const [detailLoading,   setDetailLoading]   = useState(false);
-  const [detailForm,      setDetailForm]      = useState(EMPTY_DETAIL);
+  const [doctors, setDoctors] = useState([]);
+  const [profiles, setProfiles] = useState({});
+  const [fetching, setFetching] = useState(true);
+  const [detailLoading, setDetailLoading] = useState(false);
+  const [detailForm, setDetailForm] = useState(EMPTY_DETAIL);
   const [editingDetailId, setEditingDetailId] = useState(null);
 
   const formRef = useRef(null);
@@ -26,7 +29,7 @@ const TeamDetails = () => {
         fetch(DOCTORS_API),
         fetch(PROFILES_API),
       ]);
-      const docs  = await docRes.json();
+      const docs = await docRes.json();
       const profs = await profRes.json();
 
       setDoctors(Array.isArray(docs) ? docs : []);
@@ -48,12 +51,12 @@ const TeamDetails = () => {
     const existing = profiles[doc._id];
     setEditingDetailId(doc._id);
     setDetailForm({
-      experience:  existing?.experience  || '',
-      bio1:        existing?.bio1        || '',
-      bio2:        existing?.bio2        || '',
-      email:       existing?.email       || '',
-      facebook:    existing?.facebook    || '',
-      instagram:   existing?.instagram   || '',
+      experience: existing?.experience || '',
+      bio1: existing?.bio1 || '',
+      bio2: existing?.bio2 || '',
+      email: existing?.email || '',
+      facebook: existing?.facebook || '',
+      instagram: existing?.instagram || '',
     });
     setTimeout(() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
   };
@@ -70,7 +73,7 @@ const TeamDetails = () => {
       if (res.ok) { resetForm(); fetchAll(); }
       else { const err = await res.json(); alert('Failed: ' + (err.message || 'Unknown error')); }
     } catch (err) { alert('Error: ' + err.message); }
-    finally       { setDetailLoading(false); }
+    finally { setDetailLoading(false); }
   };
 
   const handleDetailDelete = async (doctorId) => {
@@ -132,16 +135,24 @@ const TeamDetails = () => {
                   <label className="input-label">Bio (Paragraph 1):</label>
                   <textarea className="admin-input admin-textarea" rows={4}
                     placeholder="Write the first paragraph of the doctor's profile..."
+                    maxLength={BIO1_LIMIT}
                     value={detailForm.bio1}
                     onChange={(e) => setDetailForm({ ...detailForm, bio1: e.target.value })} />
+                  <span className={`tm-char-count ${detailForm.bio1.length >= BIO1_LIMIT ? 'tm-char-over' : detailForm.bio1.length >= BIO1_LIMIT * 0.9 ? 'tm-char-warn' : ''}`}>
+                    {detailForm.bio1.length} / {BIO1_LIMIT}
+                  </span>
                 </div>
 
                 <div className="user-form-group">
                   <label className="input-label">Bio (Paragraph 2):</label>
                   <textarea className="admin-input admin-textarea" rows={4}
                     placeholder="Write the second paragraph of the doctor's profile..."
+                    maxLength={BIO2_LIMIT}
                     value={detailForm.bio2}
                     onChange={(e) => setDetailForm({ ...detailForm, bio2: e.target.value })} />
+                  <span className={`tm-char-count ${detailForm.bio2.length >= BIO2_LIMIT ? 'tm-char-over' : detailForm.bio2.length >= BIO2_LIMIT * 0.9 ? 'tm-char-warn' : ''}`}>
+                    {detailForm.bio2.length} / {BIO2_LIMIT}
+                  </span>
                 </div>
 
                 <div className="tm-form-row">
@@ -201,10 +212,10 @@ const TeamDetails = () => {
                         <p className="td-list-name">{doc.name}</p>
                         {hasDetails(doc._id) ? (
                           <div className="td-detail-chips">
-                            {p.experience  && <span className="td-chip">⏱ {p.experience}</span>}
-                            {p.email       && <span className="td-chip">✉ {p.email}</span>}
-                            {p.facebook    && <span className="td-chip td-chip-social">FB</span>}
-                            {p.instagram   && <span className="td-chip td-chip-social">IG</span>}
+                            {p.experience && <span className="td-chip">⏱ {p.experience}</span>}
+                            {p.email && <span className="td-chip">✉ {p.email}</span>}
+                            {p.facebook && <span className="td-chip td-chip-social">FB</span>}
+                            {p.instagram && <span className="td-chip td-chip-social">IG</span>}
                             {(p.bio1 || p.bio2) && <span className="td-chip td-chip-bio">📝 Bio added</span>}
                           </div>
                         ) : (
