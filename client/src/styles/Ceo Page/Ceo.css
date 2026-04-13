@@ -137,15 +137,26 @@
   }
   .ceo-inner {
     grid-template-columns: 1fr;
+    gap: 3rem;
   }
   .ceo-photo-wrapper {
     order: 0;
+    justify-content: center;
   }
   .ceo-photo {
     width: 100%;
-    height: 320px;
+    max-width: 480px;
+    height: auto;
+  }
+  .ceo-left {
+    text-align: center;
+    align-items: center;
   }
   .ceo-name {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
   }
-}
+  .ceo-quote {
+    text-align: left;
+    align-self: stretch;
+  }
+}

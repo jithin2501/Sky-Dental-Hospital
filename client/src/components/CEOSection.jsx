@@ -4,7 +4,7 @@ import '../styles/Ceo Page/Ceo.css';
 function CEOSection() {
   return (
     <section className="ceo-section">
-      <h2 className="ceo-heading">MEET OUR CEO</h2>
+      <h2 className="ceo-heading">MEET OUR Founder</h2>
 
       <div className="ceo-inner">
 
@@ -12,7 +12,7 @@ function CEOSection() {
         <div className="ceo-photo-wrapper">
           <img
             src="/images/Ceo/Dr Melvin mathew.png"
-            alt="Dr. Melvin Mathew - CEO and Chief Dentist at Sky Dental Hospital"
+            alt="Dr. Melvin Mathew - Founder and Chief Dentist at Sky Dental Hospital"
             className="ceo-photo"
             loading="lazy"
           />
@@ -75,5 +75,6 @@ function CEOSection() {
     </section>
   );
 }
+
 
 export default CEOSection;
