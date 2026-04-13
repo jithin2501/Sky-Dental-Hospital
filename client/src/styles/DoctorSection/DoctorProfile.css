@@ -194,47 +194,6 @@
   margin: 20px 0;
 }
 
-.dp-bio-wrap {
-  flex: 1;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  min-height: 0;
-}
-
-.dp-bio-text {
-  font-size: 0.97rem;
-  color: #5A6A78;
-  line-height: 1.85;
-  margin-bottom: 10px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.dp-bio-text.expanded {
-  display: -webkit-box;
-  overflow: visible;
-  -webkit-line-clamp: 999;
-  line-clamp: 999;
-  -webkit-box-orient: vertical;
-}
-
-.dp-read-more {
-  background: none;
-  border: none;
-  color: #088395;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 0;
-  margin-bottom: 8px;
-  text-align: left;
-}
-
 .dp-footer-row {
   display: flex;
   align-items: center;

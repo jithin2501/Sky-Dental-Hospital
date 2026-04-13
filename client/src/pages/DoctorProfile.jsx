@@ -9,7 +9,6 @@ function DoctorProfile() {
   const [doctors, setDoctors] = useState([]);
   const [profiles, setProfiles] = useState({});
   const [loading, setLoading] = useState(true);
-  const [expanded, setExpanded] = useState({});
 
   useEffect(() => {
     Promise.all([
@@ -27,10 +26,6 @@ function DoctorProfile() {
       .catch(() => { setDoctors([]); setProfiles({}); })
       .finally(() => setLoading(false));
   }, []);
-
-  const toggleExpanded = (docId) => {
-    setExpanded(prev => ({ ...prev, [docId]: !prev[docId] }));
-  };
 
   const displayDoctors = id
     ? doctors.filter(d => d._id === id)
@@ -89,26 +84,10 @@ function DoctorProfile() {
                   )}
 
 
-                  {(profile?.bio1 || profile?.bio2) ? (
-                    <div className="dp-bio-wrap">
-                      {profile?.bio1 && (
-                        <p className={'dp-bio-text' + (expanded[doctor._id] ? ' expanded' : '')}>
-                          {profile.bio1}
-                        </p>
-                      )}
-                      {profile?.bio2 && (
-                        <p className={'dp-bio-text' + (expanded[doctor._id] ? ' expanded' : '')}>
-                          {profile.bio2}
-                        </p>
-                      )}
-                      <button
-                        className="dp-read-more"
-                        onClick={() => toggleExpanded(doctor._id)}
-                      >
-                        {expanded[doctor._id] ? 'Show less ↑' : 'Read more ↓'}
-                      </button>
-                    </div>
-                  ) : (
+                  {profile?.bio1 && <p>{profile.bio1}</p>}
+                  {profile?.bio2 && <p>{profile.bio2}</p>}
+
+                  {!profile?.bio1 && !profile?.bio2 && (
                     <p className="dp-no-bio">Profile details coming soon.</p>
                   )}
 

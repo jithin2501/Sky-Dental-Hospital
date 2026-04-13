@@ -1,5 +1,5 @@
 const DoctorProfile = require('../models/DoctorProfile');
-const Doctor        = require('../models/Doctor');
+const Doctor = require('../models/Doctor');
 
 // GET profile by doctor id
 exports.getProfile = async (req, res) => {
@@ -33,6 +33,15 @@ exports.upsertProfile = async (req, res) => {
     if (!doctor) return res.status(404).json({ message: 'Doctor not found' });
 
     const { designation, experience, bio1, bio2, email, facebook, instagram } = req.body;
+
+    const BIO1_LIMIT = 270;
+    const BIO2_LIMIT = 300;
+
+    if (bio1 && bio1.length > BIO1_LIMIT)
+      return res.status(400).json({ message: `Bio paragraph 1 must be ${BIO1_LIMIT} characters or fewer (currently ${bio1.length})` });
+
+    if (bio2 && bio2.length > BIO2_LIMIT)
+      return res.status(400).json({ message: `Bio paragraph 2 must be ${BIO2_LIMIT} characters or fewer (currently ${bio2.length})` });
 
     const profile = await DoctorProfile.findOneAndUpdate(
       { doctor: doctorId },
