@@ -203,10 +203,47 @@
 
 @media (max-width: 992px) {
   .about {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding: 4rem 2rem;
   }
   .about-inner {
     grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .about-left {
+    height: auto;
+    gap: 1.5rem;
+    text-align: center;
+    align-items: center;
+  }
+  .about-left .section-title {
+    font-size: 2.2rem !important;
+  }
+  .about-desc {
+    font-size: 1rem;
+    margin-bottom: 0px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-stats-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .about-right-gallery {
+    height: 350px;
+  }
+  .about-promo-badge {
+    width: 100px;
+    height: 100px;
+    bottom: -10px;
+    left: -10px;
+  }
+  .about-badge-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .about-rotating-svg text {
+    font-size: 11px;
   }
 }
