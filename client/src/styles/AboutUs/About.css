@@ -1062,14 +1062,19 @@
 /* ── Mobile-only fixes (phone view) ── */
 @media (max-width: 480px) {
 
-  /* About Sky Dental — section headings centered */
+  /* About Sky Dental — headings centered */
   .about-label,
   .about-title,
   .about-description {
     text-align: center;
   }
 
-  /* About Sky Dental — stats in one row, left & right */
+  /* About Sky Dental — reduce gap before stats */
+  .about-description {
+    margin-bottom: 16px !important;
+  }
+
+  /* About Sky Dental — stats side by side */
   .stats-grid {
     display: flex !important;
     flex-direction: row !important;
@@ -1096,19 +1101,21 @@
     text-align: center;
   }
 
-  /* Divider full width */
   .about-divider {
     margin: 20px 0;
   }
 
-  /* Why Choose Us — headings centered */
+  /* Why Choose Us — headings + button centered, doctor image hidden */
   .why-label,
   .why-title,
   .why-subtitle {
     text-align: center;
   }
 
-  /* Why Choose Us — Contact Us button centered */
+  .why-left {
+    align-items: center;
+  }
+
   .contact-btn {
     align-self: center;
     margin: 0 auto;
@@ -1116,81 +1123,78 @@
     justify-content: center;
   }
 
-  /* Why Choose Us — left column centered */
-  .why-left {
+  .doctor-center {
+    display: none !important;
+  }
+
+  /* Our Purpose — full reset to clean column layout */
+  .purpose-section {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 40px 16px;
+    gap: 24px;
     align-items: center;
   }
 
-  /* Our Purpose — headings centered */
-  .purpose-tagline,
-  .purpose-title,
-  .purpose-description {
-    text-align: center;
-  }
-
-  /* About Sky Dental — reduce gap between description and stats */
-  .about-description {
-    margin-bottom: 16px !important;
-  }
-
-  /* Our Purpose — reorder on mobile: heading → image → description */
-  .purpose-section {
-    padding: 40px 16px;
-    display: flex;
-    flex-direction: column;
-  }
-
+  /* 1. Heading block first */
   .purpose-heading-block {
     order: 1;
     width: 100%;
-    min-width: unset;
     text-align: center;
   }
 
+  .purpose-tagline,
+  .purpose-title {
+    text-align: center;
+  }
+
+  /* 2. Image section second — simple contained box */
   .purpose-image-section {
     order: 2;
     width: 100%;
-    height: 240px;
+    height: 220px;
     min-width: unset;
-  }
-
-  .purpose-content {
-    order: 3;
-    width: 100%;
-    min-width: unset;
+    position: relative;
   }
 
   .purpose-img-wrapper {
     width: 100%;
     height: 100%;
+    position: relative;
   }
 
   .purpose-main-img {
-    width: 62%;
-    height: 200px;
-    border-radius: 20px;
+    position: absolute;
+    width: 60%;
+    height: 190px;
+    border-radius: 18px;
     top: 0;
     left: 0;
+    z-index: 1;
   }
 
   .purpose-sub-img {
-    width: 42%;
+    position: absolute;
+    width: 44%;
     height: 130px;
-    border-radius: 20px;
-    border-width: 5px;
+    border-radius: 18px;
+    border-width: 4px;
     bottom: 0;
     right: 0;
+    z-index: 2;
   }
 
   .rotating-badge {
-    top: 80px;
-    left: 64%;
-    width: 72px;
-    height: 72px;
+    width: 68px;
+    height: 68px;
+    top: 75px;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
   }
 
   .rotating-badge::before {
-    border-width: 14px;
+    border-width: 12px;
   }
 
   .decor-plus {
@@ -1201,23 +1205,35 @@
     display: none;
   }
 
+  /* 3. Content (description + features) third */
+  .purpose-content {
+    order: 3;
+    width: 100%;
+    min-width: unset;
+    text-align: center;
+  }
+
+  .purpose-description {
+    text-align: center;
+  }
+
+  .purpose-features-grid {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .purpose-feature-item {
+    justify-content: center;
+  }
+
   /* Our Process — headings centered */
-  .about-label,
   .proc-title {
     text-align: center;
   }
 
   .process-content>div:first-child {
     text-align: center;
-  }
-
-  /* Our Purpose — features list single column & centered */
-  .purpose-features-grid {
-    grid-template-columns: 1fr !important;
-    justify-items: center;
-  }
-
-  .purpose-feature-item {
-    justify-content: center;
   }
 }
