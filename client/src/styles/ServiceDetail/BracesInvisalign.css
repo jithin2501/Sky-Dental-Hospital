@@ -116,9 +116,13 @@
 /* ── Responsive ──────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .banner-content h1 { font-size: 38px; }
-  .sd-intro { flex-direction: column; }
+  .sd-intro { flex-direction: column; text-align: center; }
+  .sd-intro-text { display: flex; flex-direction: column; align-items: center; }
+  .sd-intro-text h2 { font-size: 1.8rem; }
+  .sd-cta-btn { width: 100%; max-width: 280px; margin: 0 auto; }
   .sd-intro-img { flex: none; width: 100%; height: 240px; }
   .sd-process-steps { grid-template-columns: repeat(2, 1fr); }
+
   .sd-sub-card, .sd-sub-card--reverse { flex-direction: column; }
   .sd-sub-card-img { flex: none; width: 100%; height: 240px; position: relative; }
   .sd-sub-card-body,
