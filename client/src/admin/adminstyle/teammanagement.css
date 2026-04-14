@@ -294,5 +294,17 @@
   .tm-btn-edit, 
   .tm-btn-delete {
     flex: 1 !important;
+    padding: 14px 10px !important; /* Increased vertical padding to 14px */
+  }
+
+  /* Ensure doctor photo is seen fully on mobile */
+  .tm-doctor-img-wrap {
+    height: 260px !important; /* Increased height for better visibility */
+    background: #f1f5f9; /* Lighter background for contain view */
+  }
+
+  .tm-doctor-img {
+    object-fit: contain !important; /* No cropping on mobile */
+    background: #f1f5f9;
   }
 }
