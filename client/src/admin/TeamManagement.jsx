@@ -215,10 +215,10 @@ const TeamManagement = () => {
                   </div>
                   <div className="tm-doctor-actions">
                     <button className="tm-btn-edit" onClick={() => handleEdit(doc)}>
-                      ✏️ Edit
+                      Edit
                     </button>
                     <button className="tm-btn-delete" onClick={() => handleDelete(doc._id)}>
-                      🗑 Delete
+                      Delete
                     </button>
                   </div>
                 </div>

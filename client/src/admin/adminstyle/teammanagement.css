@@ -253,3 +253,35 @@
 .tm-btn-delete:hover {
   background: #fed7d7;
 }
+
+/* ─── Mobile Responsive ─── */
+@media (max-width: 768px) {
+  /* Center headings and descriptions */
+  .user-management-container h2,
+  .user-management-container p,
+  .existing-users-header h2 {
+    text-align: center !important;
+    width: 100%;
+  }
+
+  /* Center the form actions / buttons */
+  .tm-form-actions {
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  /* Full width Add Doctor button */
+  .btn-create-admin {
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+    display: block;
+  }
+
+  /* Adjust grid for single column on small phones if needed */
+  .tm-doctors-grid {
+    grid-template-columns: 1fr;
+    padding: 20px 16px;
+  }
+}

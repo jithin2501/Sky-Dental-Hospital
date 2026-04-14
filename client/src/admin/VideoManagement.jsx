@@ -97,16 +97,12 @@ const VideoManagement = () => {
     <AdminLayout>
       <div className="vm-wrapper">
         <div className="vm-page-header">
-          <div>
-            <h1>VIDEO MANAGEMENT</h1>
-          </div>
+          <h1>VIDEO MANAGEMENT</h1>
         </div>
 
         {/* ── UPLOAD SECTION (always visible) ── */}
         <div className="vm-card">
           <div className="vm-card-header">
-            <span className="vm-card-badge">Upload New Media</span>
-            <h2>Upload New Media</h2>
             <p className="vm-card-desc">Replaces any existing media automatically</p>
           </div>
 
@@ -160,7 +156,7 @@ const VideoManagement = () => {
                     <span className="vm-spinner" /> Uploading…
                   </span>
                 ) : (
-                  '⬆ Upload Media'
+                  'Upload'
                 )}
               </button>
             </div>
@@ -226,7 +222,7 @@ const VideoManagement = () => {
                   className="vm-btn vm-btn-danger"
                   onClick={handleDelete}
                 >
-                  🗑 Delete Media
+                  Delete
                 </button>
               </div>
             </div>
