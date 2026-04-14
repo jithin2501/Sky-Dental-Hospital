@@ -108,8 +108,9 @@ const TeamDetails = () => {
             <div ref={formRef} className="user-management-container">
               <div className="td-edit-header">
                 <img src={doc.image_url} alt={doc.name} className="td-edit-avatar" />
-                <div>
-                  <h2>Edit Profile: {doc.name}</h2>
+                <div className="td-edit-info">
+                  <span className="td-edit-label">Edit Profile:</span>
+                  <h2 className="td-edit-name">{doc.name}</h2>
                   <p className="td-edit-specialty">{doc.specialty}</p>
                 </div>
               </div>
