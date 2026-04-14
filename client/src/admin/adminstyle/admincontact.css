@@ -202,15 +202,16 @@
   .admin-table-card {
     display: block;
     width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
+    margin-bottom: 30px; /* Added margin for better clearance */
+    overflow-x: auto !important; /* Force overflow */
     -webkit-overflow-scrolling: touch;
     border-radius: 8px;
+    position: relative;
   }
 
   .admin-table {
     width: 100%;
-    min-width: 800px; /* Increased min-width for better visibility of columns */
+    min-width: 850px; /* Force extra width for more horizontal space */
     table-layout: auto;
   }
 
@@ -223,10 +224,11 @@
     max-width: 150px;
   }
 
-  /* Custom Scrollbar for Mobile Visibility */
+  /* Custom Scrollbar for Mobile Visibility - Forced prominent display */
   .admin-table-card::-webkit-scrollbar {
-    height: 6px;
+    height: 8px !important; /* Slightly taller */
     display: block !important;
+    background-color: #f1f5f9;
   }
   
   .admin-table-card::-webkit-scrollbar-track {
@@ -235,7 +237,13 @@
   }
   
   .admin-table-card::-webkit-scrollbar-thumb {
-    background: #94a3b8;
+    background: #6366f1; /* Changed to Indigo to match theme and be more visible */
     border-radius: 10px;
+    border: 2px solid #f1f5f9; /* Contrast border */
+  }
+
+  /* Ensure scrollbar shows on hover/touch if OS normally hides it */
+  .admin-table-card:active::-webkit-scrollbar-thumb {
+    background: #4f46e5;
   }
 }
