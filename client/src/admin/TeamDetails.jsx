@@ -208,26 +208,28 @@ const TeamDetails = () => {
                     <div className="td-list-left">
                       <img src={doc.image_url} alt={doc.name} className="td-list-avatar" />
                       <div className="td-list-info">
-                        <p className="td-list-specialty">{doc.specialty}</p>
-                        <p className="td-list-name">{doc.name}</p>
-                        {hasDetails(doc._id) ? (
-                          <div className="td-detail-chips">
-                            {p.experience && <span className="td-chip">⏱ {p.experience}</span>}
-                            {p.email && <span className="td-chip">✉ {p.email}</span>}
-                            {p.facebook && <span className="td-chip td-chip-social">FB</span>}
-                            {p.instagram && <span className="td-chip td-chip-social">IG</span>}
-                            {(p.bio1 || p.bio2) && <span className="td-chip td-chip-bio">📝 Bio added</span>}
-                          </div>
-                        ) : (
-                          <span className="td-no-details">No profile details yet — click Edit to add</span>
-                        )}
+                        <div className="td-info-content">
+                          <p className="td-list-specialty">{doc.specialty}</p>
+                          <p className="td-list-name">{doc.name}</p>
+                          {hasDetails(doc._id) ? (
+                            <div className="td-detail-chips">
+                              {p.experience && <span className="td-chip">⏱ {p.experience}</span>}
+                              {p.email && <span className="td-chip">✉ {p.email}</span>}
+                              {p.facebook && <span className="td-chip td-chip-social">FB</span>}
+                              {p.instagram && <span className="td-chip td-chip-social">IG</span>}
+                              {(p.bio1 || p.bio2) && <span className="td-chip td-chip-bio">📝 Bio added</span>}
+                            </div>
+                          ) : (
+                            <span className="td-no-details">No profile details yet — click Edit to add</span>
+                          )}
+                        </div>
+                        <div className="td-list-actions">
+                          <button className="tm-btn-edit" onClick={() => handleDetailEdit(doc)}>Edit</button>
+                          {hasDetails(doc._id) && (
+                            <button className="tm-btn-delete" onClick={() => handleDetailDelete(doc._id)}>Delete</button>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                    <div className="td-list-actions">
-                      <button className="tm-btn-edit" onClick={() => handleDetailEdit(doc)}>✏️ Edit</button>
-                      {hasDetails(doc._id) && (
-                        <button className="tm-btn-delete" onClick={() => handleDetailDelete(doc._id)}>🗑 Delete</button>
-                      )}
                     </div>
                   </div>
                 );
