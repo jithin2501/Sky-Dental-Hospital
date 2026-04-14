@@ -19,6 +19,7 @@ import TeamDetails        from './admin/TeamDetails';
 import ReviewManagement   from './admin/ReviewManagement';
 import ReviewQR           from './admin/ReviewQR';
 import AnalyticsDashboard from './admin/AnalyticsDashboard';
+import UserAnalyticsDetail from './admin/UserAnalyticsDetail';
 import Login              from './admin/auth/login';
 
 import analyticsTracker from './utils/analyticsTracker';
@@ -69,6 +70,7 @@ function App() {
         <Route path="/admin/reviews" element={<ProtectedRoute element={<ReviewManagement />} />} />
         <Route path="/admin/review-qr" element={<ProtectedRoute element={<ReviewQR />} />} />
         <Route path="/admin/analytics" element={<ProtectedRoute element={<AnalyticsDashboard />} />} />
+        <Route path="/admin/analytics/user/:sessionId" element={<ProtectedRoute element={<UserAnalyticsDetail />} />} />
         <Route path="/admin/video" element={<ProtectedRoute element={<VideoManagement />} />} />
         <Route path="/admin/team" element={<ProtectedRoute element={<TeamManagement />} />} />
         <Route path="/admin/team-details" element={<ProtectedRoute element={<TeamDetails />} />} />
