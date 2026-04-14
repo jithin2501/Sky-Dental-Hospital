@@ -279,9 +279,20 @@
     display: block;
   }
 
-  /* Adjust grid for single column on small phones if needed */
+  /* Adjust grid for single column on small phones */
   .tm-doctors-grid {
     grid-template-columns: 1fr;
     padding: 20px 16px;
+  }
+
+  /* Ensure doctor card buttons are side-by-side on mobile */
+  .tm-doctor-actions {
+    display: flex !important;
+    flex-direction: row !important;
+  }
+
+  .tm-btn-edit, 
+  .tm-btn-delete {
+    flex: 1 !important;
   }
 }
