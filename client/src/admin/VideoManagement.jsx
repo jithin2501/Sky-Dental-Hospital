@@ -105,9 +105,9 @@ const VideoManagement = () => {
         {/* ── UPLOAD SECTION (always visible) ── */}
         <div className="vm-card">
           <div className="vm-card-header">
-            <span className="vm-card-badge">Upload</span>
+            <span className="vm-card-badge">Upload New Media</span>
             <h2>Upload New Media</h2>
-            <p>Replaces any existing media automatically</p>
+            <p className="vm-card-desc">Replaces any existing media automatically</p>
           </div>
 
           <form onSubmit={handleUpload} className="vm-form">
@@ -172,7 +172,7 @@ const VideoManagement = () => {
           <div className="vm-card-header">
             <span className="vm-card-badge vm-badge-live">Live</span>
             <h2>Current Website Media</h2>
-            <p>This is what visitors see on the homepage Virtual Tour section</p>
+            <p className="vm-card-desc">This is what visitors see on the homepage Virtual Tour section</p>
           </div>
 
           {fetching ? (

@@ -402,3 +402,83 @@
   font-size: 0.82rem !important;
   color: #94a3b8 !important;
 }
+
+/* ─── Mobile Responsive ─── */
+@media (max-width: 768px) {
+  .vm-wrapper {
+    padding: 16px;
+    gap: 20px;
+  }
+
+  .vm-page-header {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .vm-card-header {
+    text-align: center;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .vm-card-header h2 {
+    font-size: 1.05rem;
+    margin: 8px 0;
+  }
+
+  /* Center the badges on mobile */
+  .vm-card-badge {
+    margin-bottom: 4px;
+  }
+
+  .vm-badge-live {
+    padding-left: 18px; /* Maintain padding for the dot */
+    margin: 0 auto;
+  }
+
+  .vm-card-desc {
+    text-align: center;
+  }
+
+  .vm-form {
+    padding: 24px 16px;
+  }
+
+  .vm-dropzone {
+    min-height: 160px;
+  }
+
+  /* Center the Upload Media button on mobile */
+  .vm-form-actions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .vm-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+  }
+
+  /* Remove meta info on mobile as requested */
+  .vm-media-meta {
+    display: none !important;
+  }
+
+  /* Center Delete Media button on mobile */
+  .vm-current-actions {
+    justify-content: center;
+    width: 100%;
+    padding-top: 10px;
+  }
+
+  .vm-media-frame {
+    max-height: 280px;
+  }
+
+  .vm-media-el {
+    max-height: 280px;
+  }
+}
