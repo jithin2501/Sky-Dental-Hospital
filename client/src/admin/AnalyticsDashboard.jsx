@@ -398,6 +398,10 @@ const AnalyticsDashboard = () => {
                           ))}
                         </div>
 
+                        <div className="pagination-mobile-info">
+                          {currentPage} / {totalPages}
+                        </div>
+
                         <button
                           className="pagination-btn"
                           onClick={() => setCurrentPage(prev => prev + 1)}
