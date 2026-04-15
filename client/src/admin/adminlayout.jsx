@@ -11,7 +11,7 @@ const AdminLayout = ({ children }) => {
   useEffect(() => {
     document.title = 'Sky Dental Dashboard';
     return () => {
-      document.title = 'Sky Dental Hospital';
+      document.title = 'Sky Dental Hospital | Odayanchal, Parapally, Kanhangad';
     };
   }, []);
 
