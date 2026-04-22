@@ -8,6 +8,33 @@
   margin-bottom: 24px;
 }
 
+.rm-stat-card {
+  background: white;
+  border: 1px solid #edf2f7;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  text-align: center;
+}
+
+.rm-stat-num {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0A3D5C;
+}
+
+.rm-stat-label {
+  font-size: 0.8rem;
+  color: #718096;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+}
+
+.rm-stat-pending .rm-stat-num  { color: #d97706; }
+.rm-stat-approved .rm-stat-num { color: #16a34a; }
+
 .rm-stat-qr .rm-stat-label { color: #088395; }
 .btn-stat-view {
   margin-top: 8px;
@@ -23,71 +50,72 @@
 }
 .btn-stat-view:hover { opacity: 0.9; }
 
-/* QR Modal */
-.qr-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(4px);
+/* Tab header */
+.rm-tab-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  padding: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-.qr-modal-content {
-  background: white;
+.rm-tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.rm-tab {
+  padding: 6px 16px;
   border-radius: 20px;
-  width: 100%;
-  max-width: 450px;
-  padding: 30px;
-  position: relative;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-  text-align: center;
+  border: 1px solid #e2e8f0;
+  background: transparent;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #718096;
+  cursor: pointer;
+  transition: all 0.18s;
 }
 
-.qr-modal-close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: #f7fafc;
-  border: none;
+.rm-tab.active {
+  background: #0A3D5C;
+  color: white;
+  border-color: #0A3D5C;
+}
+
+/* Loading & Empty */
+.rm-loading {
+  padding: 60px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: #a0aec0;
+}
+
+.rm-spinner {
   width: 32px;
   height: 32px;
+  border: 3px solid #e2e8f0;
+  border-top-color: #0A3D5C;
   border-radius: 50%;
-  cursor: pointer;
+  animation: rm-spin 0.7s linear infinite;
+}
+
+@keyframes rm-spin { to { transform: rotate(360deg); } }
+
+.rm-empty {
+  padding: 60px 30px;
+  text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-weight: bold;
+  gap: 6px;
 }
 
-.qr-preview-box {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
-  padding: 15px;
-  background: #fcfcfc;
-  border-radius: 12px;
-}
-
-.qr-preview-box canvas, .qr-preview-box img {
-    max-width: 100%;
-    height: auto !important;
-}
-
-.rm-btn-print {
-  width: 100%;
-  background: linear-gradient(135deg, #0A3D5C, #088395);
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 10px;
-}
+.rm-empty-icon { font-size: 3rem; margin-bottom: 8px; }
+.rm-empty p    { margin: 0; font-size: 0.95rem; color: #4a5568; }
+.rm-empty-sub  { font-size: 0.82rem !important; color: #a0aec0 !important; }
 
 /* Review list */
 .rm-list { padding: 8px 0; }
@@ -218,6 +246,72 @@
 }
 
 .rm-btn-delete:hover { background: #fed7d7; }
+
+/* QR Modal */
+.qr-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.qr-modal-content {
+  background: white;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 450px;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.qr-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #f7fafc;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.qr-preview-box {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  padding: 15px;
+  background: #fcfcfc;
+  border-radius: 12px;
+}
+
+.qr-preview-box canvas, .qr-preview-box img {
+    max-width: 100%;
+    height: auto !important;
+}
+
+.rm-btn-print {
+  width: 100%;
+  background: linear-gradient(135deg, #0A3D5C, #088395);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
 
 @media (max-width: 1024px) {
   .rm-stats { grid-template-columns: repeat(2, 1fr); }
