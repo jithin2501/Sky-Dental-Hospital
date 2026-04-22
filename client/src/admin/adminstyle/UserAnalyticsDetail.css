@@ -4,180 +4,201 @@
   min-height: calc(100vh - 80px);
 }
 
-.detail-header {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 28px;
+.detail-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.detail-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.header-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .back-btn {
-  width: fit-content;
-  background: transparent;
-  border: none;
+  background: white;
+  border: 1px solid #e2e8f0;
   color: #64748b;
   font-weight: 600;
   cursor: pointer;
-  padding: 0;
+  padding: 8px 16px;
+  border-radius: 8px;
   font-size: 14px;
-  transition: color 0.2s;
+  transition: all 0.2s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
 .back-btn:hover {
-  color: #0F172A;
-}
-
-.detail-header h1 {
-  font-size: 24px;
-  font-weight: 700;
-  color: #1e293b;
-  margin: 0;
-  letter-spacing: -0.02em;
-}
-
-/* ── User Summary Card ── */
-.user-summary-card {
-  background: white;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  margin-bottom: 24px;
-  border: 1px solid #f1f5f9;
-}
-
-.summary-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #f1f5f9;
-}
-
-.user-avatar {
-  width: 56px;
-  height: 56px;
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  color: white;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: 700;
-}
-
-.user-main-info h2 {
-  margin: 0;
-  font-size: 20px;
-  color: #0f172a;
-}
-
-.user-id-full {
-  margin: 4px 0 0;
-  font-size: 13px;
-  color: #64748b;
-}
-
-.user-id-full code {
-  background: #f1f5f9;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-
-.summary-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.stat-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: #94a3b8;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.stat-value {
-  font-size: 16px;
-  font-weight: 600;
-  color: #334155;
-}
-
-/* ── Visit History Card ── */
-.visit-history-card {
-  background: white;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  border: 1px solid #f1f5f9;
-}
-
-.visit-history-card h3 {
-  margin: 0 0 20px;
-  font-size: 18px;
-  font-weight: 700;
-  color: #1e293b;
-}
-
-.table-responsive {
-  overflow-x: auto;
-  border-radius: 8px;
-  border: 1px solid #f1f5f9;
-}
-
-.visit-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.visit-table th {
   background: #f8fafc;
-  padding: 12px 16px;
-  text-align: left;
-  font-size: 12px;
-  font-weight: 600;
-  color: #64748b;
-  text-transform: uppercase;
-  border-bottom: 1px solid #f1f5f9;
-}
-
-.visit-table td {
-  padding: 16px;
-  font-size: 14px;
-  color: #334155;
-  border-bottom: 1px solid #f8fafc;
-}
-
-.location-cell {
-  font-weight: 600;
-  color: #2563eb;
-}
-
-.time-cell {
-  font-weight: 500;
   color: #0f172a;
 }
 
-.reason-badge {
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
+.session-badge {
+    background: #dcfce7;
+    color: #15803d;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: monospace;
+    border: 1px solid #bbf7d0;
 }
 
-.reason-badge.page-navigated { background: #dcfce7; color: #15803d; }
-.reason-badge.tab-closed { background: #fee2e2; color: #b91c1c; }
-.reason-badge.session-ended { background: #fef3c7; color: #92400e; }
+.export-btn-full {
+    background: #22c55e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: opacity 0.2s;
+}
+
+.export-btn-full:hover {
+    opacity: 0.9;
+}
+
+/* ── Location Card ── */
+.location-info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border: 1px solid #f1f5f9;
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+}
+
+.location-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.loc-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.loc-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #94a3b8;
+}
+
+.loc-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.map-wrapper {
+    height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+/* ── Visit History Cards ── */
+.visit-history-wrapper h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 32px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.visit-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid #f1f5f9;
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.visit-card:hover {
+    transform: translateY(-2px);
+}
+
+.visit-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.visit-number {
+    font-weight: 800;
+    font-size: 16px;
+    color: #1e293b;
+}
+
+.visit-timestamp {
+    background: #f1f5f9;
+    color: #475569;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.visit-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    background: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 8px;
+}
+
+.v-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.v-label {
+    font-weight: 600;
+    color: #64748b;
+    min-width: 70px;
+}
+
+.v-value {
+    font-weight: 700;
+    color: #334155;
+}
 
 /* ── States ── */
 .loading-state, .error-state, .empty-state {
@@ -206,45 +227,11 @@
   to { transform: rotate(360deg); }
 }
 
-.error-icon {
-  font-size: 48px;
-  margin-bottom: 16px;
+@media (max-width: 1024px) {
+    .location-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-.retry-btn {
-  margin-top: 16px;
-  padding: 8px 24px;
-  background: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* ── Mobile ── */
 @media (max-width: 768px) {
-  .analytics-detail-container {
-    padding: 16px;
-  }
-  
-  .user-avatar {
-    width: 44px;
-    height: 44px;
-    font-size: 18px;
-  }
-  
-  .user-main-info h2 {
-    font-size: 17px;
-  }
-  
-  .summary-stats {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  
-  .visit-table th, .visit-table td {
-    padding: 12px;
-    font-size: 13px;
-  }
+    .visit-card-grid { grid-template-columns: 1fr; gap: 12px; }
+    .location-grid { grid-template-columns: 1fr; }
 }
