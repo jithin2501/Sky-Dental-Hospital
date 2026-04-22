@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import AdminLayout from './adminlayout';
 import './adminstyle/reviewmanagement.css';
 
 const API = '/api/reviews';
+const REVIEW_URL = `${window.location.origin}/leave-review`;
 
 const STARS = (n) => '★'.repeat(n) + '☆'.repeat(5 - n);
 
@@ -10,8 +11,32 @@ const ReviewManagement = () => {
   const [reviews,  setReviews]  = useState([]);
   const [fetching, setFetching] = useState(true);
   const [filter,   setFilter]   = useState('all'); // all | pending | approved
+  const [showQR,   setShowQR]   = useState(false);
+  const qrRef = useRef(null);
 
   useEffect(() => { fetchReviews(); }, []);
+
+  // Handle QR generation when modal opens
+  useEffect(() => {
+    if (showQR) {
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
+      script.onload = () => {
+        if (qrRef.current && !qrRef.current.hasChildNodes()) {
+          new window.QRCode(qrRef.current, {
+            text: REVIEW_URL,
+            width: 240,
+            height: 240,
+            colorDark: '#0A3D5C',
+            colorLight: '#ffffff',
+            correctLevel: window.QRCode.CorrectLevel.H,
+          });
+        }
+      };
+      document.body.appendChild(script);
+      return () => { if (document.body.contains(script)) document.body.removeChild(script); };
+    }
+  }, [showQR]);
 
   const fetchReviews = async () => {
     setFetching(true);
@@ -37,6 +62,8 @@ const ReviewManagement = () => {
       if (res.ok) fetchReviews();
     } catch { alert('Delete failed'); }
   };
+
+  const handlePrint = () => window.print();
 
   const filtered = reviews.filter(r => {
     if (filter === 'pending')  return !r.approved;
@@ -65,6 +92,22 @@ const ReviewManagement = () => {
           <div className="rm-stat-card rm-stat-approved">
             <div className="rm-stat-num">{approvedCount}</div>
             <div className="rm-stat-label">Live on Website</div>
+          </div>
+          <div className="rm-stat-card rm-stat-qr">
+            <div className="rm-stat-num">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#088395" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+                <line x1="7" y1="7" x2="7" y2="7"></line>
+                <line x1="17" y1="7" x2="17" y2="7"></line>
+                <line x1="17" y1="17" x2="17" y2="17"></line>
+                <line x1="7" y1="17" x2="7" y2="17"></line>
+              </svg>
+            </div>
+            <div className="rm-stat-label">Review QR Code</div>
+            <button className="btn-stat-view" onClick={() => setShowQR(true)}>View QR</button>
           </div>
         </div>
 
@@ -132,6 +175,27 @@ const ReviewManagement = () => {
           )}
         </div>
       </div>
+
+      {/* QR Modal */}
+      {showQR && (
+        <div className="qr-modal-overlay" onClick={() => setShowQR(false)}>
+          <div className="qr-modal-content" onClick={e => e.stopPropagation()}>
+            <button className="qr-modal-close" onClick={() => setShowQR(false)}>✕</button>
+            <h3>Patient Review QR</h3>
+            <p style={{fontSize: '0.9rem', color: '#718096'}}>Scan to submit a review</p>
+
+            <div className="qr-preview-box">
+              <div ref={qrRef} />
+            </div>
+
+            <p style={{fontSize: '0.8rem', color: '#A0AEC0', marginBottom: '15px'}}>{REVIEW_URL}</p>
+
+            <button className="rm-btn-print" onClick={handlePrint}>
+              🖨 Print QR Code
+            </button>
+          </div>
+        </div>
+      )}
     </AdminLayout>
   );
 };
