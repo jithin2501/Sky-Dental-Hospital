@@ -113,7 +113,7 @@ const UserAnalyticsDetail = () => {
                 </div>
             </div>
             <button className="export-btn-full" onClick={exportHistory}>
-                📊 EXPORT THIS USER'S FULL HISTORY
+                EXPORT THIS USER'S FULL HISTORY
             </button>
         </div>
 
@@ -136,7 +136,7 @@ const UserAnalyticsDetail = () => {
             
             {/* Location Section */}
             <div className="location-info-card">
-                <div className="card-title">📍 User Location Information</div>
+                <div className="card-title">User Location Information</div>
                 <div className="location-grid">
                     <div className="loc-field">
                         <span className="loc-label">City:</span>
@@ -177,7 +177,7 @@ const UserAnalyticsDetail = () => {
 
             {/* Visit History Section */}
             <div className="visit-history-wrapper">
-                <h3>📊 Visit History ({details.visits?.length || 0} visits)</h3>
+                <h3>Visit History ({details.visits?.length || 0} visits)</h3>
                 <div className="visits-list">
                     {details.visits?.map((visit, index) => (
                         <div className="visit-card" key={index}>
