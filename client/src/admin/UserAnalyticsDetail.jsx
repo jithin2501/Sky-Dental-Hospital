@@ -107,7 +107,7 @@ const UserAnalyticsDetail = () => {
                 <h1>User Details</h1>
                 <div className="header-title-row">
                     <button onClick={() => navigate('/admin/analytics')} className="back-btn">
-                        ← Back to Analytics
+                        Back to Analytics
                     </button>
                     <div className="session-badge">Session ID: {formatSessionId(sessionId)}</div>
                 </div>
