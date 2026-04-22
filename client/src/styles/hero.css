@@ -39,7 +39,73 @@
 }
 
 .hero-text {
-  max-width: 700px;
+  max-width: 800px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  padding: 8px 20px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 24px;
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  background: #05BFDB;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(5, 191, 219, 0.8);
+  animation: pulse 2s infinite;
+}
+
+.hero-badge span {
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-family: 'DM Sans', sans-serif;
+  display: block;
+}
+
+.badge-text-anim {
+  animation: slideInText 0.5s ease-out forwards;
+}
+
+@keyframes slideInText {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(5, 191, 219, 0.7); }
+  70% { transform: scale(1.2); box-shadow: 0 0 0 10px rgba(5, 191, 219, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(5, 191, 219, 0); }
 }
 
 .hero-text h1 {
@@ -105,6 +171,15 @@
   .hero-text {
     max-width: 100%;
     text-align: center;
+  }
+
+  .hero-badge {
+    padding: 6px 16px;
+    margin-bottom: 20px;
+  }
+
+  .hero-badge span {
+    font-size: 0.75rem;
   }
 
   .hero-text h1 {

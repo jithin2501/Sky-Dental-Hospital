@@ -19,10 +19,10 @@ function AboutSection() {
               Your Trusted Partner in <span className="highlight">Dental Health</span>
             </h2>
             <p className="about-desc">
-              We believe quality dental care should be accessible to everyone. Sky Dental Hospital was created
-              to deliver expert, compassionate oral healthcare — empowering patients to make confident decisions
+              We believe quality dental care should be accessible to everyone. Sky Dental Hospital is the best dental hospital in Kasaragod and Kanhangad, dedicated
+              to delivering expert, compassionate oral healthcare — empowering patients across Odayanchal and Parapally to make confident decisions
               about their smiles. With transparency and trust at the core, we're reshaping the way people
-              experience dental care.
+              experience dental care in Kerala.
             </p>
             <div className="about-stats-row">
               <div className="about-stat-item">
