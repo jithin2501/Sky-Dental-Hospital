@@ -95,16 +95,7 @@ const ReviewManagement = () => {
           </div>
           <div className="rm-stat-card rm-stat-qr">
             <div className="rm-stat-num">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#088395" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="3" width="7" height="7"></rect>
-                <rect x="14" y="3" width="7" height="7"></rect>
-                <rect x="14" y="14" width="7" height="7"></rect>
-                <rect x="3" y="14" width="7" height="7"></rect>
-                <line x1="7" y1="7" x2="7" y2="7"></line>
-                <line x1="17" y1="7" x2="17" y2="7"></line>
-                <line x1="17" y1="17" x2="17" y2="17"></line>
-                <line x1="7" y1="17" x2="7" y2="17"></line>
-              </svg>
+              QR
             </div>
             <div className="rm-stat-label">Review QR Code</div>
             <button className="btn-stat-view" onClick={() => setShowQR(true)}>View QR</button>
@@ -180,19 +171,21 @@ const ReviewManagement = () => {
       {showQR && (
         <div className="qr-modal-overlay" onClick={() => setShowQR(false)}>
           <div className="qr-modal-content" onClick={e => e.stopPropagation()}>
-            <button className="qr-modal-close" onClick={() => setShowQR(false)}>✕</button>
-            <h3>Patient Review QR</h3>
-            <p style={{fontSize: '0.9rem', color: '#718096'}}>Scan to submit a review</p>
+            <div className="qr-print-safe">
+              <h3 className="qr-hospital-name">Sky Dental Hospital</h3>
+              <p className="qr-instructions">Scan to submit a review</p>
 
-            <div className="qr-preview-box">
-              <div ref={qrRef} />
+              <div className="qr-preview-box">
+                <div ref={qrRef} />
+              </div>
+
+              <p className="qr-link-text">{REVIEW_URL}</p>
             </div>
 
-            <p style={{fontSize: '0.8rem', color: '#A0AEC0', marginBottom: '15px'}}>{REVIEW_URL}</p>
-
-            <button className="rm-btn-print" onClick={handlePrint}>
-              🖨 Print QR Code
+            <button className="rm-btn-print no-print" onClick={() => window.print()}>
+              Print QR Code
             </button>
+            <button className="btn-stat-view no-print" style={{marginTop: '10px', width: '100%'}} onClick={() => setShowQR(false)}>Close</button>
           </div>
         </div>
       )}
