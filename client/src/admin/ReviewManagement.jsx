@@ -94,9 +94,6 @@ const ReviewManagement = () => {
             <div className="rm-stat-label">Live on Website</div>
           </div>
           <div className="rm-stat-card rm-stat-qr">
-            <div className="rm-stat-num">
-              QR
-            </div>
             <div className="rm-stat-label">Review QR Code</div>
             <button className="btn-stat-view" onClick={() => setShowQR(true)}>View QR</button>
           </div>
@@ -182,10 +179,10 @@ const ReviewManagement = () => {
               <p className="qr-link-text">{REVIEW_URL}</p>
             </div>
 
-            <button className="rm-btn-print no-print" onClick={() => window.print()}>
+            <button className="rm-btn-print no-print modal-btn" onClick={() => window.print()}>
               Print QR Code
             </button>
-            <button className="btn-stat-view no-print" style={{marginTop: '10px', width: '100%'}} onClick={() => setShowQR(false)}>Close</button>
+            <button className="btn-stat-view no-print modal-btn" style={{marginTop: '10px'}} onClick={() => setShowQR(false)}>Close</button>
           </div>
         </div>
       )}

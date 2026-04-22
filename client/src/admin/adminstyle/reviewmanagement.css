@@ -312,6 +312,22 @@
   transition: background 0.2s;
 }
 
+.modal-btn {
+  height: 45px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.rm-stat-qr {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Printing logic */
 @media print {
   @page {
