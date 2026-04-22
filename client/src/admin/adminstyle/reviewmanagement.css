@@ -461,8 +461,8 @@ input:checked + .slider:before {
 
 @media (max-width: 640px) {
   .rm-stats { grid-template-columns: 1fr; }
-  .rm-item  { flex-direction: column; }
-  .rm-item-actions { flex-direction: row; }
+  .rm-item  { flex-direction: column; padding: 15px; }
+  .rm-item-left { width: 100%; }
   
   .rm-tab-header {
     flex-direction: column;
@@ -495,9 +495,39 @@ input:checked + .slider:before {
     padding: 10px 15px;
     border-radius: 10px;
     justify-content: space-between;
+    display: flex;
+    align-items: center;
+    flex-direction: row; /* Force one line */
   }
 
   .toggle-label {
+    font-size: 0.75rem;
+    margin-bottom: 0;
+  }
+
+  /* Footer Alignment */
+  .rm-item-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #f1f5f9;
+    width: 100%;
+  }
+
+  .rm-item-date {
+    margin: 0;
+  }
+
+  .rm-item-actions {
+    flex-direction: row;
+    gap: 10px;
+    margin: 0;
+  }
+
+  .rm-btn-approve, .rm-btn-delete {
+    padding: 6px 12px;
     font-size: 0.75rem;
   }
 }
