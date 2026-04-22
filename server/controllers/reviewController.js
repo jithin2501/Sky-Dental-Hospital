@@ -1,4 +1,41 @@
 const Review = require('../models/Review');
+const GlobalSettings = require('../models/GlobalSettings');
+
+// Helper to get auto-approve setting
+const getAutoApproveStatus = async () => {
+  let setting = await GlobalSettings.findOne({ key: 'auto_approve_reviews' });
+  if (!setting) {
+    setting = new GlobalSettings({ key: 'auto_approve_reviews', value: false });
+    await setting.save();
+  }
+  return setting.value;
+};
+
+// GET — current auto-approve status
+exports.getAutoApproveStatusResponse = async (req, res) => {
+  try {
+    const status = await getAutoApproveStatus();
+    res.status(200).json({ autoApprove: status });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+// PATCH — toggle auto-approve status
+exports.toggleAutoApprove = async (req, res) => {
+  try {
+    let setting = await GlobalSettings.findOne({ key: 'auto_approve_reviews' });
+    if (!setting) {
+      setting = new GlobalSettings({ key: 'auto_approve_reviews', value: true });
+    } else {
+      setting.value = !setting.value;
+    }
+    await setting.save();
+    res.status(200).json({ autoApprove: setting.value });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
 
 // POST — client submits a review via QR page
 exports.submitReview = async (req, res) => {
@@ -7,7 +44,14 @@ exports.submitReview = async (req, res) => {
     if (!name || !rating || !text)
       return res.status(400).json({ message: 'All fields are required' });
 
-    const review = new Review({ name, rating: Number(rating), text });
+    const autoApprove = await getAutoApproveStatus();
+    const review = new Review({ 
+      name, 
+      rating: Number(rating), 
+      text, 
+      approved: autoApprove 
+    });
+    
     await review.save();
     res.status(201).json({ message: 'Review submitted successfully' });
   } catch (err) {

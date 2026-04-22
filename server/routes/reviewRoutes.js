@@ -8,6 +8,10 @@ router.post('/',          reviewController.submitReview);
 // Public — website fetches approved reviews
 router.get('/approved',   reviewController.getApprovedReviews);
 
+// Admin — settings
+router.get('/settings/auto-approve', reviewController.getAutoApproveStatusResponse);
+router.patch('/settings/auto-approve', reviewController.toggleAutoApprove);
+
 // Admin — all reviews
 router.get('/',           reviewController.getAllReviews);
 

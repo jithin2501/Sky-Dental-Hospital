@@ -12,9 +12,29 @@ const ReviewManagement = () => {
   const [fetching, setFetching] = useState(true);
   const [filter,   setFilter]   = useState('all'); // all | pending | approved
   const [showQR,   setShowQR]   = useState(false);
+  const [autoApprove, setAutoApprove] = useState(false);
   const qrRef = useRef(null);
 
-  useEffect(() => { fetchReviews(); }, []);
+  useEffect(() => { 
+    fetchReviews(); 
+    fetchAutoApproveStatus();
+  }, []);
+
+  const fetchAutoApproveStatus = async () => {
+    try {
+      const res = await fetch(`${API}/settings/auto-approve`);
+      const data = await res.json();
+      setAutoApprove(data.autoApprove);
+    } catch { console.error("Failed to fetch settings"); }
+  };
+
+  const handleToggleAutoApprove = async () => {
+    try {
+      const res = await fetch(`${API}/settings/auto-approve`, { method: 'PATCH' });
+      const data = await res.json();
+      setAutoApprove(data.autoApprove);
+    } catch { alert("Failed to update auto-approve setting"); }
+  };
 
   // Handle QR generation when modal opens
   useEffect(() => {
@@ -113,6 +133,20 @@ const ReviewManagement = () => {
                   {tab.charAt(0).toUpperCase() + tab.slice(1)}
                 </button>
               ))}
+              
+              <div className="vertical-divider"></div>
+
+              <div className="auto-approve-toggle">
+                <span className="toggle-label">Auto Approve QR Reviews</span>
+                <label className="switch">
+                  <input 
+                    type="checkbox" 
+                    checked={autoApprove} 
+                    onChange={handleToggleAutoApprove}
+                  />
+                  <span className="slider round"></span>
+                </label>
+              </div>
             </div>
           </div>
 
