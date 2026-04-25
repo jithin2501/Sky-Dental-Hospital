@@ -20,6 +20,7 @@ import ReviewManagement   from './admin/ReviewManagement';
 import AnalyticsDashboard from './admin/AnalyticsDashboard';
 import UserAnalyticsDetail from './admin/UserAnalyticsDetail';
 import Login              from './admin/auth/login';
+import Gallery            from './pages/Gallery';
 
 import analyticsTracker from './utils/analyticsTracker';
 analyticsTracker.init();
@@ -62,6 +63,7 @@ function App() {
         <Route path="/facility/:slug" element={<FacilityDetail />} />
         <Route path="/leave-review" element={<ReviewPage />} />
         <Route path="/book-appointment" element={<BookAppointment />} />
+        <Route path="/gallery" element={<Gallery />} />
 
         <Route path="/admin/login" element={<LoginRoute />} />
 

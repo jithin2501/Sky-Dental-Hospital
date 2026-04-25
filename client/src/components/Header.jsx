@@ -90,6 +90,9 @@ function Header() {
             <li><button className="nav-btn" onClick={() => scrollTo('services')}>Services</button></li>
             <li><button className="nav-btn" onClick={() => scrollTo('facilities')}>Facilities</button></li>
             <li><button className="nav-btn" onClick={() => scrollTo('team')}>Team</button></li>
+            <li>
+              <Link to="/gallery" className={location.pathname === '/gallery' ? 'nav-active' : ''}>Gallery</Link>
+            </li>
             <li><button className="nav-btn" onClick={() => scrollTo('reviews')}>Reviews</button></li>
             <li>
               <Link to="/contact" className={location.pathname === '/contact' ? 'nav-active' : ''}>Contact</Link>
@@ -121,6 +124,7 @@ function Header() {
         <button className="mobile-nav-btn" onClick={() => scrollTo('services')}>Services</button>
         <button className="mobile-nav-btn" onClick={() => scrollTo('facilities')}>Facilities</button>
         <button className="mobile-nav-btn" onClick={() => scrollTo('team')}>Team</button>
+        <Link to="/gallery" className="mobile-nav-btn" onClick={() => setMobileOpen(false)}>Gallery</Link>
         <button className="mobile-nav-btn" onClick={() => scrollTo('reviews')}>Reviews</button>
         <Link to="/contact" className="mobile-nav-btn" onClick={() => setMobileOpen(false)}>Contact</Link>
         <Link to="/book-appointment" className="mobile-nav-btn cta-button" onClick={() => setMobileOpen(false)}>Book Appointment</Link>
