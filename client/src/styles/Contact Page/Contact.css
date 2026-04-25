@@ -250,6 +250,27 @@
   .map-wrapper {
     flex: none;
     width: 100%;
-    height: 340px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .map-wrapper {
+    height: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+  .map-blob-clip iframe {
+    clip-path: none;
+    -webkit-clip-path: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .map-zoom-btns {
+    right: 12px;
   }
 }
