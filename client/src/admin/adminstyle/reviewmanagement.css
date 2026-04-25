@@ -59,6 +59,15 @@
   gap: 12px;
 }
 
+@media (min-width: 641px) {
+  .rm-tab-header {
+    justify-content: flex-start; /* items naturally group, we'll use margin-left: auto to push the rest */
+  }
+  .rm-tabs {
+    margin-left: auto;
+  }
+}
+
 .rm-tabs {
   display: flex;
   gap: 6px;
