@@ -129,23 +129,55 @@ exports.getUserDetails = async (req, res) => {
     // Attempt server-side IP lookup if location is missing
     if (!analytics.location || !analytics.location.latitude) {
       try {
-        const ip = analytics.ipAddress || req.ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+        // More robust IP extraction
+        let ip = analytics.ipAddress || req.headers['x-forwarded-for'] || req.ip || req.connection?.remoteAddress;
+        if (ip && ip.includes(',')) ip = ip.split(',')[0].trim();
+        
+        console.log(`Attempting geo lookup for Session ${sessionId} with IP: ${ip}`);
+
         // Skip lookup for localhost/private IPs
-        if (ip && ip !== '::1' && ip !== '127.0.0.1' && !ip.startsWith('192.168.') && !ip.startsWith('10.')) {
-          const geoRes = await fetch(`https://ipapi.co/${ip}/json/`);
+        if (ip && ip !== '::1' && ip !== '127.0.0.1' && !ip.startsWith('192.168.') && !ip.startsWith('10.') && !ip.startsWith('172.')) {
+          
+          // Try ipapi.co first
+          let geoRes = await fetch(`https://ipapi.co/${ip}/json/`);
+          let geoData = {};
+          
           if (geoRes.ok) {
-            const geoData = await geoRes.json();
-            if (geoData.latitude && geoData.longitude) {
-              analytics.location = {
-                city: geoData.city || 'N/A',
-                region: geoData.region || 'N/A',
-                country: geoData.country_name || 'N/A',
-                latitude: geoData.latitude,
-                longitude: geoData.longitude
-              };
-              await analytics.save();
+            geoData = await geoRes.json();
+          } else {
+            // Fallback to ip-api.com (HTTP is free, but server-side call doesn't care)
+            console.log('ipapi.co failed, trying ip-api.com fallback...');
+            geoRes = await fetch(`http://ip-api.com/json/${ip}`);
+            if (geoRes.ok) {
+              geoData = await geoRes.json();
+              // Standardize fields from ip-api.com format
+              if (geoData.status === 'success') {
+                geoData = {
+                  city: geoData.city,
+                  region: geoData.regionName,
+                  country_name: geoData.country,
+                  latitude: geoData.lat,
+                  longitude: geoData.lon
+                };
+              }
             }
           }
+
+          if (geoData.latitude && geoData.longitude) {
+            analytics.location = {
+              city: geoData.city || 'N/A',
+              region: geoData.region || 'N/A',
+              country: geoData.country_name || 'N/A',
+              latitude: geoData.latitude,
+              longitude: geoData.longitude
+            };
+            await analytics.save();
+            console.log(`Success: Geolocation saved for session ${sessionId}`);
+          } else {
+            console.log(`Geolocation service returned no coordinates for IP: ${ip}`);
+          }
+        } else {
+          console.log(`Skipping geolocation for local/private IP: ${ip}`);
         }
       } catch (geoError) {
         console.error('Supplementary server-side geo lookup failed:', geoError);
