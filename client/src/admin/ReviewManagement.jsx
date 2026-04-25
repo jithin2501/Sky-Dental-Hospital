@@ -133,20 +133,20 @@ const ReviewManagement = () => {
                   {tab.charAt(0).toUpperCase() + tab.slice(1)}
                 </button>
               ))}
-              
-              <div className="vertical-divider"></div>
+            </div>
+            
+            <div className="vertical-divider"></div>
 
-              <div className="auto-approve-toggle">
-                <span className="toggle-label">Auto Approve QR Reviews</span>
-                <label className="switch">
-                  <input 
-                    type="checkbox" 
-                    checked={autoApprove} 
-                    onChange={handleToggleAutoApprove}
-                  />
-                  <span className="slider round"></span>
-                </label>
-              </div>
+            <div className="auto-approve-toggle">
+              <span className="toggle-label">Auto Approve QR Reviews</span>
+              <label className="switch">
+                <input 
+                  type="checkbox" 
+                  checked={autoApprove} 
+                  onChange={handleToggleAutoApprove}
+                />
+                <span className="slider round"></span>
+              </label>
             </div>
           </div>
 
@@ -180,18 +180,18 @@ const ReviewManagement = () => {
                           {new Date(review.createdAt).toLocaleString('en-GB')}
                         </p>
                       </div>
+                      <div className="rm-item-actions">
+                        <button
+                          className={`rm-btn-approve ${review.approved ? 'rm-btn-unapprove' : ''}`}
+                          onClick={() => handleToggle(review._id)}
+                        >
+                          {review.approved ? 'Unapprove' : '✓ Approve'}
+                        </button>
+                        <button className="rm-btn-delete" onClick={() => handleDelete(review._id)}>
+                          🗑 Delete
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                  <div className="rm-item-actions">
-                    <button
-                      className={`rm-btn-approve ${review.approved ? 'rm-btn-unapprove' : ''}`}
-                      onClick={() => handleToggle(review._id)}
-                    >
-                      {review.approved ? 'Unapprove' : '✓ Approve'}
-                    </button>
-                    <button className="rm-btn-delete" onClick={() => handleDelete(review._id)}>
-                      🗑 Delete
-                    </button>
                   </div>
                 </div>
               ))}
