@@ -216,14 +216,52 @@
   .gm-header {
     flex-direction: column;
     align-items: flex-start;
+    padding: 20px;
   }
   .add-section-form {
     width: 100%;
+    flex-direction: column;
+    gap: 10px;
   }
   .add-section-form input {
-    flex: 1;
-    width: auto;
+    width: 100%;
+    box-sizing: border-box;
   }
+  .gm-add-btn {
+    width: 100%;
+  }
+  
+  .gm-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .gm-section-title {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .gm-section-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .gm-section-actions button {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .gm-upload-box {
+    width: 100%;
+  }
+  .gm-file-label {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
   .gm-items-grid {
     grid-template-columns: repeat(2, 1fr);
   }
