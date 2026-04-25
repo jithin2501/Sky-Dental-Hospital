@@ -188,7 +188,7 @@ const ReviewManagement = () => {
                           {review.approved ? 'Unapprove' : '✓ Approve'}
                         </button>
                         <button className="rm-btn-delete" onClick={() => handleDelete(review._id)}>
-                          🗑 Delete
+                          Delete
                         </button>
                       </div>
                     </div>
