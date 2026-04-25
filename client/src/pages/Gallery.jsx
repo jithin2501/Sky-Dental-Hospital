@@ -52,7 +52,6 @@ function Gallery() {
             </div>
           ) : sections.length === 0 ? (
             <div className="gallery-empty">
-                <h2 className="gallery-heading">Sky dental hospital Gallery</h2>
                 <p>New photos coming soon!</p>
             </div>
           ) : (

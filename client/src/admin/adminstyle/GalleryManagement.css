@@ -109,6 +109,16 @@
   transition: all 0.2s;
 }
 
+.no-sections {
+  text-align: center;
+  padding: 100px 0;
+  color: #64748b;
+  font-weight: 500;
+  background: white;
+  border-radius: 12px;
+  grid-column: 1 / -1;
+}
+
 .gm-file-label:hover {
   background: #e2e8f0;
   border-color: #94a3b8;
