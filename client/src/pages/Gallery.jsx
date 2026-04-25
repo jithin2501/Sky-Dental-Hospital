@@ -6,6 +6,11 @@ import '../styles/Gallery/Gallery.css';
 function Gallery() {
   const [sections, setSections] = useState([]);
   const [loading, setLoading] = useState(true);
+  
+  // Lightbox state
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [activeSectionIdx, setActiveSectionIdx] = useState(null);
+  const [activeItemIdx, setActiveItemIdx] = useState(null);
 
   useEffect(() => {
     fetchGallery();
@@ -23,11 +28,44 @@ function Gallery() {
     }
   };
 
+  const openLightbox = (sectionIdx, itemIdx) => {
+    const item = sections[sectionIdx].items[itemIdx];
+    if (item.resource_type === 'image') {
+      setSelectedImage(item.url);
+      setActiveSectionIdx(sectionIdx);
+      setActiveItemIdx(itemIdx);
+      document.body.style.overflow = 'hidden'; // Prevent scroll
+    }
+  };
+
+  const closeLightbox = () => {
+    setSelectedImage(null);
+    setActiveSectionIdx(null);
+    setActiveItemIdx(null);
+    document.body.style.overflow = 'auto';
+  };
+
+  const navigateImage = (direction) => {
+    const currentSection = sections[activeSectionIdx];
+    const imageOnlyIndices = currentSection.items
+      .map((item, idx) => item.resource_type === 'image' ? idx : null)
+      .filter(idx => idx !== null);
+
+    const currentPos = imageOnlyIndices.indexOf(activeItemIdx);
+    let nextPos = currentPos + direction;
+
+    if (nextPos >= imageOnlyIndices.length) nextPos = 0;
+    if (nextPos < 0) nextPos = imageOnlyIndices.length - 1;
+
+    const nextItemIdx = imageOnlyIndices[nextPos];
+    setActiveItemIdx(nextItemIdx);
+    setSelectedImage(currentSection.items[nextItemIdx].url);
+  };
+
   return (
     <div className="gallery-page">
       <Header />
       
-      {/* Banner */}
       <div className="gallery-banner-wrap">
         <div className="gallery-banner">
           <img
@@ -59,9 +97,9 @@ function Gallery() {
               <div key={section._id} className="gallery-section-group">
                 <h2 className="gallery-heading">{section.title}</h2>
                 <div className="gallery-grid">
-                  {section.items.map((item) => (
+                  {section.items.map((item, iIdx) => (
                     <div key={item._id} className="gallery-item">
-                      <div className="gallery-img-wrapper">
+                      <div className="gallery-img-wrapper" onClick={() => openLightbox(sIdx, iIdx)}>
                         {item.resource_type === 'video' ? (
                           <video 
                             src={item.url} 
@@ -70,7 +108,7 @@ function Gallery() {
                             className="gallery-video"
                           />
                         ) : (
-                          <img src={item.url} alt={section.title} />
+                          <img src={item.url} alt={section.title} className="gallery-clickable-img" />
                         )}
                       </div>
                     </div>
@@ -82,6 +120,31 @@ function Gallery() {
 
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div className="lightbox-overlay" onClick={closeLightbox}>
+          <button className="lightbox-close" onClick={closeLightbox}>✕</button>
+          
+          <button 
+            className="lightbox-arrow lb-left" 
+            onClick={(e) => { e.stopPropagation(); navigateImage(-1); }}
+          >
+            ‹
+          </button>
+          
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <img src={selectedImage} alt="Fullscreen View" />
+          </div>
+
+          <button 
+            className="lightbox-arrow lb-right" 
+            onClick={(e) => { e.stopPropagation(); navigateImage(1); }}
+          >
+            ›
+          </button>
+        </div>
+      )}
 
       <Footer />
     </div>
