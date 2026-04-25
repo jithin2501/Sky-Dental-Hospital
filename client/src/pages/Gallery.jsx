@@ -46,10 +46,7 @@ function Gallery() {
             {IMAGES.map((img, index) => (
               <div key={index} className="gallery-item">
                 <div className="gallery-img-wrapper">
-                  <img src={img.url} alt={img.caption} />
-                  <div className="gallery-img-overlay">
-                    <span>{img.caption}</span>
-                  </div>
+                  <img src={img.url} alt="Gallery" />
                 </div>
               </div>
             ))}
