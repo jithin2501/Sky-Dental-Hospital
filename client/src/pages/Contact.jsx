@@ -111,9 +111,8 @@ function Contact() {
               </div>
             </div>
           ) : (
-            <>
+            <div className="contact-form-box">
               <h2>CONTACT US</h2>
-              <p>Contact our office and we will get back to you regarding the intervention you require. We're here to make your smile brighter every day.</p>
 
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
@@ -132,7 +131,7 @@ function Contact() {
                   <button type="submit" className="submit-btn">Submit Your Message</button>
                 </div>
               </form>
-            </>
+            </div>
           )}
         </div>
       </section>
