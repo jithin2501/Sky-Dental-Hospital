@@ -126,10 +126,36 @@ exports.getUserDetails = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
+    // Attempt server-side IP lookup if location is missing
+    if (!analytics.location || !analytics.location.latitude) {
+      try {
+        const ip = analytics.ipAddress || req.ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+        // Skip lookup for localhost/private IPs
+        if (ip && ip !== '::1' && ip !== '127.0.0.1' && !ip.startsWith('192.168.') && !ip.startsWith('10.')) {
+          const geoRes = await fetch(`https://ipapi.co/${ip}/json/`);
+          if (geoRes.ok) {
+            const geoData = await geoRes.json();
+            if (geoData.latitude && geoData.longitude) {
+              analytics.location = {
+                city: geoData.city || 'N/A',
+                region: geoData.region || 'N/A',
+                country: geoData.country_name || 'N/A',
+                latitude: geoData.latitude,
+                longitude: geoData.longitude
+              };
+              await analytics.save();
+            }
+          }
+        }
+      } catch (geoError) {
+        console.error('Supplementary server-side geo lookup failed:', geoError);
+      }
+    }
+
     res.status(200).json({ 
       username: analytics.username,
       visits: analytics.visits.sort((a, b) => b.timestamp - a.timestamp),
-      location: analytics.location,
+      location: analytics.location || { city: 'N/A', region: 'N/A', country: 'N/A' },
       firstVisit: analytics.firstVisit,
       lastVisit: analytics.lastVisit
     });

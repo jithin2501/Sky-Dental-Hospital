@@ -148,12 +148,14 @@ const UserAnalyticsDetail = () => {
                     </div>
                     <div className="loc-field">
                         <span className="loc-label">Country:</span>
-                        <span className="loc-value">{details.location?.country || 'India'}</span>
+                        <span className="loc-value">{details.location?.country || 'N/A'}</span>
                     </div>
                     <div className="loc-field">
                         <span className="loc-label">Coordinates:</span>
                         <span className="loc-value">
-                            {details.location?.latitude?.toFixed(4)}, {details.location?.longitude?.toFixed(4)}
+                            {details.location?.latitude && details.location?.longitude 
+                              ? `${details.location.latitude.toFixed(4)}, ${details.location.longitude.toFixed(4)}`
+                              : 'N/A'}
                         </span>
                     </div>
                 </div>
