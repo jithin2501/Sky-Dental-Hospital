@@ -102,27 +102,38 @@ function Contact() {
         </div>
 
         <div className="form-side">
-          <h2>CONTACT US</h2>
-          <p>Contact our office and we will get back to you regarding the intervention you require. We're here to make your smile brighter every day.</p>
+          {submitted ? (
+            <div className="success-container">
+              <div className="success-msg-full">
+                 <div className="success-icon">✓</div>
+                 <h3>Message sent!</h3>
+                 <p>We'll contact you shortly.</p>
+              </div>
+            </div>
+          ) : (
+            <>
+              <h2>CONTACT US</h2>
+              <p>Contact our office and we will get back to you regarding the intervention you require. We're here to make your smile brighter every day.</p>
 
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <input type="text" placeholder="Enter your Name *" required value={form.name} onChange={handleNameChange} />
-            </div>
-            <div className="form-group">
-              <input type="text" placeholder="Enter your Phone Number *" required value={form.phone} onChange={handlePhoneChange} />
-            </div>
-            <div className="form-group">
-              <input type="email" placeholder="Enter your Email Address *" required value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
-            </div>
-            <div className="form-group">
-              <textarea placeholder="Enter your Message *" required value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} />
-            </div>
-            <div className="btn-wrapper">
-              <button type="submit" className="submit-btn">Submit Your Message</button>
-            </div>
-            {submitted && <div className="success-msg show">✓ Message sent! We'll contact you shortly.</div>}
-          </form>
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <input type="text" placeholder="Enter your Name *" required value={form.name} onChange={handleNameChange} />
+                </div>
+                <div className="form-group">
+                  <input type="text" placeholder="Enter your Phone Number *" required value={form.phone} onChange={handlePhoneChange} />
+                </div>
+                <div className="form-group">
+                  <input type="email" placeholder="Enter your Email Address *" required value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
+                </div>
+                <div className="form-group">
+                  <textarea placeholder="Enter your Message *" required value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} />
+                </div>
+                <div className="btn-wrapper">
+                  <button type="submit" className="submit-btn">Submit Your Message</button>
+                </div>
+              </form>
+            </>
+          )}
         </div>
       </section>
       <Footer />
