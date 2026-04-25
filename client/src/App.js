@@ -19,6 +19,7 @@ import TeamDetails        from './admin/TeamDetails';
 import ReviewManagement   from './admin/ReviewManagement';
 import AnalyticsDashboard from './admin/AnalyticsDashboard';
 import UserAnalyticsDetail from './admin/UserAnalyticsDetail';
+import GalleryManagement  from './admin/GalleryManagement';
 import Login              from './admin/auth/login';
 import Gallery            from './pages/Gallery';
 
@@ -69,6 +70,7 @@ function App() {
 
         <Route path="/admin" element={<ProtectedRoute element={<AdminContact />} />} />
         <Route path="/admin/reviews" element={<ProtectedRoute element={<ReviewManagement />} />} />
+        <Route path="/admin/gallery" element={<ProtectedRoute element={<GalleryManagement />} />} />
         <Route path="/admin/analytics" element={<ProtectedRoute element={<AnalyticsDashboard />} />} />
         <Route path="/admin/analytics/user/:sessionId" element={<ProtectedRoute element={<UserAnalyticsDetail />} />} />
         <Route path="/admin/video" element={<ProtectedRoute element={<VideoManagement />} />} />

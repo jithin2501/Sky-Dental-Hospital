@@ -87,6 +87,9 @@ const AdminLayout = ({ children }) => {
             <li className={location.pathname === '/admin/reviews' ? 'active' : ''}>
               <Link to="/admin/reviews">Review Management</Link>
             </li>
+            <li className={location.pathname === '/admin/gallery' ? 'active' : ''}>
+              <Link to="/admin/gallery">Gallery Management</Link>
+            </li>
             <li className={location.pathname.startsWith('/admin/analytics') ? 'active' : ''}>
               <Link to="/admin/analytics">Analytics Dashboard</Link>
             </li>

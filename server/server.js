@@ -17,6 +17,7 @@ app.use('/api/doctors', require('./routes/doctorRoutes'));
 app.use('/api/doctor-profiles', require('./routes/doctorProfileRoutes'));
 app.use('/api/reviews', require('./routes/reviewRoutes'));
 app.use('/api/analytics', require('./routes/analyticsRoutes'));
+app.use('/api/gallery', require('./routes/galleryRoutes'));
 
 // Global error handler — must be last
 app.use((err, req, res, next) => {
