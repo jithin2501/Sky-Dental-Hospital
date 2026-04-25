@@ -553,22 +553,13 @@ input:checked + .slider:before {
   }
 }
 
-/* Original Desktop Design Logic */
 @media (min-width: 641px) {
-  .rm-item {
-     position: relative;
-  }
   .rm-item-actions {
-     position: absolute;
-     right: 28px;
-     top: 18px;
      flex-direction: column;
+     margin-top: 0;
   }
   .rm-item-footer {
-     display: block; /* Stack date below text */
-     margin-top: 5px;
-  }
-  .rm-item-date {
      display: block;
+     margin-top: 5px;
   }
 }

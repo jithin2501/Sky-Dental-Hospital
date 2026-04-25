@@ -179,19 +179,19 @@ const ReviewManagement = () => {
                         <p className="rm-item-date">
                           {new Date(review.createdAt).toLocaleString('en-GB')}
                         </p>
-                        <div className="rm-item-actions">
-                          <button
-                            className={`rm-btn-approve ${review.approved ? 'rm-btn-unapprove' : ''}`}
-                            onClick={() => handleToggle(review._id)}
-                          >
-                            {review.approved ? 'Unapprove' : '✓ Approve'}
-                          </button>
-                          <button className="rm-btn-delete" onClick={() => handleDelete(review._id)}>
-                            🗑 Delete
-                          </button>
-                        </div>
                       </div>
                     </div>
+                  </div>
+                  <div className="rm-item-actions">
+                    <button
+                      className={`rm-btn-approve ${review.approved ? 'rm-btn-unapprove' : ''}`}
+                      onClick={() => handleToggle(review._id)}
+                    >
+                      {review.approved ? 'Unapprove' : '✓ Approve'}
+                    </button>
+                    <button className="rm-btn-delete" onClick={() => handleDelete(review._id)}>
+                      🗑 Delete
+                    </button>
                   </div>
                 </div>
               ))}
