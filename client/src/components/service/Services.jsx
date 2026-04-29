@@ -29,7 +29,7 @@ const services = [
   }
 ];
 
-const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 function Services() {
   const navigate = useNavigate();

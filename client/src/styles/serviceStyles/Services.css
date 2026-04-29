@@ -126,7 +126,7 @@
 }
 
 .services-center-img {
-  width: 300px;
+  width: 340px;
   flex-shrink: 0;
   position: relative;
   align-self: stretch;
@@ -168,7 +168,7 @@
 
 .op-days {
   display: flex;
-  gap: 0.35rem;
+  gap: 0.3rem;
   justify-content: center;
   width: 100%;
 }
@@ -181,9 +181,9 @@
   gap: 0.3rem;
   background: linear-gradient(145deg, #088395, #05BFDB);
   border-radius: 50px;
-  padding: 0.55rem 0.5rem;
+  padding: 0.5rem 0.4rem;
   flex: 1;
-  min-width: 38px;
+  min-width: 36px;
 }
 
 .op-day .day-label {
