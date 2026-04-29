@@ -12,7 +12,7 @@ function CEOSection() {
         <div className="ceo-photo-wrapper">
           <img
             src="/images/Ceo/Dr Melvin mathew.png"
-            alt="Dr. Melvin Mathew - Founder and Chief Dentist at Sky Dental Hospital"
+            alt="Dr. Melvin Mathew - Founder and Chief Dental Surgeon at Sky Dental Hospital"
             className="ceo-photo"
             loading="lazy"
           />
@@ -25,7 +25,7 @@ function CEOSection() {
           </h2>
 
           <p className="ceo-title-tag">
-            Founder &amp; Chief Dentist | BDS, MDS (Oral Surgery)
+            Founder &amp; Chief Dental Surgeon | BDS, FAGE
           </p>
 
           <p className="ceo-desc">

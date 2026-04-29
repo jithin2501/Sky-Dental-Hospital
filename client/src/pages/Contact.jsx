@@ -4,13 +4,8 @@ import Footer from '../components/Footer';
 import '../styles/Contact Page/Contact.css';
 
 function Contact() {
-  const [zoom, setZoom] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
-
-  const zoomLevels = [7856, 3928, 1964, 982, 491, 245];
-
-  const mapSrc = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d${zoomLevels[zoom]}!2d76.62711127599039!3d10.062224590046416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07e79e12537ab7%3A0xccbc8b5d4c9fb10e!2sMaria%20homes!5e0!3m2!1sen!2sin!4v1752908504232!5m2!1sen!2sin`;
 
   const handleNameChange = (e) => {
     const value = e.target.value.replace(/[^a-zA-Z\s]/g, '');
@@ -52,6 +47,8 @@ function Contact() {
   return (
     <div className="contact-page">
       <Header />
+
+      {/* Banner */}
       <div className="banner-wrap">
         <div className="banner">
           <img
@@ -66,75 +63,114 @@ function Contact() {
         </div>
       </div>
 
+      {/* Main Section */}
       <section className="contact-section">
-        <div className="map-wrapper">
-          {/* Inline styles removed and replaced with className */}
-          <svg width="0" height="0" className="svg-clip-hidden">
-            <defs>
-              <clipPath id="blobClip" clipPathUnits="objectBoundingBox">
-                <path d="
-                  M 0.50, 0.03
-                  C 0.38, 0.03  0.20, 0.10  0.08, 0.22
-                  C -0.02, 0.33  -0.02, 0.67  0.08, 0.78
-                  C 0.20, 0.90  0.38, 0.97  0.50, 0.97
-                  C 0.62, 0.97  0.75, 0.88  0.85, 0.75
-                  C 0.93, 0.64  0.97, 0.56  0.97, 0.50
-                  C 0.97, 0.44  0.93, 0.36  0.85, 0.25
-                  C 0.75, 0.12  0.62, 0.03  0.50, 0.03 Z
-                "/>
-              </clipPath>
-            </defs>
-          </svg>
 
-          <div className="map-blob-clip">
-            <iframe
-              src={mapSrc}
-              loading="lazy"
-              allowFullScreen
-              title="Sky Dental Location"
-            />
-          </div>
+        {/* LEFT — General Inquiries */}
+        <div className="left-col">
+          <div className="inquiries-card">
+            <h2 className="inquiries-title">General Inquiries:</h2>
+            <p className="inquiries-desc">
+              For any questions regarding our dental services, treatments, or hospital information, please reach out to us.
+              Our team is here to assist you and ensure you receive the best care for your smile.
+            </p>
+            <div className="inquiries-info">
+              <div className="info-row">
+                <span className="info-icon location-icon">
+                  <img src="/images/social/location-icon.png" alt="Location" className="contact-icon-img" />
+                </span>
+                <span>Varakkad, Kottamala P.O., Vellarikundu-671314,<br />Kasaragod District, Kerala</span>
+              </div>
+              <div className="info-row">
+                <span className="info-icon phone-icon">
+                  <img src="/images/social/phone-icon.png" alt="Phone" className="contact-icon-img" />
+                </span>
+                <span>+91 9544394939</span>
+              </div>
+              <div className="info-row">
+                <span className="info-icon email-icon">
+                  <img src="/images/social/email-icon.png" alt="Email" className="contact-icon-img" />
+                </span>
+                <span>ad.skydentalhospital@gmail.com</span>
+              </div>
+            </div>
 
-          <div className="map-zoom-btns">
-            <button className="map-zoom-btn" onClick={() => setZoom(z => Math.min(z + 1, zoomLevels.length - 1))} title="Zoom in">+</button>
-            <button className="map-zoom-btn" onClick={() => setZoom(z => Math.max(z - 1, 0))} title="Zoom out">−</button>
+            <div className="inquiries-map-static">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.4492737746928!2d76.62711127599039!3d10.062224590046416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07e79e12537ab7%3A0xccbc8b5d4c9fb10e!2sMaria%20homes!5e0!3m2!1sen!2sin!4v1752908504232!5m2!1sen!2sin"
+                loading="lazy"
+                allowFullScreen
+                title="Hospital Location Map"
+                className="static-map-iframe"
+              />
+            </div>
           </div>
         </div>
 
-        <div className="form-side">
+        {/* RIGHT — Send a Message */}
+        <div className="right-col">
           {submitted ? (
             <div className="success-container">
               <div className="success-msg-full">
-                 <div className="success-icon">✓</div>
-                 <h3>Message sent!</h3>
-                 <p>We'll contact you shortly.</p>
+                <div className="success-icon">✓</div>
+                <h3>Message sent!</h3>
+                <p>We'll contact you shortly.</p>
               </div>
             </div>
           ) : (
-            <div className="contact-form-box">
-              <h2>CONTACT US</h2>
+            <div className="send-msg-card">
+              <h2 className="send-msg-title">Send a Message</h2>
 
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <input type="text" placeholder="Enter your Name *" required value={form.name} onChange={handleNameChange} />
+              <form onSubmit={handleSubmit} className="send-msg-form">
+                <div className="form-group full-width">
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    required
+                    value={form.name}
+                    onChange={handleNameChange}
+                  />
                 </div>
-                <div className="form-group">
-                  <input type="text" placeholder="Enter your Phone Number *" required value={form.phone} onChange={handlePhoneChange} />
+
+                <div className="form-group full-width">
+                  <input
+                    type="text"
+                    placeholder="Phone Number"
+                    required
+                    value={form.phone}
+                    onChange={handlePhoneChange}
+                  />
                 </div>
-                <div className="form-group">
-                  <input type="email" placeholder="Enter your Email Address *" required value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
+
+                <div className="form-group full-width">
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    required
+                    value={form.email}
+                    onChange={e => setForm({ ...form, email: e.target.value })}
+                  />
                 </div>
-                <div className="form-group">
-                  <textarea placeholder="Enter your Message *" required value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} />
+
+                <div className="form-group full-width">
+                  <textarea
+                    placeholder="Message"
+                    required
+                    value={form.message}
+                    onChange={e => setForm({ ...form, message: e.target.value })}
+                  />
                 </div>
+
                 <div className="btn-wrapper">
-                  <button type="submit" className="submit-btn">Submit Your Message</button>
+                  <button type="submit" className="submit-btn">SUBMIT</button>
                 </div>
               </form>
             </div>
           )}
         </div>
+
       </section>
+
       <Footer />
     </div>
   );
