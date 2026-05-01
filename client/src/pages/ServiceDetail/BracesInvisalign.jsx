@@ -17,7 +17,8 @@ const subServices = [
     img: '/images/Service_img/Teeth Whitening.jpeg',
     desc: 'Professional-grade whitening that lifts stains and brightens your smile several shades in just one visit.',
     bullets: [
-      'In-chair & take-home options',
+      'Laser assisted teeth whitening',
+      'Chemical Teeth Whitening',
       'Safe for enamel — clinically tested',
       'Results last 12–24 months',
       'Immediate, visible difference',
