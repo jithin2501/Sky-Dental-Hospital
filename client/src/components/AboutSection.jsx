@@ -27,19 +27,19 @@ function AboutSection() {
             <div className="about-stats-row">
               <div className="about-stat-item">
                 <div>
-                  <span className="about-stat-number">40+</span>
+                  <span className="about-stat-number">20+</span>
                   <span className="about-stat-label">Expert Doctors</span>
                 </div>
               </div>
               <div className="about-stat-item">
                 <div>
-                  <span className="about-stat-number">30+</span>
+                  <span className="about-stat-number">10+</span>
                   <span className="about-stat-label">Years Of Experience</span>
                 </div>
               </div>
               <div className="about-stat-item">
                 <div>
-                  <span className="about-stat-number">57K+</span>
+                  <span className="about-stat-number">50K+</span>
                   <span className="about-stat-label">Happy Patients</span>
                 </div>
               </div>
@@ -48,7 +48,7 @@ function AboutSection() {
               Learn More About Us
               <span className="btn-arrow">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                  <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </span>
             </Link>
