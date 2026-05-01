@@ -6,8 +6,8 @@ import '../../styles/ServiceDetail/BracesInvisalign.css';
 const process = [
   { step: '01', title: 'Consultation',   desc: 'We assess your teeth and discuss the best orthodontic options for you.' },
   { step: '02', title: 'Treatment Plan', desc: 'A personalised plan is created with a clear timeline and expected results.' },
-  { step: '03', title: 'Treatment',      desc: 'Braces or aligners are fitted and adjusted regularly to guide your teeth.' },
-  { step: '04', title: 'Retention',      desc: 'Retainers keep your teeth in their new position after treatment ends.' },
+  { step: '03', title: 'Digital Scanning', desc: 'State-of-the-art intraoral scanning captures highly accurate 3D images of your teeth before, during, and after treatment—ensuring precision, comfort, and superior results.' },
+  { step: '04', title: 'Treatment & Retention', desc: 'Braces or aligners are fitted and adjusted regularly to guide your teeth, followed by retainers to keep them in their new position after treatment ends.' },
 ];
 
 const subServices = [
