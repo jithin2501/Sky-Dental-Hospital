@@ -28,10 +28,13 @@
   margin: 0 auto;
   padding: 5rem 2.5rem 3rem;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.4fr;
+  grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
   gap: 3.5rem;
-  position: relative;
-  z-index: 2;
+  justify-items: start;
+}
+
+.footer-col:nth-child(3) {
+  margin-left: -35px;
 }
 
 /* ─── Brand Column ───────────────────────────────────────── */
@@ -155,10 +158,11 @@
   text-decoration: none;
   font-size: 0.95rem;
   display: inline-flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 6px;
   transition: all 0.25s ease;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .footer-col ul li a:hover {

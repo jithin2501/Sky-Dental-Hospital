@@ -85,11 +85,11 @@ function Footer() {
         <div className="footer-col">
           <h4>Services</h4>
           <ul>
-            <li><Link to="/services/orthodontics">Orthodontics</Link></li>
-            <li><Link to="/services/general-dentistry">General Dentistry</Link></li>
-            <li><Link to="/services/pediatric-dentistry">Pediatric Dentistry</Link></li>
-            <li><Link to="/services/cosmetic-dentistry">Cosmetic Dentistry</Link></li>
-            <li><Link to="/services/dental-implants-restorations">Dental Implants & Restorations</Link></li>
+            <li><Link to="/services/smile-makeover">Smile Makeover</Link></li>
+            <li><Link to="/services/braces-invisalign">Braces & Invisalign</Link></li>
+            <li><Link to="/services/implants-restorative-care">Implants & Restorative Care</Link></li>
+            <li><Link to="/services/cosmetic-advanced-dentistry">Cosmetic Dentistry</Link></li>
+            <li><Link to="/services/cosmetic-advanced-dentistry">Advanced Dentistry</Link></li>
           </ul>
         </div>
 
@@ -120,7 +120,7 @@ function Footer() {
               <img src="/images/social/location-icon.png" alt="Location" />
             </div>
             <div className="footer-contact-info">
-              <p>Kanhangad–Rajapuram–Malom Rd, Pullur, Odayanchal–Cherupuzha Rd, Odayanchal, Kodom, Kerala 671531</p>
+              <p>Kanhangad–Rajapuram, Pullur, Odayanchal–Cherupuzha Rd, Kerala 671531</p>
             </div>
           </div>
 
