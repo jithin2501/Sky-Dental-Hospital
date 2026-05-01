@@ -79,13 +79,13 @@ function Contact() {
                 <span className="info-icon location-icon">
                   <img src="/images/social/location-icon.png" alt="Location" className="contact-icon-img" />
                 </span>
-                <span>Varakkad, Kottamala P.O., Vellarikundu-671314,<br />Kasaragod District, Kerala</span>
+                <span>Kanhangad–Rajapuram–Malom Rd, Pullur, Odayanchal–Cherupuzha Rd, Odayanchal, Kodom, Kerala 671531</span>
               </div>
               <div className="info-row">
                 <span className="info-icon phone-icon">
                   <img src="/images/social/phone-icon.png" alt="Phone" className="contact-icon-img" />
                 </span>
-                <span>+91 9544394939</span>
+                <span>+91 94964 10344, +91 73569 77001</span>
               </div>
               <div className="info-row">
                 <span className="info-icon email-icon">

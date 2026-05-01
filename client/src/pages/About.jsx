@@ -289,15 +289,6 @@ function About() {
             <div className="proc-img-wrapper proc-img-3">
               <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?auto=format&fit=crop&q=80&w=800" alt="Modern Clinic" />
             </div>
-            <div className="proc-team-badge">
-              <div className="proc-team-avatars">
-                {[1, 2, 3, 4].map(n => (
-                  <div className="proc-avatar" key={n}>
-                    <img src={`https://i.pravatar.cc/100?u=${n}`} alt={`Team ${n}`} />
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </section>

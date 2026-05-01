@@ -102,7 +102,7 @@ function Footer() {
               <img src="/images/social/phone-icon.png" alt="Phone" />
             </div>
             <div className="footer-contact-info">
-              <a href="tel:7356977001">+91 73569 77001</a>
+              <a href="tel:9496410344">+91 94964 10344</a><a href="tel:7356977001">+91 73569 77001</a>
             </div>
           </div>
 
@@ -120,13 +120,13 @@ function Footer() {
               <img src="/images/social/location-icon.png" alt="Location" />
             </div>
             <div className="footer-contact-info">
-              <p>Sky Dental, Kanhangad - Rajapuram - Malom Rd, Pullur, Kerala 671531</p>
+              <p>Kanhangad–Rajapuram–Malom Rd, Pullur, Odayanchal–Cherupuzha Rd, Odayanchal, Kodom, Kerala 671531</p>
             </div>
           </div>
 
           <Link to="/book-appointment" className="footer-cta">
             Book Appointment
-            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
           </Link>
         </div>
 
