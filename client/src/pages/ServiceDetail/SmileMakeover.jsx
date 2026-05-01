@@ -12,39 +12,15 @@ const process = [
 
 const subServices = [
   {
-    name: 'Sports Dentistry',
-    icon: '/images/Service_subServices/Sports Dentistry.png',
-    img: '/images/Service_img/Sports-Dentistry.jpg',
-    desc: 'Protecting athletes\' smiles with custom-fitted mouthguards and emergency dental care for sports-related injuries.',
+    name: 'Extraction',
+    icon: '/images/Service_subServices/Extraction.png',
+    img: '/images/Service_img/Extraction.webp',
+    desc: 'Safe, gentle tooth extractions — from simple removals to surgical wisdom tooth procedures — with minimal discomfort.',
     bullets: [
-      'Custom-fitted sports mouthguards',
-      'Emergency trauma & knocked-out tooth care',
-      'Jaw & facial injury management',
-      'Performance-safe dental treatments',
-    ],
-  },
-  {
-    name: 'Dental Veneers',
-    icon: '/images/Service_subServices/Dental Veneers.png',
-    img: '/images/Service_img/dental-veneers.jpg',
-    desc: 'Ultra-thin porcelain shells bonded to the front of your teeth to correct shape, colour, and alignment instantly.',
-    bullets: [
-      'Porcelain & composite veneer options',
-      'Natural translucency matching real enamel',
-      'Corrects chips, gaps & discolouration',
-      'Minimal tooth preparation required',
-    ],
-  },
-  {
-    name: 'Scaling',
-    icon: '/images/Service_subServices/scaling.png',
-    img: '/images/Service_img/Scaling.webp',
-    desc: 'Deep professional cleaning that removes plaque, tartar and bacteria build-up from teeth and below the gumline.',
-    bullets: [
-      'Removes stubborn tartar & calculus',
-      'Prevents gum disease progression',
-      'Freshens breath significantly',
-      'Polishing for a smooth, clean finish',
+      'Simple & surgical extraction options',
+      'Wisdom tooth removal',
+      'Sedation available for anxious patients',
+      'Clear aftercare & healing guidance',
     ],
   },
   {
@@ -60,15 +36,39 @@ const subServices = [
     ],
   },
   {
-    name: 'Extraction',
-    icon: '/images/Service_subServices/Extraction.png',
-    img: '/images/Service_img/Extraction.webp',
-    desc: 'Safe, gentle tooth extractions — from simple removals to surgical wisdom tooth procedures — with minimal discomfort.',
+    name: 'Scaling',
+    icon: '/images/Service_subServices/scaling.png',
+    img: '/images/Service_img/Scaling.webp',
+    desc: 'Deep professional cleaning that removes plaque, tartar and bacteria build-up from teeth and below the gumline.',
     bullets: [
-      'Simple & surgical extraction options',
-      'Wisdom tooth removal',
-      'Sedation available for anxious patients',
-      'Clear aftercare & healing guidance',
+      'Removes stubborn tartar & calculus',
+      'Prevents gum disease progression',
+      'Freshens breath significantly',
+      'Polishing for a smooth, clean finish',
+    ],
+  },
+  {
+    name: 'Dental Veneers',
+    icon: '/images/Service_subServices/Dental Veneers.png',
+    img: '/images/Service_img/dental-veneers.jpg',
+    desc: 'Ultra-thin porcelain shells bonded to the front of your teeth to correct shape, colour, and alignment instantly.',
+    bullets: [
+      'Porcelain & composite veneer options',
+      'Natural translucency matching real enamel',
+      'Corrects chips, gaps & discolouration',
+      'Minimal tooth preparation required',
+    ],
+  },
+  {
+    name: 'Sports Dentistry',
+    icon: '/images/Service_subServices/Sports Dentistry.png',
+    img: '/images/Service_img/Sports-Dentistry.jpg',
+    desc: 'Protecting athletes\' smiles with custom-fitted mouthguards and emergency dental care for sports-related injuries.',
+    bullets: [
+      'Custom-fitted sports mouthguards',
+      'Emergency trauma & knocked-out tooth care',
+      'Jaw & facial injury management',
+      'Performance-safe dental treatments',
     ],
   },
 ];
@@ -87,6 +87,20 @@ function SmileMakeover() {
 
       <section className="sd-section">
 
+        {/* Process */}
+        <div className="sd-process">
+          <h3>Our Process</h3>
+          <div className="sd-process-steps">
+            {process.map((p, i) => (
+              <div className="sd-step" key={i}>
+                <div className="sd-step-num">{p.step}</div>
+                <h4>{p.title}</h4>
+                <p>{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Intro */}
         <div className="sd-intro">
           <div className="sd-intro-text">
@@ -101,20 +115,6 @@ function SmileMakeover() {
               beforeLabel='Before'
               afterLabel='After'
             />
-          </div>
-        </div>
-
-        {/* Process */}
-        <div className="sd-process">
-          <h3>Our Process</h3>
-          <div className="sd-process-steps">
-            {process.map((p, i) => (
-              <div className="sd-step" key={i}>
-                <div className="sd-step-num">{p.step}</div>
-                <h4>{p.title}</h4>
-                <p>{p.desc}</p>
-              </div>
-            ))}
           </div>
         </div>
 
