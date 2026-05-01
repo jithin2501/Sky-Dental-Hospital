@@ -830,9 +830,11 @@
 
 .branch-head {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 14px;
+  justify-content: center;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .branch-icon {
@@ -855,6 +857,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  align-items: center;
 }
 
 .branch-tag {
