@@ -213,6 +213,63 @@ export const originalFacilities = [
       },
     ],
   },
+  {
+    slug: 'uv-chamber',
+    title: 'UV Chamber',
+    image: 'https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=800',
+    banner: 'https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=1400',
+    tagline: 'Advanced UV-C sterilization for a germ-free environment.',
+    about:
+      'Our UV Chamber utilizes high-intensity UV-C light to maintain absolute sterility for dental instruments and surfaces. This technology ensures the highest level of sanitation, providing a safe and bacteria-free environment for every procedure.',
+    highlights: [
+      { icon: '✨', label: 'Assured Sterile Surface' },
+      { icon: '🧴', label: 'Sanitation Instrument' },
+      { icon: '🧪', label: 'Storage Chemical Free' },
+      { icon: '🛡️', label: 'Sterilization' },
+    ],
+    details: [
+      {
+        heading: 'Assured Sterile Surface',
+        body: 'The UV chamber provides a continuous sterile environment, ensuring that all surfaces and instruments remain free from microbial contamination through high-intensity UV-C exposure.',
+      },
+      {
+        heading: 'Sanitation Instrument',
+        body: 'Our specialized sanitation instruments work in tandem with UV technology to deliver a hospital-grade sterile field, essential for advanced dental procedures and patient safety.',
+      },
+      {
+        heading: 'Chemical-Free Storage & Sterilization',
+        body: 'By utilizing light-based sterilization, we maintain a sterile storage area without the need for harsh chemicals, ensuring both effective disinfection and an eco-friendly clinical environment.',
+      },
+    ],
+  },
+  {
+    slug: 'pouched-instruments',
+    title: 'Pouched Instruments',
+    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800',
+    banner: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1400',
+    tagline: 'Individually sealed and sterilized for guaranteed hygiene.',
+    about:
+      'We follow a rigorous infection control protocol where every dental instrument is individually pouched and sterilized. This ensures that every tool used during your treatment is 100% sterile and opened only in your presence.',
+    highlights: [
+      { icon: '✅', label: 'Assured Sterile' },
+      { icon: '🤝', label: 'Professional and Trust' },
+      { icon: '🚫', label: 'Prevents Cross Contamination' },
+    ],
+    details: [
+      {
+        heading: 'Assured Sterile',
+        body: 'Every instrument set is meticulously cleaned, sealed in professional-grade pouches, and sterilized to guarantee a completely germ-free clinical experience for every patient.',
+      },
+      {
+        heading: 'Professional and Trust',
+        body: 'By opening fresh, sterile pouches in front of you, we maintain full transparency and build the trust that comes with knowing your safety is our top priority.',
+      },
+      {
+        heading: 'Instruments Prevent Cross Contamination',
+        body: 'Individual pouching is a critical safeguard that eliminates any risk of cross-contamination, ensuring that every tool used in your care is exclusively sterilized for you.',
+      },
+    ],
+  },
 ];
 
 const COPIES = 10;
