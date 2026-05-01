@@ -102,7 +102,7 @@ function Footer() {
               <img src="/images/social/phone-icon.png" alt="Phone" />
             </div>
             <div className="footer-contact-info">
-              <a href="tel:+917356734344">+91 73567 34344</a>
+              <a href="tel:7356977001">+91 73569 77001</a>
             </div>
           </div>
 

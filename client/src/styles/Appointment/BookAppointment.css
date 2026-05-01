@@ -102,149 +102,161 @@
   margin: 0;
 }
 
-/* ── Row: cards side by side ── */
-.book-row {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
+/* ── Appointment Cards Grid ── */
+.appointment-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
   width: 100%;
+  max-width: 1100px;
+}
+
+.appointment-card {
+  position: relative;
   background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 4px 30px rgba(0, 62, 120, 0.09);
-  overflow: hidden;
-}
-
-/* ── Vertical divider between cards ── */
-.book-divider {
-  width: 1px;
-  background: #dae6f0;
-  flex-shrink: 0;
-  margin: 32px 0;
-}
-
-/* ── Card ── */
-.book-card {
-  flex: 1;
-  padding: 48px 40px;
+  padding: 40px 30px;
+  border-radius: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 62, 120, 0.05);
+  border: 1px solid rgba(218, 230, 240, 0.6);
+  overflow: hidden;
+  height: 100%; /* Ensure all cards in the grid row have equal height */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ── Icon wrapper ── */
-.book-card__icon-wrap {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
+.appointment-card:hover {
+  box-shadow: 0 12px 45px rgba(0, 98, 167, 0.08);
+}
+
+/* ── Icon Box ── */
+.card-icon-box {
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  background: #f8fbff;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  transition: background 0.3s ease;
 }
 
-.book-card--primary .book-card__icon-wrap {
+.appointment-card:hover .card-icon-box {
   background: #0062a7;
-  box-shadow: 0 6px 20px rgba(0, 98, 167, 0.25);
 }
 
-.book-card--primary .book-card__icon-wrap svg {
-  width: 28px;
-  height: 28px;
+.card-icon-box svg {
+  width: 30px;
+  height: 30px;
+  stroke: #0062a7;
+  transition: stroke 0.3s ease;
+}
+
+.appointment-card:hover .card-icon-box svg {
   stroke: #ffffff;
 }
 
-.book-card--hours .book-card__icon-wrap {
-  background: #e8f3ff;
-}
-
-.book-card--hours .book-card__icon-wrap svg {
-  width: 28px;
-  height: 28px;
-  stroke: #0062a7;
-}
-
-/* ── Label ── */
-.book-card__label {
-  font-size: 0.78rem;
+/* ── Typography ── */
+.card-title {
+  font-size: 1.35rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #8aa4b8;
-  margin: 0 0 12px;
+  color: #071E2E;
+  margin: 0 0 20px;
 }
 
-/* ── Phone number ── */
-.book-card__number {
-  font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+.card-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ── Phone Links ── */
+.phone-link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 12px;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+}
+
+.phone-link:hover {
+  background: #eef5ff;
+}
+
+.phone-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #8aa4b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.phone-value {
+  font-size: 1.25rem;
   font-weight: 800;
   color: #071E2E;
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  margin-bottom: 10px;
+  transition: color 0.2s ease;
 }
 
-.book-card__number:hover {
+.phone-link:hover .phone-value {
   color: #0062a7;
 }
 
-.book-card__hint {
-  font-size: 0.83rem;
-  color: #8aa4b8;
-  margin: 0;
-}
-
-/* ── Hours list ── */
-.book-hours-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-}
-
-.book-hours-list li {
+/* ── Hours Styling ── */
+.hours-row {
   display: flex;
   justify-content: space-between;
-  gap: 24px;
-  padding: 11px 0;
-  font-size: 0.95rem;
-  color: #3a5265;
-  border-bottom: 1px solid #eaf1f8;
+  align-items: center;
+  gap: 20px; /* Reduced gap as requested */
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f4f8;
 }
 
-.book-hours-list li:last-child {
+.hours-row:last-child {
   border-bottom: none;
 }
 
-.book-hours-list li span:first-child {
+.hours-tag {
+  font-size: 0.9rem;
   font-weight: 600;
   color: #071E2E;
 }
 
+.hours-time {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0062a7;
+}
+
 /* ── Responsive ── */
+@media (max-width: 900px) {
+  .appointment-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .hours-card {
+    grid-column: span 2;
+  }
+}
+
 @media (max-width: 640px) {
-  .book-page .banner {
-    height: 300px;
+  .appointment-cards-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .hours-card {
+    grid-column: span 1;
   }
 
-  .book-section {
-    padding: 48px 16px 60px;
-    gap: 36px;
-  }
-
-  .book-row {
-    flex-direction: column;
-    border-radius: 16px;
-  }
-
-  .book-divider {
-    width: auto;
-    height: 1px;
-    margin: 0 32px;
-  }
-
-  .book-card {
-    padding: 36px 24px;
+  .appointment-card {
+    padding: 35px 20px;
   }
 }

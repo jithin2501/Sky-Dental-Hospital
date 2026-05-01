@@ -34,33 +34,63 @@ function BookAppointment() {
           </p>
         </div>
 
-        <div className="book-row">
-
-          <div className="book-card book-card--primary">
-            <div className="book-card__icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <div className="appointment-cards-container">
+          
+          {/* Sky Dental Hospital Card */}
+          <div className="appointment-card contact-card hospital">
+            <div className="card-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/>
               </svg>
             </div>
-            <p className="book-card__label">Call us directly</p>
-            <a href="tel:+917356734344" className="book-card__number">+91 73567 34344</a>
-            <p className="book-card__hint">Tap to call instantly from your phone</p>
+            <h3 className="card-title">Sky Dental Hospital</h3>
+            <div className="card-content">
+              <a href="tel:04672080055" className="phone-link">
+                <span className="phone-label">Landline</span>
+                <span className="phone-value">0467 2080055</span>
+              </a>
+              <a href="tel:7356977001" className="phone-link primary">
+                <span className="phone-label">Mobile</span>
+                <span className="phone-value">73569 77001</span>
+              </a>
+            </div>
           </div>
 
-          <div className="book-divider" />
+          {/* Sky Dental Clinic Card */}
+          <div className="appointment-card contact-card clinic">
+            <div className="card-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/>
+              </svg>
+            </div>
+            <h3 className="card-title">Sky Dental Clinic</h3>
+            <div className="card-content">
+              <a href="tel:9496410344" className="phone-link primary">
+                <span className="phone-label">Direct Line</span>
+                <span className="phone-value">94964 10344</span>
+              </a>
+            </div>
+          </div>
 
-          <div className="book-card book-card--hours">
-            <div className="book-card__icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          {/* Clinic Hours Card */}
+          <div className="appointment-card hours-card">
+            <div className="card-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10"/>
                 <polyline points="12 6 12 12 16 14"/>
               </svg>
             </div>
-            <p className="book-card__label">Clinic Hours</p>
-            <ul className="book-hours-list">
-              <li><span>Mon – Sat</span><span>9:00 AM – 7:00 PM</span></li>
-              <li><span>Sunday</span><span>10:00 AM – 2:00 PM</span></li>
-            </ul>
+            <h3 className="card-title">Clinic Hours</h3>
+            <div className="card-content">
+              <div className="hours-row">
+                <span className="hours-tag">Morning</span>
+                <span className="hours-time">10:00 AM – 1:00 PM</span>
+              </div>
+              <div className="hours-row">
+                <span className="hours-tag">Evening</span>
+                <span className="hours-time">2:00 PM – 6:00 PM</span>
+              </div>
+            </div>
           </div>
 
         </div>
