@@ -87,20 +87,6 @@ function SmileMakeover() {
 
       <section className="sd-section">
 
-        {/* Process */}
-        <div className="sd-process">
-          <h3>Our Process</h3>
-          <div className="sd-process-steps">
-            {process.map((p, i) => (
-              <div className="sd-step" key={i}>
-                <div className="sd-step-num">{p.step}</div>
-                <h4>{p.title}</h4>
-                <p>{p.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Intro */}
         <div className="sd-intro">
           <div className="sd-intro-text">
@@ -115,6 +101,20 @@ function SmileMakeover() {
               beforeLabel='Before'
               afterLabel='After'
             />
+          </div>
+        </div>
+
+        {/* Process */}
+        <div className="sd-process">
+          <h3>Our Process</h3>
+          <div className="sd-process-steps">
+            {process.map((p, i) => (
+              <div className="sd-step" key={i}>
+                <div className="sd-step-num">{p.step}</div>
+                <h4>{p.title}</h4>
+                <p>{p.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
 
