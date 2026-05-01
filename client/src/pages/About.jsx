@@ -7,17 +7,15 @@ import '../styles/AboutUs/About.css';
 const branches = [
   {
     tag: 'Branch 01',
-    name: 'Sky Dental Clinic',
-    mapUrl: 'https://maps.google.com/?q=12.38198782475644,75.07049084703496',
-    address: 'Parappally, Kanhangad,\nKasaragod District, Kerala',
-    services: ['General & Preventive', 'Dental Fillings', 'Cleaning & Whitening', 'Tooth Extractions'],
+    name: 'Sky Dental Hospital',
+    mapUrl: 'https://share.google/FVfSBHhfXr0LwuNKp',
+    address: 'Kanhangad-Rajapuram-Malom Rd,\nPullur, Kerala 671531',
   },
   {
     tag: 'Branch 02',
-    name: 'Sky Dental Hospital',
-    mapUrl: 'ADD_BRANCH_02_GOOGLE_MAPS_LINK_HERE',
-    address: 'Kanhangad Town,\nKasaragod District, Kerala',
-    services: ['Dental Implants', 'Cosmetic Design', 'Orthodontics', 'Advanced Oral Surgery'],
+    name: 'Sky Dental Clinic',
+    mapUrl: 'https://share.google/1P3aAIQuw4ev7rlL2',
+    address: 'Odayanchal-Cherupuzha Rd,\nOdayanchal, Kodom, Kerala 671531',
   },
 ];
 
