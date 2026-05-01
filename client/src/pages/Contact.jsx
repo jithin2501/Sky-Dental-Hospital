@@ -97,7 +97,7 @@ function Contact() {
 
             <div className="inquiries-map-static">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.4492737746928!2d76.62711127599039!3d10.062224590046416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07e79e12537ab7%3A0xccbc8b5d4c9fb10e!2sMaria%20homes!5e0!3m2!1sen!2sin!4v1752908504232!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243.564577912553!2d75.13940482455091!3d12.380705227164801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba47d0048039cf3%3A0x7e7bd08ff63cdfe3!2sSky%20dental%20hospital%20parapally!5e0!3m2!1sen!2sin!4v1777618747979!5m2!1sen!2sin"
                 loading="lazy"
                 allowFullScreen
                 title="Hospital Location Map"

@@ -8,13 +8,13 @@ const branches = [
   {
     tag: 'Branch 01',
     name: 'Sky Dental Hospital',
-    mapUrl: 'https://share.google/FVfSBHhfXr0LwuNKp',
+    embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243.564577912553!2d75.13940482455091!3d12.380705227164801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba47d0048039cf3%3A0x7e7bd08ff63cdfe3!2sSky%20dental%20hospital%20parapally!5e0!3m2!1sen!2sin!4v1777618747979!5m2!1sen!2sin',
     address: 'Kanhangad-Rajapuram-Malom Rd,\nPullur, Kerala 671531',
   },
   {
     tag: 'Branch 02',
     name: 'Sky Dental Clinic',
-    mapUrl: 'https://share.google/1P3aAIQuw4ev7rlL2',
+    embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3896.7281515780164!2d75.19984197408408!3d12.401123287864277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba4894f87f0c831%3A0x8da5031e81f241df!2sDr.%20Melvin&#39;s%20D%20Care!5e0!3m2!1sen!2sin!4v1777618818767!5m2!1sen!2sin',
     address: 'Odayanchal-Cherupuzha Rd,\nOdayanchal, Kodom, Kerala 671531',
   },
 ];
@@ -328,6 +328,18 @@ function About() {
                   </div>
                 </div>
                 <div className="branch-divider" />
+                <div className="branch-map-embed">
+                  <iframe
+                    src={b.embedUrl}
+                    width="100%"
+                    height="200"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={`${b.name} Location`}
+                  />
+                </div>
                 <div className="branch-address">
                   <div className="branch-address-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#088395" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -340,22 +352,6 @@ function About() {
                     <span className="branch-address-val">{b.address}</span>
                   </div>
                 </div>
-                <div className="branch-services">
-                  {b.services.map(s => (
-                    <div className="branch-service-item" key={s}>
-                      <span className="branch-dot" />
-                      {s}
-                    </div>
-                  ))}
-                </div>
-                <a href={b.mapUrl} target="_blank" rel="noreferrer" className="branch-map-link">
-                  View on Google Maps
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#088395" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                    <polyline points="15 3 21 3 21 9" />
-                    <line x1="10" y1="14" x2="21" y2="3" />
-                  </svg>
-                </a>
               </div>
             </div>
           ))}
