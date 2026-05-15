@@ -110,12 +110,12 @@ function About() {
               alt="Sky Dental Hospital Interior"
               className="main-image"
             />
-            <div className="experience-badge">
-              <img src="/images/Ceo/Dr Melvin mathew.png" alt="Dr. Melvin Mathew" className="doctor-photo" />
-              <div className="badge-footer">
-                <h3>10+</h3>
-                <p>years of medical excellence</p>
-              </div>
+          </div>
+          <div className="experience-badge">
+            <img src="/images/Ceo/Dr Melvin mathew.png" alt="Dr. Melvin Mathew" className="doctor-photo" />
+            <div className="badge-footer">
+              <h3>10+</h3>
+              <p>years of medical excellence</p>
             </div>
           </div>
         </div>
