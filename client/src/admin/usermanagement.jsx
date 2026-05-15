@@ -244,13 +244,14 @@ const UserManagement = () => {
               <th className="text-center">ROLE</th>
               <th className="text-center">STATUS</th>
               <th className="text-center">LAST LOGIN</th>
+              <th className="text-center">PAGE ACCESS</th>
               <th className="text-center">ACTION</th>
             </tr>
           </thead>
           <tbody>
             {users.length === 0 ? (
               <tr>
-                <td colSpan={5} className="text-center" style={{ padding: '20px', color: '#888' }}>
+                <td colSpan={6} className="text-center" style={{ padding: '20px', color: '#888' }}>
                   No users found.
                 </td>
               </tr>
@@ -272,15 +273,20 @@ const UserManagement = () => {
                       : '—'}
                   </td>
                   <td className="text-center">
+                    {user.role === 'Superadmin' ? (
+                      <span className="full-access-label">Full Access</span>
+                    ) : (
+                      <button
+                        className="btn-access-violet"
+                        onClick={() => handleOpenAccess(user)}
+                      >
+                        Access
+                      </button>
+                    )}
+                  </td>
+                  <td className="text-center">
                     {user.role !== 'Superadmin' && isSuperadmin && (
                       <div className="action-btns">
-                        <button
-                          className="action-icon-btn"
-                          title="Access Control"
-                          onClick={() => handleOpenAccess(user)}
-                        >
-                          <img src="/images/usermanagement logo/Active.png" className="mgmt-icon" alt="Access" style={{ filter: 'hue-rotate(180deg)' }} />
-                        </button>
                         <button
                           className="action-icon-btn"
                           title={user.status === 'Active' ? 'Deactivate' : 'Activate'}

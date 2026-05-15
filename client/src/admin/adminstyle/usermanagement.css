@@ -203,6 +203,37 @@
 .text-center { text-align: center; }
 .bold-text { font-weight: 600; color: #2d3748; }
 
+/* ── Full Access Label ── */
+.full-access-label {
+    color: #4a5568;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ── Violet Access Button ── */
+.btn-access-violet {
+    background-color: #8b5cf6; /* Violet */
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.btn-access-violet:hover {
+    background-color: #7c3aed;
+    transform: translateY(-1px);
+}
+
+.btn-access-violet:active {
+    transform: translateY(0);
+}
+
 /* ── Modal Overlay ── */
 .modal-overlay {
     position: fixed;
