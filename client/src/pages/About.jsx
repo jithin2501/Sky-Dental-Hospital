@@ -93,7 +93,7 @@ function About() {
       {/* ── Banner ── */}
       <div className="banner-wrap">
         <div className="banner">
-          <img className="banner-bg-img" src="/images/About us/banner.png" alt="Sky Dental Hospital" />
+          <img className="banner-bg-img" src="/images/About us/banner.jpg" alt="Sky Dental Hospital" />
           <div className="banner-overlay" />
           <div className="banner-content">
             <h1>About Us</h1>
@@ -106,14 +106,14 @@ function About() {
         <div className="image-composition">
           <div className="main-image-wrapper">
             <img
-              src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=800"
+              src="/images/About us/im.jpg"
               alt="Sky Dental Hospital Interior"
               className="main-image"
             />
             <div className="experience-badge">
               <img src="/images/Ceo/Dr Melvin mathew.png" alt="Dr. Melvin Mathew" className="doctor-photo" />
               <div className="badge-footer">
-                <h3>20+</h3>
+                <h3>10+</h3>
                 <p>years of medical excellence</p>
               </div>
             </div>

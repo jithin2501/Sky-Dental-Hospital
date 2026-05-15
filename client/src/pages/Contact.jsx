@@ -53,7 +53,7 @@ function Contact() {
         <div className="banner">
           <img
             className="banner-bg-img"
-            src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1400&q=80"
+            src="/images/Contact/banner.jpg"
             alt="Contact Banner"
           />
           <div className="banner-overlay" />
