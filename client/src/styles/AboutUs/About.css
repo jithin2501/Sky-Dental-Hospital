@@ -108,18 +108,57 @@
 
 .experience-badge {
   position: absolute;
-  bottom: -20px; /* Offset by border width to hide bottom/right borders */
-  right: -20px;
+  bottom: 0;
+  right: 0;
   width: 200px;
   height: 240px;
   background: #0A3D5C;
-  border-radius: 60px; /* Large radius to create the smooth cutout curve */
+  border-radius: 40px;
+  overflow: visible; /* Changed to visible to allow pseudo-elements to show */
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+/* ── The rounded 'tips' for the concave cutout ── */
+.experience-badge::before,
+.experience-badge::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Top tip rounding */
+.experience-badge::before {
+  top: -30px;
+  right: 0;
+  border-bottom-right-radius: 30px;
+  box-shadow: 18px 18px 0 18px #eff9ff;
+}
+
+/* Left tip rounding */
+.experience-badge::after {
+  bottom: 0;
+  left: -30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 18px 18px 0 18px #eff9ff;
+}
+
+/* The actual gap (thick white space) */
+.experience-badge .badge-inner-container {
+  position: absolute;
+  inset: 0;
+  border-top: 18px solid #eff9ff;
+  border-left: 18px solid #eff9ff;
+  border-top-left-radius: 50px;
+  background: #0A3D5C;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  border: 20px solid #eff9ff; /* The 'gap' effect */
-  box-shadow: none; /* Removed shadow to keep the 'cutout' look clean */
-  z-index: 10;
 }
 
 .experience-badge .doctor-photo {
@@ -133,7 +172,7 @@
   z-index: 1;
 }
 
-.experience-badge::after {
+.badge-inner-container::after {
   content: '';
   position: absolute;
   inset: 0;

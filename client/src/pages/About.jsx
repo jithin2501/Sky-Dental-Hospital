@@ -112,10 +112,12 @@ function About() {
             />
           </div>
           <div className="experience-badge">
-            <img src="/images/Ceo/Dr Melvin mathew.png" alt="Dr. Melvin Mathew" className="doctor-photo" />
-            <div className="badge-footer">
-              <h3>10+</h3>
-              <p>years of medical excellence</p>
+            <div className="badge-inner-container">
+              <img src="/images/Ceo/Dr Melvin mathew.png" alt="Dr. Melvin Mathew" className="doctor-photo" />
+              <div className="badge-footer">
+                <h3>10+</h3>
+                <p>years of medical excellence</p>
+              </div>
             </div>
           </div>
         </div>
