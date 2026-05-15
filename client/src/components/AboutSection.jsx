@@ -71,7 +71,7 @@ function AboutSection() {
               </div>
               <div className="about-gallery-side-box">
                 <img
-                  src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=400"
+                  src="/images/About us/im.jpg"
                   alt="Sky Dental Hospital Expert Doctors Team"
                 />
               </div>
