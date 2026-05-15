@@ -154,7 +154,11 @@
   inset: 0;
   border-top: 18px solid #eff9ff;
   border-left: 18px solid #eff9ff;
+  /* top-left has larger radius for the gap, others match main badge radius */
   border-top-left-radius: 50px;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border-bottom-left-radius: 40px;
   background: #0A3D5C;
   overflow: hidden;
   display: flex;
