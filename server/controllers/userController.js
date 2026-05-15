@@ -16,12 +16,13 @@ exports.loginUser = async (req, res) => {
       return res.status(400).json({ message: 'Username and password are required' });
     }
 
+    const trimmedUsername = username.trim();
+
     // ── Step 1: Check Superadmin from .env ───────────────────────────────────
-    // Supports both SUPERADMIN_USERNAME and REACT_APP_ADMIN_USERNAME (for flexibility)
     const superUser = process.env.SUPERADMIN_USERNAME || process.env.REACT_APP_ADMIN_USERNAME;
     const superPass = process.env.SUPERADMIN_PASSWORD || process.env.REACT_APP_ADMIN_PASSWORD;
 
-    if (superUser && superPass && username.trim() === superUser && password === superPass) {
+    if (superUser && superPass && trimmedUsername === superUser && password === superPass) {
       const token = generateToken({ id: 'superadmin', username: superUser, role: 'Superadmin' });
       return res.status(200).json({
         token,
@@ -30,12 +31,13 @@ exports.loginUser = async (req, res) => {
     }
 
     // ── Step 2: Check Database for regular Admins ─────────────────────────────
-    const user = await User.findOne({ username: username.trim() });
+    const user = await User.findOne({ username: trimmedUsername });
     if (!user) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
+    
     if (!isMatch) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
@@ -82,17 +84,20 @@ exports.createUser = async (req, res) => {
     if (!username || !password) {
       return res.status(400).json({ message: 'Username and password are required.' });
     }
+    
+    const trimmedUsername = username.trim();
+
     if (password.length < 8) {
       return res.status(400).json({ message: 'Password must be at least 8 characters.' });
     }
 
-    const existingUser = await User.findOne({ username });
+    const existingUser = await User.findOne({ username: trimmedUsername });
     if (existingUser) {
       return res.status(400).json({ message: 'Username already exists.' });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ username, password: hashedPassword, role: 'Admin', status: 'Active' });
+    const newUser = new User({ username: trimmedUsername, password: hashedPassword, role: 'Admin', status: 'Active' });
     await newUser.save();
 
     const { password: _, ...userWithoutPassword } = newUser.toObject();

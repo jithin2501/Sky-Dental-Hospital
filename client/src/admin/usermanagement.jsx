@@ -144,7 +144,7 @@ const UserManagement = () => {
               className="admin-input"
               placeholder="Enter new username"
               value={formData.username}
-              onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+              onChange={(e) => setFormData({ ...formData, username: e.target.value.trim() })}
               required
             />
           </div>
@@ -156,7 +156,7 @@ const UserManagement = () => {
                 className="admin-input"
                 placeholder="Password must be at least 8 characters long"
                 value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                onChange={(e) => setFormData({ ...formData, password: e.target.value.trim() })}
                 minLength={8}
                 required
                 style={{ paddingRight: '45px' }}
