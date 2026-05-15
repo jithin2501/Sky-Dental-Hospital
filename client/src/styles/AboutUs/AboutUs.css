@@ -166,7 +166,6 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  box-shadow: 0 10px 30px rgba(8, 131, 149, 0.35);
 }
 
 .about-rotating-svg {
