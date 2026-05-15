@@ -56,22 +56,6 @@ function Contact() {
             src="/images/Contact/banner.png"
             alt="Contact Banner"
           />
-          <div className="banner-overlay" />
-          <div className="banner-content-wrapper">
-            <div className="banner-quote">
-              <p className="quote-main">
-                A <span className="highlight">smile</span> is an<br />
-                inexpensive way<br />
-                to change<br />
-                <span className="highlight">your looks</span>
-              </p>
-              <div className="quote-author">
-                <span className="line"></span>
-                <span className="author-text">SKY DENTAL CENTRE</span>
-                <span className="line"></span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
