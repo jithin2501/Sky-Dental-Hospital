@@ -110,7 +110,7 @@
 .about-gallery-main {
   flex: 2;
   position: relative;
-  border-radius: 24px;
+  border-radius: 24px 24px 24px 65px;
   overflow: hidden;
   height: 100%;
   box-shadow: 0 12px 40px rgba(10, 61, 92, 0.15);
@@ -149,8 +149,8 @@
 /* ── Rotating Badge ── */
 .about-promo-badge {
   position: absolute;
-  bottom: -20px;
-  left: -20px;
+  bottom: 0;
+  left: 0;
   width: 130px;
   height: 130px;
   z-index: 10;
@@ -251,8 +251,8 @@
   .about-promo-badge {
     width: 100px;
     height: 100px;
-    bottom: -10px;
-    left: -10px;
+    bottom: 0;
+    left: 0;
   }
   .about-badge-icon {
     width: 36px;
