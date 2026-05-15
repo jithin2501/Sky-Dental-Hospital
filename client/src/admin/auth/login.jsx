@@ -44,6 +44,7 @@ const Login = () => {
                 localStorage.setItem('isAdminAuthenticated', 'true');
                 localStorage.setItem('userRole', data.user.role);
                 localStorage.setItem('username', data.user.username);
+                localStorage.setItem('userPermissions', JSON.stringify(data.user.permissions || []));
                 localStorage.setItem('lastLogin', new Date().toISOString()); // ✅ store login time
                 navigate('/admin');
             } else {

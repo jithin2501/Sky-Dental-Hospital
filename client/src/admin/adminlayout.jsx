@@ -7,6 +7,12 @@ const AdminLayout = ({ children }) => {
   const navigate = useNavigate();
   const userRole = localStorage.getItem('userRole') || 'Admin';
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const userPermissions = JSON.parse(localStorage.getItem('userPermissions') || '[]');
+
+  const hasAccess = (section) => {
+    if (userRole === 'Superadmin') return true;
+    return userPermissions.includes(section);
+  };
 
   useEffect(() => {
     document.title = 'Sky Dental Dashboard';
@@ -24,6 +30,7 @@ const AdminLayout = ({ children }) => {
     localStorage.removeItem('isAdminAuthenticated');
     localStorage.removeItem('userRole');
     localStorage.removeItem('username');
+    localStorage.removeItem('userPermissions');
     navigate('/admin/login', { replace: true });
   };
 
@@ -72,27 +79,41 @@ const AdminLayout = ({ children }) => {
             <h2>DENTAL DASHBOARD</h2>
           </div>
           <ul className="sidebar-links">
-            <li className={location.pathname === '/admin' ? 'active' : ''}>
-              <Link to="/admin">Contact Messages</Link>
-            </li>
-            <li className={location.pathname === '/admin/video' ? 'active' : ''}>
-              <Link to="/admin/video">Video Management</Link>
-            </li>
-            <li className={location.pathname === '/admin/team' ? 'active' : ''}>
-              <Link to="/admin/team">Team Management</Link>
-            </li>
-            <li className={location.pathname === '/admin/team-details' ? 'active' : ''}>
-              <Link to="/admin/team-details">Team Details</Link>
-            </li>
-            <li className={location.pathname === '/admin/reviews' ? 'active' : ''}>
-              <Link to="/admin/reviews">Review Management</Link>
-            </li>
-            <li className={location.pathname === '/admin/gallery' ? 'active' : ''}>
-              <Link to="/admin/gallery">Gallery Management</Link>
-            </li>
-            <li className={location.pathname.startsWith('/admin/analytics') ? 'active' : ''}>
-              <Link to="/admin/analytics">Analytics Dashboard</Link>
-            </li>
+            {hasAccess('Contact Messages') && (
+              <li className={location.pathname === '/admin' ? 'active' : ''}>
+                <Link to="/admin">Contact Messages</Link>
+              </li>
+            )}
+            {hasAccess('Video Management') && (
+              <li className={location.pathname === '/admin/video' ? 'active' : ''}>
+                <Link to="/admin/video">Video Management</Link>
+              </li>
+            )}
+            {hasAccess('Team Management') && (
+              <li className={location.pathname === '/admin/team' ? 'active' : ''}>
+                <Link to="/admin/team">Team Management</Link>
+              </li>
+            )}
+            {hasAccess('Team Details') && (
+              <li className={location.pathname === '/admin/team-details' ? 'active' : ''}>
+                <Link to="/admin/team-details">Team Details</Link>
+              </li>
+            )}
+            {hasAccess('Review Management') && (
+              <li className={location.pathname === '/admin/reviews' ? 'active' : ''}>
+                <Link to="/admin/reviews">Review Management</Link>
+              </li>
+            )}
+            {hasAccess('Gallery Management') && (
+              <li className={location.pathname === '/admin/gallery' ? 'active' : ''}>
+                <Link to="/admin/gallery">Gallery Management</Link>
+              </li>
+            )}
+            {hasAccess('Analytics Dashboard') && (
+              <li className={location.pathname.startsWith('/admin/analytics') ? 'active' : ''}>
+                <Link to="/admin/analytics">Analytics Dashboard</Link>
+              </li>
+            )}
             {userRole === 'Superadmin' && (
               <li className={location.pathname === '/admin/users' ? 'active' : ''}>
                 <Link to="/admin/users">User Management</Link>

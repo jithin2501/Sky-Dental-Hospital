@@ -11,5 +11,6 @@ router.get('/',            auth, userController.getUsers);
 router.post('/',           auth, userController.createUser);
 router.delete('/:id',      auth, userController.deleteUser);
 router.patch('/:id/toggle', auth, userController.toggleStatus);
+router.patch('/:id/permissions', auth, userController.updatePermissions);
 
 module.exports = router;

@@ -24,7 +24,20 @@ const UserManagement = () => {
   const [success, setSuccess]   = useState('');
   const [loading, setLoading]   = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [showAccessModal, setShowAccessModal] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [tempPermissions, setTempPermissions] = useState([]);
   const navigate                = useNavigate();
+
+  const sections = [
+    'Contact Messages',
+    'Video Management',
+    'Team Management',
+    'Team Details',
+    'Review Management',
+    'Gallery Management',
+    'Analytics Dashboard'
+  ];
 
   const isSuperadmin = localStorage.getItem('userRole') === 'Superadmin';
 
@@ -121,6 +134,39 @@ const UserManagement = () => {
       }
     } catch (err) {
       console.error('Delete failed:', err);
+    }
+  };
+
+  const handleOpenAccess = (user) => {
+    setSelectedUser(user);
+    setTempPermissions(user.permissions || []);
+    setShowAccessModal(true);
+  };
+
+  const handleTogglePermission = (section) => {
+    if (tempPermissions.includes(section)) {
+      setTempPermissions(tempPermissions.filter(p => p !== section));
+    } else {
+      setTempPermissions([...tempPermissions, section]);
+    }
+  };
+
+  const handleSavePermissions = async () => {
+    try {
+      const res = await authFetch(`/api/users/${selectedUser._id}/permissions`, {
+        method: 'PATCH',
+        body: JSON.stringify({ permissions: tempPermissions }),
+      });
+      if (res.ok) {
+        setSuccess(`Permissions updated for ${selectedUser.username}`);
+        setShowAccessModal(false);
+        fetchUsers();
+      } else {
+        const data = await res.json();
+        alert(data.message || 'Update failed.');
+      }
+    } catch (err) {
+      console.error('Update failed:', err);
     }
   };
 
@@ -230,6 +276,13 @@ const UserManagement = () => {
                       <div className="action-btns">
                         <button
                           className="action-icon-btn"
+                          title="Access Control"
+                          onClick={() => handleOpenAccess(user)}
+                        >
+                          <img src="/images/usermanagement logo/Active.png" className="mgmt-icon" alt="Access" style={{ filter: 'hue-rotate(180deg)' }} />
+                        </button>
+                        <button
+                          className="action-icon-btn"
                           title={user.status === 'Active' ? 'Deactivate' : 'Activate'}
                           onClick={() => handleToggleStatus(user._id)}
                         >
@@ -257,6 +310,36 @@ const UserManagement = () => {
           </tbody>
         </table>
       </div>
+      {/* ── Access Control Modal ── */}
+      {showAccessModal && selectedUser && (
+        <div className="modal-overlay">
+          <div className="access-modal">
+            <div className="modal-header">
+              <h3>Section Access: {selectedUser.username}</h3>
+              <button className="close-modal" onClick={() => setShowAccessModal(false)}>✕</button>
+            </div>
+            <div className="modal-body">
+              <p>Tick the sections this admin can access:</p>
+              <div className="permissions-list">
+                {sections.map(section => (
+                  <label key={section} className="permission-item">
+                    <input
+                      type="checkbox"
+                      checked={tempPermissions.includes(section)}
+                      onChange={() => handleTogglePermission(section)}
+                    />
+                    <span>{section}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button className="btn-cancel" onClick={() => setShowAccessModal(false)}>Cancel</button>
+              <button className="btn-save" onClick={handleSavePermissions}>Save Permissions</button>
+            </div>
+          </div>
+        </div>
+      )}
     </AdminLayout>
   );
 };

@@ -26,7 +26,7 @@ exports.loginUser = async (req, res) => {
       const token = generateToken({ id: 'superadmin', username: superUser, role: 'Superadmin' });
       return res.status(200).json({
         token,
-        user: { id: 'superadmin', username: superUser, role: 'Superadmin' }
+        user: { id: 'superadmin', username: superUser, role: 'Superadmin', permissions: ['*'] }
       });
     }
 
@@ -53,7 +53,7 @@ exports.loginUser = async (req, res) => {
 
     res.status(200).json({
       token,
-      user: { id: user._id, username: user.username, role: user.role }
+      user: { id: user._id, username: user.username, role: user.role, permissions: user.permissions }
     });
   } catch (err) {
     console.error('Login error:', err);
@@ -136,6 +136,26 @@ exports.deleteUser = async (req, res) => {
 
     await User.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: 'User deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+// ─── Update Permissions — Superadmin only ──────────────────────────────────
+exports.updatePermissions = async (req, res) => {
+  try {
+    if (req.user.role !== 'Superadmin') {
+      return res.status(403).json({ message: 'Only Superadmin can update permissions.' });
+    }
+
+    const { permissions } = req.body;
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    user.permissions = permissions;
+    await user.save();
+
+    res.status(200).json({ message: 'Permissions updated successfully', permissions: user.permissions });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
