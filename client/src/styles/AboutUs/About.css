@@ -154,8 +154,11 @@
   inset: 0;
   border-top: 18px solid #eff9ff;
   border-left: 18px solid #eff9ff;
-  /* Uniform corner radius for all 4 sides */
-  border-radius: 40px;
+  /* Balanced radii for a professional look */
+  border-top-left-radius: 35px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
   background: #0A3D5C;
   overflow: hidden;
   display: flex;
