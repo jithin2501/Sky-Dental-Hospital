@@ -57,7 +57,7 @@ function AboutSection() {
           <div className="about-right-gallery">
             <div className="about-gallery-main">
               <img
-                src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800"
+                src="/images/About sky dental/About 1.jpg"
                 alt="Modern Sky Dental Clinic Interior in Odayanchal Parapally"
                 loading="lazy"
               />
@@ -65,7 +65,7 @@ function AboutSection() {
             <div className="about-gallery-side">
               <div className="about-gallery-side-box">
                 <img
-                  src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&q=80&w=400"
+                  src="/images/About sky dental/About 2.jpg"
                   alt="Advanced Dental Equipment at Sky Dental Hospital"
                 />
               </div>

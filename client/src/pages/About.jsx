@@ -93,7 +93,7 @@ function About() {
       {/* ── Banner ── */}
       <div className="banner-wrap">
         <div className="banner">
-          <img className="banner-bg-img" src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1400&q=80" alt="Sky Dental Hospital" />
+          <img className="banner-bg-img" src="/images/About us/banner.png" alt="Sky Dental Hospital" />
           <div className="banner-overlay" />
           <div className="banner-content">
             <h1>About Us</h1>
