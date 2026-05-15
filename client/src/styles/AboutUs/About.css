@@ -89,6 +89,34 @@
   overflow: hidden;
 }
 
+/* ── Negative corners to round the main image cutout ── */
+.image-composition::before,
+.image-composition::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Curving the top intersection */
+.image-composition::before {
+  bottom: 240px; /* Aligns with badge top */
+  right: 0;
+  border-bottom-right-radius: 20px;
+  box-shadow: 10px 10px 0 10px #eff9ff;
+}
+
+/* Curving the left intersection */
+.image-composition::after {
+  bottom: 0;
+  right: 200px; /* Aligns with badge left */
+  border-bottom-right-radius: 20px;
+  box-shadow: 10px 10px 0 10px #eff9ff;
+}
+
 .main-image-wrapper {
   position: relative;
   width: 100%;
