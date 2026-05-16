@@ -216,8 +216,8 @@ export const originalFacilities = [
   {
     slug: 'uv-chamber',
     title: 'UV Chamber',
-    image: 'https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=800',
-    banner: 'https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=1400',
+    image: '/images/Facilities/uv-chamber.png',
+    banner: '/images/Facilities/uv-chamber.png',
     tagline: 'Advanced UV-C sterilization for a germ-free environment.',
     about:
       'Our UV Chamber utilizes high-intensity UV-C light to maintain absolute sterility for dental instruments and surfaces. This technology ensures the highest level of sanitation, providing a safe and bacteria-free environment for every procedure.',
@@ -245,8 +245,8 @@ export const originalFacilities = [
   {
     slug: 'pouched-instruments',
     title: 'Pouched Instruments',
-    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800',
-    banner: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1400',
+    image: '/images/Facilities/pouched-instruments.png',
+    banner: '/images/Facilities/pouched-instruments.png',
     tagline: 'Individually sealed and sterilized for guaranteed hygiene.',
     about:
       'We follow a rigorous infection control protocol where every dental instrument is individually pouched and sterilized. This ensures that every tool used during your treatment is 100% sterile and opened only in your presence.',
